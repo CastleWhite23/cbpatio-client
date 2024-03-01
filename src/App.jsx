@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import bgImage from './assets/bg-admin.png'
+import { Layout } from './components/Layout/Layout'
+import { ChakraProvider } from '@chakra-ui/react'
+import { Home } from './pages/Home/Home'
+import { Campeonatos } from './pages/Campeonatos/Campeonatos'
+// import { PrivateRoute } from './services/privateRoute'
+// import { AuthContext, AuthContextProvider } from './context/auth'
+// import { Login } from './pages/login/login'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      {/* <AuthContextProvider> */}
+      <ChakraProvider>
+        <Routes>
+          {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
+          <Route path='/' element={
+            <Layout bgImage={bgImage} navStyle='home'>
+              <Home />
+            </Layout>
+
+          } />
+          <Route path='/campeonatos' element={
+            <Layout>
+              <Campeonatos />
+            </Layout>
+          } />
+
+
+
+          {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
+          <Route path='/times' element={
+            <Layout>
+              <Campeonatos />
+            </Layout>
+          } />
+          <Route path='/classificacao' element={
+            <Layout>
+              <Campeonatos />
+            </Layout>
+          } />
+        </Routes>
+      </ChakraProvider>
+      {/* </AuthContextProvider> */}
+    </Router>
   )
 }
 
