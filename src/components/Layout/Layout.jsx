@@ -11,17 +11,17 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
       style={{
         backgroundImage: `url(${backgroundImage})`,
         width: "100%",
-        height: "100vh",
+        minHeight: "100vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="content">
-        {
-          navStyle == "home" ? <Navbar /> : <Navbar bgColor={'#22243F'} />
-        }
 
+      {
+        navStyle == "home" ? <Navbar /> : <Navbar bgColor={'#22243F'} />
+      }
+      <div className="content">
         {children}
       </div>
 
