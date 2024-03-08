@@ -28,3 +28,13 @@
    text-wrap: wrap;
    text-align: center;
 }
+
+@media (max-width: 370px) {
+      .home h1{
+        font-size: 40px;
+      }
+      
+      .home p{
+         font-size: 17px;
+       }
+}
