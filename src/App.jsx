@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import bgImage from './assets/bg-admin.png'
+import bgImage from './assets/bg_escuro_emba.png'
 import { Layout } from './components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Home } from './pages/Home/Home'

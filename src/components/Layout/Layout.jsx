@@ -14,7 +14,7 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
         minHeight: "100vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center"
       }}
     >
 
