@@ -1,0 +1,25 @@
+.card-img {
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 1rem;
+    z-index: 1;
+    position: relative;
+}
+
+.card-img h3 {
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: .75rem;
+    text-transform: uppercase;
+}
+
+.card-img .things{
+    margin-top: 12rem;
+}
