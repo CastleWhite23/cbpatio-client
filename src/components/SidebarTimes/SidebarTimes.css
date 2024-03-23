@@ -1,0 +1,60 @@
+.sidebar-times .logo img {
+    width: 70px;
+    height: 70px;
+}
+
+.sidebar-times {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 200px;
+    height: 100%;
+
+    background-color: #1B1230;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+    color: #866CC9;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.sidebar-times a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .4rem;
+    border-bottom: 1px solid #866CC9;
+    width: 100%;
+}
+
+
+
+
+@media (max-width: 925px) {
+    .sidebar-times {
+        right: 0;
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .sidebar-times .logo {
+        display: none;
+    }
+
+    .sidebar-times a {
+        border: none;
+    }
+    .sidebar-times a span{
+        display: none;
+    }
+}
