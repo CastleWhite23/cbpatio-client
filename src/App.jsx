@@ -45,27 +45,22 @@ function App() {
 
 
           {/* ROTAS TIMES */}
-          <Route path='/times' element={
-            <Layout>
-              <Times />
-            </Layout>
-          } />
 
           <Route path='/times/criar' element={
             <Layout>
-              <h1>criar</h1>
+              <Times pageTitle={'NOVO TIME'} />
             </Layout>
           } />
 
           <Route path='/times/meustimes' element={
             <Layout>
-              <h1>meus times</h1>
+              <Times pageTitle={'MEUS TIMES'}/>
             </Layout>
           } />
 
           <Route path='/times/solicitacoes' element={
             <Layout>
-              <h1>solicitações</h1>
+              <Times pageTitle={'SOLICITAÇÕES'}/>
             </Layout>
           } />
 
