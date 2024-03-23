@@ -10,7 +10,7 @@ const Campeonatos = () =>{
 
                 <SwiperCampeonatos />
                 
-                <h2>Não tem um time? <Link className="link" to={"/times"}>Crie um!</Link></h2>
+                <h2>Não tem um time? <Link className="link" to={"/times/criar"}>Crie um!</Link></h2>
             </section>
         </>
     )
