@@ -6,7 +6,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   word-break: break-all;
 }
 
 /* .times .sidebar{
@@ -17,7 +16,7 @@
 
 .times .children{
     padding-left: 190px;
-
+    color: #fff;
 }
 
 
