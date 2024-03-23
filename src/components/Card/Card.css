@@ -23,3 +23,12 @@
 .card-img .things{
     margin-top: 12rem;
 }
+
+.card-purple{
+    background-color: #252848;
+}
+
+.card-purple .things{
+    width: 100%;
+    height: 100%;
+}
