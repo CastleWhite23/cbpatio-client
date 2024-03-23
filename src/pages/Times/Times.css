@@ -1,0 +1,30 @@
+/* .times{
+    width: 100%;
+} */
+
+.times h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   word-break: break-all;
+}
+
+/* .times .sidebar{
+    padding-left: 190px;
+
+} */
+
+
+.times .children{
+    padding-left: 190px;
+
+}
+
+
+
+
+@media (max-width: 925px) {
+    .times .children{
+        padding-left: 0;
+    }
+}
