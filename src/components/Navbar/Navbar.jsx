@@ -39,7 +39,7 @@ const Navbar = ({ bgColor }) => {
                 <nav className="navbar">
                     <ul>
                         <Link to='/campeonatos' className="linkStyle">Campeonatos</Link>
-                        <Link to='/times' className="linkStyle">Times</Link>
+                        <Link to='/times/meustimes' className="linkStyle">Times</Link>
                         <Link to='/classificacao' className="linkStyle">Classificação</Link>
                         <Button
                             text={'Entrar'}
