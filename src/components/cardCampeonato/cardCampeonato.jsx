@@ -9,7 +9,7 @@ const CardCampeonato = ({idCamp, title, width, height, bgImage}) => {
     <Card width={width} height={height} variant={'img'} bgImage={bgImage}>
             <h3>{title}</h3>
             
-            <Link to={`/campeonatos/entrar/${idCamp}`}>
+            <Link to={`/campeonatos/inscrever/${idCamp}`}>
                 <Button text={"Inscreva-se"} variant={"purple"} width={"100%"} />
             </Link>
     </Card>
