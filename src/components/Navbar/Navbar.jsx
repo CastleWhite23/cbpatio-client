@@ -41,21 +41,26 @@ const Navbar = ({ bgColor }) => {
                         <Link to='/campeonatos' className="linkStyle">Campeonatos</Link>
                         <Link to='/times/meustimes' className="linkStyle">Times</Link>
                         <Link to='/classificacao' className="linkStyle">Classificação</Link>
+                        <Link to={'/login'}>
                         <Button
                             text={'Entrar'}
                             variant={'purple'}
                             width={'200px'}
                             padding={'1rem'}
                         />
+                        </Link>
                     </ul>
 
                 </nav>
-                <Button
-                    text={'Entrar'}
-                    variant={'purple'}
-                    width={'88px'}
-                    padding={'1rem'}
-                />
+                <Link to={'/login'}>
+                    <Button
+                        text={'Entrar'}
+                        variant={'purple'}
+                        width={'88px'}
+                        padding={'1rem'}
+                    />
+                </Link>
+
 
             </header>
 
