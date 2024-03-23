@@ -4,7 +4,9 @@ import { Layout } from './components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Home } from './pages/Home/Home'
 import { Campeonatos } from './pages/Campeonatos/Campeonatos'
-import { Times } from './pages/Times/Times'
+import {Solicitacoes} from './pages/Solicitacoes/Solicitacoes'
+import {NovoTime} from './pages/NovoTime/NovoTime'
+import {MeusTimes} from './pages/MeusTimes/MeusTimes'
 // import { PrivateRoute } from './services/privateRoute'
 // import { AuthContext, AuthContextProvider } from './context/auth'
 // import { Login } from './pages/login/login'
@@ -48,19 +50,19 @@ function App() {
 
           <Route path='/times/criar' element={
             <Layout>
-              <Times pageTitle={'NOVO TIME'} />
+              <NovoTime />
             </Layout>
           } />
 
           <Route path='/times/meustimes' element={
             <Layout>
-              <Times pageTitle={'MEUS TIMES'}/>
+              <MeusTimes />
             </Layout>
           } />
 
           <Route path='/times/solicitacoes' element={
             <Layout>
-              <Times pageTitle={'SOLICITAÇÕES'}/>
+              <Solicitacoes />
             </Layout>
           } />
 
