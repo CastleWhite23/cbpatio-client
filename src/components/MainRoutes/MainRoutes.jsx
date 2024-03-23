@@ -6,6 +6,7 @@ import { Campeonatos } from '../../pages/Campeonatos/Campeonatos'
 import { Solicitacoes } from '../../pages/Solicitacoes/Solicitacoes'
 import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
+import {Login} from '../../pages/login/Login'
 
 const MainRoutes = () => {
     return (
@@ -26,9 +27,7 @@ const MainRoutes = () => {
 
           {/* ROTAS DE LOGIN E CADASTRO */}
           <Route path='/login' element={
-            <Layout>
-              <h1>login</h1>
-            </Layout>
+              <Login />
           } />
 
           <Route path='/cadastro' element={
