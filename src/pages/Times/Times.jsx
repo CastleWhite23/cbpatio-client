@@ -1,14 +1,18 @@
 import { PageTitle } from "../../components/pageTitle/pageTitle"
+import { SidebarTimes } from "../../components/SidebarTimes/SidebarTimes"
 import "./Times.css"
-import { Link } from "react-router-dom"
-const Times = () =>{
+
+const Times = ({children, pageTitle}) =>{
     return(
         <>
-            <section className="camp">
-                <PageTitle text={"TIMES"}/>
-
-                
-                <h2>Não tem um time? <Link className="link" to={"/times"}>Crie um!</Link></h2>
+            <section className="times">
+                <div className="sidebar">
+                     <SidebarTimes />
+                </div>
+                <div className="children">
+                    <PageTitle text={pageTitle}/>
+                     {children}
+                </div>
             </section>
         </>
     )
