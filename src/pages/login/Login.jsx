@@ -9,8 +9,11 @@ import { Button } from '../../components/Button/Button'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { AuthContext } from '../../context/context'
+import { useContext, useEffect } from 'react'
 // import foto from "../../assets/logo.png"
-//import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { Alert } from '@chakra-ui/react'
 //import { AuthContext } from '../../context/auth'
 
 const schema = yup.object({
@@ -20,20 +23,10 @@ const schema = yup.object({
 
 const Login = () => {
 
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
-    // const { handleLogin, erros } = useContext(AuthContext)
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token")
-
-    //     if (token) {
-    //         navigate('/campeonatos')
-    //     } else {
-    //         navigate('/')
-    //     }
-    // }, [])
-
+    const { handleLogin, erros } = useContext(AuthContext)
+    
     const {
         control,
         handleSubmit,
@@ -48,7 +41,7 @@ const Login = () => {
         try {
             handleLogin(formData)
         } catch (e) {
-            console.log(e)
+            
         }
         console.log(formData)
     }
@@ -61,7 +54,7 @@ const Login = () => {
             </div>
             <Card variant={"purple"} width={"30rem"} height={'90vh'}>
                 <h2>Login</h2>
-                <form >{/* onSubmit={handleSubmit(onSubmit)} */}
+                <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
                     <div className='ct-input'>
                         <div>
                             <label htmlFor="login">email</label>
@@ -81,7 +74,16 @@ const Login = () => {
                 {/* <p align="center" color='red'></p>{erros} */}
 
             </Card>
-            {/* {errors?.senha?.message} */}
+            {erros
+            
+            ?
+            
+            <Alert>{erros}</Alert>
+
+            :
+
+            ""
+            }
         </div>
     )
 }
