@@ -7,6 +7,7 @@ import { Solicitacoes } from '../../pages/Solicitacoes/Solicitacoes'
 import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
 import {Login} from '../../pages/login/Login'
+import { PrivateRoute } from '../../services/privateRoute'
 
 const MainRoutes = () => {
     return (
@@ -43,24 +44,32 @@ const MainRoutes = () => {
 
           <Route path='/times/criar' element={
             <Layout>
-              <NovoTime />
+              <PrivateRoute>
+                <NovoTime />
+              </PrivateRoute>
             </Layout>
           } />
 
           <Route path='/times/meustimes' element={
             <Layout>
-              <MeusTimes />
+              <PrivateRoute>
+                <MeusTimes />
+              </PrivateRoute>
             </Layout>
           } />
 
           <Route path='/times/solicitacoes' element={
             <Layout>
-              <Solicitacoes />
+              <PrivateRoute>
+                <Solicitacoes />
+              </PrivateRoute>
             </Layout>
           } />
           <Route path='/classificacao' element={
             <Layout>
-              <Campeonatos />
+              <PrivateRoute>
+                <Campeonatos />
+              </PrivateRoute>
             </Layout>
           } />
         </Routes>
