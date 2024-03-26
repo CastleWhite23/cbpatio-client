@@ -2,6 +2,7 @@ import { Alert } from "@chakra-ui/react";
 import { Api } from "../services/Api";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { jwtDecode } from "jwt-decode";
 
 
 export const AuthContext = createContext({})
@@ -10,6 +11,7 @@ export const AuthContextProvider = ({children}) =>{
     const [token, setToken] = useState({})
     const [isAuth, setIsAuth] = useState(false)
     const [erros, setErros] = useState('')
+    const navigate = useNavigate('')
 
     useEffect(() => {
         const checkToken = async () => {
@@ -40,6 +42,7 @@ export const AuthContextProvider = ({children}) =>{
                 setIsAuth(true)
                 
                 Api.defaults.headers.Authorization = `Bearer ${data}`
+                navigate('/times/meusTimes')
             }else{
                 setErros("Email ou senha inválidos")                    
                 setTimeout(() => {
@@ -54,6 +57,21 @@ export const AuthContextProvider = ({children}) =>{
         }
     }
 
+    const getUserData = () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            try {
+                const decodedToken = jwtDecode(token);
+                return decodedToken;
+            } catch (error) {
+                console.error("Erro ao decodificar o token JWT:", error);
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
     const logoff = () => {
         setIsAuth(false)
         setToken({})
@@ -62,7 +80,7 @@ export const AuthContextProvider = ({children}) =>{
     }
 
 
-    return(<AuthContext.Provider value={{token, logoff, handleLogin, isAuth, erros}}>
+    return(<AuthContext.Provider value={{token, logoff, handleLogin, isAuth, erros, getUserData}}>
         {children}
     </AuthContext.Provider>)
 }
