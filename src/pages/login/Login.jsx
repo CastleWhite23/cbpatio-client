@@ -1,32 +1,32 @@
 import './Login.css'
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
-
 import { Card } from '../../components/Card/Card'
 import { Input } from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button'
-
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { AuthContext } from '../../context/context'
-import { useContext, useEffect } from 'react'
-// import foto from "../../assets/logo.png"
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Alert } from '@chakra-ui/react'
-//import { AuthContext } from '../../context/auth'
+
 
 const schema = yup.object({
-    login: yup.string().required('Campo obrigatório'),
+    login: yup.string().email("Isso não é um email!").required('Campo obrigatório'),
     senha: yup.string().required('Campo obrigatório')
 }).required()
 
 const Login = () => {
 
+    const [loading, setLoading] = useState(false)
+
     const navigate = useNavigate()
 
     const { handleLogin, erros } = useContext(AuthContext)
     
+
     const {
         control,
         handleSubmit,
@@ -39,7 +39,9 @@ const Login = () => {
 
     const onSubmit = async (formData) => {
         try {
+            setLoading(true)
             handleLogin(formData)
+            setLoading(false)
         } catch (e) {
             
         }
@@ -66,18 +68,18 @@ const Login = () => {
                             <Input name={"senha"} type={"password"} control={control} placeholder={"Senha"} />
                         </div>
                     </div>
-                    <Button text={"Entrar"} variant={"green"} type={"submit"} width={"40%"} />
+                    <Button text={loading ? "carregando..." : "Entrar"} variant={"green"} type={"submit"} width={"40%"} />
                 </form>
                 <div className='ct-img'>
                     <img src={Logo} alt="logo" />
                 </div>
-                {/* <p align="center" color='red'></p>{erros} */}
+                <p id='erro_txt' align="center">{errors?.login?.message}</p>
 
             </Card>
             {erros
-            
+            // arruma ai pedrao kkkkkk
             ?
-            
+
             <Alert>{erros}</Alert>
 
             :
