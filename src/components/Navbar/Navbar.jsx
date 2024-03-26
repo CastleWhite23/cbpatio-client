@@ -24,9 +24,8 @@ const Navbar = ({ bgColor }) => {
         console.log(isAuth)
     }, [isAuth])
 
-    //console.log(getUserData())
-    //console.log(`${path}/${getUserData().foto.replace(/\\/g, '/')}`)
-
+    console.log(`${path}/fotoUsuarios/sem_foto_user.png`)
+    
 
     return (
         <>
@@ -82,17 +81,17 @@ const Navbar = ({ bgColor }) => {
                     </ul>
 
                 </nav>
+                
                 {
                     isAuth
 
                     ?
                     <Link to={"/config"}>
                         <div id="user">
-                            <p>{getUserData().nome}</p>
-                            <img src={getUserData().foto ? `${path}/${getUserData().foto.replace(/\\/g, '/')}` : ""} alt="" srcset="" />
+                            <p>{ getUserData().nome }</p>
+                            <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="" srcset="" />
                         </div>
                     </Link>
-                    
                     :
                     <Link to={'/login'}>
                         <Button
