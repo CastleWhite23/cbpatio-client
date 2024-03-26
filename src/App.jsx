@@ -9,9 +9,7 @@ import { AuthContext, AuthContextProvider } from './context/context'
 function App() {
   return (
     <ChakraProvider>
-      <AuthContextProvider>
         <MainRoutes />
-      </AuthContextProvider>
     </ChakraProvider>
   )
 }
