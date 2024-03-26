@@ -8,71 +8,75 @@ import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
 import {Login} from '../../pages/login/Login'
 import { PrivateRoute } from '../../services/privateRoute'
+import { AuthContextProvider } from '../../context/context'
 
 const MainRoutes = () => {
     return (
       <Router>
-        <Routes>
-          {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
-          <Route path='/' element={
-            <Layout bgImage={bgImage} navStyle='home'>
-              <Home />
-            </Layout>
+        <AuthContextProvider>
 
-          } />
-          <Route path='/campeonatos' element={
-            <Layout>
-              <Campeonatos />
-            </Layout>
-          } />
+            <Routes>
+            {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
+            <Route path='/' element={
+                <Layout bgImage={bgImage} navStyle='home'>
+                <Home />
+                </Layout>
 
-          {/* ROTAS DE LOGIN E CADASTRO */}
-          <Route path='/login' element={
-              <Login />
-          } />
-
-          <Route path='/cadastro' element={
-            <Layout>
-              <h1>cadastro</h1>
-            </Layout>
-          } />
-
-          {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
-
-
-          {/* ROTAS TIMES */}
-
-          <Route path='/times/criar' element={
-            <Layout>
-              <PrivateRoute>
-                <NovoTime />
-              </PrivateRoute>
-            </Layout>
-          } />
-
-          <Route path='/times/meustimes' element={
-            <Layout>
-              <PrivateRoute>
-                <MeusTimes />
-              </PrivateRoute>
-            </Layout>
-          } />
-
-          <Route path='/times/solicitacoes' element={
-            <Layout>
-              <PrivateRoute>
-                <Solicitacoes />
-              </PrivateRoute>
-            </Layout>
-          } />
-          <Route path='/classificacao' element={
-            <Layout>
-              <PrivateRoute>
+            } />
+            <Route path='/campeonatos' element={
+                <Layout>
                 <Campeonatos />
-              </PrivateRoute>
-            </Layout>
-          } />
-        </Routes>
+                </Layout>
+            } />
+
+            {/* ROTAS DE LOGIN E CADASTRO */}
+            <Route path='/login' element={
+                <Login />
+            } />
+
+            <Route path='/cadastro' element={
+                <Layout>
+                <h1>cadastro</h1>
+                </Layout>
+            } />
+
+            {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
+
+
+            {/* ROTAS TIMES */}
+
+            <Route path='/times/criar' element={
+                <Layout>
+                <PrivateRoute>
+                    <NovoTime />
+                </PrivateRoute>
+                </Layout>
+            } />
+
+            <Route path='/times/meustimes' element={
+                <Layout>
+                <PrivateRoute>
+                    <MeusTimes />
+                </PrivateRoute>
+                </Layout>
+            } />
+
+            <Route path='/times/solicitacoes' element={
+                <Layout>
+                <PrivateRoute>
+                    <Solicitacoes />
+                </PrivateRoute>
+                </Layout>
+            } />
+            <Route path='/classificacao' element={
+                <Layout>
+                <PrivateRoute>
+                    <Campeonatos />
+                </PrivateRoute>
+                </Layout>
+            } />
+            </Routes>
+        </AuthContextProvider>
       </Router>
     )
 }
