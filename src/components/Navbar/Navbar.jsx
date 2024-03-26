@@ -4,10 +4,13 @@ import './Navbar.css'
 import { Button } from "../Button/Button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import {AuthContext} from "../../context/context"
+import foto from "../../assets/logo.png"
 
 
 const Navbar = ({ bgColor }) => {
+    const path = "http://localhost:3005"
     const [navOpen, setNavOpen] = useState(false)
     const handleToogleClick = () => {
         const nav = document.querySelector('.navbar')
@@ -15,6 +18,14 @@ const Navbar = ({ bgColor }) => {
         setNavOpen(!navOpen)
     }
 
+    const {isAuth, getUserData} = useContext(AuthContext)
+
+    useEffect(() => {
+        console.log(isAuth)
+    }, [isAuth])
+
+    //console.log(getUserData())
+    //console.log(`${path}/${getUserData().foto.replace(/\\/g, '/')}`)
 
 
     return (
@@ -41,25 +52,57 @@ const Navbar = ({ bgColor }) => {
                         <Link to='/campeonatos' className="linkStyle">Campeonatos</Link>
                         <Link to='/times/meustimes' className="linkStyle">Times</Link>
                         <Link to='/classificacao' className="linkStyle">Classificação</Link>
-                        <Link to={'/login'}>
-                        <Button
-                            text={'Entrar'}
-                            variant={'purple'}
-                            width={'200px'}
-                            padding={'1rem'}
-                        />
-                        </Link>
+                        {
+                            isAuth 
+
+                            ?
+                            
+                            <Link to={'/login'}>
+                                <Button
+                                    text={getUserData().nome}
+                                    variant={'purple'}
+                                    width={'200px'}
+                                    padding={'1rem'}
+                                />
+                            </Link>
+                            
+                            :
+
+                            
+                            <Link to={'/login'}>
+                            <Button
+                                text={'Entrar'}
+                                variant={'purple'}
+                                width={'200px'}
+                                padding={'1rem'}
+                            />
+                            </Link>
+                        }
+
                     </ul>
 
                 </nav>
-                <Link to={'/login'}>
-                    <Button
-                        text={'Entrar'}
-                        variant={'purple'}
-                        width={'88px'}
-                        padding={'1rem'}
-                    />
-                </Link>
+                {
+                    isAuth
+
+                    ?
+                    <Link to={"/config"}>
+                        <div id="user">
+                            <p>{getUserData().nome}</p>
+                            <img src={getUserData().foto ? `${path}/${getUserData().foto.replace(/\\/g, '/')}` : ""} alt="" srcset="" />
+                        </div>
+                    </Link>
+                    
+                    :
+                    <Link to={'/login'}>
+                        <Button
+                            text={'Entrar'}
+                            variant={'purple'}
+                            width={'88px'}
+                            padding={'1rem'}
+                        />
+                    </Link>
+                }
 
 
             </header>
