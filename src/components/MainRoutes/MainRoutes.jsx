@@ -7,6 +7,7 @@ import { Solicitacoes } from '../../pages/Solicitacoes/Solicitacoes'
 import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
 import { Login } from '../../pages/login/Login'
+import { Cadastro } from '../../pages/Cadastro/Cadastro'
 import { PrivateRoute } from '../../services/privateRoute'
 import { AuthContextProvider } from '../../context/context'
 import { AuthContext } from '../../context/context'
@@ -26,7 +27,7 @@ const MainRoutes = () => {
                     } />
                     {/* ROTAS DE LOGIN E CADASTRO */}
                     <Route path='/login' element={<Login />} />
-                    <Route path='/cadastro' element={<Layout> <h1>cadastro</h1> </Layout>} />
+                    <Route path='/cadastro' element={<Cadastro />}/>
 
                     {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
 

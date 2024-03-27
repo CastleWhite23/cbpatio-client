@@ -1,0 +1,142 @@
+.cadastro{
+    padding-top: 3rem;
+    background-image: url(../../assets/bg-admin.png);
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro p.link-cadastro{
+    text-align: center;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.cadastro .logo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    margin-left: 2rem;
+}
+
+.cadastro .card-purple{
+
+    height: 90%;
+    border-radius: 10px;
+    padding: 3rem;
+}
+
+.cadastro .card-purple .ct-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro .card-purple h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color:  #866CC9;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+ 
+.cadastro .card-purple form .ct-input .input{
+    margin-bottom: 1rem;
+    width: 50%;
+}
+
+.cadastro .card-purple form .ct-input .passinfo{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+}
+
+
+.cadastro .card-purple form .ct-input label{
+    font-size: 1rem;
+    color:  #866CC9;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+
+.cadastro .card-purple form .ct-input .userinfo{
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+}
+
+
+.cadastro .card-purple .ct-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cadastro .card-purple .ct-img img{
+    width: 90px;
+    height: 90px;
+
+}
+
+#erro_txt{
+    color:#fa0000;
+}
+@media (max-width: 1074px) {
+    .cadastro{
+        padding: 2rem;
+    }
+    .cadastro .card-purple{
+         min-width: 60%; 
+    }
+}
+
+@media (max-width: 1110px) {
+    .cadastro{
+        padding: 2rem;
+    }
+    .cadastro .card-purple{
+         min-width: 90%; 
+    }
+
+    .ct-input div{
+        flex-direction: column;
+    }
+
+    .cadastro .ct-input .passinfo{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+@media (max-width: 470px) {
+    .cadastro{
+        width: 100%;
+        padding: 1rem;
+    }
+    .cadastro .card-purple{
+         max-width: 100%; 
+         width: 100%;
+    }
+}
+
+
