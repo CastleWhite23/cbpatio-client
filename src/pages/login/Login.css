@@ -85,11 +85,25 @@
 }
 @media (max-width: 1074px) {
     .login{
+        width: 100%;
         padding: 2rem;
     }
     .login .card-purple{
-         min-width: 60%; 
+         max-width: 100%; 
+         width: 80%;
     }
 }
+
+@media (max-width: 470px) {
+    .login{
+        width: 100%;
+        padding: 1rem 0rem;
+    }
+    .login .card-purple{
+         width: 100%;
+    }
+}
+
+
 
 
