@@ -25,7 +25,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const { handleLogin, erros } = useContext(AuthContext)
-    
+
 
     const {
         control,
@@ -43,7 +43,7 @@ const Login = () => {
             handleLogin(formData)
             setLoading(false)
         } catch (e) {
-            
+
         }
         console.log(formData)
     }
@@ -57,13 +57,18 @@ const Login = () => {
             <Card variant={"purple"} width={"40%"} height={'90vh'}>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
+
                     <div className='ct-input'>
-                        <div> 
-                            
+                       
+                        <div>
+
                             <label htmlFor="login">email</label>
+                            
+                            {erros ? <p id='erro_txt' >{erros}</p> : ""} 
                             <p id='erro_txt' >{errors?.login?.message}</p>
                             <Input name={"login"} control={control} placeholder={"Login"} />
                            
+
                         </div>
 
                         <div>
@@ -77,19 +82,9 @@ const Login = () => {
                 <div className='ct-img'>
                     <img src={Logo} alt="logo" />
                 </div>
-               
+
             </Card>
-            {erros
-            // arruma ai pedrao kkkkkk kkk
-            //brinca muito crocodilo
-            ?
 
-            <Alert>{erros}</Alert>
-
-            :
-
-            ""
-            }
         </div>
     )
 }
