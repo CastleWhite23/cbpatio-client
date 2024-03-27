@@ -14,8 +14,8 @@ import { Alert } from '@chakra-ui/react'
 
 
 const schema = yup.object({
-    login: yup.string().email("Isso não é um email!").required('Campo obrigatório'),
-    senha: yup.string().required('Campo obrigatório')
+    login: yup.string().email("Informe um email valido!").required('Preencha todos os campos!'),
+    senha: yup.string().required('Preencha todos os campos!')
 }).required()
 
 const Login = () => {
@@ -54,13 +54,16 @@ const Login = () => {
             <div className="logo">
                 <Link to='/'><img src={Logo} alt="logo" /></Link>
             </div>
-            <Card variant={"purple"} width={"30rem"} height={'90vh'}>
+            <Card variant={"purple"} width={"40%"} height={'90vh'}>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
                     <div className='ct-input'>
-                        <div>
+                        <div> 
+                            
                             <label htmlFor="login">email</label>
+                            <p id='erro_txt' >{errors?.login?.message}</p>
                             <Input name={"login"} control={control} placeholder={"Login"} />
+                           
                         </div>
 
                         <div>
@@ -68,16 +71,17 @@ const Login = () => {
                             <Input name={"senha"} type={"password"} control={control} placeholder={"Senha"} />
                         </div>
                     </div>
-                    <Button text={loading ? "carregando..." : "Entrar"} variant={"green"} type={"submit"} width={"40%"} />
+                    <Button text={loading ? "carregando..." : "Entrar"} variant={"green"} type={"submit"} width={"100%"} />
+                    <p className='link-cadastro'>Ainda não possui uma conta? <Link className="link" to={"/cadastro"}>Crie uma!</Link></p>
                 </form>
                 <div className='ct-img'>
                     <img src={Logo} alt="logo" />
                 </div>
-                <p id='erro_txt' align="center">{errors?.login?.message}</p>
-
+               
             </Card>
             {erros
-            // arruma ai pedrao kkkkkk
+            // arruma ai pedrao kkkkkk kkk
+            //brinca muito crocodilo
             ?
 
             <Alert>{erros}</Alert>
