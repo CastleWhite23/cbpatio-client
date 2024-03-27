@@ -8,7 +8,7 @@ const MeusTimes = () =>{
         <Times pageTitle={'MEUS TIMES'}>
             <DividerComponent />
             <PageTitle text={"CAPITÃO"} />
-            <MeusTimesComponent />
+            <MeusTimesComponent cargo={"capitao"}/>
             <PageTitle text={"JOGADOR"} />
             <MeusTimesComponent />
         </Times>

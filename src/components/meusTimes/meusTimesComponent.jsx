@@ -22,11 +22,20 @@ const MeusTimesComponent = ({cargo}) => {
   return (
     <div>
         {
+            cargo == "capitao" 
+
+            ?
+
+
             timesCapitao.map((time) => {
                 return(
                     <Button text={`${time.nome} - Capitão`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
                 )
             })
+
+            :
+
+            ""
         }
     </div>
   )
