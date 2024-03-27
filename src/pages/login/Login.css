@@ -2,15 +2,21 @@
     background-image: url(../../assets/bg-admin.png);
     width: 100%;
     min-height: 100vh;
-    max-height: 100vh;
+    min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
     display: flex;
     align-items: center;
-    justify-content: end;
-    padding: 2rem;
+    justify-content: center;
+}
+
+.login p.link-cadastro{
+    text-align: center;
+    color: #fff;
+    margin-top: 1rem;
 }
 
 .login .logo img {
@@ -23,13 +29,16 @@
 }
 
 .login .card-purple{
+
     height: 90%;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 3rem;
+}
+
+.login .card-purple .ct-btn{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
 }
 
 .login .card-purple h2{
@@ -44,8 +53,8 @@
 
  
 .login .card-purple form .ct-input .input{
-    margin-bottom: 1rem;
-   width: 100%;
+    margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .login .card-purple form .ct-input label{
@@ -54,6 +63,8 @@
     text-transform: uppercase;
     font-weight: 700;
 }
+
+
 
 .login .card-purple .ct-img{
     width: 100%;
@@ -70,5 +81,15 @@
 }
 
 #erro_txt{
-    color: rgb(235, 44, 44);
+    color:#fa0000;
 }
+@media (max-width: 1074px) {
+    .login{
+        padding: 2rem;
+    }
+    .login .card-purple{
+         min-width: 60%; 
+    }
+}
+
+
