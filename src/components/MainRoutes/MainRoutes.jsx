@@ -6,78 +6,51 @@ import { Campeonatos } from '../../pages/Campeonatos/Campeonatos'
 import { Solicitacoes } from '../../pages/Solicitacoes/Solicitacoes'
 import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
-import {Login} from '../../pages/login/Login'
+import { Login } from '../../pages/login/Login'
 import { PrivateRoute } from '../../services/privateRoute'
 import { AuthContextProvider } from '../../context/context'
+import { AuthContext } from '../../context/context'
+import { useContext } from 'react'
 
 const MainRoutes = () => {
+    const { isAuth } = useContext(AuthContext)
+
     return (
-      <Router>
-        <AuthContextProvider>
+        <Router>
+            <AuthContextProvider>
+                <Routes>
+                    <Route path='/' element={
+                        <Layout bgImage={bgImage} navStyle='home'>
+                            <Home />
+                        </Layout>
+                    } />
+                    {/* ROTAS DE LOGIN E CADASTRO */}
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/cadastro' element={<Layout> <h1>cadastro</h1> </Layout>} />
 
-            <Routes>
-            {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
-            <Route path='/' element={
-                <Layout bgImage={bgImage} navStyle='home'>
-                <Home />
-                </Layout>
+                    {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
 
-            } />
-            <Route path='/campeonatos' element={
-                <Layout>
-                <Campeonatos />
-                </Layout>
-            } />
-
-            {/* ROTAS DE LOGIN E CADASTRO */}
-            <Route path='/login' element={
-                <Login />
-            } />
-
-            <Route path='/cadastro' element={
-                <Layout>
-                <h1>cadastro</h1>
-                </Layout>
-            } />
-
-            {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
+                    <Route path='/campeonatos' element={<Layout> <Campeonatos /> </Layout>
+                    } />
 
 
-            {/* ROTAS TIMES */}
 
-            <Route path='/times/criar' element={
-                <Layout>
-                <PrivateRoute>
-                    <NovoTime />
-                </PrivateRoute>
-                </Layout>
-            } />
+                    {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
 
-            <Route path='/times/meustimes' element={
-                <Layout>
-                <PrivateRoute>
-                    <MeusTimes />
-                </PrivateRoute>
-                </Layout>
-            } />
 
-            <Route path='/times/solicitacoes' element={
-                <Layout>
-                <PrivateRoute>
-                    <Solicitacoes />
-                </PrivateRoute>
-                </Layout>
-            } />
-            <Route path='/classificacao' element={
-                <Layout>
-                <PrivateRoute>
-                    <Campeonatos />
-                </PrivateRoute>
-                </Layout>
-            } />
-            </Routes>
-        </AuthContextProvider>
-      </Router>
+                    {/* ROTAS TIMES */}
+
+                    <Route path='/times/criar' element={isAuth ? <Layout> <NovoTime /> </Layout> : <Login />} />
+                    <Route path='/times/meustimes' element={isAuth ? <Layout> <MeusTimes /> </Layout> : <Login />} />
+                    <Route path='/times/solicitacoes' element={isAuth?<Layout> <Solicitacoes /> </Layout>: <Login />
+                    } />
+                    <Route path='/classificacao' element={isAuth ? <Layout><Campeonatos /> </Layout> : <Login />
+                    } />
+
+                    
+                </Routes>
+            </AuthContextProvider>
+        </Router >
     )
 }
 
