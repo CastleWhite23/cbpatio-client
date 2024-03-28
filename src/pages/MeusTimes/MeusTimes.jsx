@@ -6,9 +6,10 @@ import { Times } from "../Times/Times"
 const MeusTimes = () =>{
     return(
         <Times pageTitle={'MEUS TIMES'}>
-            <DividerComponent />
+            <DividerComponent margin={"10px 0"}/>
             <PageTitle text={"CAPITÃO"} />
             <MeusTimesComponent cargo={"capitao"}/>
+            <DividerComponent margin={"3rem 0 0 1rem"}/>
             <PageTitle text={"JOGADOR"} />
             <MeusTimesComponent />
         </Times>
