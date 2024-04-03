@@ -11,11 +11,17 @@ import { AuthContext } from '../../context/context'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert } from '@chakra-ui/react'
+import { Api } from '../../services/Api'
 
 
 const schema = yup.object({
-    login: yup.string().email("Informe um email valido!").required('Preencha todos os campos!'),
-    senha: yup.string().required('Preencha todos os campos!')
+    nome_completo: yup.string().required('Preencha todos os campos!'),
+    username: yup.string().required("Preencha todos os campos!"),
+    celular: yup.string().required("Preencha todos os campos!"),
+    email: yup.string().email("Isso não é um email!").required("Preencha todos os campos!"),
+    senha: yup.string().required('Preencha todos os campos!'),
+    confirmar_senha: yup.string().required('Preencha todos os campos!')
+        .oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!'),
 }).required()
 
 const Cadastro = () => {
@@ -23,9 +29,6 @@ const Cadastro = () => {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
-
-    const { handleLogin, erros } = useContext(AuthContext)
-
 
     const {
         control,
@@ -36,18 +39,39 @@ const Cadastro = () => {
         mode: 'onChange',
     })
 
+    const handleCadaster = (formData) => {
+        const {nome_completo, username, celular, email, senha, confirmar_senha, foto} = formData
+        Api.post('/usuarios/cadastrar', {
+            nome: nome_completo,
+            nome_usuario: username,
+            foto,
+            email,
+            celular,
+            senha
+        },
+        {
+            //NAO APAGUE ISSO AQUI, SEM ISSO NAO ENVIA FOTO.
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
+        
+        )
+        window.location.reload()
+        navigate('/')
+    }
+
 
     const onSubmit = async (formData) => {
         try {
             setLoading(true)
-            handleLogin(formData)
+            handleCadaster(formData)
             setLoading(false)
         } catch (e) {
 
         }
         console.log(formData)
     }
-
 
     return (
         <div className='cadastro'>
@@ -56,37 +80,45 @@ const Cadastro = () => {
             </div>
             <Card variant={"purple"} width={"60%"} height={'90vh'}>
                 <h2>Cadastro</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
+                <form onSubmit={handleSubmit(onSubmit)} encType='multipart/form-data' >{/* onSubmit={handleSubmit(onSubmit)} */}
                     <div className='ct-input'>
                         <div>
+                            <p>{errors?.nome_completo?.message}</p>
                             <label htmlFor="login">Nome completo</label>
-                            <Input name={"login"} control={control} placeholder={"Nome completo"} />
+                            <Input name={"nome_completo"} control={control} placeholder={"Nome completo"} />
 
                             <div className="userinfo">
                                 <div>
+                                <p>{errors?.username?.message}</p>
                                     <label htmlFor="login">Username</label>
-                                    <Input name={"login"} control={control} placeholder={"Username"} />
+                                    <Input name={"username"} control={control} placeholder={"Username"} />
                                 </div>
                                 <div>
+                                    <p>{errors?.celular?.message}</p>
                                     <label htmlFor="login">Celular (xx) xxxxx-xxxx</label>
-                                    <Input name={"login"} control={control} placeholder={"Telefone Celular"} />
+                                    <Input name={"celular"} control={control} placeholder={"Telefone Celular"} />
                                 </div>
                             </div>
                         </div>
 
                         <div>
+                            <p>{errors?.email?.message}</p>
                             <label htmlFor="login">Email</label>
-                            <Input name={"login"} control={control} placeholder={"email"} />
+                            <Input name={"email"} control={control} placeholder={"email"} />
                         </div>
 
                         <div className='passinfo'>
+                            <p>{errors?.confirmar_senha?.message}</p>
                             <div>
                                 <label htmlFor="senha">Senha</label>
                                 <Input name={"senha"} type={"password"} control={control} placeholder={"Senha"} />
                             </div>
                             <div>
                                 <label htmlFor="senha">Confirmar senha</label>
-                                <Input name={"senha"} type={"password"} control={control} placeholder={"senha"} />
+                                <Input name={"confirmar_senha"} type={"password"} control={control} placeholder={"senha"} />
+                            </div>
+                            <div>
+                                <Input name={"foto"} type='file' control={control} placeholder={"senha"} />
                             </div>
                         </div>
                     </div>
