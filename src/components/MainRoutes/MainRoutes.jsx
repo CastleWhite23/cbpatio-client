@@ -15,7 +15,7 @@ import { useContext } from 'react'
 import { Config } from '../../pages/Config/Config'
 
 const MainRoutes = () => {
-    const { isAuth } = useContext(AuthContext)
+    const isAuth = localStorage.getItem("token")
 
     return (
         <Router>
