@@ -54,18 +54,14 @@ const Navbar = ({ bgColor }) => {
                         {
                             isAuth
 
-                                ?
-
-                                <Link to={'/login'}>
-                                    <Button
-                                        text={getUserData().nome}
-                                        variant={'purple'}
-                                        width={'200px'}
-                                        padding={'1rem'}
-                                    />
-                                </Link>
-
-                                :
+                            ?
+                            <Link to={"/config"}>
+                                <div id="user-resp">
+                                    <p>{getUserData().nome}</p>
+                                    <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="" srcset="" />
+                                </div>
+                            </Link>
+                            :
 
 
                                 <Link to={'/login'}>
