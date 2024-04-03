@@ -18,6 +18,26 @@
     font-size: 18px;
 }
 
+#user-resp {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-resp img{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+#user-resp p{
+    color: #580AFF;
+    font-weight: 700;
+    font-size: 18px;
+}
+
 
 header {
     width: 100%;
@@ -104,6 +124,7 @@ header nav .button.purple {
 }
 
 @media (max-width: 925px) {
+
     header{
         position: fixed;
         top: 0;
@@ -155,5 +176,14 @@ header nav .button.purple {
         display: block;
         z-index: 2;
     }
+
+    header #user{
+        display: none;
+    }
+
+    header #user-resp{
+        display: flex;
+    }
+
 
 }

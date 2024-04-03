@@ -12,6 +12,7 @@ import { PrivateRoute } from '../../services/privateRoute'
 import { AuthContextProvider } from '../../context/context'
 import { AuthContext } from '../../context/context'
 import { useContext } from 'react'
+import { Config } from '../../pages/Config/Config'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -38,6 +39,10 @@ const MainRoutes = () => {
 
                     {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
 
+                    {/* ROTA DE CONFIG DE USUARIO */}
+
+                    <Route path='/config' element={isAuth?<Layout> <Config /> </Layout>: <Login />
+                    } />
 
                     {/* ROTAS TIMES */}
 
