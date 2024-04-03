@@ -22,6 +22,17 @@ const schema = yup.object({
     senha: yup.string().required('Preencha todos os campos!'),
     confirmar_senha: yup.string().required('Preencha todos os campos!')
         .oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!'),
+}).shape({
+    foto: yup.mixed().test("isPhoto", "O arquivo não é uma foto", (value) => {
+        if (!value || !value.length) return true; // Se não houver arquivo, a validação passa
+        const file = value[0];
+        return file && file.type.startsWith("image/");
+      })
+      .test("fileSize", "A foto é muito grande!", (value) => {
+        if (!value || !value.length) return true; // Se não houver arquivo, a validação passa
+        const file = value[0];
+        return file && file.size <= 20000000; // 2MB (em bytes)
+      })
 }).required()
 
 const Cadastro = () => {
@@ -94,6 +105,7 @@ const Cadastro = () => {
                                     <Input name={"username"} control={control} placeholder={"Username"} />
                                 </div>
                                 <div>
+                                    {/*TODO aplicar máscara*/}
                                     <p>{errors?.celular?.message}</p>
                                     <label htmlFor="login">Celular (xx) xxxxx-xxxx</label>
                                     <Input name={"celular"} control={control} placeholder={"Telefone Celular"} />
@@ -118,6 +130,7 @@ const Cadastro = () => {
                                 <Input name={"confirmar_senha"} type={"password"} control={control} placeholder={"senha"} />
                             </div>
                             <div>
+                                <p>{errors?.foto?.isPhoto?.message}</p>
                                 <Input name={"foto"} type='file' control={control} placeholder={"senha"} />
                             </div>
                         </div>
