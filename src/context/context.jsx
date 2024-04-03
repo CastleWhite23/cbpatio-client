@@ -42,6 +42,7 @@ export const AuthContextProvider = ({children}) =>{
                 setIsAuth(true)
                 
                 Api.defaults.headers.Authorization = `Bearer ${data}`
+                window.location.reload()
                 navigate('/times/meusTimes')
             }else{
                 setErros("Email ou senha inválidos")                    
