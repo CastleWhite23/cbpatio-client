@@ -20,18 +20,7 @@ const schema = yup.object({
     senha: yup.string().required('Este campo não pode estar vazio!'),
     confirmar_senha: yup.string().required('Este campo não pode estar vazio!')
         .oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!'),
-}).shape({
-    foto: yup.mixed().test('isPhoto', 'O arquivo não é uma foto', (value) => {
-        if (!value || !value.length) return true; // Se não houver arquivo, a validação passa
-        const file = value[0];
-        return file && file.type.startsWith('image/');
-    })
-        .test('fileSize', 'A foto é muito grande!', (value) => {
-            if (!value || !value.length) return true; // Se não houver arquivo, a validação passa
-            const file = value[0];
-            return file && file.size <= 20000000; // 2MB (em bytes)
-        }),
-}).required();
+}).required()
 
 const Cadastro = () => {
     const [loading, setLoading] = useState(false);
@@ -61,8 +50,8 @@ const Cadastro = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+            navigate('/login');
             window.location.reload();
-            navigate('/');
         } catch (error) {
             console.error('Erro ao cadastrar:', error);
         } finally {
