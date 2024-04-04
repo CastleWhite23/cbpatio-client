@@ -19,9 +19,11 @@
 
 
     color: #866CC9;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     font-weight: 700;
+
+    gap: 1rem;
 }
 
 .sidebar-times a{
@@ -29,12 +31,27 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    padding: .4rem;
-    border-bottom: 1px solid #866CC9;
+    padding: .5rem;
+
     width: 100%;
+
+    transition: .1s all ease-out;
 }
 
+.sidebar-times a#sideLink:hover {
+    background-color: #866CC9;
+    color: #1B1230;
+}
 
+a#sideLink:active{
+    background-color: #866CC9;
+    color: #1B1230;
+}
+
+.active{
+    background-color: #866CC9;
+    color: #1B1230;
+}
 
 
 @media (max-width: 925px) {
