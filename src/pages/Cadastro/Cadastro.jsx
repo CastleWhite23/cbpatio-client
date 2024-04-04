@@ -38,7 +38,7 @@ const Cadastro = () => {
         const { nome_completo, username, celular, email, senha, confirmar_senha, foto } = formData;
         try {
             setLoading(true);
-            await Api.post('/usuarios/cadastrar', {
+            const req = await Api.post('/usuarios/cadastrar', {
                 nome: nome_completo,
                 nome_usuario: username,
                 foto,
@@ -50,8 +50,18 @@ const Cadastro = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+            if(req.data.message == "Nome de usuário já cadastrado!"){
+                alert("Nome de usuario já cadastrado!")
+                return
+            }
+
+            if(req.data.message == "Email já cadastrado!"){
+                alert("Email já cadastrado!")
+                return
+            }
             navigate('/login');
             window.location.reload();
+            alert("Usuário cadastrado com sucesso! agora faça seu login")
         } catch (error) {
             console.error('Erro ao cadastrar:', error);
         } finally {
