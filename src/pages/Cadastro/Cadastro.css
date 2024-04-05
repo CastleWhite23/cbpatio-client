@@ -167,6 +167,10 @@
         display: flex;
         flex-direction: column;
     }
+
+    .cadastro .input-mask{
+        width: 10%;
+    }
 }
 
 
