@@ -12,3 +12,15 @@
 .alerta span{
     color: blue ;
 }
+
+.ct-input-novo-time{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-novo-time{
+    width: 100%;
+}
