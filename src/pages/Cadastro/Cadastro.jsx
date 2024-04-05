@@ -101,8 +101,8 @@ const Cadastro = () => {
                                     name="celular"
                                     control={control}
                                     render={({ field }) => (
-                                        <InputMask mask="(99) 99999-9999" {...field}>
-                                            {(inputProps) => <input {...inputProps} />}
+                                        <InputMask mask="(99) 99999-9999" {...field} >
+                                            {(inputProps) => <input className='input-mask' {...inputProps} />}
                                         </InputMask>
                                     )}
                                 />

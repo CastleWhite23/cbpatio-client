@@ -89,8 +89,7 @@
         padding: 2rem;
     }
     .login .card-purple{
-         max-width: 100%; 
-         width: 80%;
+         width: 70% !important;
     }
 }
 
@@ -100,7 +99,7 @@
         padding: 1rem 0rem;
     }
     .login .card-purple{
-         width: 100%;
+        width: 90% !important;
     }
 }
 

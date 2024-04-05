@@ -17,7 +17,7 @@ const Card = ({ children, variant, width, height, bgImage }) => {
   }
 
   return (
-    <div className={`card-${variant}`} style={{maxWidth: width, minHeight: height}}>
+    <div className={`card-${variant}`} style={{width: width, minHeight: height}}>
       <div style={bgImage && { ...bgImageStyle}}></div>
       <div className='things'>
         {children}

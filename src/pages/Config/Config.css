@@ -1,0 +1,65 @@
+.config{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.config .bg-fundo{
+    background-image: url('../../assets/templo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: hue-rotate(270deg) blur(3px);
+    width: 100%;
+    height: 30vh;
+    border-radius: 10px 10px 0px 0px;
+}
+
+
+.config .user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.config .user img{
+    border-radius: 100%;
+    border: 3px solid #fff;
+    width: 150px;
+    height: 150px;
+   
+}
+
+.config .user h1{
+    text-transform: uppercase;
+    color: #580AFF;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.config .actions{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.1rem;
+    color: #fff;
+}
+
+.config .actions .info{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.config .actions .info p{
+   margin-bottom: 1rem;
+ 
+ }
+
+ .config .actions .info span{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #cc2e2e;
+ }
+
