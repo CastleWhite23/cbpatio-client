@@ -54,7 +54,7 @@ const Login = () => {
             <div className="logo">
                 <Link to='/'><img src={Logo} alt="logo" /></Link>
             </div>
-            <Card variant={"purple"} width={"70%"} height={'90vh'}>
+            <Card variant={"purple"} width={"40%"} height={'90vh'}>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
 
