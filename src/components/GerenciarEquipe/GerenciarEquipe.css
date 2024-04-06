@@ -1,0 +1,46 @@
+.gerenciar-equipe {
+    padding: 4rem;
+    width: 100%;
+}
+
+.gerenciar-equipe h1 {
+    text-align: center;
+    color: #866CC9;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.gerenciar-equipe .card {
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: #1B1230;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.gerenciar-equipe .card ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.gerenciar-equipe .card ul div.user {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gerenciar-equipe .card ul div.user .userfoto img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
