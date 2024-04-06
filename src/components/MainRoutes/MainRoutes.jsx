@@ -8,11 +8,14 @@ import { NovoTime } from '../../pages/NovoTime/NovoTime'
 import { MeusTimes } from '../../pages/MeusTimes/MeusTimes'
 import { Login } from '../../pages/login/Login'
 import { Cadastro } from '../../pages/Cadastro/Cadastro'
+import { Config } from '../../pages/Config/Config'
+import { MeusTimesCapitao } from '../../pages/MeusTimesCapitao/MeusTimesCapitao'
+
 import { PrivateRoute } from '../../services/privateRoute'
 import { AuthContextProvider } from '../../context/context'
 import { AuthContext } from '../../context/context'
 import { useContext } from 'react'
-import { Config } from '../../pages/Config/Config'
+
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -28,7 +31,7 @@ const MainRoutes = () => {
                     } />
                     {/* ROTAS DE LOGIN E CADASTRO */}
                     <Route path='/login' element={<Login />} />
-                    <Route path='/cadastro' element={<Cadastro />}/>
+                    <Route path='/cadastro' element={<Cadastro />} />
 
                     {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
 
@@ -41,19 +44,28 @@ const MainRoutes = () => {
 
                     {/* ROTA DE CONFIG DE USUARIO */}
 
-                    <Route path='/config' element={isAuth?<Layout> <Config /> </Layout>: <Login />
+                    <Route path='/config' element={isAuth ? <Layout> <Config /> </Layout> : <Login />
                     } />
 
                     {/* ROTAS TIMES */}
 
                     <Route path='/times/criar' element={isAuth ? <Layout> <NovoTime /> </Layout> : <Login />} />
                     <Route path='/times/meustimes' element={isAuth ? <Layout> <MeusTimes /> </Layout> : <Login />} />
-                    <Route path='/times/solicitacoes' element={isAuth?<Layout> <Solicitacoes /> </Layout>: <Login />
+                    <Route path='/times/meustimes/capitao/:id_time' element={isAuth ? <Layout> <MeusTimesCapitao /> </Layout> : <Login />
                     } />
+
+                    <Route path='/times/meustimes/jogador/:id_time' element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />
+                    } />
+
+
+                    {/* ROTAS DE SOLICITAÇÕES */}
+                    <Route path='/times/solicitacoes' element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />} />
+
+                    {/* ROTAS DE CLASSIFICAÇÕES */}
                     <Route path='/classificacao' element={isAuth ? <Layout><Campeonatos /> </Layout> : <Login />
                     } />
 
-                    
+
                 </Routes>
             </AuthContextProvider>
         </Router >
