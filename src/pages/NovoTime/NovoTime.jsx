@@ -1,12 +1,13 @@
 import { Times } from "../Times/Times"
-import {Input} from "../../components/Input/Input"
-import {Button} from "../../components/Button/Button"
+import { Input } from "../../components/Input/Input"
+import { Button } from "../../components/Button/Button"
 import { Link, useNavigate } from "react-router-dom"
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, Controller } from 'react-hook-form';
-import {Api} from "../../services/Api"
-import {AuthContext} from "../../context/context"
+import { useForm } from 'react-hook-form';
+import { Api } from "../../services/Api"
+import { AuthContext } from "../../context/context"
+import { useToast } from '@chakra-ui/react'
 
 import './NovoTime.css'
 import { useContext, useState } from "react";
@@ -17,10 +18,12 @@ const schema = yup.object({
 
 const NovoTime = () => {
     const navigate = useNavigate()
-    
-    const {getUserData} = useContext(AuthContext)
+
+    const { getUserData } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(false)
+
+    const toast = useToast()
 
     console.log(getUserData())
 
@@ -34,47 +37,68 @@ const NovoTime = () => {
     });
 
     const handleNewTeam = async (formData) => {
-        const {nome} = formData
+        const { nome } = formData
         const req = await Api.post("/times/cadastrar", {
             nome,
             fk_id_capitao: getUserData().id
         })
 
-        if(req.data.message == "Este nome de time já está cadastrado."){
+        if (req.data.message == "Este nome de time já está cadastrado.") {
             alert("Este nome de time já está cadastrado.")
             return
         }
 
+        toast({
+            title: 'Time criado com sucesso.',
+            description: "Você agora é capitão do time.",
+            position: 'bottom-left',
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+        })
         navigate("/times/meusTimes")
     }
 
     const onSubmit = (formData) => {
         handleNewTeam(formData)
     }
-    
-    
+
+
     return (
         <Times pageTitle={'NOVO TIME'}>
             <div className="novo-time">
                 <div className="form">
+
                     <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data" className="form-novo-time">
                         <div className="ct-input-novo-time">
                             <div className="userinfo">
                                 <div>
-                                    <label htmlFor="login">Nome do time*</label>
-                                    <Input name="nome" control={control} placeholder="Username"/>
+                                    <label htmlFor="login">Nome do seu time:</label>
+                                    <Input name="nome" control={control} placeholder="nome" />
                                     <p className="error">{errors?.nome?.message}</p>
                                 </div>
                             </div>
+                            <div>
+                                <label htmlFor="foto" className="foto">Foto/Logo do seu time</label>
+                                <Input name="foto" type="file" control={control} className="img" id="foto" />
+                                {/* <p className="error">{errors?.foto?.isPhoto?.message}</p> */}
+                            </div>
                         </div>
-                        <Button text={loading ? 'Carregando...' : 'Cadastrar'} variant="purple" type="submit" width="50%" />
+                        <Button text={loading ? 'Carregando...' : 'Cadastrar'} variant="green" type="submit" width="100%" />
                     </form>
 
                 </div>
+
                 <div className="alerta">
-                    Criando este time, você será automaticamente o <span className="span-cap">capitão</span>. Seu dever será convidar os integrantes e cadastrar o time nos campeonatos.
-                    Você pode convidar seus amigos na aba “Meus times”.
+                    <p>
+                        Você pode <span className="span-cap">criar</span> no máximo <span className="span-cap">4 times</span>
+                    </p>
+                    <p>
+                        Criando este time, você será automaticamente o <span className="span-cap">capitão</span>. Seu dever será convidar os integrantes e cadastrar o time nos campeonatos.
+                        Você pode convidar seus amigos na aba <span className="span-cap"><Link to={'/times/meustimes'}>“Meus times”</Link></span>.
+                    </p>
                 </div>
+
             </div>
         </Times>
     )
