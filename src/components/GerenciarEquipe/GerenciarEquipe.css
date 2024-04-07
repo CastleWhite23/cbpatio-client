@@ -45,11 +45,27 @@
     height: 50px;
 }
 
+
+.capitao{
+    color: #580AFF;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 @media (max-width: 750px) {
+
+    .gerenciar-equipe {
+        padding: 1rem;
+    }
 
     .gerenciar-equipe .card ul div.user {
         flex-direction: column;
         gap: 1rem;
     }
+
+    .gerenciar-equipe .card ul div.user .ct-btn button {
+        width: 100% !important;
+    }
+
 
 }
