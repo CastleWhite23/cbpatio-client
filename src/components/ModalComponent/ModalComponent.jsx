@@ -12,20 +12,20 @@ import {
 
 import { Button } from '../Button/Button'
 
-function ModalComponent({ titulo, body, openText, closeText, onClickAction, actionText, bgColor }) {
+function ModalComponent({ titulo, body, openText, closeText, onClickAction, actionText }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <>
             <Button variant='red' text={openText} onClick={onOpen} />
 
-            <Modal isCentered  backgroundColor={bgColor} closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+            <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay 
                     bg='blackAlpha.300'
                     backdropFilter='blur(10px) ' />
-                <ModalContent>
-                    <ModalHeader>{titulo}</ModalHeader>
-                    <ModalCloseButton />
+                <ModalContent backgroundColor={'#1B1230'}>
+                    <ModalHeader color={'#866CC9'}>{titulo}</ModalHeader>
+                    <ModalCloseButton color={'#866CC9'}/>
                     <ModalBody pb={6}>
                         {body}
                     </ModalBody>
