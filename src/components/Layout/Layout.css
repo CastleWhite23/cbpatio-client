@@ -9,3 +9,9 @@
         padding-top: 5rem;
     }
 }
+
+@media (max-width: 365px) {
+    .content{
+        padding: 5rem .8rem;
+    }
+}
