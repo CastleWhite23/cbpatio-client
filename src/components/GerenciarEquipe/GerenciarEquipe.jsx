@@ -3,20 +3,41 @@ import './GerenciarEquipe.css'
 import foto from '../../assets/templo.png'
 import { ModalComponent } from '../ModalComponent/ModalComponent'
 import { ModalExcluir } from '../ModalExcluir/ModalExcluir'
-import {useToast}from '@chakra-ui/react'
-import {useNavigate, useLocation} from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Api } from '../../services/Api'
 
-const GerenciarEquipe = ({ titulo }) => {
-    const array = [0, 1, 2, 3, 4, 5, 6, 4, 5]
+
+const GerenciarEquipe = ({ titulo, idTime }) => {
+    // const array = [0, 1, 2, 3, 4, 5, 6, 4, 5]
+    const path = "http://localhost:3005"
+    const [timeUsuarios, setTimeUsuarios] = useState([])
 
     const toast = useToast()
     const navigate = useNavigate()
 
     const location = useLocation();
-  const rotaAtual = location.pathname;
+    const rotaAtual = location.pathname;
 
-    const handleExpulsarJogador = () => {
+    useEffect(() => {
+        // PEGANDO OS INTEGRANTES DO TIME PELO ID_TIME// ROTA NOVA NA API
+        const getTimeIntegrantes = async () => {
+            const fetch = await Api.get(`/usuarios/time/${idTime}`)
+            const timeUsuarios = fetch.data
+            setTimeUsuarios(timeUsuarios)
+            console.log(timeUsuarios)
+
+        }
+
+        getTimeIntegrantes()
+
+    }, [])
+
+    const handleExpulsarJogador = async (idUser) => {
         try {
+            const fetch = await Api.delete(`/usuarios/time/deletar/${idTime}/${idUser}`)
+            
             toast({
                 title: 'Jogador expulso com sucesso!',
                 position: 'bottom-left',
@@ -26,9 +47,9 @@ const GerenciarEquipe = ({ titulo }) => {
             })
 
             navigate('/times/meustimes')
-        } catch(e){
+        } catch (e) {
             toast({
-                title: 'Erro ao excluir time!',
+                title: 'Erro ao expulsar o jogador!',
                 position: 'bottom-left',
                 status: 'error',
                 duration: 5000,
@@ -42,25 +63,37 @@ const GerenciarEquipe = ({ titulo }) => {
     return (
         <>
             <div className="gerenciar-equipe">
+                <h1>{titulo}</h1>
                 <div className="card">
-
-                    <h1>{titulo}</h1>
                     <ul>
                         {
-                            array.map(() => (
-                                <div className='user'>
-                                    <div className="userfoto">
-                                        <img src={foto} alt="foto" />
-                                    </div>
-                                    <h2>Nome de usuario</h2>
-                                    <ModalExcluir 
-                                        titulo={'Deseja mesmo expulsar o jogador?'}
-                                        openText={'Expulsar'}
-                                        actionText={'Expulsar'}
-                                        closeText={'Fechar'}
-                                        onClickAction={handleExpulsarJogador}
-                                    />
-                                </div>
+                            timeUsuarios.map((usuario) => (
+                                // SE O USUARIO FOR CAPITAO
+                                usuario.idUser == usuario.fkIdCapitao ?
+                                    (
+                                        <div className='user'>
+                                            <div className="userfoto">
+                                                <img src={usuario?.foto ? `${path}/${usuario?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
+                                            </div>
+                                            <h2>{usuario.NomeUsuario}</h2>
+                                            <h3 className="capitao">Capitão</h3>
+                                        </div>
+                                    ) : (
+                                        <div className='user'>
+                                            <div className="userfoto">
+                                                <img src={usuario?.foto ? `${path}/${usuario?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
+                                            </div>
+                                            <h2>{usuario.NomeUsuario}</h2>
+                                            <ModalExcluir
+                                                titulo={'Deseja mesmo expulsar o jogador?'}
+                                                openText={'Expulsar'}
+                                                actionText={'Expulsar'}
+                                                closeText={'Fechar'}
+                                                onClickAction={() => handleExpulsarJogador(usuario.idUser)}
+                                            />
+                                        </div>
+                                    )
+
                             ))
                         }
 
