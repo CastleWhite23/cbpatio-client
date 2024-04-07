@@ -21,6 +21,7 @@ const MeusTimesCapitao = () => {
     const { id_time } = useParams()
     const [time, setTime] = useState({})
 
+
     const navigate = useNavigate()
 
     // PEGANDO DADOS DO TIME PELO ID_TIME DA ROTA
@@ -33,7 +34,9 @@ const MeusTimesCapitao = () => {
         }
 
         getTimeById()
+
     }, [])
+
 
 
     const toast = useToast()
@@ -41,7 +44,7 @@ const MeusTimesCapitao = () => {
 
     const handleExcluirTime = async () => {
         try {
-            const fetch = await Api.get(`/times/deletar/${id_time}`)
+            const fetch = await Api.delete(`/times/deletar/${id_time}`)
             toast({
                 title: 'Time Excluido com sucesso!',
                 position: 'bottom-left',
@@ -51,7 +54,7 @@ const MeusTimesCapitao = () => {
             })
 
             navigate('/times/meustimes')
-        } catch(e){
+        } catch (e) {
             toast({
                 title: 'Erro ao excluir time!',
                 position: 'bottom-left',
@@ -72,9 +75,9 @@ const MeusTimesCapitao = () => {
                 <div className="time-capitao">
                     <h1 className='subtitulo'><FontAwesomeIcon icon={faCrown} /> capitão</h1>
                     <DividerComponent />
-                    <FormSolicita />
+                    <FormSolicita idTime={time.id_time}/>
                     <DividerComponent />
-                    <GerenciarEquipe titulo={'gerenciar time'} />
+                    <GerenciarEquipe titulo={'gerenciar time'} idTime={id_time} />
                     <DividerComponent />
                     <div className="time-opcoes">
                         <h1>Excluir Time</h1>
