@@ -4,22 +4,27 @@ import { Button } from "../../components/Button/Button"
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-
-// import { Api } from "../../services/Api"
-// import { AuthContext } from "../../context/context"
-// import { useToast } from '@chakra-ui/react'
+import { Api } from '../../services/Api';
 
 
-import { useContext, useState } from "react";
+
+import { useToast } from '@chakra-ui/react'
+
+
+import { useState } from "react";
+import { getData } from '../../services/getData';
+
 
 const schema = yup.object({
-    username: yup.string().min(6, "Seu time deve ter no mínimo 6 caracteres").max(30, "Caracteres acima do permitido!").required('Este campo não pode estar vazio!'),
+    // username: yup.string().min(6, "Seu time deve ter no mínimo 6 caracteres").max(30, "Caracteres acima do permitido!").required('Este campo não pode estar vazio!'),
 }).required()
 
 
-const FormSolicita = () => {
+const FormSolicita = ({ idTime }) => {
 
     const [loading, setLoading] = useState(false)
+    const [userSolicitation, setUserSolicitation] = useState({})
+    const toast = useToast()
 
     const {
         control,
@@ -31,10 +36,56 @@ const FormSolicita = () => {
     });
 
 
-    const onSubmit = (formData) => {
-        handleNewTeam(formData)
+
+    const handleSolicitation = async (userId) => {
+        try {
+            setLoading(true);
+            const hora_envio = getData()
+
+            const envio = await Api.post('/usuarios/time/convidar', {
+                fk_id_usuario: userId,
+                fk_id_time: idTime,
+                aceitou: 'n',
+                hora_envio: hora_envio
+            });
+
+            toast({
+                title: 'Solicitação enviada com sucesso!',
+                position: 'bottom-left',
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+            })
+
+        } catch (error) {
+            toast({
+                title: 'Erro ao enviar solicitação!',
+                position: 'bottom-left',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+
+        setLoading(false)
     }
 
+    const handleGetUserId = async (username) => {
+        try {
+            const fetch = await Api.get(`/usuarios/nome/${username}`);
+            const usuario =  fetch.data[0]
+            setUserSolicitation(usuario)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const onSubmit = (formData) => {
+        handleGetUserId(formData.username)
+        console.log(userSolicitation.id_usuario)
+        handleSolicitation(userSolicitation.id_usuario)
+    }
 
     // TEM QUE TER VERIFICAÇÃO SE O USERNAME JA FAZ PARTE DO TIME
     return (
