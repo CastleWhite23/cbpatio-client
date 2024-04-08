@@ -23,7 +23,7 @@ const schema = yup.object({
 const FormSolicita = ({ idTime }) => {
 
     const [loading, setLoading] = useState(false)
-    const [userSolicitation, setUserSolicitation] = useState({})
+    const [userSolicitation, setUserSolicitation] = useState([])
     const toast = useToast()
 
     const {
@@ -73,18 +73,18 @@ const FormSolicita = ({ idTime }) => {
     const handleGetUserId = async (username) => {
         try {
             const fetch = await Api.get(`/usuarios/nome/${username}`);
-            const usuario =  fetch.data[0]
-            setUserSolicitation(usuario)
+            const usuario =  fetch.data
+            return usuario[0].id_usuario
         } catch (error) {
             console.log(error)
         }
 
     }
 
-    const onSubmit = (formData) => {
-        handleGetUserId(formData.username)
-        console.log(userSolicitation.id_usuario)
-        handleSolicitation(userSolicitation.id_usuario)
+    const onSubmit = async (formData) => {
+        const idUsuario = await handleGetUserId(formData.username)
+        console.log(idUsuario)
+        handleSolicitation(idUsuario)
     }
 
     // TEM QUE TER VERIFICAÇÃO SE O USERNAME JA FAZ PARTE DO TIME

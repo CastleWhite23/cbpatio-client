@@ -3,6 +3,12 @@ import foto from '../../assets/templo.png'
 import { Button } from '../../components/Button/Button'
 
 const Config = () => {
+
+    const handleDeslogar = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
+
     return (
         <>
             <div className="config">
@@ -19,7 +25,7 @@ const Config = () => {
                         <p><span>celular:</span> Pedro </p>
                         <p><span>senha:</span> **** </p>
                         <Button text={"Editar"} variant={"purple"} width={"100%"} />
-                        <Button text={"deslogar"} variant={"red"} width={"100%"} />
+                        <Button text={"deslogar"} variant={"red"} width={"100%"} onClick={handleDeslogar}/>
                     </div>
                 </div>
 

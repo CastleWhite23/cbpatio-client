@@ -5,11 +5,13 @@ import { Button } from "../Button/Button"
 import { Api } from "../../services/Api"
 import { AuthContext } from '../../context/context'
 import { useToast } from '@chakra-ui/react'
+import {useNavigate} from 'react-router-dom'
 
 const CardSolicita = () => {
   const { getUserData } = useContext(AuthContext)
   const [convite, setConvite] = useState([])
   const toast = useToast()
+  const navigate = useNavigate()
   //console.log(getUserData().id)
 
   useEffect(() => {
@@ -23,7 +25,6 @@ const CardSolicita = () => {
   const handleRecusa = async (id, nomeTime) => {
     const recusa = await Api.delete(`/usuarios/time/recusarConvite/${id}`)
     if (recusa.status == 204) {
-      window.location.reload()
       toast({
         title: `Voce recusou o convite do time: ${nomeTime}!`,
         position: 'bottom-left',
@@ -31,6 +32,8 @@ const CardSolicita = () => {
         duration: 5000,
         isClosable: true,
     })
+
+    navigate('/times/meustimes')
 
     }
   }
@@ -41,7 +44,7 @@ const CardSolicita = () => {
     })
 
     if (aceitou.status == 201) {
-      window.location.reload()
+  
       toast({
         title: `Voce entrou no time: ${nomeTime}!`,
         position: 'bottom-left',
@@ -49,6 +52,8 @@ const CardSolicita = () => {
         duration: 5000,
         isClosable: true,
     })
+
+    navigate('/times/meustimes')
     }
   }
 

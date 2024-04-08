@@ -9,8 +9,10 @@ import { SpinnerCustom } from '../Spinner/Spinner'
 const MeusTimesComponent = ({ cargo }) => {
 
     const [timesCapitao, setTimesCapitao] = useState([])
+    const [timesJogador, setTimesJogador] = useState([])
     const { getUserData } = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
+    // PEGAR TIMES EM QUE O IDCAPITAO É DIFERENTE DO DO CARA LOGADO
 
     useEffect(() => {
 
@@ -19,10 +21,22 @@ const MeusTimesComponent = ({ cargo }) => {
             setTimesCapitao(capitao)
             setLoading(false)
         }
+
+        const getTimesJogador = async () => {
+
+            const fetch = await Api.get(`/usuarios/time/userid/${getUserData().id}`)
+            const timesJogador = fetch.data
+            setTimesJogador(timesJogador)
+            console.log(timesJogador)
+
+        }
+
         getTimes()
+        getTimesJogador()
+
     }, [])
 
-    console.log(timesCapitao)
+    //console.log(timesCapitao)
 
     return (
         <div>
@@ -31,24 +45,40 @@ const MeusTimesComponent = ({ cargo }) => {
                     (
                         !loading ?
 
-                        (
-                            timesCapitao.map((time) => {
-                                return (
-                                    <Link to={`/times/meustimes/capitao/${time.id_time}`}>
-                                        <Button text={`${time.nome} - Capitão`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
-                                    </Link>
-                                )
-                            })
-                        )
-                        :
-                        (
-                            <SpinnerCustom />
-                        )
+                            (
+                                timesCapitao.map((time) => {
+                                    return (
+                                        <Link to={`/times/meustimes/capitao/${time.id_time}`}>
+                                            <Button text={`${time.nome} - Capitão`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
+                                        </Link>
+                                    )
+                                })
+                            )
+                            :
+                            (
+                                <SpinnerCustom />
+                            )
                     )
 
                     :
 
-                    ""
+                    (
+
+                        timesJogador.map((timeJogador) => {
+                            return (
+
+                                timeJogador.fkIdCapitao != getUserData().id &&
+
+                                (
+                                    <Link to={`/times/meustimes/jogador/${timeJogador.idTime}`}>
+                                        <Button text={`${timeJogador.NomeTime} - Jogador`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
+                                    </Link>
+                                )
+                            )
+                        })
+
+
+                    )
             }
         </div>
     )

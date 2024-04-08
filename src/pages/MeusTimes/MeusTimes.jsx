@@ -12,7 +12,7 @@ const MeusTimes = () => {
             <MeusTimesComponent cargo={"capitao"} />
             <DividerComponent margin={"3rem 0 0 1rem"} />
             <PageTitle text={"JOGADOR"} icon={faChessKnight}/>
-            <MeusTimesComponent />
+            <MeusTimesComponent cargo={'jogador'}/>
         </Times>
     )
 }
