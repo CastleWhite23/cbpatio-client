@@ -20,7 +20,7 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
       >
 
         {
-          navStyle == "home" ? <Navbar /> : <Navbar bgColor={'#22243F'} />
+          navStyle == "home" ? <Navbar isHome={'s'} /> : <Navbar bgColor={'#22243F'} />
         }
         <div className="content">
           {children}
