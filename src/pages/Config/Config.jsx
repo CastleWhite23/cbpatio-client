@@ -1,29 +1,37 @@
 import './Config.css'
 import foto from '../../assets/templo.png'
 import { Button } from '../../components/Button/Button'
+import { useContext } from 'react'
+import {AuthContext} from "../../context/context"
+import { formatarNumero } from '../../services/formatFunctions'
 
 const Config = () => {
 
+    const path = "http://localhost:3005"
+
+    const {getUserData} = useContext(AuthContext)
+    
     const handleDeslogar = () => {
         localStorage.clear()
         window.location.reload()
     }
+
+    console.log(getUserData())
 
     return (
         <>
             <div className="config">
                 <div className="bg-fundo"></div>
                 <div className="user">
-                    <img src={foto} alt="userfoto" />
-                    <h1>nomeuser</h1>
+                    <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="userfoto" />
+                    <h1>{getUserData().nome}</h1>
                 </div>
                 <div className="actions">
                     <div className="info">
                         {/* PARTE QUE VC VAI COLOCAR UM .MAP PROVAVELMENTE */}
-                        <p><span>Nome:</span> Pedro </p>
-                        <p><span>Email:</span> Pedro </p>
-                        <p><span>celular:</span> Pedro </p>
-                        <p><span>senha:</span> **** </p>
+                        <p><span>Nome:</span> {getUserData().nome_completo} </p>
+                        <p><span>Email:</span> {getUserData().email} </p>
+                        <p><span>celular:</span> {formatarNumero(getUserData().celular) || "Você não tem celular cadastrado."} </p>
                         <Button text={"Editar"} variant={"purple"} width={"100%"} />
                         <Button text={"deslogar"} variant={"red"} width={"100%"} onClick={handleDeslogar}/>
                     </div>
