@@ -25,7 +25,7 @@ const MainRoutes = () => {
             <AuthContextProvider>
                 <Routes>
                     <Route path='/' element={
-                        <Layout bgImage={bgImage} navStyle='home'>
+                        <Layout  navStyle='home'>
                             <Home />
                         </Layout>
                     } />

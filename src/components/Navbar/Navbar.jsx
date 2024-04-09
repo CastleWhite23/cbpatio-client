@@ -6,10 +6,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/context"
+import {useLocation} from 'react-router-dom'
 import foto from "../../assets/logo.png"
 
 
-const Navbar = ({ bgColor }) => {
+const Navbar = ({ bgColor, isHome }) => {
+    const location = useLocation()
+
+    
+
+    const styles = {
+        position:location.pathname == '/' ? 'absolute': 'initial',
+        zIndex: location.pathname == '/' ? 2 : 1
+    }
+
+
+
     const path = "http://localhost:3005"
     const [navOpen, setNavOpen] = useState(false)
     const handleToogleClick = () => {
@@ -29,9 +41,7 @@ const Navbar = ({ bgColor }) => {
 
     return (
         <>
-            <header style={{
-                backgroundColor: bgColor
-            }}>
+            <header style={{   backgroundColor: bgColor, ...styles}}>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>
