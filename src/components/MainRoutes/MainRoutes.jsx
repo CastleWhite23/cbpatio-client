@@ -10,12 +10,7 @@ import { Login } from '../../pages/login/Login'
 import { Cadastro } from '../../pages/Cadastro/Cadastro'
 import { Config } from '../../pages/Config/Config'
 import { MeusTimesCapitao } from '../../pages/MeusTimesCapitao/MeusTimesCapitao'
-
-import { PrivateRoute } from '../../services/privateRoute'
 import { AuthContextProvider } from '../../context/context'
-import { AuthContext } from '../../context/context'
-import { useContext } from 'react'
-
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -51,10 +46,10 @@ const MainRoutes = () => {
 
                     <Route path='/times/criar' element={isAuth ? <Layout> <NovoTime /> </Layout> : <Login />} />
                     <Route path='/times/meustimes' element={isAuth ? <Layout> <MeusTimes /> </Layout> : <Login />} />
-                    <Route path='/times/meustimes/capitao/:id_time' element={isAuth ? <Layout> <MeusTimesCapitao /> </Layout> : <Login />
+                    <Route path={`/times/meustimes/capitao/:id_time`} element={isAuth ? <Layout> <MeusTimesCapitao /> </Layout> : <Login />
                     } />
 
-                    <Route path='/times/meustimes/jogador/:id_time' element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />
+                    <Route path={`/times/meustimes/jogador/:id_time`} element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />
                     } />
 
 
