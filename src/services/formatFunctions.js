@@ -1,4 +1,4 @@
-function formatarNumero(numero) {
+function formatarNumero(numero = "") {
     // Remove todos os caracteres não numéricos do número
     var numeros = numero.replace(/\D/g, '');
 
