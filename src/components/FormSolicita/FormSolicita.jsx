@@ -70,6 +70,19 @@ const FormSolicita = ({ idTime }) => {
                 return
             }
 
+            if(!userId){
+                toast({
+                    title: 'Usuário não encontrado!',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                setLoading(false)
+
+                return
+            }
+
             const envio = await Api.post('/usuarios/time/convidar', {
                 fk_id_usuario: userId,
                 fk_id_time: idTime,
@@ -102,6 +115,7 @@ const FormSolicita = ({ idTime }) => {
         try {
             const fetch = await Api.get(`/usuarios/nome/${username}`);
             const usuario =  fetch.data
+            if(fetch.data > 0) return ""
             return usuario[0].id_usuario
         } catch (error) {
             console.log(error)
