@@ -52,7 +52,8 @@ const MeusTimesCapitao = () => {
 
     const handleExcluirTime = async () => {
         try {
-            const fetch = await Api.delete(`/times/deletar/${id_time}`)
+            //o problema de não poder deletar são os filhos da tabela time_usuario. sem eles da pra excluir suave
+            await Api.delete(`/times/deletar/${id_time}`)
             toast({
                 title: 'Time Excluido com sucesso!',
                 position: 'bottom-left',
