@@ -11,8 +11,9 @@ import { Api } from '../../services/Api';
 import { useToast } from '@chakra-ui/react'
 
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { getData } from '../../services/getData';
+import { AuthContext } from '../../context/context';
 
 
 const schema = yup.object({
@@ -22,6 +23,7 @@ const schema = yup.object({
 
 const FormSolicita = ({ idTime }) => {
 
+    const {getUserData} = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
     const [userSolicitation, setUserSolicitation] = useState([])
     const toast = useToast()
@@ -41,6 +43,32 @@ const FormSolicita = ({ idTime }) => {
         try {
             setLoading(true);
             const hora_envio = getData()
+
+            const {data: jaEnviou} = await Api.get(`/usuarios/time/jaEnviou/${userId}/${idTime}`)
+
+            if(jaEnviou.length > 0){
+                toast({
+                    title: 'Você já enviou uma solicitação à este usuário!',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                setLoading(false)
+                return
+            }
+
+            if(getUserData().id == userId){
+                toast({
+                    title: 'Você não pode mandar uma solicitação a si mesmo seu trouxa!',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                setLoading(false)
+                return
+            }
 
             const envio = await Api.post('/usuarios/time/convidar', {
                 fk_id_usuario: userId,
