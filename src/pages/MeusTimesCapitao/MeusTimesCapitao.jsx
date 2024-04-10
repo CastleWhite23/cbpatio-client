@@ -13,16 +13,22 @@ import { useToast } from '@chakra-ui/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCrown } from '@fortawesome/free-solid-svg-icons'
+import { decodeHashId } from '../../services/formatFunctions'
 
 //  GERENCIAR EQUIPE E BTN PARA EXCLUIR TIME
 
 
 const MeusTimesCapitao = () => {
-    const { id_time } = useParams()
+    const { id_time: idCodificado } = useParams()
+    const id_time = decodeHashId(idCodificado)
+    const navigate = useNavigate()
+
+    if(!id_time){
+        navigate('/times/meusTimes')
+    }
+
     const [time, setTime] = useState({})
 
-
-    const navigate = useNavigate()
 
     // PEGANDO DADOS DO TIME PELO ID_TIME DA ROTA
     useEffect(() => {
@@ -38,13 +44,16 @@ const MeusTimesCapitao = () => {
     }, [])
 
 
+    console.log(time.id_time)
+
 
     const toast = useToast()
 
 
     const handleExcluirTime = async () => {
         try {
-            const fetch = await Api.delete(`/times/deletar/${id_time}`)
+            //o problema de não poder deletar são os filhos da tabela time_usuario. sem eles da pra excluir suave
+            await Api.delete(`/times/deletar/${id_time}`)
             toast({
                 title: 'Time Excluido com sucesso!',
                 position: 'bottom-left',
@@ -71,7 +80,7 @@ const MeusTimesCapitao = () => {
 
     return (
         <>
-            <Times pageTitle={time.nome}>
+            <Times pageTitle={time?.nome}>
                 <div className="time-capitao">
                     <h1 className='subtitulo'><FontAwesomeIcon icon={faCrown} /> capitão</h1>
                     <DividerComponent />

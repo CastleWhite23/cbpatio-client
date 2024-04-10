@@ -1,4 +1,6 @@
-function formatarNumero(numero) {
+import CryptoJS from "crypto-js"
+
+function formatarNumero(numero = "") {
     // Remove todos os caracteres não numéricos do número
     var numeros = numero.replace(/\D/g, '');
 
@@ -14,4 +16,22 @@ function formatarNumero(numero) {
     return "(" + parte1 + ") " + parte2 + "-" + parte3;
 }
 
-export {formatarNumero}
+//jogar isso no .env daqui
+const secretKey = "sexooooo";
+
+function hashId(value) {
+    const encryptedValue = CryptoJS.AES.encrypt(value.toString(), secretKey).toString();
+    return encodeURIComponent(encryptedValue);
+}
+
+
+function decodeHashId(encryptedValue) {
+    const decodedValue = decodeURIComponent(encryptedValue);
+    const bytes = CryptoJS.AES.decrypt(decodedValue, secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+
+}
+
+
+
+export {formatarNumero, hashId, decodeHashId}

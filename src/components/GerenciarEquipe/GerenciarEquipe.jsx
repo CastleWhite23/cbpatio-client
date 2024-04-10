@@ -20,6 +20,8 @@ const GerenciarEquipe = ({ titulo, idTime }) => {
     const location = useLocation();
     const rotaAtual = location.pathname;
 
+    console.log(timeUsuarios)
+
     useEffect(() => {
         // PEGANDO OS INTEGRANTES DO TIME PELO ID_TIME// ROTA NOVA NA API
         const getTimeIntegrantes = async () => {
@@ -73,7 +75,7 @@ const GerenciarEquipe = ({ titulo, idTime }) => {
                                     (
                                         <div className='user'>
                                             <div className="userfoto">
-                                                <img src={usuario?.foto ? `${path}/${usuario?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
+                                                <img src={usuario.fotoUser ? `${path}/${usuario?.fotoUser.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
                                             </div>
                                             <h2>{usuario.NomeUsuario}</h2>
                                             <h3 className="capitao">Capitão</h3>
@@ -81,7 +83,7 @@ const GerenciarEquipe = ({ titulo, idTime }) => {
                                     ) : (
                                         <div className='user'>
                                             <div className="userfoto">
-                                                <img src={usuario?.foto ? `${path}/${usuario?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
+                                                <img src={usuario?.fotoUser ? `${path}/${usuario?.fotoUser.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
                                             </div>
                                             <h2>{usuario.NomeUsuario}</h2>
                                             <ModalExcluir

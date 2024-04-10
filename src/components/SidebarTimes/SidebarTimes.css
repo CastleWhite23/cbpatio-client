@@ -24,6 +24,7 @@
     font-weight: 700;
 
     gap: 1rem;
+    z-index: 1;
 }
 
 .sidebar-times a{

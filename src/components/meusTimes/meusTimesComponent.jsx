@@ -4,6 +4,7 @@ import { Api } from '../../services/Api'
 import { AuthContext } from "../../context/context"
 import { Link } from 'react-router-dom'
 import { SpinnerCustom } from '../Spinner/Spinner'
+import { hashId } from '../../services/formatFunctions'
 
 
 const MeusTimesComponent = ({ cargo }) => {
@@ -36,8 +37,6 @@ const MeusTimesComponent = ({ cargo }) => {
 
     }, [])
 
-    //console.log(timesCapitao)
-
     return (
         <div>
             {
@@ -48,7 +47,7 @@ const MeusTimesComponent = ({ cargo }) => {
                             (
                                 timesCapitao.map((time) => {
                                     return (
-                                        <Link to={`/times/meustimes/capitao/${time.id_time}`}>
+                                        <Link to={`/times/meustimes/capitao/${hashId(time.id_time)}`}>
                                             <Button text={`${time.nome} - Capitão`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
                                         </Link>
                                     )
