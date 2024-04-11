@@ -48,6 +48,11 @@ const NovoTime = () => {
             return
         }
 
+        if(req.data.message == "Você passou do limite de criação de 5 times!"){
+            alert("Você passou do limite de criação de 5 times!")
+            return
+        }
+
         toast({
             title: 'Time criado com sucesso.',
             description: "Você agora é capitão do time.",
