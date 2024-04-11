@@ -11,6 +11,7 @@ import { Cadastro } from '../../pages/Cadastro/Cadastro'
 import { Config } from '../../pages/Config/Config'
 import { MeusTimesCapitao } from '../../pages/MeusTimesCapitao/MeusTimesCapitao'
 import { AuthContextProvider } from '../../context/context'
+import { Classificacao } from '../../pages/classificacao/classificacao'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -57,7 +58,7 @@ const MainRoutes = () => {
                     <Route path='/times/solicitacoes' element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />} />
 
                     {/* ROTAS DE CLASSIFICAÇÕES */}
-                    <Route path='/classificacao' element={isAuth ? <Layout><Campeonatos /> </Layout> : <Login />
+                    <Route path='/classificacao' element={isAuth ? <Layout><Classificacao /> </Layout> : <Login />
                     } />
 
 
