@@ -4,6 +4,8 @@ import { Button } from '../../components/Button/Button'
 import { useContext } from 'react'
 import {AuthContext} from "../../context/context"
 import { formatarNumero } from '../../services/formatFunctions'
+import { hashId } from '../../services/formatFunctions'
+import { Link } from 'react-router-dom'
 
 const Config = () => {
 
@@ -32,7 +34,7 @@ const Config = () => {
                         <p><span>Nome:</span> {getUserData().nome_completo} </p>
                         <p><span>Email:</span> {getUserData().email} </p>
                         <p><span>celular:</span> {formatarNumero(getUserData().celular) || "Você não tem celular cadastrado."} </p>
-                        <Button text={"Editar"} variant={"purple"} width={"100%"} />
+                        <Link to={`/config/editar/${hashId(getUserData().id)}`}><Button text={"Editar"} variant={"purple"} width={"100%"} /></Link>
                         <Button text={"deslogar"} variant={"red"} width={"100%"} onClick={handleDeslogar}/>
                     </div>
                 </div>
