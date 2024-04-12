@@ -69,7 +69,7 @@ const MeusTimesComponent = ({ cargo }) => {
                                 timeJogador.fkIdCapitao != getUserData().id &&
 
                                 (
-                                    <Link to={`/times/meustimes/jogador/${timeJogador.idTime}`}>
+                                    <Link to={`/times/meustimes/jogador/${hashId(timeJogador.idTime)}`}>
                                         <Button text={`${timeJogador.NomeTime} - Jogador`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
                                     </Link>
                                 )
