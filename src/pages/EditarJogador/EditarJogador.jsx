@@ -73,9 +73,9 @@ const EditarJogador = () => {
     };
 
     return (
-        <div className="cadastro">
+        <div className="editar-cad">
             <Card variant="purple" width="60%" height="90vh">
-                <h2>Editar Jogador</h2>
+                <h2>Editar Cadastro</h2>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <div className="ct-input">
                         <div>
