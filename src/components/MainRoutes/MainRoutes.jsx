@@ -12,6 +12,8 @@ import { Config } from '../../pages/Config/Config'
 import { MeusTimesCapitao } from '../../pages/MeusTimesCapitao/MeusTimesCapitao'
 import { AuthContextProvider } from '../../context/context'
 import { Classificacao } from '../../pages/classificacao/classificacao'
+import { MeusTimesJogador } from '../../pages/MeusTimesJogador/MeusTimesJogador'
+import { EditarJogador } from '../../pages/EditarJogador/EditarJogador'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -21,7 +23,7 @@ const MainRoutes = () => {
             <AuthContextProvider>
                 <Routes>
                     <Route path='/' element={
-                        <Layout  navStyle='home'>
+                        <Layout navStyle='home'>
                             <Home />
                         </Layout>
                     } />
@@ -42,6 +44,8 @@ const MainRoutes = () => {
 
                     <Route path='/config' element={isAuth ? <Layout> <Config /> </Layout> : <Login />
                     } />
+                    <Route path='/config/editar/:id_user' element={isAuth ? <Layout> <EditarJogador /> </Layout> : <Login />
+                    } />
 
                     {/* ROTAS TIMES */}
 
@@ -50,7 +54,7 @@ const MainRoutes = () => {
                     <Route path={`/times/meustimes/capitao/:id_time`} element={isAuth ? <Layout> <MeusTimesCapitao /> </Layout> : <Login />
                     } />
 
-                    <Route path={`/times/meustimes/jogador/:id_time`} element={isAuth ? <Layout> <Solicitacoes /> </Layout> : <Login />
+                    <Route path={`/times/meustimes/jogador/:id_time`} element={isAuth ? <Layout> <MeusTimesJogador /> </Layout> : <Login />
                     } />
 
 
