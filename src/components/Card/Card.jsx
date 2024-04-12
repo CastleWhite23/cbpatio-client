@@ -2,7 +2,7 @@ import React from 'react'
 import "./Card.css"
 
 
-const Card = ({ children, variant, width, height, bgImage }) => {
+const Card = ({ children, variant, width, height, bgImage, gap }) => {
   const bgImageStyle = {
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: 'center',
@@ -17,7 +17,7 @@ const Card = ({ children, variant, width, height, bgImage }) => {
   }
 
   return (
-    <div className={`card-${variant}`} style={{width: width, minHeight: height}}>
+    <div className={`card-${variant}`} style={{width: width, minHeight: height, gap: gap, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', borderRadius: "5px"}}>
       <div style={bgImage && { ...bgImageStyle}}></div>
       <div className='things'>
         {children}
