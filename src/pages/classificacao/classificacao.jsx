@@ -7,10 +7,12 @@ import "./classificacao.css"
 import { LiveOn } from '../../components/liveOn/liveOn'
 import { DividerComponent } from '../../components/Divider/DividerComponent'
 import { AuthContext } from '../../context/context'
+import { Card } from '../../components/Card/Card'
 
 const Classificacao = () => {
 
     const [liveOn, setLiveOn] = useState(false)
+    const [games, setGames] = useState([])
 
     const {getUserData} = useContext(AuthContext)
   
@@ -23,17 +25,17 @@ const Classificacao = () => {
             }else{
                 setLiveOn(false)
             }
-            console.log(live[0].live_on)
         }
 
         const getGames = async () => {
-            const games = await Api.get(`/campeonatos/time/times/jogos/${getUserData().id}`)
-            console.log(games)
+            const {data: games} = await Api.get(`/campeonatos/time/times/jogos/${getUserData().id}`)
+            setGames(games)
         }
 
         getGames()
         getLiveOn()
     }, []);
+    console.log(games)
 
     return (
         <>
@@ -51,6 +53,30 @@ const Classificacao = () => {
                 
                 ""
             }
+            <DividerComponent margin={"1rem 0"}/>
+            <PageTitle text={'SEUS JOGOS'}/>
+            <div className='div__jogos'>
+                {games.map((game) => (
+                    <Card variant={"darkpurple"} width={"40%"}>
+                        <h1>JOGO {game.jogo}</h1>
+                        <DividerComponent />
+                        <div>
+                            <span>{game.data_hora}</span>
+
+                            <div>
+                                <h2>{game.nome_time}</h2>
+                                <span>VS.</span>
+                                <h2>{game.nome_time_vs}</h2>
+                            </div>
+
+                            <span>COMEÇA ÀS {game.data_hora}</span>
+
+                            <DividerComponent />
+                            <h1></h1>
+                        </div>
+                    </Card>
+                ))}
+            </div>
 
         </>
     )
