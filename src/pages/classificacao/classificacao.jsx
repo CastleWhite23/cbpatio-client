@@ -8,6 +8,7 @@ import { LiveOn } from '../../components/liveOn/liveOn'
 import { DividerComponent } from '../../components/Divider/DividerComponent'
 import { AuthContext } from '../../context/context'
 import { Card } from '../../components/Card/Card'
+import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 
 const Classificacao = () => {
 
@@ -56,7 +57,15 @@ const Classificacao = () => {
             <DividerComponent margin={"1rem 0"}/>
             <PageTitle text={'SEUS JOGOS'}/>
             <div className='div__jogos'>
+                <div className='div__camp'>
+
+                </div>
                 {games.map((game) => (
+                    <>
+                    <CardCampeonato idCamp={1}>
+
+                    </CardCampeonato>
+
                     <Card variant={"darkpurple"} width={"40%"}>
                         <h1>JOGO {game.jogo}</h1>
                         <DividerComponent />
@@ -75,7 +84,9 @@ const Classificacao = () => {
                             <h1></h1>
                         </div>
                     </Card>
+                    </>
                 ))}
+                
             </div>
 
         </>
