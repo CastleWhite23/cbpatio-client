@@ -1,0 +1,36 @@
+.time-capitao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.time-capitao h1.subtitulo{
+    text-transform: uppercase;
+    color: #6C26FF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    gap: .5rem;
+}
+
+.time-capitao .time-opcoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    text-align: center;
+}
+.time-capitao .time-opcoes span{
+    color: #0a74ff;
+    font-weight: 700;
+}
+
+.time-capitao .time-opcoes h1{
+    text-align: center;
+    color: #866CC9;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
