@@ -1,5 +1,4 @@
-.cadastro{
-    padding-top: 3rem;
+.editar-cad{
     width: 100%;
     min-height: 100vh;
     min-height: 100vh;
@@ -9,7 +8,7 @@
     justify-content: center;
 }
 
-.cadastro p.error{
+.editar-cad p.error{
     padding-top: 0;
     display: flex;
     flex-direction: column;
@@ -19,13 +18,13 @@
     font-weight: 600;
 }
 
-.cadastro p.link-cadastro{
+.editar-cad p.link-cadastro{
     text-align: center;
     color: #fff;
     margin-top: 1rem;
 }
 
-.cadastro .logo img {
+.editar-cad .logo img {
     position: absolute;
     top: 0;
     left: 0;
@@ -34,20 +33,20 @@
     margin-left: 2rem;
 }
 
-.cadastro .card-purple{
-
+.editar-cad .card-purple{
+    border: 2px solid #866CC9;
     height: 90%;
     border-radius: 10px;
     padding: 3rem;
 }
 
-.cadastro .card-purple .ct-btn{
+.editar-cad .card-purple .ct-btn{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.cadastro .card-purple h2{
+.editar-cad .card-purple h2{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,17 +58,17 @@
 }
 
  
-.cadastro .card-purple form .ct-input .input{
+.editar-cad .card-purple form .ct-input .input{
     /* margin-bottom: 1rem; */
     width: 50%;
 }
 
-.cadastro .card-purple form .ct-input div{
+.editar-cad .card-purple form .ct-input div{
     margin-bottom: 1rem; 
 }
 
 
-.cadastro  .passinfo {
+.editar-cad  .passinfo {
     width: 100%;
     display: flex;
     align-items: center;
@@ -77,13 +76,13 @@
     gap: .5rem;
 }
 
-.cadastro  .passinfo div{
+.editar-cad  .passinfo div{
     width: 100%;
 }
 
 
 
-.cadastro .card-purple form .ct-input label{
+.editar-cad .card-purple form .ct-input label{
     font-size: 1rem;
     color:  #866CC9;
     text-transform: uppercase;
@@ -91,7 +90,7 @@
 }
 
 
-.cadastro .card-purple form .ct-input .userinfo{
+.editar-cad .card-purple form .ct-input .userinfo{
     width: 100%;
     display: flex;
     gap: 1rem;
@@ -99,7 +98,7 @@
 }
 
 
-.cadastro .card-purple .ct-img{
+.editar-cad .card-purple .ct-img{
     width: 100%;
     display: flex;
     align-items: center;
@@ -107,7 +106,7 @@
 }
 
 
-.cadastro .card-purple .ct-img img{
+.editar-cad .card-purple .ct-img img{
     width: 90px;
     height: 90px;
 
@@ -115,11 +114,11 @@
 
 /* O INPUT DE FILE */
   
-.cadastro input[type='file'].img{
+.editar-cad input[type='file'].img{
     display: none;
 }
 
-.cadastro label.foto{
+.editar-cad label.foto{
     padding: 20px 10px;
     width: 100%;
     background-color: #1B1230;
@@ -138,19 +137,19 @@
 } */
 
 @media (max-width: 1074px) {
-    .cadastro{
+    .editar-cad{
         padding: 2rem;
     }
-    .cadastro .card-purple{
+    .editar-cad .card-purple{
          min-width: 60%; 
     }
 }
 
 @media (max-width: 1110px) {
-    .cadastro{
+    .editar-cad{
         padding: 2rem;
     }
-    .cadastro .card-purple{
+    .editar-cad .card-purple{
          min-width: 90%; 
     }
 
@@ -158,23 +157,23 @@
         flex-direction: column;
     }
 
-    .cadastro .ct-input .passinfo{
+    .editar-cad .ct-input .passinfo{
         display: flex;
         flex-direction: column;
     }
 
-    .cadastro .input-mask{
+    .editar-cad .input-mask{
         width: 10%;
     }
 }
 
 
 @media (max-width: 470px) {
-    .cadastro{
+    .editar-cad{
         width: 100%;
         padding: 1rem;
     }
-    .cadastro .card-purple{
+    .editar-cad .card-purple{
          max-width: 100%; 
          width: 100%;
     }
