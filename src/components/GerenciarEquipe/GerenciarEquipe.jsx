@@ -1,7 +1,6 @@
-import { Button } from '../Button/Button'
+
 import './GerenciarEquipe.css'
-import foto from '../../assets/templo.png'
-import { ModalComponent } from '../ModalComponent/ModalComponent'
+
 import { ModalExcluir } from '../ModalExcluir/ModalExcluir'
 import { useToast } from '@chakra-ui/react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -9,7 +8,7 @@ import { useState, useEffect } from 'react'
 import { Api } from '../../services/Api'
 
 
-const GerenciarEquipe = ({ titulo, idTime }) => {
+const GerenciarEquipe = ({ titulo, idTime, type }) => {
     // const array = [0, 1, 2, 3, 4, 5, 6, 4, 5]
     const path = "http://localhost:3005"
     const [timeUsuarios, setTimeUsuarios] = useState([])
@@ -39,7 +38,7 @@ const GerenciarEquipe = ({ titulo, idTime }) => {
     const handleExpulsarJogador = async (idUser) => {
         try {
             const fetch = await Api.delete(`/usuarios/time/deletar/${idTime}/${idUser}`)
-            
+
             toast({
                 title: 'Jogador expulso com sucesso!',
                 position: 'bottom-left',
@@ -86,13 +85,20 @@ const GerenciarEquipe = ({ titulo, idTime }) => {
                                                 <img src={usuario?.fotoUser ? `${path}/${usuario?.fotoUser.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="foto" />
                                             </div>
                                             <h2>{usuario.NomeUsuario}</h2>
-                                            <ModalExcluir
-                                                titulo={'Deseja mesmo expulsar o jogador?'}
-                                                openText={'Expulsar'}
-                                                actionText={'Expulsar'}
-                                                closeText={'Fechar'}
-                                                onClickAction={() => handleExpulsarJogador(usuario.idUser)}
-                                            />
+                                            {
+                                                type == 'capitao' ?
+                                                    <h3 className="jogador">jogador</h3>
+
+                                                    :
+
+                                                    <ModalExcluir
+                                                        titulo={'Deseja mesmo expulsar o jogador?'}
+                                                        openText={'Expulsar'}
+                                                        actionText={'Expulsar'}
+                                                        closeText={'Fechar'}
+                                                        onClickAction={() => handleExpulsarJogador(usuario.idUser)}
+                                                    />
+                                            }
                                         </div>
                                     )
 
