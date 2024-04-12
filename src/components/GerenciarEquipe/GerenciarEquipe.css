@@ -52,6 +52,13 @@
     font-weight: 700;
 }
 
+
+.jogador{
+    color: #cc2e2e;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 @media (max-width: 750px) {
 
     .gerenciar-equipe {
