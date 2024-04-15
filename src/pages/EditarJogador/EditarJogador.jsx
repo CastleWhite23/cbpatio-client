@@ -67,7 +67,7 @@ const EditarJogador = () => {
                 celular: celular,
             }, {
                 headers: {
-                    'Content-Type': 'application/json', // Alterei o tipo de conteúdo para 'application/json'
+                    'Content-Type': 'multipart/form-data', // Alterei o tipo de conteúdo para 'application/json'
                 },
             });
     
