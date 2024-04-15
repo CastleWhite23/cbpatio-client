@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
@@ -10,68 +10,101 @@ import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import Logo from '../../assets/logo.png';
 import './EditarJogador.css';
+import {AuthContext} from '../../context/context'
+import {  useToast } from '@chakra-ui/react';
 
 const schema = yup.object({
-    nome_completo: yup.string().required('Este campo não pode estar vazio!'),
-    username: yup.string().required('Este campo não pode estar vazio!'),
+    nome: yup.string().required('Este campo não pode estar vazio!'),
+    nome_usuario: yup.string().required('Este campo não pode estar vazio!'),
     celular: yup.string().required('Este campo não pode estar vazio!'),
-    email: yup.string().email('Isso não é um email!').required('Este campo não pode estar vazio!'),
-    senha: yup.string().required('Este campo não pode estar vazio!'),
-    confirmar_senha: yup.string().required('Este campo não pode estar vazio!')
-        .oneOf([yup.ref('senha'), null], 'As senhas precisam ser iguais!'),
+    email: yup.string().email('Isso não é um email!').required('Este campo não pode estar vazio!')
 }).required()
 
 const EditarJogador = () => {
     const [loading, setLoading] = useState(false);
+    const [usuario, setUsuario] = useState({})
     const navigate = useNavigate();
+    const { getUserData } = useContext(AuthContext)
+    const toast = useToast()
+    useEffect(() => {
+        const handleGetUserInfo = async () => {
+            const { data } = await Api.get(`/usuarios/${getUserData().id}`)
+            setValue('nome', data[0].nome)
+            setValue('nome_usuario', data[0].nome_usuario)
+            setValue('foto', data[0].foto)
+            setValue('email', data[0].email)
+            setValue('celular', data[0].celular)
+            setUsuario(data[0])
+        }
+
+        handleGetUserInfo()
+
+    }, [])
+
+
     const {
         control,
         handleSubmit,
         formState: { errors },
+        setValue
     } = useForm({
         resolver: yupResolver(schema),
         mode: 'onChange',
     });
 
-    const handleCadaster = async (formData) => {
-        const { nome_completo, username, celular, email, senha, confirmar_senha, foto } = formData;
+    const handleEdit = async (formData) => {
+        const { nome, nome_usuario, celular, email, foto } = formData;
+        let message = 'Registro atualizado com sucesso!'
+        let status='success'
+    
         try {
             setLoading(true);
-            const req = await Api.post('/usuarios/cadastrar', {
-                nome: nome_completo,
-                nome_usuario: username,
-                foto,
-                email,
-                celular,
-                senha,
+            const req = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
+                nome: nome,
+                nome_usuario: nome_usuario,
+                foto: foto || usuario.foto, // Usando usuario.foto como valor padrão se não houver nova foto
+                email: email,
+                celular: celular,
             }, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json', // Alterei o tipo de conteúdo para 'application/json'
                 },
             });
-            if(req.data.message == "Nome de usuário já cadastrado!"){
-                alert("Nome de usuario já cadastrado!")
-                return
+    
+            if (req.data.message === "Nome de usuário já cadastrado!") {
+              
+                 message = 'Nome de usuário já cadastrado!'
+                 status='error'
+                return;
+            }
+    
+            if (req.data.message === "Email já cadastrado!") {
+                 message = 'Email já cadastrado!'
+                 status='error'
+                return;
             }
 
-            if(req.data.message == "Email já cadastrado!"){
-                alert("Email já cadastrado!")
-                return
-            }
+            toast({
+                title: message,
+                position: 'bottom-left',
+                status: status,
+                duration: 5000,
+                isClosable: true,
+            })
             navigate('/login');
-            window.location.reload();
-            alert("Usuário cadastrado com sucesso! agora faça seu login")
+            localStorage.clear()
+            
         } catch (error) {
-            console.error('Erro ao cadastrar:', error);
+            console.error('Erro ao atualizar usuário:', error);
         } finally {
             setLoading(false);
         }
     };
-
-    const onSubmit = (formData) => {
-       // handleCadaster(formData);
+    
+    const onSubmit = async (formData) => {
+        handleEdit(formData);
     };
-
+    
     return (
         <div className="editar-cad">
             <Card variant="purple" width="60%" height="90vh">
@@ -80,22 +113,23 @@ const EditarJogador = () => {
                     <div className="ct-input">
                         <div>
                             <label htmlFor="login">Nome completo</label>
-                            <Input name="nome_completo" control={control} placeholder="Nome completo" />
-                            <p className="error">{errors?.nome_completo?.message}</p>
+                            <Input name="nome" control={control} placeholder="Nome completo" defaultValue={usuario.nome} />
+                            <p className="error">{errors?.nome?.message}</p>
                         </div>
                         <div className="userinfo">
                             <div>
-                                <label htmlFor="login">Username</label>
-                                <Input name="username" control={control} placeholder="Username" />
-                                <p className="error">{errors?.username?.message}</p>
+                                <label htmlFor="login">Nome de Usuário</label>
+                                <Input name="nome_usuario" control={control} placeholder="Nome de Usuário" defaultValue={usuario.nome_usuario} />
+                                <p className="error">{errors?.nome_usuario?.message}</p>
                             </div>
                             <div>
                                 <label htmlFor="login">Celular (xx) xxxxx-xxxx</label>
                                 <Controller
                                     name="celular"
                                     control={control}
+                                    defaultValue={usuario.celular}
                                     render={({ field }) => (
-                                        <InputMask mask="(99) 99999-9999" {...field} >
+                                        <InputMask mask="(99) 99999-9999" {...field}>
                                             {(inputProps) => <input className='input-mask' {...inputProps} />}
                                         </InputMask>
                                     )}
@@ -105,19 +139,8 @@ const EditarJogador = () => {
                         </div>
                         <div>
                             <label htmlFor="login">Email</label>
-                            <Input name="email" control={control} placeholder="Email" />
+                            <Input name="email" control={control} placeholder="Email" defaultValue={usuario.email} />
                             <p className="error">{errors?.email?.message}</p>
-                        </div>
-                        <div className="passinfo">
-                            <div>
-                                <label htmlFor="senha">Senha</label>
-                                <Input name="senha" type="password" control={control} placeholder="Senha" />
-                            </div>
-                            <div>
-                                <label htmlFor="senha">Confirmar senha</label>
-                                <Input name="confirmar_senha" type="password" control={control} placeholder="Senha" />
-                                <p className="error">{errors?.confirmar_senha?.message}</p>
-                            </div>
                         </div>
                         <div>
                             <label htmlFor="foto" className="foto">Foto de Perfil</label>
@@ -125,7 +148,7 @@ const EditarJogador = () => {
                             <p className="error">{errors?.foto?.isPhoto?.message}</p>
                         </div>
                     </div>
-                    <Button text={loading ? 'Carregando...' : 'Editar'} variant="green" type="submit" width="100%" />
+                    <Button text={loading ? 'Carregando...' : 'Editar'} variant="green" type={'submit'} width="100%" />
                 </form>
                 <div className="ct-img">
                     <img src={Logo} alt="logo" />
@@ -133,6 +156,7 @@ const EditarJogador = () => {
             </Card>
         </div>
     );
+    
 };
 
 export { EditarJogador };
