@@ -67,7 +67,7 @@ const Classificacao = () => {
                     </CardCampeonato>
 
                     <Card variant={"darkpurple"} width={"40%"}>
-                        <h1>JOGO {game.jogo}</h1>
+                        <h1>JOGO {game.jogo} - {game.fase}</h1>
                         <DividerComponent />
                         <div>
                             <span>{game.data_hora}</span>
