@@ -1,15 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/04/2024 às 03:19
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 15-Abr-2024 às 17:21
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 CREATE DATABASE cb_patio;
-USE cb_patio; 
-
+USE cb_patio;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +27,9 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `campeonato`
+-- Estrutura da tabela `campeonato`
 --
+
 
 CREATE TABLE `campeonato` (
   `id_campeonato` int(11) NOT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE `campeonato` (
   `premiacao` float NOT NULL,
   `jogadores` int(11) NOT NULL,
   `limite` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `campeonato`
+-- Extraindo dados da tabela `campeonato`
 --
 
 INSERT INTO `campeonato` (`id_campeonato`, `nome`, `foto`, `data`, `sinopse`, `modalidade`, `valor_entrada`, `premiacao`, `jogadores`, `limite`) VALUES
@@ -56,16 +56,16 @@ INSERT INTO `campeonato` (`id_campeonato`, `nome`, `foto`, `data`, `sinopse`, `m
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `live_on`
+-- Estrutura da tabela `live_on`
 --
 
 CREATE TABLE `live_on` (
   `id_liveon` int(11) NOT NULL,
   `live_on` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `live_on`
+-- Extraindo dados da tabela `live_on`
 --
 
 INSERT INTO `live_on` (`id_liveon`, `live_on`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `live_on` (`id_liveon`, `live_on`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pagamentos`
+-- Estrutura da tabela `pagamentos`
 --
 
 CREATE TABLE `pagamentos` (
@@ -83,10 +83,10 @@ CREATE TABLE `pagamentos` (
   `fk_id_campeonato` int(11) NOT NULL,
   `valor_pagamento` float NOT NULL,
   `hora_pagamento` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `pagamentos`
+-- Extraindo dados da tabela `pagamentos`
 --
 
 INSERT INTO `pagamentos` (`id_pagamento`, `fk_id_time`, `fk_id_campeonato`, `valor_pagamento`, `hora_pagamento`) VALUES
@@ -95,7 +95,6 @@ INSERT INTO `pagamentos` (`id_pagamento`, `fk_id_time`, `fk_id_campeonato`, `val
 (5, 22, 1, 10, '2024-03-06 12:41:32'),
 (6, 11, 1, 10, '2024-03-06 12:41:32'),
 (7, 19, 1, 10, '2024-03-06 12:41:32'),
-(8, 20, 1, 10, '2024-03-06 12:41:32'),
 (9, 14, 1, 10, '2024-03-06 12:41:32'),
 (10, 16, 1, 10, '2024-03-06 12:41:32'),
 (11, 9, 1, 10, '2024-03-06 12:41:32'),
@@ -105,7 +104,24 @@ INSERT INTO `pagamentos` (`id_pagamento`, `fk_id_time`, `fk_id_campeonato`, `val
 (15, 13, 1, 10, '2024-03-06 12:41:32'),
 (16, 24, 1, 10, '2024-03-06 12:41:32'),
 (17, 21, 1, 10, '2024-03-06 12:41:32'),
-(18, 15, 1, 10, '2024-03-06 12:41:32');
+(18, 15, 1, 10, '2024-03-06 12:41:32'),
+(19, 18, 45, 10, '2024-04-15 10:58:39'),
+(20, 10, 45, 10, '2024-04-15 11:00:53'),
+(21, 34, 45, 10, '2024-04-15 11:00:53'),
+(22, 22, 45, 10, '2024-04-15 11:00:53'),
+(23, 11, 45, 10, '2024-04-15 11:00:53'),
+(24, 19, 45, 10, '2024-04-15 11:00:53'),
+(25, 20, 45, 10, '2024-04-15 11:00:53'),
+(26, 14, 45, 10, '2024-04-15 11:00:53'),
+(27, 16, 45, 10, '2024-04-15 11:00:53'),
+(28, 9, 45, 10, '2024-04-15 11:00:53'),
+(29, 17, 45, 10, '2024-04-15 11:00:53'),
+(30, 13, 45, 10, '2024-04-15 11:00:53'),
+(31, 33, 45, 10, '2024-04-15 11:00:53'),
+(32, 15, 45, 10, '2024-04-15 11:00:53'),
+(33, 21, 45, 10, '2024-04-15 11:00:53'),
+(34, 25, 45, 10, '2024-04-15 11:00:53'),
+(35, 35, 1, 10, '2024-04-15 11:24:35');
 
 --
 -- Acionadores `pagamentos`
@@ -119,7 +135,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `solicitacao_time_usuario`
+-- Estrutura da tabela `solicitacao_time_usuario`
 --
 
 CREATE TABLE `solicitacao_time_usuario` (
@@ -128,10 +144,10 @@ CREATE TABLE `solicitacao_time_usuario` (
   `fk_id_time` int(11) NOT NULL,
   `aceitou` varchar(1) NOT NULL,
   `hora_envio` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `solicitacao_time_usuario`
+-- Extraindo dados da tabela `solicitacao_time_usuario`
 --
 
 INSERT INTO `solicitacao_time_usuario` (`id_solicitacao`, `fk_id_usuario`, `fk_id_time`, `aceitou`, `hora_envio`) VALUES
@@ -155,17 +171,17 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `time`
+-- Estrutura da tabela `time`
 --
 
 CREATE TABLE `time` (
   `id_time` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
   `fk_id_capitao` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `time`
+-- Extraindo dados da tabela `time`
 --
 
 INSERT INTO `time` (`id_time`, `nome`, `fk_id_capitao`) VALUES
@@ -186,7 +202,8 @@ INSERT INTO `time` (`id_time`, `nome`, `fk_id_capitao`) VALUES
 (24, 'Pererecos FC', 1),
 (25, 'Lusa', 1),
 (33, 'pauzudos FC', 33),
-(34, 'awdawdadw', 25);
+(34, 'awdawdadw', 25),
+(35, 'pintudos CF', 33);
 
 --
 -- Acionadores `time`
@@ -199,7 +216,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `time_campeonato`
+-- Estrutura da tabela `time_campeonato`
 --
 
 CREATE TABLE `time_campeonato` (
@@ -209,69 +226,106 @@ CREATE TABLE `time_campeonato` (
   `fase` varchar(20) NOT NULL,
   `jogo` varchar(10) NOT NULL,
   `chave` varchar(20) NOT NULL,
-  `data_hora` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `data_hora` datetime DEFAULT NULL,
+  `aconteceu` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `time_campeonato`
+-- Extraindo dados da tabela `time_campeonato`
 --
 
-INSERT INTO `time_campeonato` (`id_time_campeonato`, `fk_id_time`, `fk_id_campeonato`, `fase`, `jogo`, `chave`, `data_hora`) VALUES
-(1390, 10, 1, 'oitavas', '1', 'esquerda', '2024-03-18 09:45:00'),
-(1391, 22, 1, 'oitavas', '1', 'direita', '2024-03-19 12:35:00'),
-(1392, 11, 1, 'oitavas', '1', 'esquerda', '2024-03-18 09:45:00'),
-(1394, 20, 1, 'oitavas', '1', 'direita', '2024-03-19 12:35:00'),
-(1395, 14, 1, 'oitavas', '2', 'esquerda', '2024-03-18 12:35:00'),
-(1397, 9, 1, 'oitavas', '2', 'direita', '2024-03-19 12:50:00'),
-(1399, 25, 1, 'oitavas', '2', 'esquerda', '2024-03-18 12:35:00'),
-(1400, 12, 1, 'oitavas', '2', 'direita', '2024-03-19 12:50:00'),
-(1401, 13, 1, 'oitavas', '3', 'esquerda', '2024-03-18 12:50:00'),
-(1402, 24, 1, 'oitavas', '3', 'direita', '2024-03-20 09:45:00'),
-(1403, 21, 1, 'oitavas', '3', 'esquerda', '2024-03-18 12:50:00'),
-(1404, 15, 1, 'oitavas', '3', 'direita', '2024-03-20 09:45:00'),
-(1405, 18, 1, 'oitavas', '4', 'esquerda', '2024-03-19 09:45:00'),
-(1407, 19, 1, 'oitavas', '4', 'direita', '2024-03-20 12:35:00'),
-(1408, 16, 1, 'oitavas', '4', 'esquerda', '2024-03-19 09:45:00'),
-(1409, 17, 1, 'oitavas', '4', 'direita', '2024-03-20 12:35:00'),
-(1780, 10, 1, 'quartas', '1', 'esquerda', '2024-03-21 09:45:00'),
-(1781, 14, 1, 'quartas', '1', 'esquerda', '2024-03-21 09:45:00'),
-(1782, 13, 1, 'quartas', '2', 'esquerda', '2024-03-21 12:35:00'),
-(1783, 16, 1, 'quartas', '2', 'esquerda', '2024-03-21 12:35:00'),
-(1784, 22, 1, 'quartas', '1', 'direita', '2024-03-21 12:50:00'),
-(1785, 9, 1, 'quartas', '1', 'direita', '2024-03-21 12:50:00'),
-(1786, 24, 1, 'quartas', '2', 'direita', '2024-03-22 09:45:00'),
-(1787, 17, 1, 'quartas', '2', 'direita', '2024-03-22 09:45:00'),
-(1788, 20, 1, 'eliminado oitavas', '', '', NULL),
-(1789, 11, 1, 'eliminado oitavas', '', '', NULL),
-(1790, 12, 1, 'eliminado oitavas', '', '', NULL),
-(1791, 25, 1, 'eliminado oitavas', '', '', NULL),
-(1792, 15, 1, 'eliminado oitavas', '', '', NULL),
-(1793, 21, 1, 'eliminado oitavas', '', '', NULL),
-(1794, 19, 1, 'eliminado oitavas', '', '', NULL),
-(1795, 18, 1, 'eliminado oitavas', '', '', NULL),
-(1804, 14, 1, 'semis', '1', 'esquerda', '2024-03-25 09:45:00'),
-(1805, 13, 1, 'semis', '1', 'esquerda', '2024-03-25 09:45:00'),
-(1806, 24, 1, 'semis', '1', 'direita', '2024-03-25 12:35:00'),
-(1807, 22, 1, 'semis', '1', 'direita', '2024-03-25 12:35:00'),
-(1808, 9, 1, 'eliminado quartas', '', '', NULL),
-(1809, 10, 1, 'eliminado quartas', '', '', NULL),
-(1810, 17, 1, 'eliminado quartas', '', '', NULL),
-(1811, 16, 1, 'eliminado quartas', '', '', NULL);
+INSERT INTO `time_campeonato` (`id_time_campeonato`, `fk_id_time`, `fk_id_campeonato`, `fase`, `jogo`, `chave`, `data_hora`, `aconteceu`) VALUES
+(1390, 10, 1, 'oitavas', '1', 'esquerda', NULL, 's'),
+(1391, 22, 1, 'oitavas', '1', 'esquerda', NULL, 's'),
+(1392, 11, 1, 'oitavas', '2', 'esquerda', NULL, 's'),
+(1395, 14, 1, 'oitavas', '2', 'esquerda', NULL, 's'),
+(1397, 9, 1, 'oitavas', '3', 'esquerda', NULL, 's'),
+(1399, 25, 1, 'oitavas', '3', 'esquerda', NULL, 's'),
+(1400, 12, 1, 'oitavas', '4', 'esquerda', NULL, 's'),
+(1401, 13, 1, 'oitavas', '4', 'esquerda', NULL, 's'),
+(1402, 24, 1, 'oitavas', '1', 'direita', NULL, 's'),
+(1403, 21, 1, 'oitavas', '1', 'direita', NULL, 's'),
+(1404, 15, 1, 'oitavas', '2', 'direita', NULL, 's'),
+(1405, 18, 1, 'oitavas', '2', 'direita', NULL, 's'),
+(1407, 19, 1, 'oitavas', '3', 'direita', NULL, 's'),
+(1408, 16, 1, 'oitavas', '3', 'direita', NULL, 's'),
+(1409, 17, 1, 'oitavas', '4', 'direita', NULL, 's'),
+(1817, 18, 45, 'oitavas', '1', 'esquerda', NULL, 's'),
+(1818, 10, 45, 'oitavas', '2', 'esquerda', NULL, 's'),
+(1819, 34, 45, 'oitavas', '1', 'esquerda', NULL, 's'),
+(1820, 22, 45, 'oitavas', '2', 'esquerda', NULL, 's'),
+(1821, 11, 45, 'oitavas', '3', 'esquerda', NULL, 's'),
+(1822, 19, 45, 'oitavas', '3', 'esquerda', NULL, 's'),
+(1823, 20, 45, 'oitavas', '4', 'esquerda', NULL, 's'),
+(1824, 14, 45, 'oitavas', '4', 'esquerda', NULL, 's'),
+(1825, 16, 45, 'oitavas', '1', 'direita', NULL, 's'),
+(1826, 9, 45, 'oitavas', '1', 'direita', NULL, 's'),
+(1827, 17, 45, 'oitavas', '2', 'direita', NULL, 's'),
+(1828, 13, 45, 'oitavas', '2', 'direita', NULL, 's'),
+(1829, 33, 45, 'oitavas', '3', 'direita', NULL, 's'),
+(1830, 15, 45, 'oitavas', '3', 'direita', NULL, 's'),
+(1831, 21, 45, 'oitavas', '4', 'direita', NULL, 's'),
+(1832, 25, 45, 'oitavas', '4', 'direita', NULL, 's'),
+(1833, 35, 1, 'oitavas', '4', 'direita', NULL, 's'),
+(1867, 13, 1, 'quartas', '2', 'esquerda', '2024-05-02 12:13:34', ''),
+(1868, 25, 1, 'quartas', '2', 'esquerda', '2024-05-02 12:13:34', ''),
+(1869, 14, 1, 'quartas', '1', 'esquerda', '2024-05-09 12:13:39', ''),
+(1870, 10, 1, 'quartas', '1', 'esquerda', '2024-05-09 12:13:39', ''),
+(1871, 35, 1, 'quartas', '2', 'direita', '2024-04-27 12:11:29', ''),
+(1872, 16, 1, 'quartas', '2', 'direita', '2024-04-27 12:11:29', ''),
+(1873, 18, 1, 'quartas', '1', 'direita', '2024-04-30 12:13:22', ''),
+(1874, 24, 1, 'quartas', '1', 'direita', '2024-04-30 12:13:22', ''),
+(1875, 21, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1876, 22, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1877, 15, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1878, 11, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1879, 19, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1880, 9, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1881, 17, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1882, 12, 1, 'eliminado oitavas', '', '', NULL, ''),
+(1883, 14, 45, 'quartas', '2', 'esquerda', NULL, 's'),
+(1884, 19, 45, 'quartas', '2', 'esquerda', NULL, 's'),
+(1885, 22, 45, 'quartas', '1', 'esquerda', NULL, 's'),
+(1886, 18, 45, 'quartas', '1', 'esquerda', NULL, 's'),
+(1887, 25, 45, 'quartas', '2', 'direita', NULL, 's'),
+(1888, 33, 45, 'quartas', '2', 'direita', NULL, 's'),
+(1889, 13, 45, 'quartas', '1', 'direita', NULL, 's'),
+(1890, 16, 45, 'quartas', '1', 'direita', NULL, 's'),
+(1891, 9, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1892, 34, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1893, 17, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1894, 10, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1895, 15, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1896, 11, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1897, 21, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1898, 20, 45, 'eliminado oitavas', '', '', NULL, ''),
+(1899, 19, 45, 'semis', '1', 'esquerda', NULL, 's'),
+(1900, 22, 45, 'semis', '1', 'esquerda', NULL, 's'),
+(1901, 33, 45, 'semis', '1', 'direita', NULL, 's'),
+(1902, 13, 45, 'semis', '1', 'direita', NULL, 's'),
+(1903, 16, 45, 'eliminado quartas', '', '', NULL, ''),
+(1904, 18, 45, 'eliminado quartas', '', '', NULL, ''),
+(1905, 25, 45, 'eliminado quartas', '', '', NULL, ''),
+(1906, 14, 45, 'eliminado quartas', '', '', NULL, ''),
+(1907, 33, 45, 'final', '1', 'esquerda', NULL, ''),
+(1908, 22, 45, 'final', '1', 'esquerda', NULL, ''),
+(1909, 13, 45, 'eliminado semis', '', '', NULL, ''),
+(1910, 19, 45, 'eliminado semis', '', '', NULL, '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `time_usuario`
+-- Estrutura da tabela `time_usuario`
 --
 
 CREATE TABLE `time_usuario` (
   `id_time_usuario` int(11) NOT NULL,
   `fk_id_usuario` int(11) DEFAULT NULL,
   `fk_id_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `time_usuario`
+-- Extraindo dados da tabela `time_usuario`
 --
 
 INSERT INTO `time_usuario` (`id_time_usuario`, `fk_id_usuario`, `fk_id_time`) VALUES
@@ -298,7 +352,8 @@ INSERT INTO `time_usuario` (`id_time_usuario`, `fk_id_usuario`, `fk_id_time`) VA
 (28, 7, 10),
 (39, 25, 20),
 (40, 33, 33),
-(42, 25, 34);
+(42, 25, 34),
+(44, 33, 35);
 
 --
 -- Acionadores `time_usuario`
@@ -311,7 +366,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -323,10 +378,10 @@ CREATE TABLE `usuario` (
   `cpf` varchar(11) NOT NULL,
   `celular` varchar(16) NOT NULL,
   `senha` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_usuario`, `foto`, `email`, `cpf`, `celular`, `senha`) VALUES
@@ -353,19 +408,19 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_usuario`, `foto`, `email`, `c
 --
 
 --
--- Índices de tabela `campeonato`
+-- Índices para tabela `campeonato`
 --
 ALTER TABLE `campeonato`
   ADD PRIMARY KEY (`id_campeonato`);
 
 --
--- Índices de tabela `live_on`
+-- Índices para tabela `live_on`
 --
 ALTER TABLE `live_on`
   ADD PRIMARY KEY (`id_liveon`);
 
 --
--- Índices de tabela `pagamentos`
+-- Índices para tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
   ADD PRIMARY KEY (`id_pagamento`),
@@ -373,7 +428,7 @@ ALTER TABLE `pagamentos`
   ADD KEY `fk_id_time` (`fk_id_time`);
 
 --
--- Índices de tabela `solicitacao_time_usuario`
+-- Índices para tabela `solicitacao_time_usuario`
 --
 ALTER TABLE `solicitacao_time_usuario`
   ADD PRIMARY KEY (`id_solicitacao`),
@@ -381,14 +436,14 @@ ALTER TABLE `solicitacao_time_usuario`
   ADD KEY `fk_id_usuario` (`fk_id_usuario`);
 
 --
--- Índices de tabela `time`
+-- Índices para tabela `time`
 --
 ALTER TABLE `time`
   ADD PRIMARY KEY (`id_time`),
   ADD KEY `fk_id_capitao` (`fk_id_capitao`);
 
 --
--- Índices de tabela `time_campeonato`
+-- Índices para tabela `time_campeonato`
 --
 ALTER TABLE `time_campeonato`
   ADD PRIMARY KEY (`id_time_campeonato`),
@@ -396,7 +451,7 @@ ALTER TABLE `time_campeonato`
   ADD KEY `fk_id_time` (`fk_id_time`);
 
 --
--- Índices de tabela `time_usuario`
+-- Índices para tabela `time_usuario`
 --
 ALTER TABLE `time_usuario`
   ADD PRIMARY KEY (`id_time_usuario`),
@@ -404,13 +459,13 @@ ALTER TABLE `time_usuario`
   ADD KEY `fk_id_time` (`fk_id_time`);
 
 --
--- Índices de tabela `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -429,7 +484,7 @@ ALTER TABLE `live_on`
 -- AUTO_INCREMENT de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
-  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `solicitacao_time_usuario`
@@ -441,19 +496,19 @@ ALTER TABLE `solicitacao_time_usuario`
 -- AUTO_INCREMENT de tabela `time`
 --
 ALTER TABLE `time`
-  MODIFY `id_time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `time_campeonato`
 --
 ALTER TABLE `time_campeonato`
-  MODIFY `id_time_campeonato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1817;
+  MODIFY `id_time_campeonato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1911;
 
 --
 -- AUTO_INCREMENT de tabela `time_usuario`
 --
 ALTER TABLE `time_usuario`
-  MODIFY `id_time_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_time_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
@@ -462,38 +517,38 @@ ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `pagamentos`
+-- Limitadores para a tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
   ADD CONSTRAINT `pagamentos_ibfk_1` FOREIGN KEY (`fk_id_campeonato`) REFERENCES `campeonato` (`id_campeonato`),
   ADD CONSTRAINT `pagamentos_ibfk_2` FOREIGN KEY (`fk_id_time`) REFERENCES `time` (`id_time`);
 
 --
--- Restrições para tabelas `solicitacao_time_usuario`
+-- Limitadores para a tabela `solicitacao_time_usuario`
 --
 ALTER TABLE `solicitacao_time_usuario`
   ADD CONSTRAINT `solicitacao_time_usuario_ibfk_1` FOREIGN KEY (`fk_id_time`) REFERENCES `time` (`id_time`),
   ADD CONSTRAINT `solicitacao_time_usuario_ibfk_2` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Restrições para tabelas `time`
+-- Limitadores para a tabela `time`
 --
 ALTER TABLE `time`
   ADD CONSTRAINT `fk_id_capitao` FOREIGN KEY (`fk_id_capitao`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Restrições para tabelas `time_campeonato`
+-- Limitadores para a tabela `time_campeonato`
 --
 ALTER TABLE `time_campeonato`
   ADD CONSTRAINT `time_campeonato_ibfk_1` FOREIGN KEY (`fk_id_campeonato`) REFERENCES `campeonato` (`id_campeonato`),
   ADD CONSTRAINT `time_campeonato_ibfk_2` FOREIGN KEY (`fk_id_time`) REFERENCES `time` (`id_time`);
 
 --
--- Restrições para tabelas `time_usuario`
+-- Limitadores para a tabela `time_usuario`
 --
 ALTER TABLE `time_usuario`
   ADD CONSTRAINT `fk_id_time` FOREIGN KEY (`fk_id_time`) REFERENCES `time` (`id_time`) ON DELETE CASCADE,
