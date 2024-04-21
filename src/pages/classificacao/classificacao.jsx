@@ -18,6 +18,7 @@ const Classificacao = () => {
     const [games, setGames] = useState([])
     const [campeao, setCampeao] = useState([])
     const [eliminados, setEliminados] = useState([])
+    const [esperando, setEsperando] = useState([])
 
     const {getUserData} = useContext(AuthContext)
   
@@ -34,19 +35,22 @@ const Classificacao = () => {
 
         const getGames = async () => {
             try {
-                const [gamesResponse, campeaoResponse, eliminadosResponse] = await Promise.all([
+                const [gamesResponse, campeaoResponse, eliminadosResponse, esperandoResponse] = await Promise.all([
                     Api.get(`/campeonatos/time/times/jogos/${getUserData().id}`),
                     Api.get(`/campeonatos/time/times/jogos/campeao/user/${getUserData().id}`),
-                    Api.get(`/campeonatos/time/times/jogos/eliminados/user/${getUserData().id}`)
+                    Api.get(`/campeonatos/time/times/jogos/eliminados/user/${getUserData().id}`),
+                    Api.get(`/campeonatos/time/times/jogos/esperando/user/${getUserData().id}`)
                 ]);
             
                 const games = gamesResponse.data;
                 const campeao = campeaoResponse.data;
                 const eliminados = eliminadosResponse.data;
+                const esperandoData = esperandoResponse.data
             
                 setGames(games);
                 setCampeao(campeao);
                 setEliminados(eliminados);
+                setEsperando(esperandoData)
             } catch (error) {
                 console.error("Ocorreu um erro ao carregar os dados:", error);
             }
@@ -75,6 +79,7 @@ const Classificacao = () => {
             }
             <DividerComponent margin={"1rem 0"}/>
             <PageTitle text={'SEUS JOGOS'}/>
+            <DividerComponent margin={"1rem 0"}/>
             <div className='div__jogos'>
                 <div className='div__camp'>
 
@@ -119,8 +124,45 @@ const Classificacao = () => {
                     </div>
                 ))}
 
-                <DividerComponent />    
-                <PageTitle text={"Situação final"}/>
+                {esperando.map((game) => (
+                    <div className='camp__jogo'>
+
+                        <CardCampeonato idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
+
+                        </CardCampeonato>
+
+                        <Card variant={"darkpurple"} width={"40%"}>
+                            <h1>JOGO: A DEFINIR</h1>
+                            <DividerComponent />
+                            <div>
+                                <span>DATA: A DEFINIR</span>
+
+                                <div>
+                                    <h2>{game.nome_time}</h2>
+                                    <span>VS.</span>
+                                    <h2>A DEFINIR</h2>
+                                </div>
+
+                                <span>HORÁRIO: A DEFINIR</span>
+
+                                <DividerComponent />
+                                <h1></h1>
+                            </div>
+                        </Card>
+                    </div>
+                ))}
+
+                {
+                    campeao.length == 0 && eliminados.length == 0
+
+                    ?
+                        ""
+                    :
+                    <>
+                        <DividerComponent />    
+                        <PageTitle text={"Situação final"}/> 
+                    </>
+                }
 
                 {campeao.map((game) => (
                     <div className='camp__jogo'>
