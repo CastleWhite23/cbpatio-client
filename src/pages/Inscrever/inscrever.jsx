@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { decodeHashId } from '../../services/formatFunctions'
+import { InscreverEquipe } from '../../components/InscreverEquipe/inscreverEquipe'
 
 const Inscrever = () => {
     const {id_camp} = useParams()
@@ -8,7 +9,7 @@ const Inscrever = () => {
     console.log(id)
 
     return (
-        <div>Inscrever</div>
+        <InscreverEquipe id_campeonato={id}/>
     )
 }
 
