@@ -41,6 +41,7 @@ const SwiperCampeonatos = () => {
 
     return (
         <div>
+            
             <Swiper
                 slidesPerView={1}
                 autoplay={{
@@ -82,7 +83,6 @@ const SwiperCampeonatos = () => {
                                 campeonatos.map((campeonato, index) => {
                                     return (
                                         <SwiperSlide key={index}>
-                                            {console.log(`${path}/${campeonato.foto}`)}
                                             <CardCampeonato
                                                 idCamp={hashId(campeonato.id_campeonato)}
                                                 bgImage={`${path}/${campeonato.foto.replace(/\\/g, '/')}`}

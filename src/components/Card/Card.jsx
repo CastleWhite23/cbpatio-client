@@ -12,8 +12,8 @@ const Card = ({ children, variant, width, height, bgImage, gap }) => {
     width: '100%',
     height: '100%',
     backgroundSize: 'cover',
-    borderRadius: '10px',
-    border: "5px solid #000"
+    borderRadius: '8px',
+    border: "3px solid #1B1230"
   }
 
   return (

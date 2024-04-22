@@ -11,6 +11,7 @@ import { AuthContext } from '../../context/context'
 import { Card } from '../../components/Card/Card'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 import { formataData, formataHora } from '../../services/getData'
+import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 
 const path = "http://localhost:3005"
 
@@ -98,7 +99,7 @@ const Classificacao = () => {
                         ""
                 }
                 {
-                    games.map((game) => (
+                    games.map((game, index) => (
                         <div className='camp__jogo'>
 
                             <CardCampeonato
@@ -108,42 +109,14 @@ const Classificacao = () => {
                                 title={game.nome_camp}
                                 width={'20%'} />
 
-                            <Card variant={"darkpurple"} width={"40%"}>
-                                <div className='card-header'>
-                                    <h1>JOGO {game.jogo}</h1>
-                                </div>
-                                <DividerComponent />
-                                <div className='card-main'>
-                                    <span className='darkpurple'>{
-                                        game.data_hora != null ?
-                                            `Vai acontecer em ${formataData(game.data_hora)}` :
-                                            "Data ainda não definida!"
-                                    }
-                                    </span>
-
-                                    <div>
-                                        <h2 className='greenlight'>{game.nome_time}</h2>
-                                        <span>VS.</span>
-                                        <h2 className='red'>{game.nome_time_vs}</h2>
-                                    </div>
-
-                                    <span className='darkpurple'>{
-                                        game.data_hora != null ?
-                                            `Vai começar às ${formataHora(game.data_hora)}` :
-                                            "Hora ainda não definida!"
-                                    }
-                                    </span>
-                                </div>
-                                <DividerComponent />
-                                <div className='card-footer'>
-                                    <h1 className={
-                                        game.fase == 'final' ? 'green' :
-                                            game.fase == 'semis' ? 'pink' :
-                                                game.fase == 'quartas' ? 'orange' :
-                                                    game.fase == 'oitavas' && 'blue'
-                                    }>{game.fase}</h1>
-                                </div>
-                            </Card>
+                            <CardClassificacao 
+                                data_hora={game.data_hora}
+                                fase={game.fase}
+                                jogo={game.fase}
+                                nome_time={game.nome_time}
+                                key={index}
+                                nome_time_vs={game.nome_time_vs}
+                            />
                         </div>
                     ))}
 
