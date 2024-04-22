@@ -2,6 +2,7 @@
 import './Home.css'
 import { Button } from '../../components/Button/Button'
 import { Link } from 'react-router-dom'
+import { socket } from '../../services/socket'
 const Home = () => {
     return (
         <>
