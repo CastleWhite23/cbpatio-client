@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.div__liveon iframe{
+    max-width: 100%;
+}
+
+/* @media (max-width:) */
