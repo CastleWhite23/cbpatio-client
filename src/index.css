@@ -42,3 +42,32 @@ body {
 .link:hover {
   color: #4261fa;
 }
+
+.darkpurple{
+  color: #7a42f3;
+}
+
+.greenlight{
+  color: greenyellow;
+}
+
+.red{
+  color: rgb(182, 11, 11);
+}
+
+.orange{
+  color: #FA5959;
+}
+
+.pink{
+  color: #D21AF0;
+}
+
+.bluelight{
+  color: #0E93F4;
+}
+.green{
+  color: #19F43C;
+}
+
+
