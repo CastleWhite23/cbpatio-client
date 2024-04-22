@@ -17,6 +17,7 @@ import 'swiper/css/navigation';
 
 import { Api } from '../../services/Api';
 import { CardCampeonato } from '../cardCampeonato/cardCampeonato';
+import { hashId } from '../../services/formatFunctions';
 
 
 const path = "http://localhost:3005"
@@ -83,7 +84,7 @@ const SwiperCampeonatos = () => {
                                         <SwiperSlide key={index}>
                                             {console.log(`${path}/${campeonato.foto}`)}
                                             <CardCampeonato
-                                                idCamp={campeonato.id_campeonato}
+                                                idCamp={hashId(campeonato.id_campeonato)}
                                                 bgImage={`${path}/${campeonato.foto.replace(/\\/g, '/')}`}
                                                 title={campeonato.nome}
                                                 height={"25rem"}

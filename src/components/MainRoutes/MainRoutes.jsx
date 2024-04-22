@@ -41,8 +41,7 @@ const MainRoutes = () => {
 
                     {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
                     
-                    <Route path='/campeonatos/inscrever/:id' element={<Layout> <Inscrever /> </Layout>
-                    } />
+                    <Route path='/campeonatos/inscrever/:id_camp' element={ isAuth ? <Layout> <Inscrever /> </Layout> : <Login />} />
 
                     {/* ROTA DE CONFIG DE USUARIO */}
 
