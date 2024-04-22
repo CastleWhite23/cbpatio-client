@@ -1,6 +1,7 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useContext, useEffect, useState} from 'react'
+import { SpinnerCustom } from '../../components/Spinner/Spinner'
+import React, { useContext, useEffect, useState } from 'react'
 import { PageTitle } from '../../components/pageTitle/pageTitle'
 import { Api } from '../../services/Api'
 import "./classificacao.css"
@@ -9,6 +10,7 @@ import { DividerComponent } from '../../components/Divider/DividerComponent'
 import { AuthContext } from '../../context/context'
 import { Card } from '../../components/Card/Card'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
+import { formataData, formataHora } from '../../services/getData'
 
 const path = "http://localhost:3005"
 
@@ -20,15 +22,15 @@ const Classificacao = () => {
     const [eliminados, setEliminados] = useState([])
     const [esperando, setEsperando] = useState([])
 
-    const {getUserData} = useContext(AuthContext)
-  
+    const { getUserData } = useContext(AuthContext)
+
     useEffect(() => {
         const getLiveOn = async () => {
-            const {data: live} = await Api.get('/liveon')
-            
-            if(live[0].live_on == 's'){
+            const { data: live } = await Api.get('/liveon')
+
+            if (live[0].live_on == 's') {
                 setLiveOn(true)
-            }else{
+            } else {
                 setLiveOn(false)
             }
         }
@@ -41,12 +43,12 @@ const Classificacao = () => {
                     Api.get(`/campeonatos/time/times/jogos/eliminados/user/${getUserData().id}`),
                     Api.get(`/campeonatos/time/times/jogos/esperando/user/${getUserData().id}`)
                 ]);
-            
+
                 const games = gamesResponse.data;
                 const campeao = campeaoResponse.data;
                 const eliminados = eliminadosResponse.data;
                 const esperandoData = esperandoResponse.data
-            
+
                 setGames(games);
                 setCampeao(campeao);
                 setEliminados(eliminados);
@@ -58,78 +60,98 @@ const Classificacao = () => {
 
         getGames()
         getLiveOn()
+
     }, []);
+
     console.log(eliminados)
 
     return (
         <>
             {
-                liveOn     
-                
-                ?
-                <>
-                    <PageTitle text={`LIVE ON`} icon={faBell}/>
-                    <DividerComponent margin={"1rem 0"}/>
-                    <LiveOn></LiveOn>
-                </>
-                
-                :
-                
-                ""
-            }
-            <DividerComponent margin={"1rem 0"}/>
-            <PageTitle text={'SEUS JOGOS'}/>
-            <DividerComponent margin={"1rem 0"}/>
-            <div className='div__jogos'>
-                <div className='div__camp'>
+                liveOn
 
-                </div>
+                    ?
+                    <>
+                        <PageTitle text={`LIVE ON`} icon={faBell} />
+                        <LiveOn></LiveOn>
+
+                    </>
+
+                    :
+
+                    <SpinnerCustom />
+            }
+            <DividerComponent margin={"3rem 0"} />
+            <PageTitle text={'MEUS JOGOS'} />
+            <DividerComponent margin={'3rem 0'} />
+            <div className='div__jogos'>
                 {
                     games.length > 0
-                    
-                    ?
 
-                    <>
-                        <PageTitle text={"À acontecer"}/>
-                        <DividerComponent />
-                    </>
-                    :
-                    ""
+                        ?
+
+                        <>
+                            <PageTitle text={"Próximos jogos"} />
+
+                        </>
+                        :
+                        ""
                 }
-                {games.map((game) => (
-                    <div className='camp__jogo'>
+                {
+                    games.map((game) => (
+                        <div className='camp__jogo'>
 
-                        <CardCampeonato idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
+                            <CardCampeonato
+                                type='preview'
+                                idCamp={game.id_campeonato}
+                                bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                title={game.nome_camp}
+                                width={'20%'} />
 
-                        </CardCampeonato>
-
-                        <Card variant={"darkpurple"} width={"40%"}>
-                            <h1>JOGO {game.jogo} - {game.fase}</h1>
-                            <DividerComponent />
-                            <div>
-                                <span>{game.data_hora || "Data: A definir"}</span>
-
-                                <div>
-                                    <h2>{game.nome_time}</h2>
-                                    <span>VS.</span>
-                                    <h2>{game.nome_time_vs}</h2>
+                            <Card variant={"darkpurple"} width={"40%"}>
+                                <div className='card-header'>
+                                    <h1>JOGO {game.jogo}</h1>
                                 </div>
-
-                                <span>COMEÇA ÀS: {"A DEFINIR"}</span>
-
                                 <DividerComponent />
-                                <h1></h1>
-                            </div>
-                        </Card>
-                    </div>
-                ))}
+                                <div className='card-main'>
+                                    <span className='darkpurple'>{
+                                        game.data_hora != null ?
+                                            `Vai acontecer em ${formataData(game.data_hora)}` :
+                                            "Data ainda não definida!"
+                                    }
+                                    </span>
+
+                                    <div>
+                                        <h2 className='greenlight'>{game.nome_time}</h2>
+                                        <span>VS.</span>
+                                        <h2 className='red'>{game.nome_time_vs}</h2>
+                                    </div>
+
+                                    <span className='darkpurple'>{
+                                        game.data_hora != null ?
+                                            `Vai começar às ${formataHora(game.data_hora)}` :
+                                            "Hora ainda não definida!"
+                                    }
+                                    </span>
+                                </div>
+                                <DividerComponent />
+                                <div className='card-footer'>
+                                    <h1 className={
+                                        game.fase == 'final' ? 'green' :
+                                            game.fase == 'semis' ? 'pink' :
+                                                game.fase == 'quartas' ? 'orange' :
+                                                    game.fase == 'oitavas' && 'blue'
+                                    }>{game.fase}</h1>
+                                </div>
+                            </Card>
+                        </div>
+                    ))}
 
                 {esperando.map((game) => (
                     <div className='camp__jogo'>
 
-                        <CardCampeonato idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
-
-                        </CardCampeonato>
+                        <CardCampeonato
+                            type='preview' idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`} />
 
                         <Card variant={"darkpurple"} width={"40%"}>
                             <h1>JOGO: A DEFINIR</h1>
@@ -155,19 +177,19 @@ const Classificacao = () => {
                 {
                     campeao.length == 0 && eliminados.length == 0
 
-                    ?
+                        ?
                         ""
-                    :
-                    <>
-                        <DividerComponent />    
-                        <PageTitle text={"Situação final"}/> 
-                    </>
+                        :
+                        <>
+                            <DividerComponent />
+                            <PageTitle text={"Situação Final"} />
+                        </>
                 }
 
                 {campeao.map((game) => (
                     <div className='camp__jogo'>
 
-                        <CardCampeonato idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
+                        <CardCampeonato type='preview' idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
 
                         </CardCampeonato>
 
@@ -196,21 +218,39 @@ const Classificacao = () => {
                 {eliminados.map((game) => (
                     <div className='camp__jogo'>
 
-                        <CardCampeonato idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
-
-                        </CardCampeonato>
+                        <CardCampeonato
+                            type='preview'
+                            idCamp={game.id_campeonato}
+                            bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                            title={game.nome_camp}
+                            width={'20%'} />
 
                         <Card variant={"darkpurple"} width={"40%"}>
-                            <h1>JOGO {game.jogo} - {game.eliminado_em}</h1>
+                            <div className='card-main'>
+                                <span className='darkpurple'>{
+                                    `Já aconteceu em ${formataData(game.data_hora)}`
+                                }
+                                </span>
+
+                            </div>
+                            <DividerComponent />
+                            <div className='card-footer'>
+                                <h1 className={
+                                    (game.eliminado_em.slice(9)) == ' final' ? 'green' :
+                                        (game.eliminado_em.slice(9)) == ' semis' ? 'pink' :
+                                            (game.eliminado_em.slice(9)) == ' quartas' ? 'orange' :
+                                                (game.eliminado_em.slice(9)) == ' oitavas' && 'blue'
+                                }>{game.eliminado_em.slice(9)} - <span className='red'>Eliminado</span></h1>
+                            </div>
                         </Card>
                     </div>
                 ))}
 
-                
+
             </div>
 
         </>
     )
 }
 
-export {Classificacao}
+export { Classificacao }
