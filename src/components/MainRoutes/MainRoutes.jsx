@@ -14,6 +14,7 @@ import { AuthContextProvider } from '../../context/context'
 import { Classificacao } from '../../pages/classificacao/classificacao'
 import { MeusTimesJogador } from '../../pages/MeusTimesJogador/MeusTimesJogador'
 import { EditarJogador } from '../../pages/EditarJogador/EditarJogador'
+import { Inscrever } from '../../pages/Inscrever/inscrever'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -39,6 +40,9 @@ const MainRoutes = () => {
 
 
                     {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
+                    
+                    <Route path='/campeonatos/inscrever/:id' element={<Layout> <Inscrever /> </Layout>
+                    } />
 
                     {/* ROTA DE CONFIG DE USUARIO */}
 
