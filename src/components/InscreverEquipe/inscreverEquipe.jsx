@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 
 import { useContext, useState } from "react";
 import { AuthContext } from '../../context/context';
+import { useNavigate } from 'react-router-dom';
+import { hashId } from '../../services/formatFunctions';
 
 
 const schema = yup.object({
@@ -17,6 +19,8 @@ const schema = yup.object({
 
 
 const InscreverEquipe = ({id_campeonato}) => {
+    const navigate = useNavigate()
+
     const [loading, setLoading] = useState(false)
     const [selectedValues, setSelectedValues] = useState([]);
     const [times, setTimes] = useState([])
@@ -50,7 +54,21 @@ const InscreverEquipe = ({id_campeonato}) => {
     });
 
     const onSubmit = async (formData) => {
-        console.log(selectedValues)
+        
+        if(!selectedValues[0].id_time){
+            alert(`seleciona alguma coisa krl ${JSON.stringify(selectedValues)}`)
+            return
+        }
+        
+        const {data: pessoasTime} = await Api.get(`/usuarios/time/${selectedValues[0].id_time}`)
+
+        if(pessoasTime.length != campeonato[0].jogadores){
+            alert(`Os jogadores para este campeonato são de ${campeonato[0].jogadores}`)
+            return
+        }
+
+        alert(`Indo para pagamento...`)
+        navigate(`/pagamento/${hashId(`${campeonato[0].id_campeonato}-${selectedValues[0].id_time}`)}`)
     }
 
     const handleSelectChange = (id, name, event) => {
