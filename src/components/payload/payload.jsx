@@ -15,7 +15,7 @@ const Payload = () => {
     const [payload, setPayload] = useState({})
     const [loading, setLoading] = useState(false)
     const [ocurred, setOcurred] = useState(false)
-    const [qrcode, setQrcode] = useState("") 
+    const [campeonato, setCampeonato] = useState([]) 
 
     const {ids: coded} = useParams()
     const ids = decodeHashId(coded)
@@ -28,40 +28,63 @@ const Payload = () => {
     useEffect(() => {
         
 
+        const getCampeonato = async () => {
+            const {data: campeonatoData} = await Api.get(`campeonatos/id/${id_campeonato}`)
+            setCampeonato(campeonatoData)
+        }
+    
+        getCampeonato()
+        
+    }, [])
+
+    //console.log(campeonato[0].valor_entrada)
+
+  
+    useEffect(() => {
         const getPayment = async () => {
-            if(!ocurred){
+            if(!ocurred && campeonato.length > 0){
                 setLoading(true)
                     const getQrCode = await Api.post(`/campeonato/pagar`, {
                         name: `${getUserData().nome_completo}`,
                         telefone: `${getUserData().celular}`,
                         email: `${getUserData().email}`,
+                        valor: `${campeonato[0].valor_entrada}`,
+                        fk_id_time: id_time,
+                        fk_id_campeonato: id_campeonato
                     })
                     setPayload(getQrCode.data)
     
                 setLoading(false)
                 setOcurred(true)
+                console.log(campeonato[0].valor_entrada)
             }
         }
-    
+
         if(!ocurred){
             getPayment()
         }
 
-        socket.on("payed", () =>{
-            try {
-                
-            } catch (error) {
-                
-            }
-            navigate('/')
-          })
-        
-    }, [])
-  
-    useEffect(() => {
-        console.log(payload.data)
+    }, [campeonato])
 
-    }, [payload.data])
+    useEffect(() => {
+        socket.on("payed", async () =>{
+            try{
+                if(campeonato.length > 0){
+                    const valor = parseFloat(campeonato[0]?.valor_entrada)
+                    await Api.post(`/campeonatos/inscrever/pagamentos`, {
+                        "fk_id_time": id_time,
+                        "fk_id_campeonato": id_campeonato,
+                        "valor_pagamento": valor
+                    })
+                }
+            }catch(e){
+                alert(e)
+            }
+            navigate('/classificacao')
+            window.location.reload()
+          })
+    }, [ocurred]);
+
 
 
     return (
