@@ -44,7 +44,7 @@ const Payload = () => {
         const getPayment = async () => {
             if(!ocurred && campeonato.length > 0){
                 setLoading(true)
-                    const getQrCode = await Api.post(`/campeonato/pagar`, {
+                    const {data: getQrCode} = await Api.post(`/campeonato/pagar`, {
                         name: `${getUserData().nome_completo}`,
                         telefone: `${getUserData().celular}`,
                         email: `${getUserData().email}`,
@@ -52,7 +52,7 @@ const Payload = () => {
                         fk_id_time: id_time,
                         fk_id_campeonato: id_campeonato
                     })
-                    setPayload(getQrCode.data)
+                    setPayload(getQrCode)
     
                 setLoading(false)
                 setOcurred(true)
@@ -60,7 +60,7 @@ const Payload = () => {
             }
         }
 
-        if(!ocurred){
+        if(!ocurred && campeonato.length > 0){
             getPayment()
         }
 
