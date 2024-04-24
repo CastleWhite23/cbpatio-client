@@ -57,6 +57,8 @@ const Payload = () => {
                 setLoading(false)
                 setOcurred(true)
                 console.log(campeonato[0].valor_entrada)
+            }else{
+                console.log('ja foi amigo')
             }
         }
 
@@ -64,7 +66,7 @@ const Payload = () => {
             getPayment()
         }
 
-    }, [campeonato])
+    }, [campeonato, ocurred])
 
     useEffect(() => {
         socket.on("payed", async () =>{
