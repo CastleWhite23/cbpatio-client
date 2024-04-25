@@ -71,7 +71,7 @@ const Payload = () => {
     useEffect(() => {
         socket.on("payed", async () =>{
             try{
-                if(campeonato.length > 0){
+                if(campeonato && campeonato[0]?.valor_entrada){
                     const valor = parseFloat(campeonato[0]?.valor_entrada)
                     await Api.post(`/campeonatos/inscrever/pagamentos`, {
                         "fk_id_time": id_time,
