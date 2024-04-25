@@ -86,18 +86,7 @@ const Classificacao = () => {
             <PageTitle text={'MEUS JOGOS'} />
             <DividerComponent margin={'3rem 0'} />
             <div className='div__jogos'>
-                {
-                    games.length > 0
-
-                        ?
-
-                        <>
-                            <PageTitle text={"Próximos jogos"} />
-
-                        </>
-                        :
-                        ""
-                }
+                {games.length > 0 && <PageTitle text={"Próximos jogos"} />}
                 {
                     games.map((game, index) => (
                         <div className='camp__jogo'>
@@ -109,86 +98,52 @@ const Classificacao = () => {
                                 title={game.nome_camp}
                                 width={'20%'} />
 
-                            <CardClassificacao 
+                            <CardClassificacao
                                 data_hora={game.data_hora}
                                 fase={game.fase}
                                 jogo={game.fase}
                                 nome_time={game.nome_time}
                                 key={index}
                                 nome_time_vs={game.nome_time_vs}
+
                             />
                         </div>
                     ))}
 
-                {esperando.map((game) => (
-                    <div className='camp__jogo'>
-
-                        <CardCampeonato
-                            type='preview' idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`} />
-
-                        <Card variant={"darkpurple"} width={"40%"}>
-                            <h1>JOGO: A DEFINIR</h1>
-                            <DividerComponent />
-                            <div>
-                                <span>DATA: A DEFINIR</span>
-
-                                <div>
-                                    <h2>{game.nome_time}</h2>
-                                    <span>VS.</span>
-                                    <h2>A DEFINIR</h2>
-                                </div>
-
-                                <span>HORÁRIO: A DEFINIR</span>
-
-                                <DividerComponent />
-                                <h1></h1>
-                            </div>
-                        </Card>
-                    </div>
-                ))}
-
                 {
-                    campeao.length == 0 && eliminados.length == 0
-
-                        ?
-                        ""
-                        :
-                        <>
+                    campeao.length == 0 && eliminados.length == 0  ? "" :
+                       <>
                             <DividerComponent />
                             <PageTitle text={"Situação Final"} />
                         </>
                 }
 
-                {campeao.map((game) => (
+                {campeao.map((game, index) => (
                     <div className='camp__jogo'>
 
-                        <CardCampeonato type='preview' idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}>
+                        <CardCampeonato
+                            type='preview'
+                            idCamp={game.id_campeonato}
+                            bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                            title={game.nome_camp}
+                            width={'20%'}
+                        />
 
-                        </CardCampeonato>
 
-                        <Card variant={"darkpurple"} width={"40%"}>
-                            <h1>JOGO {game.jogo} - {game.fase}</h1>
-                            <DividerComponent />
-                            <div>
-                                <span>{game.data_hora}</span>
-
-                                <div>
-                                    <h2>{game.nome_time}</h2>
-                                    <span>VS.</span>
-                                    <h2>{game.nome_time_vs}</h2>
-                                </div>
-
-                                <span>COMEÇA ÀS {game.data_hora}</span>
-
-                                <DividerComponent />
-                                <h1></h1>
-                            </div>
-                        </Card>
+                        <CardClassificacao
+                            data_hora={game.data_hora}
+                            fase={game.fase}
+                            jogo={game.fase}
+                            nome_time={game.nome_time}
+                            key={index}
+                            nome_time_vs={game.nome_time_vs}
+                            campeao={true}
+                        />
                     </div>
                 ))}
 
 
-                {eliminados.map((game) => (
+                {eliminados.map((game, index) => (
                     <div className='camp__jogo'>
 
                         <CardCampeonato
@@ -198,24 +153,16 @@ const Classificacao = () => {
                             title={game.nome_camp}
                             width={'20%'} />
 
-                        <Card variant={"darkpurple"} width={"40%"}>
-                            <div className='card-main'>
-                                <span className='darkpurple'>{
-                                    `Já aconteceu em ${formataData(game.data_hora)}`
-                                }
-                                </span>
-
-                            </div>
-                            <DividerComponent />
-                            <div className='card-footer'>
-                                <h1 className={
-                                    (game.eliminado_em.slice(9)) == ' final' ? 'green' :
-                                        (game.eliminado_em.slice(9)) == ' semis' ? 'pink' :
-                                            (game.eliminado_em.slice(9)) == ' quartas' ? 'orange' :
-                                                (game.eliminado_em.slice(9)) == ' oitavas' && 'blue'
-                                }>{game.eliminado_em.slice(9)} - <span className='red'>Eliminado</span></h1>
-                            </div>
-                        </Card>
+                        <CardClassificacao
+                            data_hora={game.data_hora}
+                            fase={game.fase}
+                            jogo={game.fase}
+                            nome_time={game.nome_time}
+                            key={index}
+                            nome_time_vs={game.nome_time_vs}
+                            eliminado={true}
+                            eliminado_em={game.eliminado_em}
+                        />
                     </div>
                 ))}
 
