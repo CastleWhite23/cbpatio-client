@@ -42,6 +42,9 @@ body {
 .link:hover {
   color: #4261fa;
 }
+.twodarkpurple{
+  color: #332651;
+}
 
 .darkpurple{
   color: #7a42f3;
@@ -69,5 +72,3 @@ body {
 .green{
   color: #19F43C;
 }
-
-
