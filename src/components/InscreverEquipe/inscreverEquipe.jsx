@@ -29,7 +29,7 @@ const InscreverEquipe = ({id_campeonato}) => {
 
     useEffect(() => {
         const getTimes = async () => {
-           const [times, campeonatos] = await Promise.all([
+           const [times, campeonatos, timesInscritos] = await Promise.all([
             Api.get(`/times/time/capitao/${getUserData().id}`),
             Api.get(`campeonatos/id/${id_campeonato}`)
            ])
@@ -59,10 +59,28 @@ const InscreverEquipe = ({id_campeonato}) => {
             alert(`seleciona alguma coisa krl ${JSON.stringify(selectedValues)}`)
             return
         }
-        
-        const {data: pessoasTime} = await Api.get(`/usuarios/time/${selectedValues[0].id_time}`)
 
-        if(pessoasTime.length != campeonato[0].jogadores){
+        const timesNoCampeonatos = await Api.get(`/campeonatos/time/times/${campeonato[0].id_campeonato}`)
+        const pessoasTime = await Api.get(`/usuarios/time/${selectedValues[0].id_time}`)
+
+
+        if(pessoasTime.data.length > 0){
+            for(const pessoa of pessoasTime.data){
+                const {data: existe} = await Api.get(`/campeonatos/time/usuario/existe/${pessoa.idUser}/${campeonato[0].id_campeonato}`)
+                console.log(existe)
+                if(existe.length > 0){
+                    alert("Seu time já tem uma pessoa cadastrada no campeonato")
+                    return
+                }
+            }
+        }
+
+        if(timesNoCampeonatos.data.length >= campeonato[0].jogadores){
+            alert("O limite de times inscritos no campeonato já foi atingido")
+            return
+        }
+
+        if(pessoasTime.data.length != campeonato[0].jogadores){
             alert(`Os jogadores para este campeonato são de ${campeonato[0].jogadores}`)
             return
         }
