@@ -31,6 +31,9 @@
     .camp__jogo .card-darkpurple{
         width: 90% !important;
     }
+    .camp__jogo .card-lightpurple{
+        width: 90% !important;
+    }
     .camp__jogo .card-img{
         width: 90% !important;
         flex-direction: column;
