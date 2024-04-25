@@ -33,6 +33,11 @@
     border-radius: 10px;
 }
 
+.card-lightpurple{
+    background-color: #5534aadd;
+    border-radius: 10px;
+}
+
 .card-purple .things{
     width: 100%;
     height: 100%;
