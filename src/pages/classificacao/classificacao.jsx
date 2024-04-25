@@ -120,30 +120,24 @@ const Classificacao = () => {
                         </div>
                     ))}
 
-                {esperando.map((game) => (
+                {esperando.map((game, index) => (
                     <div className='camp__jogo'>
 
-                        <CardCampeonato
-                            type='preview' idCamp={1} bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`} />
-
-                        <Card variant={"darkpurple"} width={"40%"}>
-                            <h1>JOGO: A DEFINIR</h1>
-                            <DividerComponent />
-                            <div>
-                                <span>DATA: A DEFINIR</span>
-
-                                <div>
-                                    <h2>{game.nome_time}</h2>
-                                    <span>VS.</span>
-                                    <h2>A DEFINIR</h2>
-                                </div>
-
-                                <span>HORÁRIO: A DEFINIR</span>
-
-                                <DividerComponent />
-                                <h1></h1>
-                            </div>
-                        </Card>
+                            <CardCampeonato
+                                type='preview'
+                                idCamp={game.id_campeonato}
+                                bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                title={game.nome_camp}
+                                width={'20%'} />
+                       
+                            <CardClassificacao 
+                                data_hora={game.data_hora}
+                                fase={game.fase}
+                                jogo={game.fase}
+                                nome_time={game.nome_time}
+                                key={index}
+                                nome_time_vs={"A DEFINIR"}
+                            />
                     </div>
                 ))}
 
