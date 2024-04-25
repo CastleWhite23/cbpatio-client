@@ -10,7 +10,7 @@ import { DividerComponent } from '../../components/Divider/DividerComponent'
 import { AuthContext } from '../../context/context'
 import { Card } from '../../components/Card/Card'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
-import { formataData, formataHora } from '../../services/getData'
+import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 
 const path = "http://localhost:3005"
@@ -65,6 +65,7 @@ const Classificacao = () => {
     }, []);
 
     console.log(eliminados)
+    console.log(getData())
 
     return (
         <>
@@ -89,8 +90,8 @@ const Classificacao = () => {
                 {games.length > 0 && <PageTitle text={"Próximos jogos"} />}
                 {
                     games.map((game, index) => (
+                       
                         <div className='camp__jogo'>
-
                             <CardCampeonato
                                 type='preview'
                                 idCamp={game.id_campeonato}
@@ -99,6 +100,9 @@ const Classificacao = () => {
                                 width={'20%'} />
 
                             <CardClassificacao
+                                ocorrendo={
+                                    formataData(game.data_hora) == formataData(getData()) ? true : false
+                                }
                                 data_hora={game.data_hora}
                                 fase={game.fase}
                                 jogo={game.fase}
@@ -157,9 +161,8 @@ const Classificacao = () => {
                             data_hora={game.data_hora}
                             fase={game.fase}
                             jogo={game.fase}
-                            nome_time={game.nome_time}
+                            nome_time={game.nome}
                             key={index}
-                            nome_time_vs={game.nome_time_vs}
                             eliminado={true}
                             eliminado_em={game.eliminado_em}
                         />
