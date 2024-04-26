@@ -8,7 +8,7 @@ import { Api } from '../../services/Api';
 import { Card } from '../../components/Card/Card';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { Alert } from '@chakra-ui/react';
+import { Alert, useToast } from '@chakra-ui/react';
 import Logo from '../../assets/logo.png';
 import './Cadastro.css';
 
@@ -25,6 +25,8 @@ const schema = yup.object({
 const Cadastro = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const toast = useToast()
+
     const {
         control,
         handleSubmit,
@@ -51,17 +53,35 @@ const Cadastro = () => {
                 },
             });
             if(req.data.message == "Nome de usuário já cadastrado!"){
-                alert("Nome de usuario já cadastrado!")
+                toast({
+                    title: `Nome de usuario já cadastrado!`,
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
                 return
             }
 
             if(req.data.message == "Email já cadastrado!"){
-                alert("Email já cadastrado!")
+                toast({
+                    title: `Email já cadastrado!`,
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
                 return
             }
             navigate('/login');
             window.location.reload();
-            alert("Usuário cadastrado com sucesso! agora faça seu login")
+            toast({
+                title: `Usuario Cadastrado com sucesso, agora realize seu login!`,
+                position: 'bottom-left',
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+            })
         } catch (error) {
             console.error('Erro ao cadastrar:', error);
         } finally {
