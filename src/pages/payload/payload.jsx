@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./payload.css"
-import { Qrcode } from '../qrcode/qrcode'
+import { Qrcode } from '../../components/qrcode/qrcode'
 import { decodeHashId } from '../../services/formatFunctions'
 import { useParams } from 'react-router-dom'
 import { Api } from '../../services/Api'

@@ -3,6 +3,7 @@ import "./Campeonatos.css"
 import { SwiperCampeonatos } from "../../components/swiperCampeonatos/swiperCampeonatos"
 import { Link } from "react-router-dom"
 const Campeonatos = () =>{
+    document.title = "CBPatio | Campeonatos"
     return(
         <>
             <section className="camp">
