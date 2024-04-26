@@ -15,7 +15,8 @@ import { Classificacao } from '../../pages/classificacao/classificacao'
 import { MeusTimesJogador } from '../../pages/MeusTimesJogador/MeusTimesJogador'
 import { EditarJogador } from '../../pages/EditarJogador/EditarJogador'
 import { Inscrever } from '../../pages/Inscrever/inscrever'
-import { Payload } from '../payload/payload'
+import { Payload } from '../../pages/payload/payload'
+import { Obrigado } from '../../pages/obrigado/obrigado'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -68,6 +69,10 @@ const MainRoutes = () => {
                     {/* ROTAS DE CLASSIFICAÇÕES */}
                     <Route path='/classificacao' element={isAuth ? <Layout><Classificacao /> </Layout> : <Login />
                     } />
+                    
+                    <Route path='/obrigado' element={isAuth ? <Layout><Obrigado /></Layout> : <Login />
+                    } />
+
 
                     {/* ROTA DE PAGAMENTO */}
                     <Route path='/pagamento/:ids' element={isAuth ? <Payload /> : <Login /> } />
