@@ -69,24 +69,38 @@ const Classificacao = () => {
 
     useEffect(() => {
         const getDateElim = async () => {
-            const newEliminado = []
-            for(const [index, eliminado] of eliminados.entries()){
-                const eliminado_fase = eliminado.eliminado_em.split(' ')
-                console.log(eliminado.fk_id_time, eliminado.fk_id_campeonato, eliminado_fase[1])
+            const updatedEliminados = [];
+            for (const eliminado of eliminados) {
+                const eliminado_fase = eliminado.eliminado_em.split(' ');
+                console.log(eliminado.fk_id_time, eliminado.fk_id_campeonato, eliminado_fase[1]);
                 try {
-                    const {data: date} = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/quartas`)
-                    setData(date)
+                    if(eliminado_fase[1] == "semis"){
+                        console.log(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/semis`)
+                        const { data: date } = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/semis`);
+                        updatedEliminados.push({ ...eliminado, data_hora: date[0]?.data_hora });
+                    }else if(eliminado_fase[1] == "quartas"){
+                        const { data: date } = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/quartas`);
+                        updatedEliminados.push({ ...eliminado, data_hora: date[0]?.data_hora });
+
+                    }else if(eliminado_fase[1] == 'oitavas'){
+                        const { data: date } = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/quartas`);
+                        updatedEliminados.push({ ...eliminado, data_hora: date[0]?.data_hora });
+                    }else if(eliminado_fase[1] == 'final'){
+                        const { data: date } = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/quartas`);
+                        updatedEliminados.push({ ...eliminado, data_hora: date[0]?.data_hora });
+                    }
                 } catch (error) {
                     console.error('Erro ao obter a data de eliminação:', error);
                     // Se ocorrer um erro, podemos apenas manter os dados existentes do eliminado
+                    updatedEliminados.push(eliminado);
                 }
             }
-
-        }
-
-        getDateElim()
-
-    }, [eliminados])
+            setEliminados(updatedEliminados);
+        };
+    
+        getDateElim();
+    }, [esperando]);
+    
 
     console.log(eliminados)
     //console.log(getData())
@@ -208,7 +222,7 @@ const Classificacao = () => {
                             width={'20%'} />
 
                         <CardClassificacao
-                            data_hora={data[index]?.data_hora}
+                            data_hora={game.data_hora}
                             fase={game.fase}
                             jogo={game.fase}
                             nome_time={game.nome}
