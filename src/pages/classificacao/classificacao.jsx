@@ -20,7 +20,10 @@ const Classificacao = () => {
     const [liveOn, setLiveOn] = useState(false)
     const [games, setGames] = useState([])
     const [campeao, setCampeao] = useState([])
+
     const [eliminados, setEliminados] = useState([])
+    const [data, setData] = useState([])
+
     const [esperando, setEsperando] = useState([])
 
     const { getUserData } = useContext(AuthContext)
@@ -64,8 +67,29 @@ const Classificacao = () => {
 
     }, []);
 
+    useEffect(() => {
+        const getDateElim = async () => {
+            const newEliminado = []
+            for(const [index, eliminado] of eliminados.entries()){
+                const eliminado_fase = eliminado.eliminado_em.split(' ')
+                console.log(eliminado.fk_id_time, eliminado.fk_id_campeonato, eliminado_fase[1])
+                try {
+                    const {data: date} = await Api.get(`/campeonatos/time/horarioElim/${eliminado.fk_id_time}/${eliminado.fk_id_campeonato}/quartas`)
+                    setData(date)
+                } catch (error) {
+                    console.error('Erro ao obter a data de eliminação:', error);
+                    // Se ocorrer um erro, podemos apenas manter os dados existentes do eliminado
+                }
+            }
+
+        }
+
+        getDateElim()
+
+    }, [eliminados])
+
     console.log(eliminados)
-    console.log(getData())
+    //console.log(getData())
 
     return (
         <>
@@ -109,6 +133,32 @@ const Classificacao = () => {
                                 nome_time={game.nome_time}
                                 key={index}
                                 nome_time_vs={game.nome_time_vs}
+
+                            />
+                        </div>
+                    ))}
+
+{
+                    esperando.map((game, index) => (
+                       
+                        <div className='camp__jogo'>
+                            <CardCampeonato
+                                type='preview'
+                                idCamp={game.id_campeonato}
+                                bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                title={game.nome_camp}
+                                width={'20%'} />
+
+                            <CardClassificacao
+                                ocorrendo={
+                                    formataData(game.data_hora) == formataData(getData()) ? true : false
+                                }
+                                data_hora={game.data_hora}
+                                fase={"EM BREVE"}
+                                jogo={game.fase}
+                                nome_time={game.nome_time}
+                                key={index}
+                                nome_time_vs={"A DEFINIR"}
 
                             />
                         </div>
@@ -158,7 +208,7 @@ const Classificacao = () => {
                             width={'20%'} />
 
                         <CardClassificacao
-                            data_hora={game.data_hora}
+                            data_hora={data[index]?.data_hora}
                             fase={game.fase}
                             jogo={game.fase}
                             nome_time={game.nome}
