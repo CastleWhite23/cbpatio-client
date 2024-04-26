@@ -11,6 +11,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import { hashId } from '../../services/formatFunctions';
+import { useToast } from '@chakra-ui/react';
+import {SpinnerCustom} from '../Spinner/Spinner'
+
 
 
 const schema = yup.object({
@@ -20,6 +23,7 @@ const schema = yup.object({
 
 const InscreverEquipe = ({id_campeonato}) => {
     const navigate = useNavigate()
+    const toast = useToast()
 
     const [loading, setLoading] = useState(false)
     const [selectedValues, setSelectedValues] = useState([]);
@@ -54,9 +58,16 @@ const InscreverEquipe = ({id_campeonato}) => {
     });
 
     const onSubmit = async (formData) => {
-        
-        if(!selectedValues[0].id_time){
-            alert(`seleciona alguma coisa krl ${JSON.stringify(selectedValues)}`)
+       console.log(formData)
+
+        if(!selectedValues[0] || !selectedValues[0].id_time){
+            toast({
+                title: `Selecione algum time!`,
+                position: 'bottom-left',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
             return
         }
 
@@ -69,14 +80,26 @@ const InscreverEquipe = ({id_campeonato}) => {
                 const {data: existe} = await Api.get(`/campeonatos/time/usuario/existe/${pessoa.idUser}/${campeonato[0].id_campeonato}`)
                 console.log(existe)
                 if(existe.length > 0){
-                    alert("Seu time já tem uma pessoa cadastrada no campeonato")
+                    toast({
+                        title: `Seu time já tem um integrante inscrito!`,
+                        position: 'bottom-left',
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                    })
                     return
                 }
             }
         }
 
         if(timesNoCampeonatos.data.length >= campeonato[0].jogadores){
-            alert("O limite de times inscritos no campeonato já foi atingido")
+            toast({
+                title: `O limite de times inscritos no campeonato já foi atingido`,
+                position: 'bottom-left',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
             return
         }
 
@@ -85,7 +108,13 @@ const InscreverEquipe = ({id_campeonato}) => {
             return
         }
 
-        alert(`Indo para pagamento...`)
+        toast({
+            title: `Indo para pagamento!`,
+            position: 'bottom-left',
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+        })
         navigate(`/pagamento/${hashId(`${campeonato[0].id_campeonato}-${selectedValues[0].id_time}`)}`)
     }
 
@@ -117,9 +146,9 @@ const InscreverEquipe = ({id_campeonato}) => {
                                 </option>
                             ))}
                         </select>
-                        <p className="error">{errors?.username?.message}</p>
+                        <p className="error">{errors?.time?.message}</p>
                     </div>
-                    <Button text={loading ? 'Carregando...' : 'Ir para pagamento'} variant="green" type="submit" width="100%" height={'60px'} />
+                    <Button text={loading ? <SpinnerCustom/>: 'Ir para pagamento'} variant="green" type="submit" width="100%" height={'60px'} />
                 </form>
             </div>
         </>
