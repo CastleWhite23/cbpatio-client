@@ -17,6 +17,7 @@ import { EditarJogador } from '../../pages/EditarJogador/EditarJogador'
 import { Inscrever } from '../../pages/Inscrever/inscrever'
 import { Payload } from '../../pages/payload/payload'
 import { Obrigado } from '../../pages/obrigado/obrigado'
+import { FormStepper } from '../FormStepper/FormStepper'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -42,8 +43,8 @@ const MainRoutes = () => {
 
 
                     {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
-                    
-                    <Route path='/campeonatos/inscrever/:id_camp' element={ isAuth ? <Layout> <Inscrever /> </Layout> : <Login />} />
+
+                    <Route path='/campeonatos/inscrever/:id_camp' element={isAuth ? <Layout> <Inscrever /> </Layout> : <Login />} />
 
                     {/* ROTA DE CONFIG DE USUARIO */}
 
@@ -69,13 +70,20 @@ const MainRoutes = () => {
                     {/* ROTAS DE CLASSIFICAÇÕES */}
                     <Route path='/classificacao' element={isAuth ? <Layout><Classificacao /> </Layout> : <Login />
                     } />
-                    
-                    <Route path='/obrigado' element={isAuth ? <Layout><Obrigado /></Layout> : <Login />
+
+                    <Route path='/obrigado' element={isAuth ?
+                        <Layout>
+                            <FormStepper component={<Obrigado />} indexStep={3} />
+                        </Layout> : <Login />
                     } />
 
 
                     {/* ROTA DE PAGAMENTO */}
-                    <Route path='/pagamento/:ids' element={isAuth ? <Payload /> : <Login /> } />
+                    <Route path='/pagamento/:ids' element={isAuth ?
+                        <Layout>
+                            <FormStepper component={<Payload />} indexStep={1} />
+                        </Layout>
+                        : <Login />} />
 
                 </Routes>
             </AuthContextProvider>
