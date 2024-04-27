@@ -1,0 +1,16 @@
+.form-stepper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.form-stepper .components{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
