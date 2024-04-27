@@ -17,10 +17,13 @@ const FormStepper = ({ component, indexStep }) => {
     return (
         <>
             <div className="form-stepper">
-                <div className='components'>
-                    
+                <div className='component'>
+                    <CampeonatoDescription />
+                </div>
+                <div className='component-stepper'>
                     {component}
                 </div>
+
 
             </div>
             <StepperCustom indexStep={indexStep} />
