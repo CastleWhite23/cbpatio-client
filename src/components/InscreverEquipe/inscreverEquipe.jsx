@@ -16,6 +16,8 @@ import { SpinnerCustom } from '../Spinner/Spinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 import { PageTitle } from '../pageTitle/pageTitle'
+import { CampeonatoDescription } from '../CampeonatoDescription/CampeonatoDescription';
+import omega from '../../assets/omega.png'
 
 
 
@@ -99,6 +101,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
         if (timesNoCampeonatos.data.length >= campeonato[0].jogadores) {
             toast({
                 title: `O limite de times inscritos no campeonato já foi atingido`,
+                description: `16/16`,
                 position: 'bottom-left',
                 status: 'error',
                 duration: 5000,
@@ -108,7 +111,14 @@ const InscreverEquipe = ({ id_campeonato }) => {
         }
 
         if (pessoasTime.data.length != campeonato[0].jogadores) {
-            alert(`Os jogadores para este campeonato são de ${campeonato[0].jogadores}`)
+            toast({
+                title: `Time contém mais jogadores do que o permitido para esse campeonato!`,
+                description: `Os times para se increver nesse campeonato devem ter apenas ${campeonato[0].jogadores} integrante(s)!`,
+                position: 'bottom-left',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
             return
         }
 
@@ -144,12 +154,13 @@ const InscreverEquipe = ({ id_campeonato }) => {
 
                         <>
                             <PageTitle text={campeonato[0].nome} />
+
                             <form onSubmit={handleSubmit(onSubmit)} >
 
                                 <div>
                                     <label htmlFor="time">Selecione seu time:</label>
                                     <select name="time" onChange={(e) => handleSelectChange(0, `jogo 1 oitavas (casa)`, e)}>
-                                        <option value="">Selecione seu melhor time!</option>
+                                        <option value="">Escolha seu melhor time!</option>
                                         {times.map((time) => (
                                             <option value={time.id_time}>
                                                 {time.nome}
@@ -158,8 +169,17 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                     </select>
                                     <p className="error">{errors?.time?.message}</p>
                                 </div>
-                                <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
+                                <div >
+                                    <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
+                                </div>
+                                <p>Times incritos: (0/16)</p>
+                                 <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
+                           
+                            <div className='omega'>
+                         
+                                <img  src={omega} alt="" srcset="" />
+                            </div>
                         </>
 
                     }
