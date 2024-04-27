@@ -3,7 +3,7 @@ import { Spinner, Center } from "@chakra-ui/react"
 const SpinnerCustom = () => {
     return (
         <>
-            <Center>
+            <Center >
                 <Spinner
                     thickness='4px'
                     speed='0.65s'
