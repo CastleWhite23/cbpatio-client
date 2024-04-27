@@ -57,6 +57,7 @@
 
 @media (max-width: 800px) {
     .card .main__infos img{
+        margin-top: 3rem;
         width: 100px;
         margin-bottom: 15px;
     }
@@ -81,5 +82,30 @@
     .card .main__desc{
         font-size: 10px;
     
+    }
+}
+
+@media (min-width: 1500px){
+    
+    .card .main__infos{
+        margin-top: 4rem;
+    }
+    
+    .card .main__infos img{
+        width: 200px;
+        margin-bottom: 15px;
+    }
+
+    .card h1{
+        color: #866CC9;
+        font-size: 45px;
+        font-weight: 700;
+    }
+
+    .card .main__infos .main__subtitle{
+        color: #866CC9;
+        font-size: 25px;
+        font-weight: 700;
+        margin: 1rem 0;
     }
 }

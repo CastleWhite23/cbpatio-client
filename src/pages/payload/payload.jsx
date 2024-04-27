@@ -85,7 +85,7 @@ const Payload = () => {
             } catch (e) {
                 alert(e)
             }
-            navigate('/classificacao')
+            navigate('/obrigado')
             window.location.reload()
         })
     }, [ocurred]);
