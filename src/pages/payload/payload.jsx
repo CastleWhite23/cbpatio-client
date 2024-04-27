@@ -8,6 +8,7 @@ import { AuthContext } from '../../context/context'
 import QRCode from 'react-qr-code'
 import { socket } from "../../services/socket";
 import { useNavigate } from "react-router-dom";
+import {SpinnerCustom } from '../../components/Spinner/Spinner';
 
 const Payload = () => {
     
@@ -95,7 +96,7 @@ const Payload = () => {
             loading 
             
             ?
-            'carregando krl'
+            <SpinnerCustom />
             :
             
             <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""}/>
