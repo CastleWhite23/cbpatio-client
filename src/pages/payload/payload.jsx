@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { SpinnerCustom } from '../../components/Spinner/Spinner';
 import { Button } from '../../components/Button/Button'
 import { PageTitle } from '../../components/pageTitle/pageTitle'
+import omega from '../../assets/omega.png'
 
 const Payload = () => {
 
@@ -93,7 +94,7 @@ const Payload = () => {
 
 
     return (
-        <div>
+        <>
             {
                 loading
 
@@ -107,11 +108,16 @@ const Payload = () => {
                         <h2>Valor da inscrição: <span>{campeonato[0].valor_entrada} R$</span></h2>
                         <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""} />
                         <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} />
+                        <p>Após a confirmação do pagamento você será automaticamente inscrito no campeonato!</p>
+                        <div className='omega'>
+
+                            <img src={omega} alt="" srcset="" />
+                        </div>
                     </div>
 
 
             }
-        </div>
+        </>
     )
 }
 
