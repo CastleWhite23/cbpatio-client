@@ -9,8 +9,8 @@ import QRCode from 'react-qr-code'
 import { socket } from "../../services/socket";
 import { useNavigate } from "react-router-dom";
 import { SpinnerCustom } from '../../components/Spinner/Spinner';
-import {Button} from '../../components/Button/Button'
-import {PageTitle} from '../../components/pageTitle/pageTitle'
+import { Button } from '../../components/Button/Button'
+import { PageTitle } from '../../components/pageTitle/pageTitle'
 
 const Payload = () => {
 
@@ -102,9 +102,11 @@ const Payload = () => {
                     :
                     <div className="qrcode">
 
-                        <PageTitle text={campeonato[0].nome}/>
+                        <PageTitle text={campeonato[0].nome} />
+                        <h3>pagamento pix</h3>
+                        <h2>Valor da inscrição: <span>{campeonato[0].valor_entrada} R$</span></h2>
                         <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""} />
-                        <Button text={loading ? <SpinnerCustom/> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"}/>
+                        <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} />
                     </div>
 
 

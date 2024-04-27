@@ -11,3 +11,17 @@
     gap: 2rem;
 
 }
+.qrcode h3, h2{
+   text-transform: uppercase;
+   font-weight: 600;
+   color: #866CC9;
+}
+
+.qrcode h3{ 
+    color: #866CC9;
+    
+}
+
+.qrcode h2 span{ 
+    color: #66CD35;
+}
