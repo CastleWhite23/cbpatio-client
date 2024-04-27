@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import { hashId } from '../../services/formatFunctions';
 import { useToast } from '@chakra-ui/react';
 import {SpinnerCustom} from '../Spinner/Spinner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -134,12 +136,12 @@ const InscreverEquipe = ({id_campeonato}) => {
     // TEM QUE TER VERIFICAÇÃO SE O USERNAME JA FAZ PARTE DO TIME
     return (
         <>
-            <div className="form-solicita">
+            <div className="inscrever-equipe">
                 <h1>Inscrever</h1>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <div>
                         <select name="time" onChange={(e) => handleSelectChange(0, `jogo 1 oitavas (casa)`, e)}>
-                            <option value="">Selecione sua melhor equipe!</option>
+                            <option value="">Selecione seu melhor time!</option>
                             {times.map((time) => (
                                 <option value={time.id_time}>
                                     {time.nome}
@@ -148,7 +150,7 @@ const InscreverEquipe = ({id_campeonato}) => {
                         </select>
                         <p className="error">{errors?.time?.message}</p>
                     </div>
-                    <Button text={loading ? <SpinnerCustom/>: 'Ir para pagamento'} variant="green" type="submit" width="100%" height={'60px'} />
+                    <Button text={loading ? <SpinnerCustom/>: <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'}/>
                 </form>
             </div>
         </>
