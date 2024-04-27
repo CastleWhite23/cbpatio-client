@@ -147,6 +147,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                             <form onSubmit={handleSubmit(onSubmit)} >
 
                                 <div>
+                                    <label htmlFor="time">Selecione seu time:</label>
                                     <select name="time" onChange={(e) => handleSelectChange(0, `jogo 1 oitavas (casa)`, e)}>
                                         <option value="">Selecione seu melhor time!</option>
                                         {times.map((time) => (

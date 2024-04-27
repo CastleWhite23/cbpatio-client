@@ -24,6 +24,10 @@
     justify-content: center;
     gap: 2rem;
 }
+.inscrever-equipe form label{
+    font-weight: 600;
+   color: #866CC9;
+}
 
 .inscrever-equipe select {
     background-color: #fff;
