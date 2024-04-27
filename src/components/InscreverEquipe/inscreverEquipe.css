@@ -7,6 +7,9 @@
     gap: 2rem;
     background-color: #1B1230;
     border-radius: 10px;
+    height: 100% ;
+    position: relative;
+
 }
 
 .inscrever-equipe h1 {
@@ -21,12 +24,26 @@
 .inscrever-equipe form {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 2rem;
+    height: 100%;
 }
-.inscrever-equipe form label{
+
+.inscrever-equipe form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inscrever-equipe form p {
     font-weight: 600;
-   color: #866CC9;
+    color: #866CC9;
+}
+
+.inscrever-equipe form label {
+    font-weight: 600;
+    color: #866CC9;
 }
 
 .inscrever-equipe select {
@@ -49,7 +66,17 @@
 
 .inscrever-equipe p {
     text-align: center;
+    color: #866CC9;
 }
+.inscrever-equipe h3{
+    text-align: center;
+    color: #866CC9;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-top: 3rem;
+}
+
 
 .inscrever-equipe span {
     color: #0a74ff;
@@ -59,6 +86,19 @@
     color: #ff0000;
 }
 
+
+
+.inscrever-equipe .omega img{
+    display: flex;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    position: absolute;
+}
+
+
+
+    
 
 @media (max-width:670px) {
     .inscrever-equipe {
