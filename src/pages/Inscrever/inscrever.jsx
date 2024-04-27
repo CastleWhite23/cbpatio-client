@@ -5,6 +5,7 @@ import { InscreverEquipe } from '../../components/InscreverEquipe/inscreverEquip
 import { FormStepper } from '../../components/FormStepper/FormStepper'
 
 
+
 const Inscrever = () => {
     const { id_camp } = useParams()
     const id = decodeHashId(id_camp)
@@ -13,10 +14,7 @@ const Inscrever = () => {
 
     return (
         <>
-            <h1>Campeonato description</h1>
-
            <FormStepper component={ <InscreverEquipe id_campeonato={id} />} indexStep={0}/>
-
         </>
 
     )
