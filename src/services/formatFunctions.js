@@ -32,6 +32,14 @@ function decodeHashId(encryptedValue) {
 
 }
 
+function formataDinheiro(valor){
+    const formata = Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
+    return formata.format(valor)
+}
 
 
-export {formatarNumero, hashId, decodeHashId}
+
+export {formatarNumero, hashId, decodeHashId, formataDinheiro}
