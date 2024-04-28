@@ -23,10 +23,13 @@ import omega from '../../assets/omega.png'
 
 const schema = yup.object({
     time: yup.string(),
+    politica: yup.string()
 }).required()
 
 
 const InscreverEquipe = ({ id_campeonato }) => {
+
+
     const navigate = useNavigate()
     const toast = useToast()
 
@@ -65,12 +68,21 @@ const InscreverEquipe = ({ id_campeonato }) => {
         control,
         handleSubmit,
         formState: { errors, isValid },
+        watch,
+        register
     } = useForm({
         resolver: yupResolver(schema),
         mode: 'onChange',
     });
 
+    const watchCheckbox = watch('politica', false)
+    console.log(watchCheckbox)
+
     const onSubmit = async (formData) => {
+        if(watchCheckbox == false){
+            alert('aceite as politicas de privacidade')
+            return
+        }
         console.log(formData)
 
         if (!selectedValues[0] || !selectedValues[0].id_time) {
@@ -181,6 +193,8 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                     </select>
                                     <p className="error">{errors?.time?.message}</p>
                                 </div>
+                                <input type="checkbox" name="politica" id="politica" {...register('politica')}/>
+                                <p>concordo com as politicas de privacidade</p>
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
