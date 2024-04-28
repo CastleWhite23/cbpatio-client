@@ -1,3 +1,14 @@
+.subtitles__inscricao .premio{
+    font-weight: 700;
+    font-size: 20px;
+    color: rgb(54, 224, 54);
+}
+
+.subtitles__inscricao .valorIns{
+    font-weight: 700;
+    color: orange
+}
+
 .inscrever-equipe {
     display: flex;
     align-items: center;

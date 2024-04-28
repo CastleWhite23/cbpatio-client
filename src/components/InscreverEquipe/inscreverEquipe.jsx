@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useContext, useState } from "react";
 import { AuthContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
-import { hashId } from '../../services/formatFunctions';
+import { formataDinheiro, hashId } from '../../services/formatFunctions';
 import { useToast } from '@chakra-ui/react';
 import { SpinnerCustom } from '../Spinner/Spinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,15 +34,21 @@ const InscreverEquipe = ({ id_campeonato }) => {
     const [selectedValues, setSelectedValues] = useState([]);
     const [times, setTimes] = useState([])
     const [campeonato, setCampeonato] = useState([])
+    const [timesInscritos, setTimesInscritos] = useState(0)
+
     const { getUserData } = useContext(AuthContext)
 
     useEffect(() => {
         const getTimes = async () => {
-            const [times, campeonatos, timesInscritos] = await Promise.all([
+            const [times, campeonatos] = await Promise.all([
                 Api.get(`/times/time/capitao/${getUserData().id}`),
                 Api.get(`campeonatos/id/${id_campeonato}`)
             ])
 
+            const {data: timesInscritos} = await Api.get(`/campeonatos/time/times/${campeonatos.data[0].id_campeonato}`)
+
+
+            setTimesInscritos(timesInscritos.length)
             setTimes(times.data)
             setCampeonato(campeonatos.data)
             setLoading(false)
@@ -52,6 +58,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
 
     console.log(times)
     console.log(campeonato)
+    console.log(timesInscritos)
 
 
     const {
@@ -153,7 +160,12 @@ const InscreverEquipe = ({ id_campeonato }) => {
                     {
 
                         <>
-                            <PageTitle text={campeonato[0].nome} />
+                                <PageTitle text={campeonato[0].nome} />
+                                
+                                <div className="subtitles__inscricao">
+                                    <p className='premio'>Premiação: {formataDinheiro(campeonato[0].premiacao)}</p>
+                                    <p className='valorIns'>Valor da inscrição: {formataDinheiro(campeonato[0].valor_entrada)}</p>
+                                </div>
 
                             <form onSubmit={handleSubmit(onSubmit)} >
 
@@ -172,7 +184,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
-                                <p>Times incritos: (0/16)</p>
+                                <p>Times incritos: ({timesInscritos > 16  ? 16 : timesInscritos}/16)</p>
                                  <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
                            
