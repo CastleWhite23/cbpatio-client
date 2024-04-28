@@ -18,7 +18,7 @@ const FormStepper = ({ component, indexStep }) => {
         <>
             <div className="form-stepper">
                 <div className='component'>
-                    <CampeonatoDescription />
+                    <CampeonatoDescription id_camp={id}/>
                 </div>
                 <div className='component-stepper'>
                     {component}
