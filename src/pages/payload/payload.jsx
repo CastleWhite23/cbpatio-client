@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { SpinnerCustom } from '../../components/Spinner/Spinner';
 import { Button } from '../../components/Button/Button'
 import { PageTitle } from '../../components/pageTitle/pageTitle'
+import { formataDinheiro } from '../../services/formatFunctions'
 import omega from '../../assets/omega.png'
 
 const Payload = () => {
@@ -28,6 +29,15 @@ const Payload = () => {
     const id_time = split[1]
     const { getUserData } = useContext(AuthContext)
     console.log(getUserData())
+
+    const copiar = async (text) =>{
+        try{
+            await navigator.clipboard.writeText(text)
+        }catch(e){
+            alert(e)
+        }
+    }
+
 
     useEffect(() => {
 
@@ -105,9 +115,9 @@ const Payload = () => {
 
                         <PageTitle text={campeonato[0].nome} />
                         <h3>pagamento pix</h3>
-                        <h2>Valor da inscrição: <span>{campeonato[0].valor_entrada} R$</span></h2>
+                        <h2>Valor da inscrição: <span>{formataDinheiro(campeonato[0].valor_entrada)} R$</span></h2>
                         <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""} />
-                        <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} />
+                        <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} onClick={(e) => copiar(payload?.point_of_interaction.transaction_data.qr_code)} />
                         <p>Após a confirmação do pagamento você será automaticamente inscrito no campeonato!</p>
                         <div className='omega'>
 
