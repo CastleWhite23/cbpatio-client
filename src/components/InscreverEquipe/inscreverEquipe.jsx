@@ -193,8 +193,12 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                     </select>
                                     <p className="error">{errors?.time?.message}</p>
                                 </div>
-                                <input type="checkbox" name="politica" id="politica" {...register('politica')}/>
-                                <p>concordo com as politicas de privacidade</p>
+
+                                <div className="politicas__inscrever">
+                                    <input type="checkbox" name="politica" id="politica" className='checkbox' {...register('politica')}/>
+                                    <p>concordo com as politicas de privacidade</p>
+                                </div>
+
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
