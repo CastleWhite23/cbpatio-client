@@ -20,7 +20,7 @@ function formatarNumero(numero = "") {
 const secretKey = "sexooooo";
 
 function hashId(value) {
-    const encryptedValue = CryptoJS.AES.encrypt(value.toString(), secretKey).toString();
+    const encryptedValue = CryptoJS.AES.encrypt(value?.toString(), secretKey).toString();
     return encodeURIComponent(encryptedValue);
 }
 
