@@ -26,7 +26,7 @@ const CampeonatoDescription = ({ id_camp }) => {
             <div className="logo">
                 <img src={logo} alt="" />
                 <h1>AVISOS DO
-                    <br />CAMPEONATO</h1>
+                    CAMPEONATO</h1>
             </div>
 
             <div className='descricao'>
