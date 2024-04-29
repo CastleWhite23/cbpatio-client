@@ -1,17 +1,28 @@
-.form-stepper{
+.form-stepper {
     display: flex;
     justify-content: center;
     margin-bottom: 5rem;
     width: 100%;
     height: 100% !important;
 }
-.form-stepper div.component{
+
+.form-stepper div.component {
     width: 40%;
     height: 100%;
 }
 
-.form-stepper div.component-stepper{
+.form-stepper div.component-stepper {
     width: 70%;
 }
 
 
+
+@media (max-width:1090px) {
+    .form-stepper {
+        flex-direction: column;
+    }
+
+    .form-stepper .component,  .form-stepper .component-stepper {
+        width: 100% !important;
+    }
+}
