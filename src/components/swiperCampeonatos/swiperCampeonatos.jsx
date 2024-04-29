@@ -85,7 +85,7 @@ const SwiperCampeonatos = () => {
                                         <SwiperSlide key={index}>
                                             <CardCampeonato
                                                 idCamp={hashId(campeonato.id_campeonato)}
-                                                bgImage={`${path}/${campeonato.foto.replace(/\\/g, '/')}`}
+                                                bgImage={`${path}/${campeonato.foto?.replace(/\\/g, '/')}`}
                                                 title={campeonato.nome}
                                                 height={"25rem"}
                                                 width={"100%"} />
