@@ -2,6 +2,7 @@
 import {
     Step,
     StepDescription,
+    Center,
     StepIcon,
     StepIndicator,
     StepNumber,
@@ -13,7 +14,7 @@ import {
     Box
 } from '@chakra-ui/react'
 import './StepperCustom.css'
-const StepperCustom = ({indexStep}) => {
+const StepperCustom = ({ indexStep }) => {
     // Se for ter descrição descomentar stepDescription
     const steps = [
         { title: 'Selecionar Time', description: 'Contact Info' },
@@ -24,29 +25,35 @@ const StepperCustom = ({indexStep}) => {
     const { activeStep } = useSteps({
         index: indexStep,
         count: steps.length,
-      })
+    })
+
+
 
     return (
-        <Stepper index={activeStep}  color={'#8F81B2'}  colorScheme='purple' >
+
+        <Stepper orientation={window.screen.width <= '560px' ? 'vertical' : 'horizontal'} index={activeStep} color={'#8F81B2'} colorScheme='purple' width={'100%'} wordBreak={'break-word'} alignItems={'start'}>
             {steps.map((step, index) => (
-                <Step key={index} >
-                    <StepIndicator    > 
-                        <StepStatus
-                            complete={<StepIcon />}
-                            incomplete={<StepNumber />}
-                            active={<StepNumber />}
-                        />
-                    </StepIndicator>
+              
+                    <Step key={index}>
+                        <StepIndicator    >
+                            <StepStatus
+                                complete={<StepIcon />}
+                                incomplete={<StepNumber />}
+                                active={<StepNumber />}
+                            />
+                        </StepIndicator>
 
-                    <Box flexShrink='0'>
-                        <StepTitle>{step.title}</StepTitle>
-                        {/* <StepDescription>{step.description}</StepDescription> */}
-                    </Box>
+                        <Box flexShrink='0'>
+                            <StepTitle>{step.title}</StepTitle>
+                            {/* <StepDescription>{step.description}</StepDescription> */}
+                        </Box>
 
-                    <StepSeparator  />
-                </Step>
+                        <StepSeparator />
+                    </Step>
+               
             ))}
         </Stepper>
+
     )
 }
 
