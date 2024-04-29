@@ -31,8 +31,44 @@ SET time_zone = "+00:00";
 --
 
 
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `nome` varchar(60) DEFAULT NULL,
+  `nome_usuario` varchar(25) DEFAULT NULL,
+  `foto` varchar(120) DEFAULT NULL,
+  `email` varchar(120) DEFAULT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `celular` varchar(16) NOT NULL,
+  `senha` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_usuario`, `foto`, `email`, `cpf`, `celular`, `senha`) VALUES
+(1, 'clebinho', 'clebs_01', '', 'clebs@gmail.com', '', '', '$2b$10$qT68tuKTOERoskLKtUAV1.9h6AUvHQ.M9q3Yk4TVgYNhQaJuMLm3S'),
+(3, 'Jonas', 'jo_123', '', 'uaihgfui@onawfgona.com', '', '', '$2b$10$NVqm3IxvBiLLa4fYPHBySevQZKBvjG7PHSHvSY/pDJOh8H7B.uwHm'),
+(4, 'Ghost Rider de Oliveira', 'ghst_0123', '', 'iuafgbhw@gmail.com', '', '', '$2b$10$kMu1X5tD2ytiLBzuxoJ16./YH.noKpoyjpfHj1ojpTbB68WAZSFfC'),
+(6, 'Xande de Pilares', 'xnd_123', '', 'xandinho@gmail.com', '', '', '$2b$10$n2rZluB0NbgOeqhVQdHNbuTaNZidTk3dRzwlRoEuDoiblu1Z84.re'),
+(7, 'João Pedro Fagundes', 'jojoca_901', '', 'joao@gmail.com', '', '', '1234'),
+(10, 'Kaio Jorge Souza', 'kaio_0123', 'uploads\\1705970062907.png', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$RGlJ6/etIaryAUgFjtZdo.8qhNgLbzCzHOSWAWL.VxGdj5zge3gsq'),
+(23, 'Kaio Jorge Souza', 'kaio_0123', 'userPhotos\\1710954916572.jpg', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$.B72iV4jni.CuzkieMoEAedxxPRpuqDzXiGQKjWGMXE4nQ2UVmLYq'),
+(24, 'Kaio Jorge Souza', 'kaio_0123', 'userPhotos\\1710954919094.jpg', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$lfQ.0HWO1c.1Wd4Z2OA5Vek/CMXM0j0AQ6GBxNBx3ffwRaXuoyWZ6'),
+(25, 'Gustavo Zaia Rodrigues', 'zaia08', 'fotoUsuarios\\1711410665334.jpeg', 'gustavozaia7755@gmail.com', '12345678900', '15988315997', '$2b$10$goIrWKeCE/HHmCHR5nK6N.Ho0KZM/LEvXBgWZla6IMFzxopQf87ai'),
+(26, 'Alexia Putellas', 'put_01', 'fotoUsuarios\\1712197717494.webp', 'alexia@gmail.com', '', '(15) 98831-5', '$2b$10$gOmsIE8fKdaGk3I/P4b5JO2pv9/FpbNu2dyqD3iLgWtDDHQNyqKCy'),
+(27, 'awdawd', 'awdawd', NULL, 'dwd@adwa', '', '(12) 31231-2', '$2b$10$Vv6AeF220Y7FlxQrdO407.0NP4KBcls1ePXVpzTj0GKyg9pfC39TK'),
+(28, 'yumnty', 'agj', NULL, 'awd@Dasdg', '', '(12) 31321-2', '$2b$10$pvH2Az1yQEDg8WmAnOViUuOQGCQOlUdbWdoFZh7F/66EMmnlJ0zq2'),
+(29, 'kjyukyuk', 'tyhth', NULL, 'awdwad@dasg', '', '(12) 31231-2312', '$2b$10$m4xk1Ta84tWX0vNmQHzLv.0c8BnKqBARlqrtKNdVTa01bCd7iWmIq'),
+(30, 'yukyuk', 'jdghrh', NULL, 'thrtgh@adwadw', '', '(12) 31231-2312', '$2b$10$l6if4i.88mb03PAmRsekY.TMltQnxaO54xbzw2PjzjueeRFB9AToy'),
+(31, 'awdawd', 'awfwf1', NULL, 'xandinho@gmail.comm', '', '(23) 12312-3123', '$2b$10$IHRJEY8gKRlvSNpN2xOD8.WD3VS0zLM1LD3fBzNn18Z8fYQ9gQF0m'),
+(32, 'awdawd', 'wdawd', NULL, 'dfwaf@dawd', '', '(12) 31231-2312', '$2b$10$A431TD3mmcWJiV8gM.ZRTeq6cyAqr0N5j9HMCr0odxSBiRGt8gC2W'),
+(33, 'Kid Bengala', 'kid', 'fotoUsuarios\\1712710869759.webp', 'kid@gmail.com', '', '(15) 98831-5997', '$2b$10$DRacg3oG204Ig/DWiZtZmeQnn011XzN2iVSEHtyh7MnzGSZ8MAeb.');
+
+
+
 CREATE TABLE `campeonato` (
-  `id_campeonato` int(11) NOT NULL,
+  `id_campeonato` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `nome` varchar(60) DEFAULT NULL,
   `foto` varchar(120) NOT NULL,
   `data` datetime DEFAULT NULL,
@@ -55,12 +91,14 @@ INSERT INTO `campeonato` (`id_campeonato`, `nome`, `foto`, `data`, `sinopse`, `m
 
 -- --------------------------------------------------------
 
+
+
 --
 -- Estrutura da tabela `live_on`
 --
 
 CREATE TABLE `live_on` (
-  `id_liveon` int(11) NOT NULL,
+  `id_liveon` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `live_on` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,12 +115,55 @@ INSERT INTO `live_on` (`id_liveon`, `live_on`) VALUES
 -- Estrutura da tabela `pagamentos`
 --
 
+CREATE TABLE `solicitacao_time_usuario` (
+  `id_solicitacao` int(11) NOT NULL,
+  `fk_id_usuario` int(11) NOT NULL,
+  `fk_id_time` int(11) NOT NULL,
+  `aceitou` varchar(1) NOT NULL,
+  `hora_envio` datetime NOT NULL DEFAULT current_timestamp(),
+
+  FOREIGN KEY (fk_id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (fk_id_time) REFERENCES time(id_time)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `solicitacao_time_usuario`
+--
+
+INSERT INTO `solicitacao_time_usuario` (`id_solicitacao`, `fk_id_usuario`, `fk_id_time`, `aceitou`, `hora_envio`) VALUES
+(1, 6, 10, 's', '2024-04-03 22:36:43'),
+(2, 7, 10, 's', '2024-04-03 22:36:43'),
+(10, 25, 10, 's', '2024-04-03 23:18:44'),
+(11, 25, 10, 's', '2024-04-03 23:21:06'),
+(12, 25, 10, 's', '2024-04-03 23:21:41'),
+(19, 6, 20, 's', '2024-04-09 21:51:54'),
+(21, 25, 20, 's', '2024-04-09 21:55:42'),
+(23, 25, 33, 'n', '2024-04-09 22:18:34');
+
+
+--
+-- Estrutura da tabela `time`
+--
+
+CREATE TABLE `time` (
+  `id_time` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `nome` varchar(30) DEFAULT NULL,
+  `fk_id_capitao` int(11) NOT NULL,
+
+  FOREIGN KEY (fk_id_capitao) REFERENCES usuario(id_usuario)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE `pagamentos` (
-  `id_pagamento` int(11) NOT NULL,
+  `id_pagamento` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `fk_id_time` int(11) NOT NULL,
   `fk_id_campeonato` int(11) NOT NULL,
   `valor_pagamento` float NOT NULL,
-  `hora_pagamento` datetime NOT NULL DEFAULT current_timestamp()
+  `hora_pagamento` datetime NOT NULL DEFAULT current_timestamp().
+
+  FOREIGN KEY (fk_id_time) REFERENCES time(id_time),
+  FOREIGN KEY (fk_id_campeonato) REFERENCES campeonato(id_campeonato)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -124,96 +205,10 @@ INSERT INTO `pagamentos` (`id_pagamento`, `fk_id_time`, `fk_id_campeonato`, `val
 (35, 35, 1, 10, '2024-04-15 11:24:35');
 
 --
--- Acionadores `pagamentos`
---
-DELIMITER $$
-CREATE TRIGGER `tgr_time_pagou` AFTER INSERT ON `pagamentos` FOR EACH ROW INSERT INTO time_campeonato(fk_id_time, fk_id_campeonato, fase, jogo, chave, data_hora)
-VALUES(NEW.fk_id_time, NEW.fk_id_campeonato, "", "", "", null)
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `solicitacao_time_usuario`
 --
 
-CREATE TABLE `solicitacao_time_usuario` (
-  `id_solicitacao` int(11) NOT NULL,
-  `fk_id_usuario` int(11) NOT NULL,
-  `fk_id_time` int(11) NOT NULL,
-  `aceitou` varchar(1) NOT NULL,
-  `hora_envio` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `solicitacao_time_usuario`
---
-
-INSERT INTO `solicitacao_time_usuario` (`id_solicitacao`, `fk_id_usuario`, `fk_id_time`, `aceitou`, `hora_envio`) VALUES
-(1, 6, 10, 's', '2024-04-03 22:36:43'),
-(2, 7, 10, 's', '2024-04-03 22:36:43'),
-(10, 25, 10, 's', '2024-04-03 23:18:44'),
-(11, 25, 10, 's', '2024-04-03 23:21:06'),
-(12, 25, 10, 's', '2024-04-03 23:21:41'),
-(19, 6, 20, 's', '2024-04-09 21:51:54'),
-(21, 25, 20, 's', '2024-04-09 21:55:42'),
-(23, 25, 33, 'n', '2024-04-09 22:18:34');
-
---
--- Acionadores `solicitacao_time_usuario`
---
-DELIMITER $$
-CREATE TRIGGER `tgr_time_solic` AFTER UPDATE ON `solicitacao_time_usuario` FOR EACH ROW INSERT INTO time_usuario(fk_id_usuario, fk_id_time) VALUES(NEW.fk_id_usuario, NEW.fk_id_time)
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `time`
---
-
-CREATE TABLE `time` (
-  `id_time` int(11) NOT NULL,
-  `nome` varchar(30) DEFAULT NULL,
-  `fk_id_capitao` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `time`
---
-
-INSERT INTO `time` (`id_time`, `nome`, `fk_id_capitao`) VALUES
-(9, 'JRS Team', 4),
-(10, 'Aviões do Forró', 6),
-(11, 'clebunho', 4),
-(12, 'nao sei fc', 6),
-(13, 'palmeiras', 10),
-(14, 'gremio', 1),
-(15, 'sexo FC', 3),
-(16, 'Inter', 10),
-(17, 'Junior Barranquilla', 6),
-(18, 'Atl. Mineiro', 6),
-(19, 'Coringas', 4),
-(20, 'Cuiabá', 6),
-(21, 'Real Vardrid', 1),
-(22, 'Bar sem lona', 10),
-(24, 'Pererecos FC', 1),
-(25, 'Lusa', 1),
-(33, 'pauzudos FC', 33),
-(34, 'awdawdadw', 25),
-(35, 'pintudos CF', 33);
-
---
--- Acionadores `time`
---
-DELIMITER $$
-CREATE TRIGGER `tgr_time_user` AFTER INSERT ON `time` FOR EACH ROW INSERT INTO time_usuario(fk_id_usuario, fk_id_time) VALUES(NEW.fk_id_capitao, NEW.id_time)
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `time_campeonato`
@@ -227,7 +222,11 @@ CREATE TABLE `time_campeonato` (
   `jogo` varchar(10) NOT NULL,
   `chave` varchar(20) NOT NULL,
   `data_hora` datetime DEFAULT NULL,
-  `aconteceu` char(1) NOT NULL
+  `aconteceu` char(1) NOT NULL,
+
+    FOREIGN KEY (fk_id_time) REFERENCES time(id_time),
+    FOREIGN KEY (fk_id_campeonato) REFERENCES campeonato(id_campeonato)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -321,7 +320,11 @@ INSERT INTO `time_campeonato` (`id_time_campeonato`, `fk_id_time`, `fk_id_campeo
 CREATE TABLE `time_usuario` (
   `id_time_usuario` int(11) NOT NULL,
   `fk_id_usuario` int(11) DEFAULT NULL,
-  `fk_id_time` int(11) DEFAULT NULL
+  `fk_id_time` int(11) DEFAULT NULL,
+
+  FOREIGN KEY (fk_id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (fk_id_time) REFERENCES time(id_time)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -354,55 +357,11 @@ INSERT INTO `time_usuario` (`id_time_usuario`, `fk_id_usuario`, `fk_id_time`) VA
 (40, 33, 33),
 (42, 25, 34),
 (44, 33, 35);
-
---
--- Acionadores `time_usuario`
---
-DELIMITER $$
-CREATE TRIGGER `tgr_tira_convite` BEFORE DELETE ON `time_usuario` FOR EACH ROW DELETE FROM solicitacao_time_usuario WHERE fk_id_usuario = OLD.fk_id_usuario AND fk_id_time = OLD.fk_id_time
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `usuario`
 --
-
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nome` varchar(60) DEFAULT NULL,
-  `nome_usuario` varchar(25) DEFAULT NULL,
-  `foto` varchar(120) DEFAULT NULL,
-  `email` varchar(120) DEFAULT NULL,
-  `cpf` varchar(11) NOT NULL,
-  `celular` varchar(16) NOT NULL,
-  `senha` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `nome`, `nome_usuario`, `foto`, `email`, `cpf`, `celular`, `senha`) VALUES
-(1, 'clebinho', 'clebs_01', '', 'clebs@gmail.com', '', '', '$2b$10$qT68tuKTOERoskLKtUAV1.9h6AUvHQ.M9q3Yk4TVgYNhQaJuMLm3S'),
-(3, 'Jonas', 'jo_123', '', 'uaihgfui@onawfgona.com', '', '', '$2b$10$NVqm3IxvBiLLa4fYPHBySevQZKBvjG7PHSHvSY/pDJOh8H7B.uwHm'),
-(4, 'Ghost Rider de Oliveira', 'ghst_0123', '', 'iuafgbhw@gmail.com', '', '', '$2b$10$kMu1X5tD2ytiLBzuxoJ16./YH.noKpoyjpfHj1ojpTbB68WAZSFfC'),
-(6, 'Xande de Pilares', 'xnd_123', '', 'xandinho@gmail.com', '', '', '$2b$10$n2rZluB0NbgOeqhVQdHNbuTaNZidTk3dRzwlRoEuDoiblu1Z84.re'),
-(7, 'João Pedro Fagundes', 'jojoca_901', '', 'joao@gmail.com', '', '', '1234'),
-(10, 'Kaio Jorge Souza', 'kaio_0123', 'uploads\\1705970062907.png', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$RGlJ6/etIaryAUgFjtZdo.8qhNgLbzCzHOSWAWL.VxGdj5zge3gsq'),
-(23, 'Kaio Jorge Souza', 'kaio_0123', 'userPhotos\\1710954916572.jpg', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$.B72iV4jni.CuzkieMoEAedxxPRpuqDzXiGQKjWGMXE4nQ2UVmLYq'),
-(24, 'Kaio Jorge Souza', 'kaio_0123', 'userPhotos\\1710954919094.jpg', 'seila@gmail.com', '12345678900', '15988315997', '$2b$10$lfQ.0HWO1c.1Wd4Z2OA5Vek/CMXM0j0AQ6GBxNBx3ffwRaXuoyWZ6'),
-(25, 'Gustavo Zaia Rodrigues', 'zaia08', 'fotoUsuarios\\1711410665334.jpeg', 'gustavozaia7755@gmail.com', '12345678900', '15988315997', '$2b$10$goIrWKeCE/HHmCHR5nK6N.Ho0KZM/LEvXBgWZla6IMFzxopQf87ai'),
-(26, 'Alexia Putellas', 'put_01', 'fotoUsuarios\\1712197717494.webp', 'alexia@gmail.com', '', '(15) 98831-5', '$2b$10$gOmsIE8fKdaGk3I/P4b5JO2pv9/FpbNu2dyqD3iLgWtDDHQNyqKCy'),
-(27, 'awdawd', 'awdawd', NULL, 'dwd@adwa', '', '(12) 31231-2', '$2b$10$Vv6AeF220Y7FlxQrdO407.0NP4KBcls1ePXVpzTj0GKyg9pfC39TK'),
-(28, 'yumnty', 'agj', NULL, 'awd@Dasdg', '', '(12) 31321-2', '$2b$10$pvH2Az1yQEDg8WmAnOViUuOQGCQOlUdbWdoFZh7F/66EMmnlJ0zq2'),
-(29, 'kjyukyuk', 'tyhth', NULL, 'awdwad@dasg', '', '(12) 31231-2312', '$2b$10$m4xk1Ta84tWX0vNmQHzLv.0c8BnKqBARlqrtKNdVTa01bCd7iWmIq'),
-(30, 'yukyuk', 'jdghrh', NULL, 'thrtgh@adwadw', '', '(12) 31231-2312', '$2b$10$l6if4i.88mb03PAmRsekY.TMltQnxaO54xbzw2PjzjueeRFB9AToy'),
-(31, 'awdawd', 'awfwf1', NULL, 'xandinho@gmail.comm', '', '(23) 12312-3123', '$2b$10$IHRJEY8gKRlvSNpN2xOD8.WD3VS0zLM1LD3fBzNn18Z8fYQ9gQF0m'),
-(32, 'awdawd', 'wdawd', NULL, 'dfwaf@dawd', '', '(12) 31231-2312', '$2b$10$A431TD3mmcWJiV8gM.ZRTeq6cyAqr0N5j9HMCr0odxSBiRGt8gC2W'),
-(33, 'Kid Bengala', 'kid', 'fotoUsuarios\\1712710869759.webp', 'kid@gmail.com', '', '(15) 98831-5997', '$2b$10$DRacg3oG204Ig/DWiZtZmeQnn011XzN2iVSEHtyh7MnzGSZ8MAeb.');
-
 --
 -- Índices para tabelas despejadas
 --
@@ -554,6 +513,51 @@ ALTER TABLE `time_usuario`
   ADD CONSTRAINT `fk_id_time` FOREIGN KEY (`fk_id_time`) REFERENCES `time` (`id_time`) ON DELETE CASCADE,
   ADD CONSTRAINT `time_usuario_ibfk_1` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
+
+
+
+--
+-- Acionadores `time`
+--
+DELIMITER $$
+CREATE TRIGGER `tgr_time_user` AFTER INSERT ON `time` FOR EACH ROW INSERT INTO time_usuario(fk_id_usuario, fk_id_time) VALUES(NEW.fk_id_capitao, NEW.id_time)
+$$
+DELIMITER ;
+
+--
+-- Acionadores `pagamentos`
+--
+DELIMITER $$
+CREATE TRIGGER `tgr_time_pagou` AFTER INSERT ON `pagamentos` FOR EACH ROW INSERT INTO time_campeonato(fk_id_time, fk_id_campeonato, fase, jogo, chave, data_hora)
+VALUES(NEW.fk_id_time, NEW.fk_id_campeonato, "", "", "", null)
+$$
+DELIMITER ;
+
+
+--
+-- Acionadores `solicitacao_time_usuario`
+--
+DELIMITER $$
+CREATE TRIGGER `tgr_time_solic` AFTER UPDATE ON `solicitacao_time_usuario` FOR EACH ROW INSERT INTO time_usuario(fk_id_usuario, fk_id_time) VALUES(NEW.fk_id_usuario, NEW.fk_id_time)
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Acionadores `time_usuario`
+--
+DELIMITER $$
+CREATE TRIGGER `tgr_tira_convite` BEFORE DELETE ON `time_usuario` FOR EACH ROW DELETE FROM solicitacao_time_usuario WHERE fk_id_usuario = OLD.fk_id_usuario AND fk_id_time = OLD.fk_id_time
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+
+
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
