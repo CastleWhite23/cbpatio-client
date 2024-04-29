@@ -1,4 +1,4 @@
-.camp-descr{
+.camp-descr {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -6,13 +6,13 @@
     color: #fff;
     background-color: #866CC9;
     border-radius: 10px;
-    padding: 3rem ;
+    padding: 3rem;
     width: 100%;
     height: 100%;
     gap: 4rem;
 }
 
-.camp-descr  .logo {
+.camp-descr .logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,8 @@
     width: 100%;
 
 }
-.camp-descr  .descricao {
+
+.camp-descr .descricao {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,33 +32,47 @@
 }
 
 
-.camp-descr  .logo img{
+.camp-descr .logo img {
     width: 100px;
 }
 
 
-.camp-descr .logo h1{
+.camp-descr .logo h1 {
     font-weight: 700;
     font-size: 2rem;
 
 
 }
 
-.camp-descr  h3{
-   color: #fff;
-   text-align: center;
-   font-weight: 500;
+.camp-descr h3 {
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
 }
-.camp-descr  h3 span.tit-descricao{
+
+.camp-descr h3 span.tit-descricao {
     font-weight: 700;
     font-size: .9rem;
     color: #1B1230;
     text-transform: uppercase;
- }
+}
 
- .camp-descr  h3 span.descri-destaque{
+.camp-descr h3 span.descri-destaque {
     font-weight: 700;
     font-size: .9rem;
     color: #4c00ff;
     text-transform: none;
- }
+}
+
+@media (max-width:450px) {
+    .camp-descr .logo{
+        flex-direction: column;
+        word-wrap: break-word;
+
+    }
+    .camp-descr .logo h1 {
+        font-weight: 700;
+        text-align: center;
+
+    }
+}
