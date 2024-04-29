@@ -48,7 +48,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                 Api.get(`campeonatos/id/${id_campeonato}`)
             ])
 
-            const {data: timesInscritos} = await Api.get(`/campeonatos/time/times/${campeonatos.data[0].id_campeonato}`)
+            const { data: timesInscritos } = await Api.get(`/campeonatos/time/times/${campeonatos.data[0].id_campeonato}`)
 
 
             setTimesInscritos(timesInscritos.length)
@@ -79,8 +79,14 @@ const InscreverEquipe = ({ id_campeonato }) => {
     console.log(watchCheckbox)
 
     const onSubmit = async (formData) => {
-        if(watchCheckbox == false){
-            alert('aceite as politicas de privacidade')
+        if (watchCheckbox == false) {
+            toast({
+                title: `Aceite as politicas de privacidade para prosreguir!`,
+                position: 'bottom-left',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
             return
         }
         console.log(formData)
@@ -172,12 +178,12 @@ const InscreverEquipe = ({ id_campeonato }) => {
                     {
 
                         <>
-                                <PageTitle text={campeonato[0].nome} />
-                                
-                                <div className="subtitles__inscricao">
-                                    <p className='premio'>Premiação: {formataDinheiro(campeonato[0].premiacao)}</p>
-                                    <p className='valorIns'>Valor da inscrição: {formataDinheiro(campeonato[0].valor_entrada)}</p>
-                                </div>
+                            <PageTitle text={campeonato[0].nome} />
+
+                            <div className="subtitles__inscricao">
+                                <p className='premio'>Premiação: {formataDinheiro(campeonato[0].premiacao)}</p>
+                                <p className='valorIns'>Valor da inscrição: {formataDinheiro(campeonato[0].valor_entrada)}</p>
+                            </div>
 
                             <form onSubmit={handleSubmit(onSubmit)} >
 
@@ -194,21 +200,25 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                     <p className="error">{errors?.time?.message}</p>
                                 </div>
 
-                                <div className="politicas__inscrever">
-                                    <input type="checkbox" name="politica" id="politica" className='checkbox' {...register('politica')}/>
-                                    <p>concordo com as politicas de privacidade</p>
+                                <div class="checkbox">
+                                    <label >
+                                        Concordo com os termos e politicas de privacidade
+                                    </label>
+                                    <input type="checkbox" name="politica" id="politica" {...register('politica')} />
+
                                 </div>
+
 
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
-                                <p>Times incritos: ({timesInscritos > 16  ? 16 : timesInscritos}/16)</p>
-                                 <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
+                                <p>Times incritos: ({timesInscritos > 16 ? 16 : timesInscritos}/16)</p>
+                                <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
-                           
+
                             <div className='omega'>
-                         
-                                <img  src={omega} alt="" srcset="" />
+
+                                <img src={omega} alt="" srcset="" />
                             </div>
                         </>
 

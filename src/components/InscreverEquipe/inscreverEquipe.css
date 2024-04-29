@@ -1,10 +1,10 @@
-.subtitles__inscricao .premio{
+.subtitles__inscricao .premio {
     font-weight: 700;
     font-size: 20px;
     color: rgb(54, 224, 54);
 }
 
-.subtitles__inscricao .valorIns{
+.subtitles__inscricao .valorIns {
     font-weight: 700;
     color: orange
 }
@@ -18,7 +18,7 @@
     gap: 2rem;
     background-color: #1B1230;
     border-radius: 10px;
-    height: 100% ;
+    height: 100%;
     position: relative;
 
 }
@@ -57,6 +57,8 @@
     color: #866CC9;
 }
 
+
+
 .inscrever-equipe select {
     background-color: #fff;
     width: 100%;
@@ -79,7 +81,8 @@
     text-align: center;
     color: #866CC9;
 }
-.inscrever-equipe h3{
+
+.inscrever-equipe h3 {
     text-align: center;
     color: #866CC9;
     text-transform: uppercase;
@@ -99,7 +102,7 @@
 
 
 
-.inscrever-equipe .omega img{
+.inscrever-equipe .omega img {
     display: flex;
     bottom: 0;
     right: 0;
@@ -109,11 +112,11 @@
 
 
 
-    
+
 
 @media (max-width:670px) {
     .inscrever-equipe {
-        padding: 4rem 0;
+        padding: 4rem;
 
     }
 

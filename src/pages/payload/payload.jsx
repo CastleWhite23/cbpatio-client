@@ -13,10 +13,13 @@ import { Button } from '../../components/Button/Button'
 import { PageTitle } from '../../components/pageTitle/pageTitle'
 import { formataDinheiro } from '../../services/formatFunctions'
 import omega from '../../assets/omega.png'
+import { useToast } from '@chakra-ui/react'
 
 const Payload = () => {
 
     const navigate = useNavigate()
+    const toast = useToast()
+
     const [payload, setPayload] = useState({})
     const [loading, setLoading] = useState(true)
     const [ocurred, setOcurred] = useState(false)
@@ -33,6 +36,13 @@ const Payload = () => {
     const copiar = async (text) =>{
         try{
             await navigator.clipboard.writeText(text)
+            toast({
+                title: `Chave pix copiada com sucesso!`,
+                position: 'bottom-left',
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+            })
         }catch(e){
             alert(e)
         }

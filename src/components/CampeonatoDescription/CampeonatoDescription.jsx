@@ -26,11 +26,11 @@ const CampeonatoDescription = ({ id_camp }) => {
             <div className="logo">
                 <img src={logo} alt="" />
                 <h1>AVISOS DO
-                    <br />CAMPEONATO</h1>
+                    CAMPEONATO</h1>
             </div>
 
             <div className='descricao'>
-                <h3><span className='tit-descricao'>Datas: </span> As inscrições deste campeonato vão até <span className="descri-destaque">01/07/2024 (data estática)</span>, e o campeonato será streamado em <span className="descri-destaque">{formataData(campeonato[0]?.data)} às {formataHora(campeonato[0]?.data)}</span></h3>
+                <h3><span className='tit-descricao'>Datas: </span> As inscrições deste campeonato vão até <span className="descri-destaque">01/07/2024 (data estática)</span>, e a data de stream do campeonato será definida pelo administrador! </h3>
 
                 <h3><span className='tit-descricao'>Quem pode increver um time:</span> Você precisa ser um <span className='descri-destaque'>capitão</span> para inscrever um time e realizar o pagamento.</h3>
 
