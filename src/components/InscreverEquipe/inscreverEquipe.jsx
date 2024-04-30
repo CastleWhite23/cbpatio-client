@@ -204,8 +204,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                     <label >
                                         Concordo com os termos e politicas de privacidade
                                     </label>
-                                    <input type="checkbox" name="politica" id="politica" {...register('politica')} />
-
+                                    <input type="checkbox" name="politica" id="politica"  {...register('politica')} />
                                 </div>
 
 
