@@ -5,4 +5,12 @@
     text-align: center;
     width: 100%;
     gap: 1rem;
+    text-transform: uppercase;
+    word-break: keep-all;
+}
+
+@media (max-width:390px) {
+    .pgTitle{
+        font-size: 2rem;
+    }
 }
