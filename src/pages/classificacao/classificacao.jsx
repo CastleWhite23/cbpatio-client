@@ -153,7 +153,8 @@ const Classificacao = () => {
                     ))}
 
 {
-                    esperando.map((game, index) => (
+                    esperando.map((game, index) =>
+                    (
                        
                         <div className='camp__jogo'>
                             <CardCampeonato
@@ -167,7 +168,7 @@ const Classificacao = () => {
                                 ocorrendo={
                                     formataData(game.data_hora) == formataData(getData()) ? true : false
                                 }
-                                data_hora={game.data_hora}
+                                data_hora={game.data_hora || game.hora_camp_pre_definido}
                                 fase={"EM BREVE"}
                                 jogo={game.fase}
                                 nome_time={game.nome_time}
