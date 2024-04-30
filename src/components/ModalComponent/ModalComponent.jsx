@@ -1,4 +1,5 @@
 import {
+    Text,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -8,7 +9,7 @@ import {
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react'
-
+import './ModalComponent.css'
 
 import { Button } from '../Button/Button'
 
@@ -19,14 +20,15 @@ function ModalComponent({ titulo, body, openText, closeText, onClickAction, acti
         <>
             <Button variant='red' text={openText} onClick={onOpen} />
 
-            <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+            <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} size={'xl'} onClose={onClose}>
                 <ModalOverlay 
                     bg='blackAlpha.300'
-                    backdropFilter='blur(10px) ' />
-                <ModalContent backgroundColor={'#1B1230'}>
-                    <ModalHeader color={'#866CC9'}>{titulo}</ModalHeader>
-                    <ModalCloseButton color={'#866CC9'}/>
-                    <ModalBody pb={6}>
+                    backdropFilter='blur(10px) ' 
+                    size={'xl'}    
+                />
+                <ModalContent backgroundColor={'#1B1230'} alignItems='center' textAlign='center'>
+                    <ModalHeader className={'header-modal'} color={'#866CC9'} >{titulo}</ModalHeader>
+                    <ModalBody pb={1} color={'#866CC9'}>
                         {body}
                     </ModalBody>
                     <ModalFooter gap={'.5rem'}>
