@@ -6,6 +6,7 @@ import { StepperCustom } from '../../components/StepperCustom/StepperCustom'
 import { Button } from '../../components/Button/Button'
 import { CampeonatoDescription } from '../../components/CampeonatoDescription/CampeonatoDescription'
 import './FormStepper.css'
+import { Center } from '@chakra-ui/react'
 
 
 const FormStepper = ({ component, indexStep }) => {
@@ -18,7 +19,7 @@ const FormStepper = ({ component, indexStep }) => {
         <>
             <div className="form-stepper">
                 <div className='component'>
-                    <CampeonatoDescription id_camp={id}/>
+                    <CampeonatoDescription id_camp={id} />
                 </div>
                 <div className='component-stepper'>
                     {component}
@@ -27,6 +28,7 @@ const FormStepper = ({ component, indexStep }) => {
 
             </div>
             <StepperCustom indexStep={indexStep} />
+
 
         </>
 
