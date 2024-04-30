@@ -6,17 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/context"
-import {useLocation} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import foto from "../../assets/logo.png"
 
 
 const Navbar = ({ bgColor, isHome }) => {
     const location = useLocation()
 
-    
+
 
     const styles = {
-        position:location.pathname == '/' ? 'absolute': 'initial',
+        position: location.pathname == '/' ? 'absolute' : 'initial',
         zIndex: location.pathname == '/' ? 2 : 1
     }
 
@@ -26,8 +26,12 @@ const Navbar = ({ bgColor, isHome }) => {
     const [navOpen, setNavOpen] = useState(false)
     const handleToogleClick = () => {
         const nav = document.querySelector('.navbar')
-        nav.classList.toggle("active")
-        setNavOpen(!navOpen)
+        if (document.body.clientWidth <= 925) {
+
+            nav.classList.toggle("active")
+            setNavOpen(!navOpen)
+        } 
+
     }
 
     const { isAuth, getUserData } = useContext(AuthContext)
@@ -41,7 +45,7 @@ const Navbar = ({ bgColor, isHome }) => {
 
     return (
         <>
-            <header style={{   backgroundColor: bgColor, ...styles}}>
+            <header style={{ backgroundColor: bgColor, ...styles }}>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>
@@ -58,23 +62,23 @@ const Navbar = ({ bgColor, isHome }) => {
 
                 <nav className="navbar">
                     <ul>
-                        <Link to='/campeonatos' className="linkStyle">Campeonatos</Link>
-                        <Link to='/times/meustimes' className="linkStyle">Times</Link>
-                        <Link to='/classificacao' className="linkStyle">Classificação</Link>
+                        <Link to='/campeonatos' className="linkStyle" onClick={handleToogleClick}>Campeonatos</Link>
+                        <Link to='/times/meustimes' className="linkStyle" onClick={handleToogleClick}>Times</Link>
+                        <Link to='/classificacao' className="linkStyle" onClick={handleToogleClick}>Classificação</Link>
                         {
                             isAuth
 
-                            ?
-                            <Link to={"/config"}>
-                                <div id="user-resp">
-                                    <p>{getUserData().nome}</p>
-                                    <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="" srcset="" />
-                                </div>
-                            </Link>
-                            :
+                                ?
+                                <Link to={"/config"} onClick={handleToogleClick}>
+                                    <div id="user-resp">
+                                        <p>{getUserData().nome}</p>
+                                        <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="" srcset="" />
+                                    </div>
+                                </Link>
+                                :
 
 
-                                <Link to={'/login'}>
+                                <Link to={'/login'} onClick={handleToogleClick}>
                                     <Button
                                         text={'Entrar'}
                                         variant={'purple'}
@@ -92,14 +96,14 @@ const Navbar = ({ bgColor, isHome }) => {
                     isAuth
 
                         ?
-                        <Link to={"/config"}>
+                        <Link to={"/config"} onClick={handleToogleClick}>
                             <div id="user">
                                 <p>{getUserData().nome}</p>
                                 <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="" srcset="" />
                             </div>
                         </Link>
                         :
-                        <Link to={'/login'}>
+                        <Link to={'/login'} onClick={handleToogleClick}>
                             <Button
                                 text={'Entrar'}
                                 variant={'purple'}
