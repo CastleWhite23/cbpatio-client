@@ -1,12 +1,14 @@
 .subtitles__inscricao .premio {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
     color: rgb(54, 224, 54);
+    text-transform: uppercase;
 }
 
 .subtitles__inscricao .valorIns {
-    font-weight: 700;
-    color: orange
+    font-weight: 500;
+    color: orange;
+    text-transform: uppercase;
 }
 
 .inscrever-equipe {
@@ -45,6 +47,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .inscrever-equipe form p {
@@ -57,6 +60,9 @@
     color: #866CC9;
 }
 
+.inscrever-equipe form .checkbox label {
+margin-bottom: 2rem;
+}
 
 
 .inscrever-equipe select {
@@ -75,7 +81,6 @@
 .inscrever-equipe option {
     font-weight: 600;
 }
-
 
 .inscrever-equipe p {
     text-align: center;
@@ -115,13 +120,7 @@
 
 
 @media (max-width:670px) {
-    .inscrever-equipe {
-        padding: 4rem;
-
-    }
-
-    .inscrever-equipe form {
-        flex-direction: column;
-
+    .inscrever-equipe{
+        padding: 2rem 1.5rem;
     }
 }
