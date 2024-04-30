@@ -16,13 +16,25 @@
    text-transform: uppercase;
    font-weight: 600;
    color: #866CC9;
+   text-align: center;
 }
 
 .qrcode h3{ 
     color: #866CC9;
     
+
 }
 
+
+.qrcode h1{ 
+    text-align: center;
+    color: #866CC9;
+    font-size: 1.8rem;
+    word-break: keep-all;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+}
 .qrcode p{ 
     color: #866CC9;
     width: 70%;
@@ -42,3 +54,14 @@
 }
 
 
+.qrcode svg{
+    padding: 1rem;
+    width: auto;
+}
+
+
+@media (max-width:670px) {
+    .qrcode{
+        padding: 2rem 1.5rem;
+    }
+}
