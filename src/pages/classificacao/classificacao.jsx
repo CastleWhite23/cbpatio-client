@@ -17,6 +17,8 @@ const path = "http://localhost:3005"
 
 const Classificacao = () => {
 
+
+    const [loading, setLoading] = useState(false)
     const [liveOn, setLiveOn] = useState(false)
     const [games, setGames] = useState([])
     const [campeao, setCampeao] = useState([])
@@ -41,6 +43,7 @@ const Classificacao = () => {
 
         const getGames = async () => {
             try {
+                setLoading(true)
                 const [gamesResponse, campeaoResponse, eliminadosResponse, esperandoResponse] = await Promise.all([
                     Api.get(`/campeonatos/time/times/jogos/${getUserData().id}`),
                     Api.get(`/campeonatos/time/times/jogos/campeao/user/${getUserData().id}`),
@@ -57,6 +60,7 @@ const Classificacao = () => {
                 setCampeao(campeao);
                 setEliminados(eliminados);
                 setEsperando(esperandoData)
+                setLoading(false)
             } catch (error) {
                 console.error("Ocorreu um erro ao carregar os dados:", error);
             }
@@ -119,123 +123,133 @@ const Classificacao = () => {
 
                     :
 
-                    <SpinnerCustom />
+                    ""
             }
-            <DividerComponent margin={"3rem 0"} />
-            <PageTitle text={'MEUS JOGOS'} />
-            <DividerComponent margin={'3rem 0'} />
-            <div className='div__jogos'>
-                {games.length > 0 && <PageTitle text={"Próximos jogos"} />}
-                {
-                    games.map((game, index) => (
-                       
-                        <div className='camp__jogo'>
-                            <CardCampeonato
-                                type='preview'
-                                idCamp={game.id_campeonato}
-                                bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
-                                title={game.nome_camp}
-                                width={'20%'} />
-
-                            <CardClassificacao
-                                ocorrendo={
-                                    formataData(game.data_hora) == formataData(getData()) ? true : false
-                                }
-                                data_hora={game.data_hora}
-                                fase={game.fase}
-                                jogo={game.fase}
-                                nome_time={game.nome_time}
-                                key={index}
-                                nome_time_vs={game.nome_time_vs}
-
-                            />
-                        </div>
-                    ))}
-
-{
-                    esperando.map((game, index) =>
-                    (
-                       
-                        <div className='camp__jogo'>
-                            <CardCampeonato
-                                type='preview'
-                                idCamp={game.id_campeonato}
-                                bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
-                                title={game.nome_camp}
-                                width={'20%'} />
-
-                            <CardClassificacao
-                                ocorrendo={
-                                    formataData(game.data_hora) == formataData(getData()) ? true : false
-                                }
-                                data_hora={game.data_hora || game.hora_camp_pre_definido}
-                                fase={"EM BREVE"}
-                                jogo={game.fase}
-                                nome_time={game.nome_time}
-                                key={index}
-                                nome_time_vs={"A DEFINIR"}
-
-                            />
-                        </div>
-                    ))}
-
-                {
-                    campeao.length == 0 && eliminados.length == 0  ? "" :
-                       <>
-                            <DividerComponent />
-                            <PageTitle text={"Situação Final"} />
-                        </>
-                }
-
-                {campeao.map((game, index) => (
-                    <div className='camp__jogo'>
-
-                        <CardCampeonato
-                            type='preview'
-                            idCamp={game.id_campeonato}
-                            bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
-                            title={game.nome_camp}
-                            width={'20%'}
-                        />
-
-
-                        <CardClassificacao
-                            data_hora={game.data_hora}
-                            fase={game.fase}
-                            jogo={game.fase}
-                            nome_time={game.nome_time}
-                            key={index}
-                            nome_time_vs={game.nome_time_vs}
-                            campeao={true}
-                        />
+            {
+                loading 
+                ?
+                <SpinnerCustom />
+                
+                :
+                <>
+                
+                    <DividerComponent margin={"3rem 0"} />
+                    <PageTitle text={'MEUS JOGOS'} />
+                    <DividerComponent margin={'3rem 0'} />
+                    <div className='div__jogos'>
+                        {games.length > 0 && <PageTitle text={"Próximos jogos"} />}
+                        {
+                            games.map((game, index) => (
+                            
+                                <div className='camp__jogo'>
+                                    <CardCampeonato
+                                        type='preview'
+                                        idCamp={game.id_campeonato}
+                                        bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                        title={game.nome_camp}
+                                        width={'20%'} />
+        
+                                    <CardClassificacao
+                                        ocorrendo={
+                                            formataData(game.data_hora) == formataData(getData()) ? true : false
+                                        }
+                                        data_hora={game.data_hora}
+                                        fase={game.fase}
+                                        jogo={game.fase}
+                                        nome_time={game.nome_time}
+                                        key={index}
+                                        nome_time_vs={game.nome_time_vs}
+        
+                                    />
+                                </div>
+                            ))}
+        
+        {
+                            esperando.map((game, index) =>
+                            (
+                            
+                                <div className='camp__jogo'>
+                                    <CardCampeonato
+                                        type='preview'
+                                        idCamp={game.id_campeonato}
+                                        bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                        title={game.nome_camp}
+                                        width={'20%'} />
+        
+                                    <CardClassificacao
+                                        ocorrendo={
+                                            formataData(game.data_hora) == formataData(getData()) ? true : false
+                                        }
+                                        data_hora={game.data_hora || game.hora_camp_pre_definido}
+                                        fase={"EM BREVE"}
+                                        jogo={game.fase}
+                                        nome_time={game.nome_time}
+                                        key={index}
+                                        nome_time_vs={"A DEFINIR"}
+        
+                                    />
+                                </div>
+                            ))}
+        
+                        {
+                            campeao.length == 0 && eliminados.length == 0  ? "" :
+                            <>
+                                    <DividerComponent />
+                                    <PageTitle text={"Situação Final"} />
+                                </>
+                        }
+        
+                        {campeao.map((game, index) => (
+                            <div className='camp__jogo'>
+        
+                                <CardCampeonato
+                                    type='preview'
+                                    idCamp={game.id_campeonato}
+                                    bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                    title={game.nome_camp}
+                                    width={'20%'}
+                                />
+        
+        
+                                <CardClassificacao
+                                    data_hora={game.data_hora}
+                                    fase={game.fase}
+                                    jogo={game.fase}
+                                    nome_time={game.nome_time}
+                                    key={index}
+                                    nome_time_vs={game.nome_time_vs}
+                                    campeao={true}
+                                />
+                            </div>
+                        ))}
+        
+        
+                        {eliminados.map((game, index) => (
+                            <div className='camp__jogo'>
+        
+                                <CardCampeonato
+                                    type='preview'
+                                    idCamp={game.id_campeonato}
+                                    bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
+                                    title={game.nome_camp}
+                                    width={'20%'} />
+        
+                                <CardClassificacao
+                                    data_hora={game.data_hora}
+                                    fase={game.fase}
+                                    jogo={game.fase}
+                                    nome_time={game.nome}
+                                    key={index}
+                                    eliminado={true}
+                                    eliminado_em={game.eliminado_em}
+                                />
+                            </div>
+                        ))}
+        
+        
                     </div>
-                ))}
-
-
-                {eliminados.map((game, index) => (
-                    <div className='camp__jogo'>
-
-                        <CardCampeonato
-                            type='preview'
-                            idCamp={game.id_campeonato}
-                            bgImage={`${path}/${game.foto.replace(/\\/g, '/')}`}
-                            title={game.nome_camp}
-                            width={'20%'} />
-
-                        <CardClassificacao
-                            data_hora={game.data_hora}
-                            fase={game.fase}
-                            jogo={game.fase}
-                            nome_time={game.nome}
-                            key={index}
-                            eliminado={true}
-                            eliminado_em={game.eliminado_em}
-                        />
-                    </div>
-                ))}
-
-
-            </div>
+                </>
+            }
 
         </>
     )
