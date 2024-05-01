@@ -123,7 +123,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
             }
         }
 
-        if (timesNoCampeonatos.data.length >= campeonato[0].jogadores) {
+        if (timesNoCampeonatos.data.length >= campeonato[0].limite) {
             toast({
                 title: `O limite de times inscritos no campeonato já foi atingido`,
                 description: `16/16`,

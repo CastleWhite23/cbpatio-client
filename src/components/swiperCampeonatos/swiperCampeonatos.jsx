@@ -20,7 +20,7 @@ import { CardCampeonato } from '../cardCampeonato/cardCampeonato';
 import { hashId } from '../../services/formatFunctions';
 
 
-const path = "http://localhost:3005"
+const path = "https://cbpatio.onrender.com"
 
 const SwiperCampeonatos = () => {
 

@@ -103,11 +103,14 @@ const Payload = () => {
                         "valor_pagamento": valor
                     })
                 }
+                setTimeout(() => {
+                    navigate('/obrigado')
+                    window.location.reload()
+                }, 2000);
             } catch (e) {
                 alert(e)
             }
-            navigate('/obrigado')
-            window.location.reload()
+            
         })
     }, [ocurred]);
 

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Config = () => {
 
-    const path = "http://localhost:3005"
+    const path = "https://cbpatio.onrender.com"
 
     const {getUserData} = useContext(AuthContext)
     

@@ -13,7 +13,7 @@ import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 
-const path = "http://localhost:3005"
+const path = "https://cbpatio.onrender.com"
 
 const Classificacao = () => {
 
