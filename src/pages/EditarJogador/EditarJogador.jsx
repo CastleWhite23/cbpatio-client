@@ -59,10 +59,12 @@ const EditarJogador = () => {
     
         try {
             setLoading(true);
+            console.log(foto)
+            console.log(usuario.foto)
             const req = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
                 nome: nome,
                 nome_usuario: nome_usuario,
-                foto: foto || usuario.foto, // Usando usuario.foto como valor padrão se não houver nova foto
+                foto:  foto || "", // Usando usuario.foto como valor padrão se não houver nova foto
                 email: email,
                 celular: celular,
             }, {
