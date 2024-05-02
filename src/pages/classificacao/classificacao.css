@@ -8,6 +8,13 @@
     margin-top: 1rem;
 }
 
+.div__jogos h1.aviso{
+   text-align: center;
+   margin: 0 !important;
+
+}
+
+
 .camp__jogo{
     width: 100%;
     display: flex;

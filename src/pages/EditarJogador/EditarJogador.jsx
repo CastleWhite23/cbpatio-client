@@ -12,6 +12,7 @@ import Logo from '../../assets/logo.png';
 import './EditarJogador.css';
 import {AuthContext} from '../../context/context'
 import {  useToast } from '@chakra-ui/react';
+import {PageTitle} from '../../components/pageTitle/pageTitle'
 
 const schema = yup.object({
     nome: yup.string().required('Este campo não pode estar vazio!'),
@@ -110,7 +111,8 @@ const EditarJogador = () => {
     return (
         <div className="editar-cad">
             <Card variant="purple" width="60%" height="90vh">
-                <h2>Editar Cadastro</h2>
+                <PageTitle text={'EDITAR CADASTRO'} />
+               
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <div className="ct-input">
                         <div>

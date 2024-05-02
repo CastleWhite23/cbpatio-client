@@ -43,6 +43,12 @@
     height: 100%;
 }
 
+@media (max-width:400px) {
+    .things{
+        padding: .5rem;
+    }
+}
+
 /* 
     card classificação
     fases

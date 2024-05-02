@@ -22,7 +22,7 @@ const Navbar = ({ bgColor, isHome }) => {
 
 
 
-    const path = "http://localhost:3005"
+    const path = "https://cbpatio.onrender.com"
     const [navOpen, setNavOpen] = useState(false)
     const handleToogleClick = () => {
         const nav = document.querySelector('.navbar')

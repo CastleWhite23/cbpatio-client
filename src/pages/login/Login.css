@@ -49,6 +49,7 @@
     color:  #866CC9;
     text-transform: uppercase;
     font-weight: 700;
+    margin-bottom: 2rem;
 }
 
  
@@ -100,6 +101,7 @@
     }
     .login .card-purple{
         width: 90% !important;
+        padding: 3rem 1rem;
     }
 }
 

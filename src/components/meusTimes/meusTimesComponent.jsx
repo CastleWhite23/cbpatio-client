@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/context"
 import { Link } from 'react-router-dom'
 import { SpinnerCustom } from '../Spinner/Spinner'
 import { hashId } from '../../services/formatFunctions'
+import './meusTimesComponent.css'
 
 
 const MeusTimesComponent = ({ cargo }) => {
@@ -13,6 +14,7 @@ const MeusTimesComponent = ({ cargo }) => {
     const [timesJogador, setTimesJogador] = useState([])
     const { getUserData } = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
+    const [loadingJogador, setLoadingJogador] = useState(true)
     // PEGAR TIMES EM QUE O IDCAPITAO É DIFERENTE DO DO CARA LOGADO
 
     useEffect(() => {
@@ -28,6 +30,7 @@ const MeusTimesComponent = ({ cargo }) => {
             const fetch = await Api.get(`/usuarios/time/userid/${getUserData().id}`)
             const timesJogador = fetch.data
             setTimesJogador(timesJogador)
+            setLoadingJogador(false)
             console.log(timesJogador)
 
         }
@@ -38,20 +41,26 @@ const MeusTimesComponent = ({ cargo }) => {
     }, [])
 
     return (
-        <div>
+        <div className='meus-times'>
             {
                 cargo == "capitao" ?
                     (
                         !loading ?
 
                             (
-                                timesCapitao.map((time) => {
+                                timesCapitao.length > 0 ? timesCapitao.map((time) => {
                                     return (
+
                                         <Link to={`/times/meustimes/capitao/${hashId(time.id_time)}`}>
                                             <Button text={`${time.nome} - Capitão`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
                                         </Link>
                                     )
-                                })
+                                }) : (
+                                    <>
+
+                                        <h1>Você não é capitão de nenhum time ainda.</h1>
+                                        <h1><span className='link darkpurple'><Link to={`/times/criar`}>Crie um time para se tornar capitão! </Link></span></h1>  </>
+                                )
                             )
                             :
                             (
@@ -62,19 +71,29 @@ const MeusTimesComponent = ({ cargo }) => {
                     :
 
                     (
+                        !loadingJogador ?
 
-                        timesJogador.map((timeJogador) => {
-                            return (
+                            timesJogador.length > 0 ? timesJogador.map((timeJogador) => {
+                                return (
 
-                                timeJogador.fkIdCapitao != getUserData().id &&
+                                    timeJogador.fkIdCapitao != getUserData().id &&
 
-                                (
-                                    <Link to={`/times/meustimes/jogador/${hashId(timeJogador.idTime)}`}>
-                                        <Button text={`${timeJogador.NomeTime} - Jogador`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
-                                    </Link>
+                                    (
+                                        <Link to={`/times/meustimes/jogador/${hashId(timeJogador.idTime)}`}>
+                                            <Button text={`${timeJogador.NomeTime} - Jogador`} variant={"purple"} margin={"10px 0"} height={"4rem"} fontSize={"20px"} />
+                                        </Link>
+                                    )
                                 )
+                            }) : (
+                                <>
+
+                                    <h1>Você não faz parte de nenhum time ainda.</h1>
+                                    <h1><span className='link darkpurple'><Link to={`/times/solicitacoes`}>Veja se não a uma solicitação para você! </Link></span></h1>  </>
                             )
-                        })
+                            :
+                            (
+                                <SpinnerCustom />
+                            )
 
 
                     )
