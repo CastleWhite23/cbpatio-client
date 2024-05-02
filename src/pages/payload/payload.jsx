@@ -97,16 +97,18 @@ const Payload = () => {
             try {
                 if (campeonato && campeonato[0]?.valor_entrada) {
                     const valor = parseFloat(campeonato[0]?.valor_entrada)
-                    await Api.post(`/campeonatos/inscrever/pagamentos`, {
+                    const req = await Api.post(`/campeonatos/inscrever/pagamentos`, {
                         "fk_id_time": id_time,
                         "fk_id_campeonato": id_campeonato,
                         "valor_pagamento": valor
                     })
+
+                    if(req.status >= 200 && req.status < 210){
+                        navigate('/obrigado')
+                        window.location.reload()
+                    }
                 }
-                setTimeout(() => {
-                    navigate('/obrigado')
-                    window.location.reload()
-                }, 2000);
+                
             } catch (e) {
                 alert(e)
             }
