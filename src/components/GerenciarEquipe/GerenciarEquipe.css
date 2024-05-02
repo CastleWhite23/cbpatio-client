@@ -73,6 +73,9 @@
     .gerenciar-equipe .card ul div.user .ct-btn button {
         width: 100% !important;
     }
+    .card-darkpurple .card-main div {
+        flex-direction:column;
+}
 
 
 }
