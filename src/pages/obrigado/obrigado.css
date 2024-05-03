@@ -3,8 +3,14 @@
     position: relative;
     background-color: #1B1230;
     border-radius: 5px;
-    height: 100%;
+    min-height: 100%;
     padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
 }
 
 .card h1{
@@ -38,22 +44,31 @@
     margin-top: 10px;
 }
 
-.card .omega{
-    position: absolute;
-    right: 0;
-    bottom: -22.5px;
-    width: 200px;
-}
+
 
 .card .main__desc{
-    position: absolute;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     bottom: 1.5rem;
     color: #9D77FC;
     font-size: 15px;
     font-weight: 500;
 
 }
+.card  .omega{
+    width: 200px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 
+.card .main__desc p{
+  text-align: center;
+  z-index: 2;
+
+}
 
 @media (max-width: 800px) {
     .card .main__infos img{
