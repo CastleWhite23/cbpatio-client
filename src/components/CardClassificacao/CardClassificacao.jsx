@@ -51,7 +51,7 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
                 <DividerComponent />
                 <div className='card-main'>
                     <span className='twodarkpurple'>{
-                        data_hora != null ?
+                        data_hora != '' ?
                             `Vai acontecer em ${formataData(data_hora)}` :
                             "Data ainda não definida!"
                     }
@@ -60,7 +60,7 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
                     <div>
                         <h2 className='greenlight'>{nome_time}</h2>
                         <span>VS.</span>
-                        <h2 className='red'>{nome_time_vs}</h2>
+                        <h2 className='reddark'>{nome_time_vs}</h2>
                     </div>
 
                     <span className='twodarkpurple'>{
