@@ -105,9 +105,13 @@ const Classificacao = () => {
     }, [esperando]);
 
 
-    console.log(eliminados)
-    console.log(games.length)
-    //console.log(getData())
+    //console.log(eliminados)
+    //  getData(10) > getData() 
+    console.log(getData())
+     console.log(getData(getData(), 10, 'sum'))
+    console.log(getData(getData(), 10 , 'sum') >= getData())
+    console.log(esperando)
+    //
 
     return (
         <>
@@ -139,12 +143,12 @@ const Classificacao = () => {
                         <DividerComponent margin={'3rem 0'} />
                         <div className='div__jogos'>
                             {
-                            games.length >= 0 ? <PageTitle text={"Próximos jogos"} /> : (
-                                <div>
-                                    <h1 className='aviso'>Você não tem nenhum jogo definido no momento.</h1>
-                                    <h1 className='aviso'><span className='link darkpurple'><Link to={`/campeonatos`}>Se increva em um campeonato e espere os avisos dos administradores!</Link></span></h1>
-                                </div>
-                            )}
+                                games.length > 0 || esperando.length > 0 ? <PageTitle text={"Próximos jogos"} /> : (
+                                    <div>
+                                        <h1 className='aviso'>Você não tem nenhum jogo definido no momento.</h1>
+                                        <h1 className='aviso'><span className='link darkpurple'><Link to={`/campeonatos`}>Se increva em um campeonato e espere os avisos dos administradores!</Link></span></h1>
+                                    </div>
+                                )}
 
                             {
                                 games.map((game, index) => (
@@ -158,8 +162,7 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
+                                             ocorrendo={ game.data_hora ? (  getData() >= getData(game.data_hora, 10, 'sub') && getData() <= getData(game.data_hora, 10 , 'sum') ? true : false) : false
                                             }
                                             data_hora={game.data_hora}
                                             fase={game.fase}
@@ -185,9 +188,8 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
-                                            }
+                                          ocorrendo={ game.data_hora ? (  getData() >= getData(game.data_hora, 10, 'sub') && getData() <= getData(game.data_hora, 10 , 'sum') ? true : false) : false
+                                        }
                                             data_hora={game.data_hora || game.hora_camp_pre_definido}
                                             fase={"EM BREVE"}
                                             jogo={game.fase}
