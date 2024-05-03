@@ -73,7 +73,7 @@ const MeusTimesComponent = ({ cargo }) => {
                     (
                         !loadingJogador ?
 
-                            timesJogador.length > 0 ? timesJogador.map((timeJogador) => {
+                            timesJogador.length > timesCapitao.length? timesJogador.map((timeJogador) => {
                                 return (
 
                                     timeJogador.fkIdCapitao != getUserData().id &&
@@ -87,7 +87,7 @@ const MeusTimesComponent = ({ cargo }) => {
                             }) : (
                                 <>
 
-                                    <h1>Você não faz parte de nenhum time ainda.</h1>
+                                    <h1>Você não faz parte de nenhum time criado por outro capitão ainda.</h1>
                                     <h1><span className='link darkpurple'><Link to={`/times/solicitacoes`}>Veja se não a uma solicitação para você! </Link></span></h1>  </>
                             )
                             :
