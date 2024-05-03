@@ -8,7 +8,7 @@ import { LiveOn } from '../../components/liveOn/liveOn'
 import { DividerComponent } from '../../components/Divider/DividerComponent'
 import { AuthContext } from '../../context/context'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
-import { formataData, formataHora, getData } from '../../services/getData'
+//import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 import { Link } from 'react-router-dom'
 
@@ -158,9 +158,9 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
-                                            }
+                                            // ocorrendo={
+                                            //     formataData(game.data_hora) == formataData(getData()) ? true : false
+                                            // }
                                             data_hora={game.data_hora}
                                             fase={game.fase}
                                             jogo={game.fase}
@@ -185,9 +185,9 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
-                                            }
+                                            // ocorrendo={
+                                            //     formataData(game.data_hora) == formataData(getData()) ? true : false
+                                            // }
                                             data_hora={game.data_hora || game.hora_camp_pre_definido}
                                             fase={"EM BREVE"}
                                             jogo={game.fase}
