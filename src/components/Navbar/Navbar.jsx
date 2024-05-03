@@ -22,7 +22,7 @@ const Navbar = ({ bgColor, isHome }) => {
 
 
 
-    const path = "https://cbpatio.onrender.com"
+    const path = "https://cbpatio-production.up.railway.app"
     const [navOpen, setNavOpen] = useState(false)
     const handleToogleClick = () => {
         const nav = document.querySelector('.navbar')

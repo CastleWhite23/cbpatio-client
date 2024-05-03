@@ -41,5 +41,5 @@ export const formataHora = (data) =>{
     const segundo = data1.getUTCSeconds(); // Obtém os segundos (UTC)
     const milissegundo = data1.getUTCMilliseconds(); // Obtém os milissegundos (UTC)
     const dataLocal = new Date(ano, mes, dia, hora, minuto, segundo, milissegundo);
-    return format(dataLocal, "HH:mm")
+    return format(dataLocal, "HH:mm:ss")
 }

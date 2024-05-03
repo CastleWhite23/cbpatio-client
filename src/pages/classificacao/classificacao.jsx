@@ -12,7 +12,7 @@ import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 import { Link } from 'react-router-dom'
 
-const path = "https://cbpatio.onrender.com"
+const path = "https://cbpatio-production.up.railway.app"
 
 const Classificacao = () => {
 
