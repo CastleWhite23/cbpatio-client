@@ -10,7 +10,7 @@ import { Api } from '../../services/Api'
 
 const GerenciarEquipe = ({ titulo, idTime, type }) => {
     // const array = [0, 1, 2, 3, 4, 5, 6, 4, 5]
-    const path = "https://cbpatio.onrender.com"
+    const path = "https://cbpatio-production.up.railway.app"
     const [timeUsuarios, setTimeUsuarios] = useState([])
 
     const toast = useToast()
