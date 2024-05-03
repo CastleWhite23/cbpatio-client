@@ -45,6 +45,21 @@ const FormSolicita = ({ idTime }) => {
             const hora_envio = getData()
 
             const {data: jaEnviou} = await Api.get(`/usuarios/time/jaEnviou/${userId}/${idTime}`)
+            const {data: jaEstaEmCampeonato} = await Api.get(`/campeonatos/time/times/nome/ids/${idTime}`)
+
+
+            if(jaEstaEmCampeonato.length > 0){
+                toast({
+                    title: 'Você não pode adicionar pessoas em um time após se inscrever em um campeonato.',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                setLoading(false)
+                return
+            }
+
 
             if(jaEnviou.length > 0){
                 toast({
