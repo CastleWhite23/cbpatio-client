@@ -52,6 +52,18 @@ const MeusTimesJogador = () => {
 
     const handleSairTime = async () => {
         try {
+            const {data: jaEstaEmCampeonato} = await Api.get(`/campeonatos/time/times/nome/ids/${id_time}`)
+
+            if(jaEstaEmCampeonato.length > 0){
+                toast({
+                    title: 'Você não pode sair do time após o seu capitão o ter inscrito em um campeonato.',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                return
+            }
             //o problema de não poder deletar são os filhos da tabela time_usuario. sem eles da pra excluir suave
             await Api.delete(`/usuarios/time/deletar/${id_time}/${getUserData().id}`)
             toast({
