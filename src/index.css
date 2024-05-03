@@ -57,6 +57,9 @@ body {
 .red{
   color: rgb(182, 11, 11);
 }
+.reddark{
+  color: rgb(255, 0, 0);
+}
 
 .orange{
   color: #FA5959;
