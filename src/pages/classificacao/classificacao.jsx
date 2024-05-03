@@ -161,7 +161,7 @@ const Classificacao = () => {
                                             // ocorrendo={
                                             //     formataData(game.data_hora) == formataData(getData()) ? true : false
                                             // }
-                                            data_hora={game.data_hora}
+                                            //data_hora={game.data_hora}
                                             fase={game.fase}
                                             jogo={game.fase}
                                             nome_time={game.nome_time}
@@ -188,7 +188,7 @@ const Classificacao = () => {
                                             // ocorrendo={
                                             //     formataData(game.data_hora) == formataData(getData()) ? true : false
                                             // }
-                                            data_hora={game.data_hora || game.hora_camp_pre_definido}
+                                            //data_hora={game.data_hora || game.hora_camp_pre_definido}
                                             fase={"EM BREVE"}
                                             jogo={game.fase}
                                             nome_time={game.nome_time}
@@ -220,7 +220,7 @@ const Classificacao = () => {
 
 
                                     <CardClassificacao
-                                        data_hora={game.data_hora}
+                                        //data_hora={game.data_hora}
                                         fase={game.fase}
                                         jogo={game.fase}
                                         nome_time={game.nome_time}
@@ -243,7 +243,7 @@ const Classificacao = () => {
                                         width={'20%'} />
 
                                     <CardClassificacao
-                                        data_hora={game.data_hora}
+                                        //data_hora={game.data_hora}
                                         fase={game.fase}
                                         jogo={game.fase}
                                         nome_time={game.nome}
