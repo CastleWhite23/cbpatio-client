@@ -1,8 +1,17 @@
-import {format} from "date-fns"
+import { format } from "date-fns"
 
-export const getData = () =>{
+export const getData = (data =null, minutesDiference = null, method = null) => {
+    let dataAtual = ''
+    if(data){
+         dataAtual = new Date(data);
+    }else{
+         dataAtual = new Date();
+    }
+    
+    minutesDiference && method == "sum" ? dataAtual.setMinutes(dataAtual.getMinutes() + minutesDiference) :
+        minutesDiference && method == "sub" ? dataAtual.setMinutes(dataAtual.getMinutes() - minutesDiference) : ""
 
-    const dataAtual = new Date();
+
 
     const ano = dataAtual.getFullYear();
     const mes = dataAtual.getMonth() + 1; // Os meses começam do zero, então você precisa adicionar 1
@@ -10,13 +19,14 @@ export const getData = () =>{
     const hora = dataAtual.getHours();
     const minuto = dataAtual.getMinutes();
     const segundo = dataAtual.getSeconds();
+
     const dataCriacao = `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
-    
+
     return dataCriacao;
 }
 
 
-export const formataData = (data) =>{
+export const formataData = (data) => {
 
     const data1 = new Date(data) // Extraindo cada parte da data
     const ano = data1.getUTCFullYear(); // Obtém o ano (UTC)
@@ -30,7 +40,7 @@ export const formataData = (data) =>{
     return format(dataLocal, "dd/MM/yyyy")
 }
 
-export const formataHora = (data) =>{
+export const formataHora = (data) => {
 
     const data1 = new Date(data) // Extraindo cada parte da data
     const ano = data1.getUTCFullYear(); // Obtém o ano (UTC)
@@ -41,5 +51,5 @@ export const formataHora = (data) =>{
     const segundo = data1.getUTCSeconds(); // Obtém os segundos (UTC)
     const milissegundo = data1.getUTCMilliseconds(); // Obtém os milissegundos (UTC)
     const dataLocal = new Date(ano, mes, dia, hora, minuto, segundo, milissegundo);
-    return format(dataLocal, "HH:mm:ss")
+    return format(dataLocal, "HH:mm")
 }
