@@ -37,8 +37,21 @@ const GerenciarEquipe = ({ titulo, idTime, type }) => {
 
     const handleExpulsarJogador = async (idUser) => {
         try {
-            const fetch = await Api.delete(`/usuarios/time/deletar/${idTime}/${idUser}`)
+           
+            const {data: jaEstaEmCampeonato} = await Api.get(`/campeonatos/time/times/nome/ids/${idTime}`)
 
+            if(jaEstaEmCampeonato.length > 0){
+                toast({
+                    title: 'Você não pode expulsar pessoas em um time após se inscrever em um campeonato.',
+                    position: 'bottom-left',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                return
+            }
+
+            const fetch = await Api.delete(`/usuarios/time/deletar/${idTime}/${idUser}`)
             toast({
                 title: 'Jogador expulso com sucesso!',
                 position: 'bottom-left',
