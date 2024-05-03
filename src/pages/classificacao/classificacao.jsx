@@ -153,7 +153,7 @@ const Classificacao = () => {
                                         <CardCampeonato
                                             type='preview'
                                             idCamp={game.id_campeonato}
-                                            bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/sem-imagem.png`}
+                                            bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
                                             title={game.nome_camp}
                                             width={'20%'} />
 
@@ -180,7 +180,7 @@ const Classificacao = () => {
                                         <CardCampeonato
                                             type='preview'
                                             idCamp={game.id_campeonato}
-                                            bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/sem-imagem.png`}
+                                            bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
                                             title={game.nome_camp}
                                             width={'20%'} />
 
@@ -213,7 +213,7 @@ const Classificacao = () => {
                                     <CardCampeonato
                                         type='preview'
                                         idCamp={game.id_campeonato}
-                                        bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/sem-imagem.png`}
+                                        bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
                                         title={game.nome_camp}
                                         width={'20%'}
                                     />
@@ -238,7 +238,7 @@ const Classificacao = () => {
                                     <CardCampeonato
                                         type='preview'
                                         idCamp={game.id_campeonato}
-                                        bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/sem-imagem.png`}
+                                        bgImage={game.foto ? `${path}/${game.foto.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
                                         title={game.nome_camp}
                                         width={'20%'} />
 
