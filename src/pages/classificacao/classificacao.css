@@ -47,3 +47,14 @@
     }
     
 }
+
+
+@media (max-width: 750px){
+
+    .camp__jogo{
+        /* border-bottom: 2px solid #580AFF; */
+        padding: 2rem 0;
+    }
+
+    
+}

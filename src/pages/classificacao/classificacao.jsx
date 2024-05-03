@@ -106,6 +106,7 @@ const Classificacao = () => {
 
 
     console.log(eliminados)
+    console.log(games.length)
     //console.log(getData())
 
     return (
@@ -137,12 +138,14 @@ const Classificacao = () => {
                         <PageTitle text={'MEUS JOGOS'} />
                         <DividerComponent margin={'3rem 0'} />
                         <div className='div__jogos'>
-                            {games.length > 0 ? <PageTitle text={"Próximos jogos"} /> : (
+                            {
+                            games.length >= 0 ? <PageTitle text={"Próximos jogos"} /> : (
                                 <div>
                                     <h1 className='aviso'>Você não tem nenhum jogo definido no momento.</h1>
                                     <h1 className='aviso'><span className='link darkpurple'><Link to={`/campeonatos`}>Se increva em um campeonato e espere os avisos dos administradores!</Link></span></h1>
                                 </div>
                             )}
+
                             {
                                 games.map((game, index) => (
 
