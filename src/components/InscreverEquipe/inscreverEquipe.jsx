@@ -211,7 +211,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
-                                <p>Times incritos: ({timesInscritos > 16 ? 16 : timesInscritos}/16)</p>
+                                <p>Times incritos: ({timesInscritos > 16 ? 16 : timesInscritos}/{campeonato[0].limite})</p>
                                 <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
 
