@@ -83,11 +83,11 @@ const NovoTime = () => {
                                     <p className="error">{errors?.nome?.message}</p>
                                 </div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <label htmlFor="foto" className="foto">Foto/Logo do seu time</label>
                                 <Input name="foto" type="file" control={control} className="img" id="foto" />
-                                {/* <p className="error">{errors?.foto?.isPhoto?.message}</p> */}
-                            </div>
+                        
+                            </div> */}
                         </div>
                         <Button text={loading ? 'Carregando...' : 'Cadastrar'} variant="green" type="submit" width="100%" />
                     </form>

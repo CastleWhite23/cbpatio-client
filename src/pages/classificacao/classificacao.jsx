@@ -105,9 +105,28 @@ const Classificacao = () => {
     }, [esperando]);
 
 
-    console.log(eliminados)
-    console.log(games.length)
-    //console.log(getData())
+    //console.log(eliminados)
+    //  getData(10) > getData() 
+
+    console.log(esperando)
+
+    const dataAtual = new Date();
+    esperando.map((game, index) => {
+        if(game.data_hora || game.hora_camp_pre_definido) {
+            console.log(true, 1)
+            if( getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')){
+                console.log('ocorrendo')
+                console.log(getData( ))
+                console.log(getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum'))
+            }else{
+                console.log('nao ocorrendo')
+            }
+           
+         }else{
+           console.log(false) 
+         } 
+        //console.log(getData(`${formataData(game.hora_camp_pre_definido)} ${formataHora(game.hora_camp_pre_definido)}`,10,'sum'))
+    })
 
     return (
         <>
@@ -139,12 +158,12 @@ const Classificacao = () => {
                         <DividerComponent margin={'3rem 0'} />
                         <div className='div__jogos'>
                             {
-                            games.length >= 0 ? <PageTitle text={"Próximos jogos"} /> : (
-                                <div>
-                                    <h1 className='aviso'>Você não tem nenhum jogo definido no momento.</h1>
-                                    <h1 className='aviso'><span className='link darkpurple'><Link to={`/campeonatos`}>Se increva em um campeonato e espere os avisos dos administradores!</Link></span></h1>
-                                </div>
-                            )}
+                                games.length > 0 || esperando.length > 0 ? <PageTitle text={"Próximos jogos"} /> : (
+                                    <div>
+                                        <h1 className='aviso'>Você não tem nenhum jogo definido no momento.</h1>
+                                        <h1 className='aviso'><span className='link darkpurple'><Link to={`/campeonatos`}>Se increva em um campeonato e espere os avisos dos administradores!</Link></span></h1>
+                                    </div>
+                                )}
 
                             {
                                 games.map((game, index) => (
@@ -158,9 +177,11 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
-                                            }
+                                            ocorrendo={game.data_hora || game.hora_camp_pre_definido ? (
+                                                (
+                                                    getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sub')  &&
+                                                    getData() <= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')) ? true : false
+                                            ) : false}
                                             data_hora={game.data_hora}
                                             fase={game.fase}
                                             jogo={game.fase}
@@ -185,9 +206,10 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                            ocorrendo={
-                                                formataData(game.data_hora) == formataData(getData()) ? true : false
-                                            }
+                                            ocorrendo={game.data_hora || game.hora_camp_pre_definido ? (
+                                                (getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sub')  &&
+                                                    getData() <= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')) ? true : false
+                                            ) : false}
                                             data_hora={game.data_hora || game.hora_camp_pre_definido}
                                             fase={"EM BREVE"}
                                             jogo={game.fase}

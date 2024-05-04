@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    width: 100%;
 }
 
 .gerenciar-equipe .card ul div.user {
@@ -66,6 +67,9 @@
     }
 
     .gerenciar-equipe .card ul div.user {
+        border-bottom: 2px #580AFF solid;
+        padding-bottom: 2rem;
+        border-radius: 0;
         flex-direction: column;
         gap: 1rem;
     }

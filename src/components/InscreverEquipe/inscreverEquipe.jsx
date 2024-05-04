@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 import { useContext, useState } from "react";
 import { AuthContext } from '../../context/context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { formataDinheiro, hashId } from '../../services/formatFunctions';
 import { useToast } from '@chakra-ui/react';
 import { SpinnerCustom } from '../Spinner/Spinner'
@@ -137,8 +137,8 @@ const InscreverEquipe = ({ id_campeonato }) => {
 
         if (pessoasTime.data.length != campeonato[0].jogadores) {
             toast({
-                title: `Time contém mais jogadores do que o permitido para esse campeonato!`,
-                description: `Os times para se increver nesse campeonato devem ter apenas ${campeonato[0].jogadores} integrante(s)!`,
+                title: `Time contém a quantidade errada de jogadores obrigatórios para esse campeonato!`,
+                description: `Os times para se increver nesse campeonato devem ter ${campeonato[0].jogadores} integrante(s)!`,
                 position: 'bottom-left',
                 status: 'error',
                 duration: 5000,
@@ -178,13 +178,13 @@ const InscreverEquipe = ({ id_campeonato }) => {
                     {
 
                         <>
-                            <PageTitle text={campeonato[0].nome} />
 
+                            <PageTitle text={campeonato[0].nome} />
                             <div className="subtitles__inscricao">
                                 <p className='premio'>Premiação: {formataDinheiro(campeonato[0].premiacao)}</p>
                                 <p className='valorIns'>Valor da inscrição: {formataDinheiro(campeonato[0].valor_entrada)}</p>
                             </div>
-
+                           
                             <form onSubmit={handleSubmit(onSubmit)} >
 
                                 <div>
@@ -202,7 +202,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
 
                                 <div class="checkbox">
                                     <label >
-                                        Concordo com os termos e politicas de privacidade
+                                        Concordo com os termos e políticas de privacidade e que após o pagamento a inscrição será confirmada no campeonato e o capitão do time não poderá mais enviar  solicitações ou remover integrantes! Se for do seu interesse você pode gerenciar seus times em "<Link to={'/times/meustimes'} className='link'>Meus times</Link>"!
                                     </label>
                                     <input type="checkbox" name="politica" id="politica"  {...register('politica')} />
                                 </div>
