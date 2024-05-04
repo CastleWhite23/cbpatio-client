@@ -24,10 +24,19 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
         ) : eliminado ? (
             <Card variant={"darkpurple"} width={"40%"}>
                 <div className='card-main'>
-                    <span className='darkpurple'>{
-                        `Já aconteceu em ${formataData(data_hora)}`
+                    {
+                        !data_hora
+
+                        ?
+
+                        ""
+
+                        :
+                        <span className='darkpurple'>{
+                            `Já aconteceu em ${formataData(data_hora)}`
+                        }
+                        </span>
                     }
-                    </span>
 
                     <div>
                         <h2 className='greenlight'>{nome_time}</h2>
