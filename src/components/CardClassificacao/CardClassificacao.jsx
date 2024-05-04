@@ -6,7 +6,7 @@ import './CardClassificacao.css'
 
 const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time, nome_time_vs, eliminado = false, eliminado_em = "", campeao = false }) => {
 
-    console.log(data_hora)
+  
     return (
         campeao ? (
             <Card variant={"darkpurple"} width={"40%"}>
