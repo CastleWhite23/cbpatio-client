@@ -107,11 +107,26 @@ const Classificacao = () => {
 
     //console.log(eliminados)
     //  getData(10) > getData() 
-    console.log(getData())
-     console.log(getData(getData(), 10, 'sum'))
-    console.log(getData(getData(), 10 , 'sum') >= getData())
+
     console.log(esperando)
-    //
+
+    const dataAtual = new Date();
+    esperando.map((game, index) => {
+        if(game.data_hora || game.hora_camp_pre_definido) {
+            console.log(true, 1)
+            if( getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')){
+                console.log('ocorrendo')
+                console.log(getData( ))
+                console.log(getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum'))
+            }else{
+                console.log('nao ocorrendo')
+            }
+           
+         }else{
+           console.log(false) 
+         } 
+        //console.log(getData(`${formataData(game.hora_camp_pre_definido)} ${formataHora(game.hora_camp_pre_definido)}`,10,'sum'))
+    })
 
     return (
         <>
@@ -162,8 +177,11 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                             ocorrendo={ game.data_hora ? (  getData() >= getData(game.data_hora, 10, 'sub') && getData() <= getData(game.data_hora, 10 , 'sum') ? true : false) : false
-                                            }
+                                            ocorrendo={game.data_hora || game.hora_camp_pre_definido ? (
+                                                (
+                                                    getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sub')  &&
+                                                    getData() <= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')) ? true : false
+                                            ) : false}
                                             data_hora={game.data_hora}
                                             fase={game.fase}
                                             jogo={game.fase}
@@ -188,8 +206,10 @@ const Classificacao = () => {
                                             width={'20%'} />
 
                                         <CardClassificacao
-                                          ocorrendo={ game.data_hora ? (  getData() >= getData(game.data_hora, 10, 'sub') && getData() <= getData(game.data_hora, 10 , 'sum') ? true : false) : false
-                                        }
+                                            ocorrendo={game.data_hora || game.hora_camp_pre_definido ? (
+                                                (getData() >= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sub')  &&
+                                                    getData() <= getData(game.data_hora || game.hora_camp_pre_definido, 10, 'sum')) ? true : false
+                                            ) : false}
                                             data_hora={game.data_hora || game.hora_camp_pre_definido}
                                             fase={"EM BREVE"}
                                             jogo={game.fase}
