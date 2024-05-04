@@ -42,7 +42,6 @@ const FormSolicita = ({ idTime }) => {
     const handleSolicitation = async (userId) => {
         try {
             setLoading(true);
-            const hora_envio = getData()
 
             const {data: jaEnviou} = await Api.get(`/usuarios/time/jaEnviou/${userId}/${idTime}`)
             const {data: jaEstaEmCampeonato} = await Api.get(`/campeonatos/time/times/nome/ids/${idTime}`)
@@ -101,8 +100,7 @@ const FormSolicita = ({ idTime }) => {
             const envio = await Api.post('/usuarios/time/convidar', {
                 fk_id_usuario: userId,
                 fk_id_time: idTime,
-                aceitou: 'n',
-                hora_envio: hora_envio
+                aceitou: 'n'
             });
 
             toast({
