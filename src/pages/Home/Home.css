@@ -17,14 +17,17 @@
 
 .home h1 {
    text-align: center;
-   word-wrap: break-word;
+   /* Impede quebras de linha no meio das palavras */ 
+   
    text-transform: uppercase;
    margin: 0;
    font-size: clamp(54px, 64px, 74px);
-   /* font-size: 64px; */
+   font-size: 64px;
    font-weight: 700;
+   color: #ffffff;
+   text-shadow: 2px 2px 0 #5100ff, 3px 3px 0 #5100ff, 4px 4px 0 #5100ff; 
 }
-
+/* 866CC9 */
 .home p {
    font-weight: 600;
    font-size: 20px;
@@ -32,6 +35,16 @@
    max-width: 600px;
    text-wrap: wrap;
    text-align: center;
+}
+.home br{
+   display: none;
+}
+
+@media (max-width: 625px) {
+   .home br{
+     display: block;
+   }
+   
 }
 
 @media (max-width: 370px) {
