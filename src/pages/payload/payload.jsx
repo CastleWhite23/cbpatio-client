@@ -68,7 +68,7 @@ const Payload = () => {
         const getPayment = async () => {
             if (!ocurred && campeonato.length > 0) {
                 setLoading(true)
-                const { data: getQrCode } = await Api.post(`/campeonato/pagar`, {
+                const { data: getQrCode } = await Api.post(`/campeonato/pagar/${id_time}/${id_campeonato}`, {
                     name: `${getUserData().nome_completo}`,
                     telefone: `${getUserData().celular}`,
                     email: `${getUserData().email}`,
