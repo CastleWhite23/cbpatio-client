@@ -94,25 +94,7 @@ const Payload = () => {
 
     useEffect(() => {
         socket.on("payed", async () => {
-            try {
-                if (campeonato && campeonato[0]?.valor_entrada) {
-                    const valor = parseFloat(campeonato[0]?.valor_entrada)
-                    const req = await Api.post(`/campeonatos/inscrever/pagamentos`, {
-                        "fk_id_time": id_time,
-                        "fk_id_campeonato": id_campeonato,
-                        "valor_pagamento": valor
-                    })
-
-                    if(req.status >= 200 && req.status < 210){
-                        navigate('/obrigado')
-                        window.location.reload()
-                    }
-                }
-                
-            } catch (e) {
-                alert(e)
-            }
-            
+            navigate('/obrigado')
         })
     }, [ocurred]);
 
