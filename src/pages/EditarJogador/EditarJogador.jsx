@@ -120,8 +120,8 @@ const EditarJogador = () => {
                 duration: 5000,
                 isClosable: true,
             })
-            // navigate('/login');
-            //  localStorage.clear()
+            navigate('/login');
+            localStorage.clear()
             
         } catch (error) {
             console.error('Erro ao atualizar usuário:', error);
