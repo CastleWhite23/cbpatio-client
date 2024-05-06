@@ -55,24 +55,50 @@ const EditarJogador = () => {
 
     const handleEdit = async (formData) => {
         const { nome, nome_usuario, celular, email, foto } = formData;
+
         let message = 'Registro atualizado com sucesso!'
         let status='success'
+        
+        let usuarioData = {}
+        let headerOptions = {}
+
+        if(!foto || foto.length == 0){  
+            usuarioData = {
+                nome: nome,
+                nome_usuario: nome_usuario,// Usando usuario.foto como valor padrão se não houver nova foto
+                email: email,
+                celular: celular,
+            }
+
+            headerOptions = {
+                headers: {
+                   ' Content-Type': 'application/json', // Alterei o tipo de conteúdo para 'application/json'
+                },
+            }
+        }else{
+            
+            usuarioData = {
+                nome: nome,
+                nome_usuario: nome_usuario,
+                foto:  foto  , // Usando usuario.foto como valor padrão se não houver nova foto
+                email: email,
+                celular: celular,
+            }
+
+            headerOptions = {
+                headers: {
+                   ' Content-Type': 'multipart/form-data', // Alterei o tipo de conteúdo para 'application/json'
+                },
+            }
+        }
+
+        console.log(usuarioData)
+        console.log(headerOptions)
     
         try {
             setLoading(true);
-            console.log(foto)
-            console.log(usuario.foto)
-            const req = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
-                nome: nome,
-                nome_usuario: nome_usuario,
-                foto:  foto || "", // Usando usuario.foto como valor padrão se não houver nova foto
-                email: email,
-                celular: celular,
-            }, {
-                headers: {
-                    'Content-Type': 'multipart/form-data', // Alterei o tipo de conteúdo para 'application/json'
-                },
-            });
+
+            const req = await Api.put(`/usuarios/atualizar/${getUserData().id}`, usuarioData, headerOptions);
     
             if (req.data.message === "Nome de usuário já cadastrado!") {
               
@@ -94,8 +120,8 @@ const EditarJogador = () => {
                 duration: 5000,
                 isClosable: true,
             })
-            navigate('/login');
-            localStorage.clear()
+            // navigate('/login');
+            //  localStorage.clear()
             
         } catch (error) {
             console.error('Erro ao atualizar usuário:', error);
