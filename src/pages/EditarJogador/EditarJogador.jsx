@@ -65,7 +65,7 @@ const EditarJogador = () => {
             const req = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
                 nome: nome,
                 nome_usuario: nome_usuario,
-                foto:  usuario[0].foto || foto, // Usando usuario.foto como valor padrão se não houver nova foto
+                foto:  foto || "", // Usando usuario.foto como valor padrão se não houver nova foto
                 email: email,
                 celular: celular,
             }, {
@@ -87,7 +87,6 @@ const EditarJogador = () => {
                 return;
             }
 
-            if(req.status >= 200 && req.status < 210){
             toast({
                 title: message,
                 position: 'bottom-left',
@@ -95,11 +94,8 @@ const EditarJogador = () => {
                 duration: 5000,
                 isClosable: true,
             })
-                navigate('/login');
-                localStorage.clear()
-            
-            }
-            
+            navigate('/login');
+            localStorage.clear()
             
         } catch (error) {
             console.error('Erro ao atualizar usuário:', error);
