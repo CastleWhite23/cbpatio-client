@@ -215,10 +215,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                 <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
 
-                            <div className='omega'>
-
-                                <img src={omega} alt="" srcset="" />
-                            </div>
+                           
                         </>
 
                     }
