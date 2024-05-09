@@ -19,7 +19,7 @@ const Obrigado = () => {
         <p >Se possível, divulgue este projeto para o máximo de pessoas que você conseguir.
           Com isso você nos ajuda, sustenta o projeto e banca as premiações.</p>
       </div>
-      <img className='omega' src={omega} alt="" srcset="" />
+      
      
 
     </div>
