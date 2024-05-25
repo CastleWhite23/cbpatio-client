@@ -121,10 +121,7 @@ const Payload = () => {
                         <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} onClick={(e) => copiar(payload?.point_of_interaction.transaction_data.qr_code)} />
                         <Button text={loading ? <SpinnerCustom /> : "Já fiz o pagamento!"} variant={"green"} type={"button"} width={"100%"} onClick={handlePayed} />
                         <p>Após a confirmação do pagamento você será automaticamente inscrito no campeonato!</p>
-                        <div className='omega'>
-
-                            <img src={omega} alt="" srcset="" />
-                        </div>
+                      
                     </div>
 
 

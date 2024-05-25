@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <div className="home">
-                <h1>CBPatio E-Sports </h1>
+                <h1>CBPatio <br /> E-Sports </h1>
                 <p>Prepare-se para uma experiência única de jogo! O CBPatio Arena é o palco virtual onde a emoção acontece em tempo real. </p>
                 <Link
                     to={'/campeonatos'}
