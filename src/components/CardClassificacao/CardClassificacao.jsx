@@ -51,14 +51,16 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
                                     (eliminado_em.slice(9)) == ' oitavas' && 'blue'
                     }>
                     {
-                        eliminado_em.slice(9) != 'final'
+                        eliminado_em.slice(9) == 'final'
                         ?
+                            <span className='red'>Vice-campeão</span>
+                        
+
+                        :
                         <>
                             <p>{eliminado_em.slice(9)}</p> 
                             <span className='red'>Eliminado</span>
                         </>
-                        :
-                        <span className='red'>Vice-campeão</span>
                     }    
 
                     </h1>
