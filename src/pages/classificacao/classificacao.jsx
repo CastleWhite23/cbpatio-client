@@ -271,7 +271,7 @@ const Classificacao = () => {
                                         nome_time={game.nome}
                                         key={index}
                                         eliminado={true}
-                                        eliminado_em={game.eliminado_em == "eliminado final" ? "Vice-campeão" : game.eliminado_em}
+                                        eliminado_em={game.eliminado_em}
                                     />
                                 </div>
                             ))}
