@@ -98,6 +98,10 @@ const Payload = () => {
         })
     }, [ocurred]);
 
+    const handlePayed = () => {
+        navigate('/classificacao')
+    }
+
 
 
     return (
@@ -115,6 +119,7 @@ const Payload = () => {
                         <h2>Valor da inscrição: <span>{formataDinheiro(campeonato[0].valor_entrada)} R$</span></h2>
                         <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""} />
                         <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} onClick={(e) => copiar(payload?.point_of_interaction.transaction_data.qr_code)} />
+                        <Button text={loading ? <SpinnerCustom /> : "Já fiz o pagamento!"} variant={"green"} type={"button"} width={"100%"} onClick={handlePayed} />
                         <p>Após a confirmação do pagamento você será automaticamente inscrito no campeonato!</p>
                         <div className='omega'>
 
