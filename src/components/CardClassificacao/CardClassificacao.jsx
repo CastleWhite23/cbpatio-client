@@ -49,7 +49,17 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
                             (eliminado_em.slice(9)) == ' semis' ? 'pink' :
                                 (eliminado_em.slice(9)) == ' quartas' ? 'orange' :
                                     (eliminado_em.slice(9)) == ' oitavas' && 'blue'
-                    }>{eliminado_em.slice(9)} - <span className='red'>Eliminado</span></h1>
+                    }>{eliminado_em.slice(9)} 
+                    {
+                        eliminado_em.slice(9) == "final"
+                        
+                        ?
+                            ""
+                        :
+                        
+                        <span className='red'> - Eliminado</span></h1>
+
+                    }
                 </div>
             </Card>
         ): ocorrendo ? (
