@@ -58,8 +58,8 @@ const CardClassificacao = ({ ocorrendo = false, jogo, data_hora, fase, nome_time
 
                         :
                         <>
-                            <p>{eliminado_em.slice(9)}</p> 
-                            <span className='red'>Eliminado</span>
+                            <p>{eliminado_em.slice(9)} - <span className='red'>Eliminado</span></p> 
+                            
                         </>
                     }    
 
