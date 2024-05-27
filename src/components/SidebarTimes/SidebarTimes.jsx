@@ -15,7 +15,6 @@ const SidebarTimes = () => {
         const getConvites = async () => {
             const { data: convite } = await Api.get(`/usuarios/time/convite/${getUserData()?.id}`)
             setConvite(convite.length)
-            setLoading(false)
           }
           getConvites()
     }, [])
