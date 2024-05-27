@@ -3,8 +3,22 @@ import { Link, } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faSquarePlus, faUsers } from "@fortawesome/free-solid-svg-icons"
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../context/context'
+import { Badge } from '@chakra-ui/react'
 
 const SidebarTimes = () => {
+    const { getUserData } = useContext(AuthContext)
+    const [convite, setConvite] = useState(0)
+
+    useEffect(() => {
+        const getConvites = async () => {
+            const { data: convite } = await Api.get(`/usuarios/time/convite/${getUserData()?.id}`)
+            setConvite(convite.length)
+            setLoading(false)
+          }
+          getConvites()
+    }, [])
 
 
     return (
@@ -31,6 +45,9 @@ const SidebarTimes = () => {
                 <Link to='/times/solicitacoes' id='sideLink' >
                     <FontAwesomeIcon icon={faBell} />
                     <span>Solicitações</span>
+                    <Badge borderRadius="full" color={'purple'}>
+                        {convite}
+                    </Badge>
                 </Link>
             </div>
         </>
