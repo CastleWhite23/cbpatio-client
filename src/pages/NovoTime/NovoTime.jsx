@@ -49,7 +49,7 @@ const NovoTime = () => {
         }
 
         if(req.data.message == "Você passou do limite de criação de 5 times!"){
-            alert("Você passou do limite de criação de 5 times!")
+            alert("Você passou do limite de criação de 10 times!")
             return
         }
 
