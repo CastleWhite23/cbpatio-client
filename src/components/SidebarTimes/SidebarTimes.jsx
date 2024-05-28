@@ -6,6 +6,7 @@ import { faBell, faSquarePlus, faUsers } from "@fortawesome/free-solid-svg-icons
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/context'
 import { Badge } from '@chakra-ui/react'
+import { Api } from '../../services/Api'
 
 const SidebarTimes = () => {
     const { getUserData } = useContext(AuthContext)
