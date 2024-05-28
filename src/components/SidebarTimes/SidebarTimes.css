@@ -65,9 +65,16 @@
         display: none;
     }
 
+    .sidebar-times .badge{
+        display: flex;
+        margin-bottom: 15px;
+
+    }
+
     .sidebar-times a {
         border: none;
     }
+    
     .sidebar-times a span{
         display: none;
     }

@@ -45,7 +45,7 @@ const SidebarTimes = () => {
                 <Link to='/times/solicitacoes' id='sideLink' >
                     <FontAwesomeIcon icon={faBell} />
                     <span>Solicitações</span>
-                    <Badge borderRadius="full" color={'purple'}>
+                    <Badge className='badge' borderRadius="full" color={'purple'}>
                         {convite}
                     </Badge>
                 </Link>
