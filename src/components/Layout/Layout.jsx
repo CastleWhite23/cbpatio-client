@@ -1,5 +1,6 @@
 
 import { Navbar } from "../Navbar/Navbar"
+import { Footer } from "../Footer/Footer";
 import './Layout.css'
 
 const Layout = ({ children, bgImage = "", navStyle = "" }) => {
@@ -48,7 +49,7 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
         <div className="content">
           {children}
         </div>
-
+        <Footer/>
       </div>
   );
 };
