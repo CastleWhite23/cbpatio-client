@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import foto from "../../assets/bg_com_logo.png"
 
 
 // CHACKRA UI
@@ -10,7 +9,7 @@ import "./swiperCampeonatos.css"
 
 //  SWIPER
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay, EffectCards } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -41,64 +40,110 @@ const SwiperCampeonatos = () => {
     console.log(campeonatos)
 
     return (
-        <div>
-            
-            <Swiper
-                slidesPerView={1}
-                autoplay={{
-                    delay: 2000, // tempo de intervalo em milissegundos (3 segundos)
-                    disableOnInteraction: true // para continuar a reprodução automática após interações do usuário
-                }}
-                centeredSlides={false}
-                spaceBetween={5}
-                navigation={true}
-                modules={[Pagination, Navigation, Autoplay]}
-                breakpoints={{
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 10
-                    },
-                    1268: {
-                        slidesPerView: 3,
-                        spaceBetween: 20
-                    }
-                }}
-                className='mySwiper'
-            >
+        loading
+            ?
+            <SpinnerCustom />
 
-                {
-                    // ta carregando os dados ainda?
-                    loading
-                        ?
-                        <SpinnerCustom />
+            :
+            (
+                campeonatos.length === 0
 
-                        :
-                        (
-                            campeonatos.length === 0
+                    ?
 
-                                ?
+                    "Não há campeonatos para o momento."
 
-                                "Não há campeonatos para o momento."
+                    :
+                    <div className='slider'>
+                        <div className="destaques">
+                            <Swiper
+                                slidesPerView={1}
+                                autoplay={{
+                                    delay: 1800, // tempo de intervalo em milissegundos (3 segundos)
+                                    disableOnInteraction: true // para continuar a reprodução automática após interações do usuário
+                                }}
+                                centeredSlides={false}
+                                spaceBetween={5}
+                                navigation={true}
+                                loop={true}
+                                modules={[Pagination, Navigation, Autoplay]}
 
-                                :
+
+                                className='mySwiper'
+
+                            >
+
+                                {
+                                    // ta carregando os dados ainda?
+
+                                    campeonatos.map((campeonato, index) => {
+                                        return (
+                                            campeonato.id_campeonato == 77 || campeonato.id_campeonato == 79 || campeonato.id_campeonato == 81 ?
+                                                <SwiperSlide key={index}>
+                                                    <CardCampeonato
+                                                        idCamp={hashId(campeonato.id_campeonato)}
+                                                        bgImage={campeonato.foto ? `${path}/${campeonato.foto?.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
+                                                        title={campeonato.nome}
+                                                        height={"25rem"}
+                                                        width={"100%"} />
+                                                </SwiperSlide>
+                                                : ''
+
+
+                                        )
+                                    })
+
+
+                                }
+
+                            </Swiper>
+                        </div>
+                        <div className="outros">
+                            {
+                                // ta carregando os dados ainda?
+
                                 campeonatos.map((campeonato, index) => {
                                     return (
-                                        <SwiperSlide key={index}>
-                                            <CardCampeonato
-                                                idCamp={hashId(campeonato.id_campeonato)}
-                                                bgImage={campeonato.foto ? `${path}/${campeonato.foto?.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
-                                                title={campeonato.nome}
-                                                height={"25rem"}
-                                                width={"100%"} />
-                                        </SwiperSlide>
+                                        <CardCampeonato
+                                            idCamp={hashId(campeonato.id_campeonato)}
+                                            bgImage={campeonato.foto ? `${path}/${campeonato.foto?.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
+                                            title={campeonato.nome}
+                                            height={"25rem"}
+                                            width={"300px"} />
                                     )
                                 })
-                        )
 
-                }
 
-            </Swiper>
-        </div>
+                            }
+                        </div>
+                        <div className="responsive-slider">
+                            <Swiper
+                                effect={'cards'}
+                                modules={[EffectCards]}
+                               
+                            >
+                               {
+                                 
+                                 campeonatos.map((campeonato, index) => {
+                                    return (
+                                    
+                                            <SwiperSlide key={index}>
+                                                <CardCampeonato
+                                                    idCamp={hashId(campeonato.id_campeonato)}
+                                                    bgImage={campeonato.foto ? `${path}/${campeonato.foto?.replace(/\\/g, '/')}` : `${path}/fotoCampeonatos/sem-imagem.png`}
+                                                    title={campeonato.nome}
+                                                    height={"25rem"}
+                                                    width={"94%"} />
+                                            </SwiperSlide>
+
+
+                                    )
+                                })
+                               }
+                            </Swiper>
+                        
+                    </div>
+                    </div >
+            )
     )
 }
 
