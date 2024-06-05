@@ -1,4 +1,30 @@
+.outros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 1.3rem;
+    
+}
+.responsive-slider{
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+/* .mySwiper{
+    margin-bottom: 2rem;
+} */
 @media (max-width: 780px) {
+    .outros{
+        display: none;
+    }
+    .responsive-slider{
+        display: flex;
+        
+    }
     .mySwiper{
         display: flex;
         flex-direction: column;
