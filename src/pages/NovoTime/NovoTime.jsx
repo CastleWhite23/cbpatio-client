@@ -96,7 +96,7 @@ const NovoTime = () => {
 
                 <div className="alerta">
                     <p>
-                        Você pode <span className="span-cap">criar</span> no máximo <span className="span-cap">4 times</span>
+                        Você pode <span className="span-cap">criar</span> no máximo <span className="span-cap">10 times</span>
                     </p>
                     <p>
                         Criando este time, você será automaticamente o <span className="span-cap">capitão</span>. Seu dever será convidar os integrantes e cadastrar o time nos campeonatos.
