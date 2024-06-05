@@ -9,19 +9,30 @@
     padding: 1rem;
     z-index: 1;
     position: relative;
+    object-fit: cover;
+    object-position: center;
+
 }
 
 .card-img h3 {
     text-align: center;
     color: #fff;
+    text-shadow: 2px 2px 0 #5100ff, 2px 2px 0 #5100ff, 3px 3px 0 #5100ff; 
     font-weight: 700;
-    font-size: 20px;
-    margin-bottom: .75rem;
+    font-size: 25px;
     text-transform: uppercase;
+    /* background: #580AFF; */
+backdrop-filter: blur(8px);
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding: 1rem;
+    
+    /* background: linear-gradient(90deg, #580AFF 10%, rgba(255,255,255,0) 100%); */
 }
 
 .card-img .things{
-    margin-top: 12rem;
+    margin-top: 12rem;    
+
 }
 
 .card-purple{
