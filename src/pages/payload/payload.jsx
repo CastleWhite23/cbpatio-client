@@ -120,6 +120,7 @@ const Payload = () => {
                         <QRCode value={ocurred ? payload?.point_of_interaction.transaction_data.qr_code : ""} />
                         <Button text={loading ? <SpinnerCustom /> : "Copiar chave pix"} variant={"purple"} type={"submit"} width={"100%"} onClick={(e) => copiar(payload?.point_of_interaction.transaction_data.qr_code)} />
                         <Button text={loading ? <SpinnerCustom /> : "Já fiz o pagamento!"} variant={"green"} type={"button"} width={"100%"} onClick={handlePayed} />
+                        <p>Caso clique no botão acima sem ter realizado o pagamento corretamente, você não sera inscrito!</p>
                         <p>Após a confirmação do pagamento você será automaticamente inscrito no campeonato!</p>
                       
                     </div>
