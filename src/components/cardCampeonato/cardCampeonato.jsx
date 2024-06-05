@@ -7,6 +7,7 @@ import "./cardCampeonato.css"
 const CardCampeonato = ({ idCamp, title, width, height, bgImage, type }) => {
   return (
     <Card width={width} height={height} variant={'img'} bgImage={bgImage}>
+      
       <h3>{title}</h3>
 
       {
