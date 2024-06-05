@@ -6,7 +6,6 @@ const Card = ({ children, variant, width, height, bgImage, gap }) => {
   const bgImageStyle = {
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: 'center',
-    filter: `blur(2px) grayscale(65%)`,
     zIndex: '-1',
     position: 'absolute',
     width: '100%',
