@@ -97,8 +97,15 @@
         flex-direction: column;
         
     }
-    .titulo h1{
+   .titulo h1{
+
+		  line-height: 2.2rem !important;
+		font-size: 1.3rem !important;
         text-align: center !important;
+    }
+	.titulo h1 span{
+		font-size: 1.6rem !important;
+       
     }
 
     .final .links{
