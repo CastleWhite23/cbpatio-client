@@ -109,6 +109,7 @@
     }
 
    .footer .final .politicas{
+	   flex-direction:column !important;
 		gap:.5rem !important;
 		margin-bottom:.3rem;
 	}
