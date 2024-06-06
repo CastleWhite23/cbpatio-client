@@ -2,7 +2,7 @@ import './Footer.css'
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faDiscord, faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faDiscord, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
 
 const Footer = () => {
@@ -32,11 +32,9 @@ const Footer = () => {
 
                 <div className="final">
                     <p className='links'>
-                        <Link hrefLang='#'><FontAwesomeIcon icon={faInstagram} /></Link>
-                        <Link hrefLang='#'><FontAwesomeIcon icon={faDiscord} /></Link>
-                        <Link hrefLang='#'><FontAwesomeIcon icon={faTwitter} /></Link>
-                        <Link hrefLang='#'><FontAwesomeIcon icon={faFacebook} /></Link>
-                        <Link hrefLang='#'><FontAwesomeIcon icon={faGithub} /></Link>
+                        <a hrefLang='#' href='https://instagram.com/cbpatio' target='_blank'><FontAwesomeIcon icon={faInstagram} /></a>
+                        <a href='https://discord.gg/DqYZEaGGx6' target='_blank'><FontAwesomeIcon icon={faDiscord} /></a>
+                        <a hrefLang='#' href='https://x.com/CBPatio?t=kX6GjoXKngWj0PpKdi_HlQ&s=09'><FontAwesomeIcon icon={faXTwitter} target='_blank'/></a>
                     </p>
                     <div className="politicas">
                         <Link hrefLang='#'> Políticas de privacidade</Link>
