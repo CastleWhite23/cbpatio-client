@@ -18,6 +18,10 @@
     margin-bottom: 2rem;
 } */
 @media (max-width: 780px) {
+    .destaques .card-img{
+		min-height:40rem !important;
+	
+	}
     .outros{
         display: none;
     }
