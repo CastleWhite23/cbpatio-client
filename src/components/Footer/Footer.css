@@ -108,9 +108,10 @@
        
     }
 
-    .final .links{
-        
-    }
+   .footer .final .politicas{
+		gap:.5rem !important;
+		margin-bottom:.3rem;
+	}
  }
 /* 
 .footer .img{
