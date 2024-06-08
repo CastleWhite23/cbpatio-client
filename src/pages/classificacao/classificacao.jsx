@@ -11,7 +11,7 @@ import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 import { Link } from 'react-router-dom'
-import {AdsComponent} from '../../components/ad/ad'
+import {AdSense} from '../../components/ad/ad'
 
 const path = "https://cbpatio-production.up.railway.app"
 
@@ -281,7 +281,7 @@ const Classificacao = () => {
 
                         </div>
 
-                        <AdsComponent />
+                        <AdSense />
                     </>
             }
 
