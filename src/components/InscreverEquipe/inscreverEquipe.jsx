@@ -18,6 +18,7 @@ import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 import { PageTitle } from '../pageTitle/pageTitle'
 import { CampeonatoDescription } from '../CampeonatoDescription/CampeonatoDescription';
 import omega from '../../assets/omega.png'
+import {formataData} from "../../services/getData"
 
 
 
@@ -211,7 +212,7 @@ const InscreverEquipe = ({ id_campeonato }) => {
                                 <div >
                                     <Button text={loading ? <SpinnerCustom /> : <FontAwesomeIcon icon={faRightLong} />} variant="purple" type="submit" width="60px" height={'60px'} borderRadius={'100%'} />
                                 </div>
-                                <p>Times incritos: ({timesInscritos > campeonato[0].limite ? campeonato[0].limite : timesInscritos}/{campeonato[0].limite})</p>
+                                <p>Data do campeonato: {formatadata(campeonato[0].data_hora)}</p>
                                 <h3>Após selecionar o time com a quantidade de integrantes permitida para o campeonato será permitido  prosseguir para conclusão da incrição!</h3>
                             </form>
 
