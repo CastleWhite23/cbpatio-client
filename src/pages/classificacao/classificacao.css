@@ -24,6 +24,12 @@
     align-items: center;
 }
 
+#help__text{
+    color: #fff;
+    text-align: center;
+    margin-top: 35px;
+}
+
 
 @media (max-width: 990px){
     .div__jogos{
