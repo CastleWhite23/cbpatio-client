@@ -21,7 +21,7 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
       >
 
         {
-          navStyle == "home" ? <Navbar isHome={'s'} /> : <Navbar bgColor={'#22243F'} />
+          navStyle == "home" ? <Navbar isHome={'s'} /> : ''
         }
         <div className="content">
           {children}
@@ -31,25 +31,12 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
 
       :
 
-      <div
-        className="layout"
-        style={{
-          backgroundColor: "#252848",
-          width: "100%",
-          minHeight: "100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-
-        {
-          navStyle == "home" ? <Navbar /> : <Navbar bgColor={'#22243F'} />
-        }
+      <div>
+        <Navbar isHome='n'/>
         <div className="content">
           {children}
         </div>
-        <Footer/>
+        <Footer />
       </div>
   );
 };
