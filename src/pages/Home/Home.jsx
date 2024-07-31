@@ -3,6 +3,8 @@ import './Home.css'
 import { Button } from '../../components/Button/Button'
 import { Link } from 'react-router-dom'
 import { socket } from '../../services/socket'
+import { HomeLeft } from '../HomeFull/Homeleft'
+
 const Home = () => {
     return (
         <>
@@ -21,6 +23,8 @@ const Home = () => {
                 </Link>
 
             </div>
+            <HomeLeft />
+
         </>
     )
 }
