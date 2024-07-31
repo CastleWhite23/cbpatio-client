@@ -45,7 +45,7 @@ const Navbar = ({ bgColor, isHome }) => {
 
     return (
         <>
-            <header style={{ backgroundColor: bgColor, ...styles }}>
+            <header style={{ backgroundColor: bgColor, ...styles }} className={isHome == 'n' ? 'normal': ''}>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>
