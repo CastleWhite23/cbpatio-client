@@ -7,32 +7,24 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
   const backgroundImage = typeof bgImage === "string" ? bgImage : "";
 
   return (
-    bgImage ?
+    navStyle == 'home' ?
       <div
         className="layout"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          width: "100%",
-          minHeight: "100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
 
-        {
-          navStyle == "home" ? <Navbar isHome={'s'} /> : ''
-        }
+        <Navbar isHome={'s'}/>
+
         <div className="content">
           {children}
         </div>
 
+        <Footer />
       </div>
 
       :
 
       <div>
-        <Navbar isHome='n'/>
+        <Navbar isHome='n' />
         <div className="content">
           {children}
         </div>
