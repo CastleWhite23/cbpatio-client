@@ -1,6 +1,4 @@
-/* .times{
-    width: 100%;
-} */
+
 
 .times h1{
     display: flex;
@@ -13,10 +11,14 @@
     padding-left: 190px;
 
 } */
-
+/* .times .sidebar{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+} */
 
 .times .children{
-    padding-left: 190px;
+    padding-left: 100px;
     color: #fff;
     padding-bottom: 5rem;
 }
