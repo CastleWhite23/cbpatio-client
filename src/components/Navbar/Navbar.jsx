@@ -15,10 +15,10 @@ const Navbar = ({ bgColor, isHome }) => {
 
 
 
-    const styles = {
-        position: location.pathname == '/' ? 'absolute' : 'initial',
-        zIndex: location.pathname == '/' ? 2 : 1
-    }
+    // const styles = {
+    //     position: location.pathname == '/' ? 'absolute' : 'initial',
+    //     zIndex: location.pathname == '/' ? 2 : 1
+    // }
 
 
 
@@ -43,9 +43,10 @@ const Navbar = ({ bgColor, isHome }) => {
     console.log(`${path}/fotoUsuarios/sem_foto_user.png`)
 
 
+
     return (
         <>
-            <header style={{ backgroundColor: bgColor, ...styles }} className={isHome == 'n' ? 'normal': ''}>
+            <header  className={isHome == 's' ? 'transparent' : ''}>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>
