@@ -28,17 +28,8 @@
     height: 100%;
 } */
 
-.sidebar-times.open .esmaecer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: .5;
-    z-index: -1;
-    transition: .5s all ease-in-out;
-}
+
+
 
 .sidebar-times {
     overflow-x: hidden;
@@ -55,7 +46,7 @@
 }
 .sidebar-times.open {
 
-    width: 100%;
+    width: 310px;
     height: 100%;
 
 
@@ -125,13 +116,13 @@
 
 
 @media (max-width: 925px) {
-    .sidebar-times.open .esmaecer {
-       display: none;
-    }
-    .sidebar-times.open .links {
+    .sidebar-times{
         width: 100%;
     }
-    .sidebar-times .links {
+
+  
+    .sidebar-times .links, .sidebar-times.open .links {
+
         position: absolute;
         right: 0;
         bottom: 0;
