@@ -77,7 +77,7 @@ const SwiperCampeonatos = () => {
 
                                     campeonatos.map((campeonato, index) => {
                                         return (
-                                            campeonato.id_campeonato == 77 || campeonato.id_campeonato == 79 || campeonato.id_campeonato == 81 ?
+                                            campeonato.nome == 'Free Fire' || campeonato.nome == 'Brawl Stars 2v2' ?
                                                 <SwiperSlide key={index}>
                                                     <CardCampeonato
                                                         idCamp={hashId(campeonato.id_campeonato)}
