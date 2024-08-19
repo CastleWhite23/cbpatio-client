@@ -3,6 +3,10 @@ import './Home.css'
 import { Button } from '../../components/Button/Button'
 import { Link } from 'react-router-dom'
 import { socket } from '../../services/socket'
+<<<<<<< HEAD
+=======
+import {HomeLeft} from '../HomeLeft/HomeLeft'
+>>>>>>> e712b35db9a2de86b3c3dd5014ea9aaf220af2a3
 
 const Home = () => {
     return (

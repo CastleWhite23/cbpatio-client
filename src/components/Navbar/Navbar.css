@@ -5,10 +5,7 @@
     align-items: center;
 }
 
-.normal{
-    background-color: #3b0d64;
-    /* background-image: linear-gradient(326deg, #381751 100%, #1b1230 0%); */
-}
+
 
 #user img{
     width: 45px;
@@ -54,7 +51,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 11 !important;
+    background-color: #4f1483;
+    position: fixed;
+    z-index: 2;
+   
+
+   
+}
+ .transparent{
+    background-color: transparent;
+    backdrop-filter: blur(30px);
    
 }
 
@@ -72,6 +78,7 @@ header .nav-toogle {
     right: 0;
     display: none;
     cursor: pointer;
+    z-index: 2;
 }
 
 header nav {
