@@ -14,6 +14,14 @@
     justify-content: center;
     display: none;
 }
+.naoHa{
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    margin: 6rem 0;
+}
+
+
 /* .mySwiper{
     margin-bottom: 2rem;
 } */

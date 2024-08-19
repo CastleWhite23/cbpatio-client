@@ -3,7 +3,7 @@ import { Navbar } from "../Navbar/Navbar"
 import { Footer } from "../Footer/Footer";
 import './Layout.css'
 
-const Layout = ({ children, bgImage = "", navStyle = "" }) => {
+const Layout = ({ children, bgImage = "", navStyle = "" , isConfig=false}) => {
   const backgroundImage = typeof bgImage === "string" ? bgImage : "";
 
   return (
@@ -25,7 +25,7 @@ const Layout = ({ children, bgImage = "", navStyle = "" }) => {
 
       <div>
         <Navbar isHome='n' />
-        <div className="content">
+        <div className={isConfig ? "":"content"}>
           {children}
         </div>
         <Footer />
