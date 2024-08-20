@@ -40,5 +40,13 @@
 .button.red{
     background-color: #B72D24;
     color: #fff;
-
+}
+.button.profileqr{
+    background-color: #1B1230;
+    color: #fff;
+    font-size: 20px;
+}
+.button.profile{
+    background-color: #1B1230;
+    color: #fff;
 }
