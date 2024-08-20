@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { AuthContext } from "../../context/context"
 import { formatarNumero } from '../../services/formatFunctions'
 import { hashId } from '../../services/formatFunctions'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 import stars from "../../assets/stars.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,6 +17,8 @@ import { NickCard } from '../../components/nickCards/NickCard'
 const Config = ({isTheUser}) => {
 
     const path = "https://cbpatio-production.up.railway.app"
+
+    const navigate = useNavigate()
 
     const { getUserData } = useContext(AuthContext)
 
@@ -55,7 +57,9 @@ const Config = ({isTheUser}) => {
 
                         <div className="headerEnd">
                             <Button width={'75px'} height={'20px'} variant={'profileqr'} text={<FontAwesomeIcon icon={faQrcode}/>} />
-                            <Button variant={'profile'} text={'Editar perfil'} />
+                            <Link to={`/config/editar/${getUserData().id}`}>
+                                <Button text={"Editar perfil"} variant={"profile"} />
+                            </Link>
                         </div>
 
 
