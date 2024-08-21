@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './nickCard.css'
 import {Input} from '../Input/Input'
 import { useForm } from 'react-hook-form'
@@ -9,12 +9,15 @@ import { faPlaystation, faXbox } from '@fortawesome/free-brands-svg-icons';
 import epicgames from "../../assets/epicgames.png"
 import supercell from "../../assets/supercell.png"
 import { Api } from '../../services/Api';
+import { AuthContext } from '../../context/context';
 
 const schema = yup.object({
     nickname: yup.string().max(20, "Seu nick não pode ser maior que 20 caracteres")
 })
 
 const NickCard = ({plataform, actualName, idConta}) => {
+
+    const {getUserData} = useContext(AuthContext) 
 
     const {
         control,
@@ -26,7 +29,32 @@ const NickCard = ({plataform, actualName, idConta}) => {
     });
 
     const submitNick = async (formData) => {
-        console.log('seseg')
+        switch (plataform) {
+            case "epic":
+                const {status} = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
+                    nick_epic: formData.nickName_epic
+                })
+                if(status == 201 || 200){
+                    alert('nome alterado pra ', formData.nickName_epic)
+                }
+                console.log(formData.nickName_epic, "epic")
+                window.location.reload()
+                break;
+
+            case "psn":
+                const psnStatus = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
+                    nick_psn: formData.nickName_psn
+                })
+                if(psnStatus.status == 201 || 200){
+                    alert('nome alterado pra ', formData.nickName_psn)
+                }
+                console.log(formData.nickName_psn, "psn")
+                window.location.reload()
+                break;
+        
+            default:
+                break;
+        }
 
     }
 

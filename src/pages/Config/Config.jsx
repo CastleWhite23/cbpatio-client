@@ -1,7 +1,7 @@
 import './Config.css'
 import foto from '../../assets/templo.png'
 import { Button } from '../../components/Button/Button'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from "../../context/context"
 import { formatarNumero } from '../../services/formatFunctions'
 import { hashId } from '../../services/formatFunctions'
@@ -11,10 +11,13 @@ import stars from "../../assets/stars.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQrcode } from '@fortawesome/free-solid-svg-icons'
 import { NickCard } from '../../components/nickCards/NickCard'
+import { Api } from '../../services/Api'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
 const Config = ({isTheUser}) => {
+
+    const [nicksUser, setNicksUser] = useState({})
 
     const path = "http://localhost:3005"
 
@@ -22,13 +25,22 @@ const Config = ({isTheUser}) => {
 
     const { getUserData } = useContext(AuthContext)
 
+    useEffect(() => {
+        const getNicksUser = async () => {
+            const {data} = await Api.get(`/usuarios/${getUserData().id}`) 
+
+            setNicksUser(data)
+        }
+
+        getNicksUser()
+    }, [])
+    
+    console.log(nicksUser[0]?.nick_epic)
+
     const handleDeslogar = () => {
         localStorage.clear()
         window.location.reload()
     }
-
-
-    console.log(getUserData())
 
     return (
         <>
@@ -45,13 +57,13 @@ const Config = ({isTheUser}) => {
                         {/* colocar um popper aqui pro cara ver que é qrcode*/}
                         <div className="centerNicks">
                             <div className="layerOne">
-                                <NickCard idConta={getUserData()?.id} plataform={'epic'} actualName={getUserData().nick_epic ?? "Sem conta."}/>
-                                <NickCard idConta={getUserData()?.id} plataform={'supercell'} actualName={getUserData().nick_supercell  ?? "Sem conta."}/>
+                                <NickCard idConta={getUserData()?.id} plataform={'epic'} actualName={nicksUser[0]?.nick_epic ?? "Sem conta."}/>
+                                <NickCard idConta={getUserData()?.id} plataform={'supercell'} actualName={nicksUser[0]?.nick_supercell  ?? "Sem conta."}/>
                             </div>
                             
                             <div className="layerTwo">
-                                <NickCard idConta={getUserData()?.id} plataform={'psn'} actualName={getUserData().nick_psn ?? "Sem conta." }/>
-                                <NickCard idConta={getUserData()?.id} plataform={'xbox'} actualName={getUserData().nick_xbox  ?? "Sem conta." }/>
+                                <NickCard idConta={getUserData()?.id} plataform={'psn'} actualName={nicksUser[0]?.nick_psn ?? "Sem conta." }/>
+                                <NickCard idConta={getUserData()?.id} plataform={'xbox'} actualName={nicksUser[0]?.nick_xbox  ?? "Sem conta." }/>
                             </div>
                         </div>
 
