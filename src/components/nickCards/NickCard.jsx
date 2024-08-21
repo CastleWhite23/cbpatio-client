@@ -4,6 +4,8 @@ import {Input} from '../Input/Input'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXbox } from '@fortawesome/free-brands-svg-icons';
 
 const schema = yup.object({
     nickname: yup.string().max(20, "Seu nick não pode ser maior que 20 caracteres")
@@ -27,7 +29,11 @@ const NickCard = ({plataform, actualName}) => {
   return (
     <div className='nickCard'>
         <form onSubmit={handleSubmit(submitNick())}>
-            <Input name={`nickName_${plataform}`} control={control} defaultValue={actualName} type='text' />
+            <div className='subInput'>
+                <FontAwesomeIcon icon={faXbox} />
+                <Input name={`nickName_${plataform}`} control={control} defaultValue={actualName} type='text' />
+            </div>
+        
         </form>
     </div>
   )

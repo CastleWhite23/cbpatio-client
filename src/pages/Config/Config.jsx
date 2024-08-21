@@ -16,7 +16,7 @@ import { NickCard } from '../../components/nickCards/NickCard'
 
 const Config = ({isTheUser}) => {
 
-    const path = "https://cbpatio-production.up.railway.app"
+    const path = "http://localhost:3005"
 
     const navigate = useNavigate()
 
@@ -45,13 +45,13 @@ const Config = ({isTheUser}) => {
                         {/* colocar um popper aqui pro cara ver que é qrcode*/}
                         <div className="centerNicks">
                             <div className="layerOne">
-                                <NickCard plataform={'epic'} actualName={'Zaia08'}/>
-                                <NickCard plataform={'supercell'} actualName={'Zaia08'}/>
+                                <NickCard plataform={'epic'} actualName={getUserData().nick_epic ?? "Sem conta."}/>
+                                <NickCard plataform={'supercell'} actualName={getUserData().nick_supercell  ?? "Sem conta."}/>
                             </div>
                             
                             <div className="layerTwo">
-                                <NickCard plataform={'psn'} actualName={'Zaia08'}/>
-                                <NickCard plataform={'xbox'} actualName={'Zaia08'}/>
+                                <NickCard plataform={'psn'} actualName={getUserData().nick_psn ?? "Sem conta." }/>
+                                <NickCard plataform={'xbox'} actualName={getUserData().nick_xbox  ?? "Sem conta." }/>
                             </div>
                         </div>
 
@@ -81,7 +81,7 @@ const Config = ({isTheUser}) => {
                             </div>
 
                             <p className='biografia'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus fugiat vel officiis recusandae illo, saepe debitis optio quia. Rerum placeat debitis eaque quos temporibus accusamus similique vitae nesciunt ea odio.
+                                {getUserData().biografia ?? "O usuário não possui biografia."}
                             </p>
                             
                         </div>

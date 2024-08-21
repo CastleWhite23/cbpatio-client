@@ -43,9 +43,6 @@
     width: 200px;
     height: 250px; 
 }
-.config .user .hipercarga{
-   
-}
 
 .config .user img{
     margin-top: 2rem;
@@ -136,6 +133,7 @@
     flex-direction: row;
     gap: 230px;
     justify-content: center;
+
 
 }
 
