@@ -44,7 +44,7 @@
     height: 250px; 
 }
 
-.config .user img{
+.config .user .dados img{
     margin-top: 2rem;
     border-radius: 100%;
     width: 130px;
@@ -131,7 +131,7 @@
 .centerNicks .layerOne{
     display: flex;
     flex-direction: row;
-    gap: 230px;
+    gap: 280px;
     justify-content: center;
 
 
@@ -140,7 +140,7 @@
 .centerNicks .layerTwo{
     display: flex;
     flex-direction: row;
-    gap: 230px;
+    gap: 280px;
     justify-content: center;
 
 

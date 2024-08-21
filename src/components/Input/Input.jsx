@@ -2,7 +2,7 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import "./Input.css"
 
-const Input = ({defaultValue, name, control, disabled, readOnly, type = 'text',...rest}) => {
+const Input = ({defaultValue, name, control, disabled, readOnly, placeholder, type = 'text',...rest}) => {
   return (
     <>        
         <Controller name={name}
@@ -12,6 +12,7 @@ const Input = ({defaultValue, name, control, disabled, readOnly, type = 'text',.
         render={({field: {value, onChange}}) => type == 'file' ? 
         //se for um input de file
         <input
+        placeholder={placeholder}
         type={type}
         onChange={(e) => onChange(e.target.files[0])}
         disabled={disabled}
@@ -29,7 +30,7 @@ const Input = ({defaultValue, name, control, disabled, readOnly, type = 'text',.
       /> 
       
       //se não for um input de file nem de data
-      : <input className='input' type={type} defaultValue={defaultValue} onChange={onChange} disabled={disabled} readOnly={readOnly} {...rest}/>}
+      : <input className='input' placeholder={placeholder} type={type} defaultValue={defaultValue} onChange={onChange} disabled={disabled} readOnly={readOnly} {...rest}/>}
         />
     </>
   )

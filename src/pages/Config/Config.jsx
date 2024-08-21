@@ -45,13 +45,13 @@ const Config = ({isTheUser}) => {
                         {/* colocar um popper aqui pro cara ver que é qrcode*/}
                         <div className="centerNicks">
                             <div className="layerOne">
-                                <NickCard plataform={'epic'} actualName={getUserData().nick_epic ?? "Sem conta."}/>
-                                <NickCard plataform={'supercell'} actualName={getUserData().nick_supercell  ?? "Sem conta."}/>
+                                <NickCard idConta={getUserData()?.id} plataform={'epic'} actualName={getUserData().nick_epic ?? "Sem conta."}/>
+                                <NickCard idConta={getUserData()?.id} plataform={'supercell'} actualName={getUserData().nick_supercell  ?? "Sem conta."}/>
                             </div>
                             
                             <div className="layerTwo">
-                                <NickCard plataform={'psn'} actualName={getUserData().nick_psn ?? "Sem conta." }/>
-                                <NickCard plataform={'xbox'} actualName={getUserData().nick_xbox  ?? "Sem conta." }/>
+                                <NickCard idConta={getUserData()?.id} plataform={'psn'} actualName={getUserData().nick_psn ?? "Sem conta." }/>
+                                <NickCard idConta={getUserData()?.id} plataform={'xbox'} actualName={getUserData().nick_xbox  ?? "Sem conta." }/>
                             </div>
                         </div>
 
