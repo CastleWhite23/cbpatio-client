@@ -131,7 +131,7 @@
 .centerNicks .layerOne{
     display: flex;
     flex-direction: row;
-    gap: 280px;
+    gap: 400px;
     justify-content: center;
 
 
@@ -140,7 +140,7 @@
 .centerNicks .layerTwo{
     display: flex;
     flex-direction: row;
-    gap: 280px;
+    gap: 400px;
     justify-content: center;
 
 

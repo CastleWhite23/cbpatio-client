@@ -51,6 +51,28 @@ const NickCard = ({plataform, actualName, idConta}) => {
                 console.log(formData.nickName_psn, "psn")
                 window.location.reload()
                 break;
+
+            case "xbox":
+                const xboxStatus = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
+                    nick_xbox: formData.nickName_xbox
+                })
+                if(xboxStatus.status == 201 || 200){
+                    alert('nome alterado pra ', formData.nickName_xbox)
+                }
+                console.log(formData.nickName_xbox, "xbox")
+                window.location.reload()
+                break;
+
+            case "supercell":
+                const supercellStatus = await Api.put(`/usuarios/atualizar/${getUserData().id}`, {
+                    nick_supercell: formData.nickName_supercell
+                })
+                if(supercellStatus.status == 201 || 200){
+                    alert('nome alterado pra ', formData.nickName_supercell)
+                }
+                console.log(formData.nickName_supercell, "supercell")
+                window.location.reload()
+                break;
         
             default:
                 break;
