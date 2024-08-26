@@ -47,8 +47,8 @@
 .config .user .dados img{
     margin-top: 2rem;
     border-radius: 100%;
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     object-fit:cover;
     object-position: center;
 }
@@ -119,11 +119,11 @@
 
 .centerNicks{
     position: absolute;
-    gap: 40px;
+    gap: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: -30px;
+    top: -40px;
     justify-content: center;
     width: 85%;
 }
@@ -167,11 +167,22 @@
     color: #F6BFFF;
 }
 
- .config .actions .info span{
+.config .actions .info span{
     text-transform: uppercase;
     font-weight: 700;
     color: #cc2e2e;
- }
+}
+
+
+@media (min-width: 1280px) {
+    .centerNicks .layerTwo{
+        gap: 300px;
+    }
+
+    .centerNicks .layerOne{
+        gap: 300px;
+    }
+}
 
 /* .actions{
     background-color: #fff;

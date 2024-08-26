@@ -86,7 +86,7 @@ const NickCard = ({plataform, actualName, idConta}) => {
             <div className='subInput'>
                 <FontAwesomeIcon icon={plataform == "xbox" ? faXbox : plataform == "psn" ? faPlaystation : "" } color={plataform == "psn" ? 'blue' : "green"} />
                 {plataform == "epic" ? <img src={epicgames} /> : plataform == "supercell" ? <img src={supercell} /> : ''}
-                <Input name={`nickName_${plataform}`} control={control} placeholder={actualName ?? "Insira seu nick aqui." } type='text' />
+                <Input style={'profile'} name={`nickName_${plataform}`} control={control} placeholder={actualName ?? "Insira seu nick aqui." } type='text' />
             </div> 
         
         </form>

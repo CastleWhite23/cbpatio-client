@@ -19,7 +19,7 @@ const Config = ({isTheUser}) => {
 
     const [nicksUser, setNicksUser] = useState({})
 
-    const path = "http://localhost:3005"
+    const path = "https://cbpatio-production.up.railway.app"
 
     const navigate = useNavigate()
 
