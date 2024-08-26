@@ -47,8 +47,8 @@
 .config .user .dados img{
     margin-top: 2rem;
     border-radius: 100%;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     object-fit:cover;
     object-position: center;
 }
