@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQrcode } from '@fortawesome/free-solid-svg-icons'
 import { NickCard } from '../../components/nickCards/NickCard'
 import { Api } from '../../services/Api'
+import { CardConfigPopover } from '../../components/cardConfigPopover/CardConfigPopover'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
@@ -119,6 +120,10 @@ const Config = () => {
                         />
                 </div>
 
+
+                <div className='achievements'>
+                    <CardConfigPopover></CardConfigPopover>
+                </div>
             </div>
 
         </>
