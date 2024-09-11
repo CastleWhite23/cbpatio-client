@@ -4,11 +4,17 @@ import { Card } from '../Card/Card'
 import { Link } from 'react-router-dom'
 import "./cardCampeonato.css"
 
-const CardCampeonato = ({ idCamp, title, width, height, bgImage, type }) => {
+const CardCampeonato = ({ idCamp, title, width, height, bgImage, type, config = false }) => {
   return (
-    <Card width={width} height={height} variant={'img'} bgImage={bgImage}>
-      
-      <h3>{title}</h3>
+    <Card width={width} height={height} variant={'img'} bgImage={bgImage} config={config}>
+      <div className='purpleBarText'>
+        {config ? 
+          <p>Seu jogo favorito é..</p>
+          :
+          ""
+        }
+        <h3>{title}</h3>
+      </div>
 
       {
         type !== 'preview' &&

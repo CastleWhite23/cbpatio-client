@@ -1,8 +1,9 @@
 import React from 'react'
 import "./Card.css"
+import logo from "../../assets/logo.png"
 
 
-const Card = ({ children, variant, width, height, bgImage, gap, style, marginTop}) => {
+const Card = ({ children, variant, width, height, bgImage, gap, config = false, style, marginTop}) => {
   const cardStyle = {
     width: width,
     minHeight: height,
@@ -15,6 +16,7 @@ const Card = ({ children, variant, width, height, bgImage, gap, style, marginTop
     marginTop: marginTop,
     ...style,
   };
+  
   const bgImageStyle = {
     backgroundImage: `url(${bgImage})`,
     backgroundPosition: 'center',
@@ -23,14 +25,25 @@ const Card = ({ children, variant, width, height, bgImage, gap, style, marginTop
     width: '100%',
     height: '100%',
     backgroundSize: 'cover',
-    borderRadius: '8px',
-    border: "3px solid #1B1230"
-  }
+    borderRadius: '8px'
+    }
 
   return (
     <div className={`card-${variant}`} style={cardStyle}>
+      
+      {config == true
+      
+      ?
+
+      <div className='logo'><img src={logo} alt="" srcset="" /></div>
+      
+      :
+
+      ""
+      }
+      
       <div style={bgImage && { ...bgImageStyle}}></div>
-      <div className='things'>
+      <div className={`things ${config==true? "purpleBar" : ""}`}>
         {children}
       </div>
     </div>

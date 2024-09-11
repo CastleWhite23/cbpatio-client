@@ -17,6 +17,8 @@ import 'swiper/css/navigation';
 import { Api } from '../../services/Api';
 import { CardCampeonato } from '../cardCampeonato/cardCampeonato';
 import { hashId } from '../../services/formatFunctions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFaceFrown } from '@fortawesome/free-regular-svg-icons';
 
 
 const path = "https://cbpatio-production.up.railway.app"
@@ -50,7 +52,7 @@ const SwiperCampeonatos = () => {
 
                     ?
 
-                    "Não há campeonatos para o momento."
+                    <h1 className='naoHa'>Não há campeonatos no momento {<FontAwesomeIcon icon={faFaceFrown}/>}</h1>
 
                     :
                     <div className='slider'>

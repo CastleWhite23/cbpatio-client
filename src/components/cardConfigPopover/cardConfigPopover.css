@@ -1,0 +1,26 @@
+.cardConfigPopover{
+    width: 230px;
+    background-color: #7109C3;
+    background: rgb(113,9,195);
+    padding: 1rem;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 32px;
+    margin-top: 2rem;
+}
+
+.cardConfigPopover .popover{
+    display: none;
+}
+
+.cardConfigPopover .cardConfigContent .headerConfig{
+    text-align: center;
+    font-weight: 700;
+}
+
+.cardConfigPopover .cardConfigContent .mainConfig{
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    margin-top: 1rem;
+}

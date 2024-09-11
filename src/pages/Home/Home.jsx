@@ -23,7 +23,6 @@ const Home = () => {
                 </Link>
 
             </div>
-            <HomeLeft />
 
         </>
     )

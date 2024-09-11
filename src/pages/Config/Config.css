@@ -1,36 +1,56 @@
 .config{
+    padding:45px 0;
     width: 100%;
     min-height: 100vh;
+    background-color: #1b1230;
+    background-image: linear-gradient(0deg, #2a135e 20%, #4f1483 80%);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .config .bg-fundo{
-    background-image: url('../../assets/templo.png');
+    background-image: url('../../assets/braw.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: hue-rotate(270deg) blur(3px);
+    /* filter: hue-rotate(270deg) blur(3px); */
     width: 100%;
     height: 30vh;
-    border-radius: 10px 10px 0px 0px;
 }
 
 
 .config .user{
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    margin-bottom: 4rem;
+    margin-bottom: 7rem;
+    padding-left: 5rem;
+}
+.config .user .dados{
+    position: absolute;
+    top: -90px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('../../assets/hipercarga.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 250px; 
 }
 
-.config .user img{
+.config .user .dados img{
+    margin-top: 2rem;
     border-radius: 100%;
-    border: 3px solid #fff;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     object-fit:cover;
     object-position: center;
-   
 }
 
 .config .user h1{
@@ -41,27 +61,129 @@
 }
 
 .config .actions{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-size: 1.1rem;
-    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: #C52BFA;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.config .actions .bg{
+    background-color: #7209c36d;
+    width: 70%;
+    border-radius: 10px;
+
 }
 
 .config .actions .info{
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    z-index: 10;
+    padding: 1.7rem 2.5rem;
+
 }
 
 .config .actions .info p{
-   margin-bottom: 1rem;
- 
+    opacity: 1;
  }
 
- .config .actions .info span{
+ .config .actions .info .username{
+    font-weight: 700;
+    font-size: 30px;
+ }
+
+ .config .actions .info .headerProfile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+ .config .actions .info .headerProfile p{
+    font-weight: 600;
+    color: #c62bfa8e;
+}
+
+.config .actions .info .headerProfile img{
+    margin-right: 15px;
+}
+
+.profileData{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.centerNicks{
+    position: absolute;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: -30px;
+    justify-content: center;
+    width: 85%;
+}
+
+.centerNicks .layerOne{
+    display: flex;
+    flex-direction: row;
+    gap: 400px;
+    justify-content: center;
+
+
+}
+
+.centerNicks .layerTwo{
+    display: flex;
+    flex-direction: row;
+    gap: 400px;
+    justify-content: center;
+
+
+}
+
+
+
+
+.headerEnd{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    height: 500px;
+    right: 2rem;
+    top: -20px;
+}
+
+
+
+
+.biografia{
+    color: #F6BFFF;
+}
+
+.config .actions .info span{
     text-transform: uppercase;
     font-weight: 700;
     color: #cc2e2e;
- }
+}
 
+
+@media (min-width: 1280px) {
+    .centerNicks .layerTwo{
+        gap: 300px;
+    }
+
+    .centerNicks .layerOne{
+        gap: 300px;
+    }
+}
+
+/* .actions{
+    background-color: #fff;
+} */

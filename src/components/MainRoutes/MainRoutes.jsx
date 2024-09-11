@@ -48,7 +48,7 @@ const MainRoutes = () => {
 
                     {/* ROTA DE CONFIG DE USUARIO */}
 
-                    <Route path='/config' element={isAuth ? <Layout> <Config /> </Layout> : <Login />
+                    <Route path='/config' element={isAuth ? <Layout isConfig={true}> <Config /> </Layout> : <Login />
                     } />
                     <Route path='/config/editar/:id_user' element={isAuth ? <Layout> <EditarJogador /> </Layout> : <Login />
                     } />

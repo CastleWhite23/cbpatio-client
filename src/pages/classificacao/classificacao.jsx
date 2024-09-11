@@ -11,6 +11,8 @@ import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
 import { formataData, formataHora, getData } from '../../services/getData'
 import { CardClassificacao } from '../../components/CardClassificacao/CardClassificacao'
 import { Link } from 'react-router-dom'
+import {AdSense} from '../../components/ad/ad'
+import { Button } from '../../components/Button/Button'
 
 const path = "https://cbpatio-production.up.railway.app"
 
@@ -67,6 +69,7 @@ const Classificacao = () => {
 
         getGames()
         getLiveOn()
+        
 
     }, []);
 
@@ -278,6 +281,11 @@ const Classificacao = () => {
 
 
                         </div>
+
+                        <AdSense />
+
+                        <p id='help__text'>Tá meio perdido amigo? acesse a planilha de jogos por esse botão e se informe melhor!</p>     
+                        <a target='_blank' href="https://etecspgov-my.sharepoint.com/:x:/r/personal/gustavo_rodrigues199_etec_sp_gov_br/_layouts/15/doc2.aspx?sourcedoc=%7B4271C224-37DD-4642-B8B8-4C5C089B9F99%7D&file=Pasta%201.xlsx&action=editnew&mobileredirect=true&wdNewAndOpenCt=1719976120223&ct=1719976120602&wdOrigin=OFFICECOM-WEB.START.NEW&wdPreviousSessionSrc=HarmonyWeb&wdPreviousSession=baa1af1e-953d-4e99-a661-efbb17a51a9e&cid=b9794a84-ba32-40c1-861c-e67194f7be6d"><Button margin={"25px 0"} text={"Acessar planilha de classificação CBPATIO"} variant={'purple'}/></a>
                     </>
             }
 
