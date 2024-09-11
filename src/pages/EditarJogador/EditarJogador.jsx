@@ -18,7 +18,9 @@ const schema = yup.object({
     nome: yup.string().required('Este campo não pode estar vazio!'),
     nome_usuario: yup.string().required('Este campo não pode estar vazio!'),
     celular: yup.string().required('Este campo não pode estar vazio!'),
-    email: yup.string().email('Isso não é um email!').required('Este campo não pode estar vazio!')
+    email: yup.string().email('Isso não é um email!').required('Este campo não pode estar vazio!'),
+    biografia: yup.string()
+
 }).required()
 
 const EditarJogador = () => {
@@ -35,6 +37,7 @@ const EditarJogador = () => {
             setValue('foto', data[0].foto)
             setValue('email', data[0].email)
             setValue('celular', data[0].celular)
+            setValue('biografia', data[0].biografia)
             setUsuario(data[0])
         }
 
@@ -54,7 +57,7 @@ const EditarJogador = () => {
     });
 
     const handleEdit = async (formData) => {
-        const { nome, nome_usuario, celular, email, foto } = formData;
+        const { nome, nome_usuario, celular, email, foto, biografia } = formData;
 
         let message = 'Registro atualizado com sucesso!'
         let status='success'
@@ -68,6 +71,7 @@ const EditarJogador = () => {
                 nome_usuario: nome_usuario,// Usando usuario.foto como valor padrão se não houver nova foto
                 email: email,
                 celular: celular,
+                biografia: biografia
             }
 
             headerOptions = {
@@ -83,6 +87,7 @@ const EditarJogador = () => {
                 foto:  foto  , // Usando usuario.foto como valor padrão se não houver nova foto
                 email: email,
                 celular: celular,
+                biografia: biografia
             }
 
             headerOptions = {
@@ -172,6 +177,13 @@ const EditarJogador = () => {
                             <Input name="email" control={control} placeholder="Email" defaultValue={usuario.email} />
                             <p className="error">{errors?.email?.message}</p>
                         </div>
+
+                        <div>
+                            <label htmlFor="login">Biografia</label>
+                            <Input name="biografia" control={control} placeholder="Biografia" defaultValue={usuario.biografia} />
+                            <p className="error">{errors?.biografia?.message}</p>
+                        </div>
+
                         <div>
                             <label htmlFor="foto" className="foto">Foto de Perfil</label>
                             <Input name="foto" type="file" control={control} className="img" id="foto" />

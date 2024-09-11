@@ -15,7 +15,7 @@ import { Api } from '../../services/Api'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
-const Config = ({isTheUser}) => {
+const Config = () => {
 
     const [nicksUser, setNicksUser] = useState({})
 
@@ -32,6 +32,15 @@ const Config = ({isTheUser}) => {
             setNicksUser(data)
         }
 
+        // function isTheUser(idUser){
+        //     if(idUser == id da pagina){
+        //         return true
+        //     }else{
+        //         return false
+        //     }
+        // }
+
+        // isTheUser(getUserData().id)
         getNicksUser()
     }, [])
     
@@ -102,9 +111,12 @@ const Config = ({isTheUser}) => {
                     <CardCampeonato
                         idCamp={2}
                         bgImage={`${path}/fotoCampeonatos/sem-imagem.png`}
-                        title={"campeonato.nome"}
+                        title={"Brawl Stars"}
                         height={"25rem"}
-                        width={"20%"} />
+                        width={"20%"} 
+                        config={true}
+                        type={'preview'}
+                        />
                 </div>
 
             </div>
