@@ -1,4 +1,95 @@
-.home-left{
+.home-left {
     width: 100%;
-    height: 200vh;
+    margin-top: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8rem;
+    padding: 0 3rem;
+    position: relative;
+}
+
+/* .home-left .setas{
+    top: 200px;
+    right: 300px;
+   font-size: 100px;
+   font-weight: 800;
+   color: #8516e6;
+   position: absolute;
+  transform: rotate(90deg);
+    opacity: .5;
+} */
+
+
+
+.home-left h1 {
+    text-align: start;
+    font-size: 120px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+
+}
+
+.home-left h1 span.transparent {
+    color: #1B1230;
+
+    text-transform: uppercase;
+
+}
+
+
+
+
+.home-left h1 span {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+
+}
+
+.home-left h1 span.cbpatio {
+    color: #aa53f7;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+
+.home-left .cards 
+.card-home {
+    width: 100%; 
+    height: 100%;
+}
+
+.home-left .cards 
+.card-home .image{
+    width: 100%; 
+    height: 60%;
+    background-color: #fff;
+}
+.home-left .cards 
+.card-home .descricao{
+    height: 40%;
+}
+.home-left .cards 
+.card-home .descricao h1{
+  
+   font-size: 40px;
+   font-weight: 600;
+}
+
+.home-left .cards 
+.card-home .descricao p{
+    font-size: 20px;
+    color: #4c00ffe1;
+ }
+
+
+.home-left .cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5rem;
 }
