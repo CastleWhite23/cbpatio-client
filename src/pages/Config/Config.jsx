@@ -13,10 +13,15 @@ import { faQrcode } from '@fortawesome/free-solid-svg-icons'
 import { NickCard } from '../../components/nickCards/NickCard'
 import { Api } from '../../services/Api'
 import { CardConfigPopover } from '../../components/cardConfigPopover/CardConfigPopover'
+import { useWindowWidth } from '../../hooks/useWindowWidth'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
 const Config = () => {
+
+    const window = useWindowWidth()
+
+    const width = window < 890 ? '100%' : '20%';
 
     const [nicksUser, setNicksUser] = useState({})
 
@@ -25,6 +30,8 @@ const Config = () => {
     const navigate = useNavigate()
 
     const { getUserData } = useContext(AuthContext)
+
+    console.log(innerWidth)
 
     useEffect(() => {
         const getNicksUser = async () => {
@@ -109,20 +116,29 @@ const Config = () => {
                         </div>
                     </div>
 
-                    <CardCampeonato
-                        idCamp={2}
-                        bgImage={`${path}/fotoCampeonatos/sem-imagem.png`}
-                        title={"Brawl Stars"}
-                        height={"25rem"}
-                        width={"20%"} 
-                        config={true}
-                        type={'preview'}
-                        />
+                        <CardCampeonato
+                            idCamp={2}
+                            bgImage={`${path}/fotoCampeonatos/sem-imagem.png`}
+                            title={"Brawl Stars"}
+                            height={"25rem"}
+                            width={width} 
+                            config={true}
+                            type={'preview'}
+                            />
+
                 </div>
 
 
                 <div className='achievements'>
-                    <CardConfigPopover></CardConfigPopover>
+                    <div>
+                        <CardConfigPopover type={'Participações'} />
+                        <CardConfigPopover type={'Troféus'}/>
+                    </div>
+
+                    <div>
+                        <CardConfigPopover type={'Inscrito atualmente'}/>
+                        <CardConfigPopover type={'Times'}/>
+                    </div>
                 </div>
             </div>
 

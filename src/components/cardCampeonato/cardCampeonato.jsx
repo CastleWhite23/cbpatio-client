@@ -6,8 +6,8 @@ import "./cardCampeonato.css"
 
 const CardCampeonato = ({ idCamp, title, width, height, bgImage, type, config = false }) => {
   return (
-    <Card width={width} height={height} variant={'img'} bgImage={bgImage} config={config}>
-      <div className='purpleBarText'>
+    <Card width={width} height={height} variant={'img'} bgImage={bgImage} config={config} className={config ? 'config' : ''}>
+      <div className={`purpleBarText`}>
         {config ? 
           <p>Seu jogo favorito é..</p>
           :
