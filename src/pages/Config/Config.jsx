@@ -106,11 +106,14 @@ const Config = () => {
                                     <img width={'80px'} src={stars} alt="" srcset="" />
                                 </div>
                                 {/* //Arrumar essa opção pra se caso seja vc mesmo, isso nao aparecer. */}
+                                
                                 <Button text={"Convidar para um time"} variant={'purple'}/>
                             </div>
 
                             <p className='biografia'>
                                 {getUserData().biografia ?? "O usuário não possui biografia."}
+                                <Button text={"Convidar para um time"} variant={'purple'}/>
+
                             </p>
                             
                         </div>

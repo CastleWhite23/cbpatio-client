@@ -188,13 +188,13 @@
     .headerEnd{
         display: none;
     }
-
-    .actions{
-        
-    }
 }
 
 @media (max-width: 890px) {
+    .actions .bg .info{
+        padding: 1.4rem .5rem;
+    }
+    
     .headerProfile{
         width: 100%;
     }
@@ -205,12 +205,28 @@
     
     .config .actions .bg{
         width: 100%;
+        margin: 0;
+    }
+
+    .username{
+        font-size: 20px;
+    }
+
+    .config .actions .bg .headerProfile button{
+        display: none;
     }
     
     .actions{
         display: flex;
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .achievements{
+        width: 93%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 }
