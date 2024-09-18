@@ -100,7 +100,7 @@ const Config = () => {
                         />
 
 
-                            <Link to={`/config/editar/${getUserData().id}`}>
+                            <Link to={`/config/editar/${getUserData().id}`} className='editar'>
                                 <Button width={'100px'} text={"Editar perfil"} variant={"profile"} />
                             </Link>
                         </div>
