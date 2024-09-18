@@ -96,6 +96,7 @@ const Config = () => {
                         closeText={"Fechar"}
                         soFecha={true}
                         
+                        // trocar esse link dps
                         body={<QRCode value={`https://localhost:5173/times/convidarQr/${getUserData().id}`} />}
                         />
 
@@ -123,8 +124,9 @@ const Config = () => {
                                     </div>
                                 </div>
                                 {/* //Arrumar essa opção pra se caso seja vc mesmo, isso nao aparecer. */}
-                                
-                                <Button text={"Convidar para um time"} variant={'purple'}/>
+                                <Link to={`/times/convidarQr/${getUserData().id}`}>
+                                    <Button text={"Convidar para um time"} variant={'purple'}/>
+                                </Link>
                             </div>
 
                             <p className='biografia'>
@@ -144,7 +146,9 @@ const Config = () => {
                             </div>
                             {
                                 widthBtn ?
-                                <Button className={'btnConvidar'} text={"Convidar para um time"} variant={'purple'}/>
+                                <Link to={`/times/convidarQr/${getUserData().id}`}>
+                                    <Button className={'btnConvidar'} text={"Convidar para um time"} variant={'purple'}/>
+                                </Link>
                                 :
                                 ''
                             }
