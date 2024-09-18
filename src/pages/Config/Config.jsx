@@ -96,7 +96,7 @@ const Config = () => {
                         closeText={"Fechar"}
                         soFecha={true}
                         
-                        body={<QRCode value='https://google.com' />}
+                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${getUserData().id}`} />}
                         />
 
 
