@@ -14,6 +14,9 @@ import { NickCard } from '../../components/nickCards/NickCard'
 import { Api } from '../../services/Api'
 import { CardConfigPopover } from '../../components/cardConfigPopover/CardConfigPopover'
 import { useWindowWidth } from '../../hooks/useWindowWidth'
+import { ModalComponent } from '../../components/ModalComponent/ModalComponent'
+import {Qrcode} from '../../components/qrcode/qrcode'
+import QRCode from 'react-qr-code'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
@@ -85,7 +88,18 @@ const Config = () => {
                         </div>
 
                         <div className="headerEnd">
-                            <Button width={'75px'} height={'20px'} variant={'profileqr'} text={<FontAwesomeIcon icon={faQrcode}/>} />
+                        <ModalComponent width={'75px'} 
+                        height={'20px'} 
+                        variant={'profileqr'} 
+                        openText={<FontAwesomeIcon icon={faQrcode}/>}
+                        titulo={'Escaneie este QR Code e convide seu amigo! '}
+                        closeText={"Fechar"}
+                        soFecha={true}
+                        
+                        body={<QRCode value='https://google.com' />}
+                        />
+
+
                             <Link to={`/config/editar/${getUserData().id}`}>
                                 <Button width={'100px'} text={"Editar perfil"} variant={"profile"} />
                             </Link>

@@ -13,12 +13,12 @@ import './ModalComponent.css'
 
 import { Button } from '../Button/Button'
 
-function ModalComponent({ titulo, body, openText, closeText, onClickAction, actionText }) {
+function ModalComponent({ titulo, body, openText, closeText, onClickAction, actionText, variant, width, height, soFecha }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <>
-            <Button variant='red' text={openText} onClick={onOpen} />
+            <Button width={width} height={height} variant={`${variant ?? 'red'}`} text={openText} onClick={onOpen} />
 
             <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} size={'xl'} onClose={onClose}>
                 <ModalOverlay 
@@ -26,13 +26,20 @@ function ModalComponent({ titulo, body, openText, closeText, onClickAction, acti
                     backdropFilter='blur(10px) ' 
                     size={'xl'}    
                 />
-                <ModalContent backgroundColor={'#1B1230'} alignItems='center' textAlign='center'>
+                <ModalContent backgroundColor={'#866CC9'} alignItems='center' textAlign='center'>
                     <ModalHeader className={'header-modal'} color={'#866CC9'} >{titulo}</ModalHeader>
-                    <ModalBody pb={1} color={'#866CC9'}>
+                    <ModalBody pb={1} color={'#866CC9'} margin={'20px'}>
                         {body}
                     </ModalBody>
                     <ModalFooter gap={'.5rem'}>
-                        <Button variant='red' text={actionText} onClick={onClickAction }/>
+                        {
+                            soFecha ?
+                            ""
+                            :
+                            <Button variant='red' text={actionText} onClick={onClickAction }/>
+                        }
+                        
+
                         <Button variant='purple' text={closeText} onClick={onClose} />
                     </ModalFooter>
                 </ModalContent>
