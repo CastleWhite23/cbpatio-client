@@ -21,7 +21,8 @@ const Config = () => {
 
     const window = useWindowWidth()
 
-    const width = window < 890 ? '100%' : '20%';
+    const width = window < 1130 ? '100%' : '20%';
+    const widthBtn = window < 1130 ? true : false;
 
     const [nicksUser, setNicksUser] = useState({})
 
@@ -66,7 +67,6 @@ const Config = () => {
                 <div className="user">
                     <div className="dados">
                         <img src={getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="userfoto" />
-                        
                     </div>
 
                     <div className='profileData'>
@@ -87,7 +87,7 @@ const Config = () => {
                         <div className="headerEnd">
                             <Button width={'75px'} height={'20px'} variant={'profileqr'} text={<FontAwesomeIcon icon={faQrcode}/>} />
                             <Link to={`/config/editar/${getUserData().id}`}>
-                                <Button text={"Editar perfil"} variant={"profile"} />
+                                <Button width={'100px'} text={"Editar perfil"} variant={"profile"} />
                             </Link>
                         </div>
 
@@ -102,8 +102,11 @@ const Config = () => {
                             <div className='headerProfile'>
                                 <div className="leftSide">
                                     <h1 className='username'>{getUserData().nome_completo} </h1>
-                                    <p>@{getUserData().nome}</p>
-                                    <img width={'80px'} src={stars} alt="" srcset="" />
+                                    
+                                    <div className='at_stars'>
+                                        <p>@{getUserData().nome}</p>
+                                        <img width={'80px'} src={stars} alt="" srcset="" />
+                                    </div>
                                 </div>
                                 {/* //Arrumar essa opção pra se caso seja vc mesmo, isso nao aparecer. */}
                                 
@@ -112,9 +115,27 @@ const Config = () => {
 
                             <p className='biografia'>
                                 {getUserData().biografia ?? "O usuário não possui biografia."}
-                                <Button text={"Convidar para um time"} variant={'purple'}/>
-
                             </p>
+
+                            <div className="centerNicksMobile">
+                                <div className="layerOne">
+                                    <NickCard idConta={getUserData()?.id} plataform={'epic'} actualName={nicksUser[0]?.nick_epic ?? "Sem conta."}/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'supercell'} actualName={nicksUser[0]?.nick_supercell  ?? "Sem conta."}/>
+                                </div>
+                                
+                                <div className="layerTwo">
+                                    <NickCard idConta={getUserData()?.id} plataform={'psn'} actualName={nicksUser[0]?.nick_psn ?? "Sem conta." }/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'xbox'} actualName={nicksUser[0]?.nick_xbox  ?? "Sem conta." }/>
+                                </div>
+                            </div>
+                            {
+                                widthBtn ?
+                                <Button className={'btnConvidar'} text={"Convidar para um time"} variant={'purple'}/>
+                                :
+                                ''
+                            }
+
+
                             
                         </div>
                     </div>

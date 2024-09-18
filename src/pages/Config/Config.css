@@ -58,6 +58,7 @@
     color: #580AFF;
     font-weight: 700;
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .config .actions{
@@ -183,17 +184,57 @@
     padding: 1rem;
 }
 
-
-@media (max-width: 1250px) {
+@media (max-width: 500px){
     .headerEnd{
-        display: none;
+        top: -250px;
+        right: 0px;
+        flex-direction: row;
+        gap: 220px;
+        margin-right: 10px;
     }
+
+    
+    .leftSide{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .at_stars{
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    
+    .config .user .dados{
+        top: -110px;
+        left: 118px;
+    }
+
+        
+    .actions .bg .info{
+        padding: .5rem;
+    }
+
 }
 
-@media (max-width: 890px) {
-    .actions .bg .info{
-        padding: 1.4rem .5rem;
+
+@media (max-width: 1130px) {
+    .centerNicksMobile{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 15px;
     }
+    .centerNicksMobile .layerOne, .layerTwo{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
     
     .headerProfile{
         width: 100%;
@@ -229,8 +270,19 @@
         align-items: center;
     }
 
+
+    .biografia{
+        margin: 15px;
+    }
 }
 
+
+
+@media (min-width: 1130px){
+    .centerNicksMobile{
+        display: none;
+    }
+}
 /* .actions{
     background-color: #fff;
 } */
