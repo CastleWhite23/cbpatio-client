@@ -57,7 +57,7 @@ const SidebarTimes = () => {
                 </div>
 
 
-                <div className={`esmaecer`}></div>
+        
             </div>
 
 

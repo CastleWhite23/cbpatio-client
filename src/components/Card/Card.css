@@ -77,6 +77,15 @@ backdrop-filter: blur(8px);
     height: 100%;
 }
 
+.card-home{
+    background-color: #1B1230;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 @media (max-width:400px) {
     .things{
         padding: .5rem;
