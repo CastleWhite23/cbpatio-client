@@ -1,0 +1,126 @@
+.card{
+    width: 100%;
+    position: relative;
+    background-color: #1B1230;
+    border-radius: 5px;
+    min-height: 100%;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
+}
+
+.card h1{
+    color: #866CC9;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.card .main__infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .main__infos img{
+    width: 150px;
+}
+
+.card .main__infos .main__subtitle{
+    margin-top: 5px;
+    color: #866CC9;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card .main__infos .main__link{
+    text-decoration: underline;
+    color: #9D77FC;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+
+
+.card .main__desc{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 1.5rem;
+    color: #9D77FC;
+    font-size: 15px;
+    font-weight: 500;
+
+}
+.card  .omega{
+    width: 200px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.card .main__desc p{
+  text-align: center;
+  z-index: 2;
+
+}
+
+@media (max-width: 800px) {
+    .card .main__infos img{
+        margin-top: 3rem;
+        width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .card .main__infos .main__subtitle{
+        color: #866CC9;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+    
+    .card h1{
+        color: #866CC9;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    
+    .card .omega{
+        display: none;
+    }
+
+    .card .main__desc{
+        font-size: 10px;
+    
+    }
+}
+
+@media (min-width: 1500px){
+    
+    .card .main__infos{
+        margin-top: 4rem;
+    }
+    
+    .card .main__infos img{
+        width: 200px;
+        margin-bottom: 15px;
+    }
+
+    .card h1{
+        color: #866CC9;
+        font-size: 45px;
+        font-weight: 700;
+    }
+
+    .card .main__infos .main__subtitle{
+        color: #866CC9;
+        font-size: 25px;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+}

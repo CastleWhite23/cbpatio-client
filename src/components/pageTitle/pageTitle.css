@@ -1,0 +1,16 @@
+.pgTitle{
+    color: #866CC9;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    width: 100%;
+    gap: 1rem;
+    text-transform: uppercase;
+    
+}
+
+@media (max-width:400px) {
+    .pgTitle{
+        font-size: 2rem;
+    }
+}

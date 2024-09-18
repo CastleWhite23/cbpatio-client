@@ -1,0 +1,83 @@
+* {}
+
+
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+
+}
+
+:root {}
+
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #4e2e94;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2d0485;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d0485
+}
+
+
+.link {
+  color: #042BF5;
+  transition: .5s;
+}
+
+.link:hover {
+  color: #4261fa;
+}
+.twodarkpurple{
+  color: #332651;
+}
+
+.darkpurple{
+  color: #7a42f3;
+}
+
+.greenlight{
+  color: greenyellow;
+}
+
+.red{
+  color: rgb(182, 11, 11);
+}
+.reddark{
+  color: rgb(255, 0, 0);
+}
+
+.orange{
+  color: #FA5959;
+}
+
+.pink{
+  color: #D21AF0;
+}
+
+.bluelight{
+  color: #0E93F4;
+}
+.green{
+  color: #19F43C;
+}
+
+.chakra-alert.css-15gjm8r, .chakra-alert.css-12t4pi7{
+  width: 100%;
+}
+

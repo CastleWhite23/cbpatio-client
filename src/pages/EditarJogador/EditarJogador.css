@@ -1,0 +1,189 @@
+.editar-cad{
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editar-cad p.error{
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    color: #ff0000;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.editar-cad p.link-cadastro{
+    text-align: center;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.editar-cad .logo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    margin-left: 2rem;
+}
+
+.editar-cad .card-purple{
+    border: 2px solid #866CC9;
+    height: 90%;
+    border-radius: 10px;
+    padding: 3rem;
+}
+
+.editar-cad .card-purple .ct-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editar-cad .card-purple h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color:  #866CC9;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+ 
+.editar-cad .card-purple form .ct-input .input{
+    /* margin-bottom: 1rem; */
+    width: 50%;
+}
+
+.editar-cad .card-purple form .ct-input div{
+    margin-bottom: 1rem; 
+}
+
+
+.editar-cad  .passinfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.editar-cad  .passinfo div{
+    width: 100%;
+}
+
+
+
+.editar-cad .card-purple form .ct-input label{
+    font-size: 1rem;
+    color:  #866CC9;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+
+.editar-cad .card-purple form .ct-input .userinfo{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0;
+}
+
+
+.editar-cad .card-purple .ct-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.editar-cad .card-purple .ct-img img{
+    width: 90px;
+    height: 90px;
+
+}
+
+/* O INPUT DE FILE */
+  
+.editar-cad input[type='file'].img{
+    display: none;
+}
+
+.editar-cad label.foto{
+    padding: 20px 10px;
+    width: 100%;
+    background-color: #1B1230;
+    border-radius: 10px;
+    color: #B89BFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+/* #erro_txt
+    color:#fa0000;
+} */
+
+@media (max-width: 1074px) {
+    .editar-cad{
+        padding: 2rem;
+    }
+    .editar-cad .card-purple{
+         min-width: 60%; 
+    }
+}
+
+@media (max-width: 1110px) {
+    .editar-cad{
+        padding: 2rem;
+    }
+    .editar-cad .card-purple{
+         min-width: 90%; 
+    }
+
+    .ct-input div{
+        flex-direction: column;
+    }
+
+    .editar-cad .ct-input .passinfo{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .editar-cad .input-mask{
+        width: 10%;
+    }
+}
+
+
+@media (max-width: 470px) {
+    .editar-cad{
+        width: 100%;
+        padding: 0;
+    }
+    .editar-cad .card-purple{
+         max-width: 100%; 
+         width: 100%;
+         padding: 1rem;
+    }
+    .editar-cad .card-purple form .ct-input div{
+        margin-bottom: 3rem; 
+    }
+    
+
+ 
+}
+
+

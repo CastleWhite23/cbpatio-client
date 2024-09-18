@@ -1,0 +1,48 @@
+.form-solicita{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 2rem;
+}
+
+.form-solicita h1{
+    text-align: center;
+    color: #866CC9;
+    font-size: 1.8rem;
+    word-break: keep-all;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.form-solicita form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.form-solicita p{
+    text-align: center;
+}
+
+.form-solicita span{
+    color: #0a74ff;
+}
+
+.form-solicita .error{
+    color: #ff0000;
+}
+
+
+@media (max-width:670px) {
+    .form-solicita{
+        padding: 4rem 0;
+        
+    }
+    .form-solicita form{
+        flex-direction: column;
+        
+    }
+}

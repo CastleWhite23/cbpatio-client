@@ -1,0 +1,127 @@
+.subtitles__inscricao .premio {
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(54, 224, 54);
+    text-transform: uppercase;
+}
+
+.subtitles__inscricao .valorIns {
+    font-weight: 500;
+    color: orange;
+    text-transform: uppercase;
+}
+
+.inscrever-equipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 2rem;
+    background-color: #1B1230;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+
+}
+
+.inscrever-equipe h1 {
+    text-align: center;
+    color: #866CC9;
+    font-size: 1.8rem;
+    word-break: keep-all;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.inscrever-equipe form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+.inscrever-equipe form div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.inscrever-equipe form p {
+    font-weight: 600;
+    color: #866CC9;
+}
+
+.inscrever-equipe form label {
+    font-weight: 600;
+    color: #866CC9;
+}
+
+.inscrever-equipe form .checkbox label {
+    margin-bottom: 2rem;
+    font-size: 12px;
+}
+
+
+.inscrever-equipe select {
+    background-color: #fff;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #1B1230;
+    font-weight: 600;
+}
+
+.inscrever-equipe option {
+    font-weight: 600;
+}
+
+.inscrever-equipe p {
+    text-align: center;
+    color: #866CC9;
+}
+
+.inscrever-equipe h3 {
+    text-align: center;
+    color: #866CC9;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-top: 3rem;
+}
+
+
+.inscrever-equipe span {
+    color: #0a74ff;
+}
+
+.inscrever-equipe .error {
+    color: #ff0000;
+}
+
+
+
+.inscrever-equipe .omega img {
+    display: flex;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    position: absolute;
+}
+
+
+
+
+
+@media (max-width:670px) {
+    .inscrever-equipe{
+        padding: 2rem 1.5rem;
+    }
+}

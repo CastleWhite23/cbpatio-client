@@ -1,0 +1,54 @@
+.novo-time{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding: 3rem;
+}
+
+.alerta{
+    text-align: center;
+}
+.alerta span{
+    color: #0a74ff ;
+}
+
+.ct-input-novo-time{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ct-input-novo-time div label{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.novo-time .error{
+
+    color:#ff0000;
+}
+
+.form-novo-time{
+    width: 100%;
+}
+
+.novo-time input[type='file'].img{
+    display: none;
+}
+
+.novo-time label.foto{
+    padding: 20px 10px;
+    width: 100%;
+    background-color: #1B1230;
+    border-radius: 10px;
+    color: #B89BFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}

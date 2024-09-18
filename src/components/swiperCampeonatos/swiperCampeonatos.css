@@ -1,0 +1,44 @@
+.outros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 1.3rem;
+    
+}
+.responsive-slider{
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.naoHa{
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    margin: 6rem 0;
+}
+
+
+/* .mySwiper{
+    margin-bottom: 2rem;
+} */
+@media (max-width: 780px) {
+    .destaques .card-img{
+		min-height:40rem !important;
+	
+	}
+    .outros{
+        display: none;
+    }
+    .responsive-slider{
+        display: flex;
+        
+    }
+    .mySwiper{
+        display: flex;
+        flex-direction: column;
+    }
+}

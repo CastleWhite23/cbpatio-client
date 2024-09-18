@@ -1,0 +1,60 @@
+.main__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main__card h1.aviso {
+    text-align: center;
+    margin: 0;
+    padding: 0 1rem;
+    text-wrap: wrap;
+}
+
+
+#card__solicita {
+    padding: 1rem;
+
+    border: 5px solid #1B1230;
+    border-radius: 10px;
+}
+
+#card__solicita #header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-left: 1rem;
+    margin-bottom: .5rem;
+}
+
+#card__solicita #header p {
+    color: #A528AF;
+    margin-left: .5rem;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#card__solicita p {
+    color: #866CC9;
+    margin-left: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#card__solicita p span {
+    color: #cc2e2e;
+}
+
+
+#card__solicita img {
+    width: 50px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
