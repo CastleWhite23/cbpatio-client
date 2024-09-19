@@ -189,7 +189,7 @@
         top: -250px;
         flex-direction: row;
         justify-content: space-between;
-        width: 100%;
+        width: 89%;
     }
 
     
@@ -210,7 +210,7 @@
     
     .config .user .dados{
         top: -110px;
-        left: 21%;
+        left: 24%;
     }
 
         
