@@ -19,7 +19,7 @@ import { Payload } from '../../pages/payload/payload'
 import { Obrigado } from '../../pages/obrigado/obrigado'
 import { FormStepper } from '../FormStepper/FormStepper'
 import { ConvidaQr } from '../../pages/ConvidaQr/ConvidaQr'
-
+import {BuscarJogadores} from '../../pages/BuscarJogadores/BuscarJogadores'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -40,6 +40,9 @@ const MainRoutes = () => {
                     {/* ROTAS QUE NÃO PRECISAM DE LOGIN */}
 
                     <Route path='/campeonatos' element={<Layout> <Campeonatos /> </Layout>
+                    } />
+
+                    <Route path='/jogadores' element={<Layout> <BuscarJogadores /> </Layout>
                     } />
 
 
