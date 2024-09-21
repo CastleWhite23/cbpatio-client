@@ -14,7 +14,7 @@ const Home = () => {
                     <video
                        
                         autoPlay 
-
+                        muted
                         loop>
                         <source src={video} type="video/mp4"/>
                         
