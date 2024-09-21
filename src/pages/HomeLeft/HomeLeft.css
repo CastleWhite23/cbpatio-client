@@ -1,11 +1,11 @@
 .home-left {
     width: 100%;
-    margin-top: 100vh;
-    min-height: 100vh;
+    margin-top: 45vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8rem;
+    gap: 4rem;
     padding: 0 3rem;
     position: relative;
 }
@@ -24,11 +24,12 @@
 
 
 .home-left h1 {
-    text-align: start;
-    font-size: 120px;
+    text-align: center;
+    font-size: 74px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
+    width: 100%;
 
 }
 
@@ -50,40 +51,15 @@
 }
 
 .home-left h1 span.cbpatio {
-    color: #aa53f7;
+    color: #7707da;
+    /* color: #ffffff;
+   text-shadow: 2px 2px 0 #5100ff, 3px 3px 0 #5100ff, 4px 4px 0 #5100ff;  */
     text-transform: uppercase;
     font-weight: 700;
 }
 
 
-.home-left .cards 
-.card-home {
-    width: 100%; 
-    height: 100%;
-}
 
-.home-left .cards 
-.card-home .image{
-    width: 100%; 
-    height: 60%;
-    background-color: #fff;
-}
-.home-left .cards 
-.card-home .descricao{
-    height: 40%;
-}
-.home-left .cards 
-.card-home .descricao h1{
-  
-   font-size: 40px;
-   font-weight: 600;
-}
-
-.home-left .cards 
-.card-home .descricao p{
-    font-size: 20px;
-    color: #4c00ffe1;
- }
 
 
 .home-left .cards {

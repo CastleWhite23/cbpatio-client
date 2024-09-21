@@ -46,7 +46,8 @@ const Navbar = ({ bgColor, isHome }) => {
 
     return (
         <>
-            <header  className={isHome == 's' ? 'transparent' : ''}>
+        {/* isHome == 's' ? 'transparent' : '' */}
+            <header  className={isHome == 's' ? 'transparent' : '' }>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>

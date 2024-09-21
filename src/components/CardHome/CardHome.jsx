@@ -1,17 +1,22 @@
 import './CardHome.css'
-import { Card } from '../Card/Card'
+import logo from '../../assets/logo.png'
 
-const CardHome = ({titulo, descricao, img, marginTop, children}) => {
+const CardHome = ({ titulo, descricao, img, marginTop }) => {
     return (
         <>
-            <Card
-                variant={'home'}
-                marginTop={marginTop}
-                width={'300px'}
-                height={'400px'}>
-                {children}
+            <div className="card-home" style={{ marginTop: marginTop }}>
+                <div className="img-fundo-card">
+                    asdfds
+                </div>
+                <div className="descricao">
+                    <div className="logo">
+                        <img src={logo} alt="" />
+                    </div>
+                </div>
 
-            </Card>
+
+
+            </div>
         </>
     )
 }
