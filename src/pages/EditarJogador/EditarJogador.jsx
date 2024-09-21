@@ -157,7 +157,7 @@ const EditarJogador = () => {
                                 <Input name="nome_usuario" control={control} placeholder="Nome de Usuário" defaultValue={usuario.nome_usuario} />
                                 <p className="error">{errors?.nome_usuario?.message}</p>
                             </div>
-                            <div>
+                            <div className='celular'>
                                 <label htmlFor="login">Celular (xx) xxxxx-xxxx</label>
                                 <Controller
                                     name="celular"

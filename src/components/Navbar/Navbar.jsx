@@ -67,6 +67,7 @@ const Navbar = ({ bgColor, isHome }) => {
                         <Link to='/campeonatos' className="linkStyle" onClick={handleToogleClick}>Campeonatos</Link>
                         <Link to='/times/meustimes' className="linkStyle" onClick={handleToogleClick}>Times</Link>
                         <Link to='/classificacao' className="linkStyle" onClick={handleToogleClick}>Classificação</Link>
+                        <Link to='/jogadores' className="linkStyle" onClick={handleToogleClick}>Buscar Jogadores</Link>
                         {
                             isAuth
 
