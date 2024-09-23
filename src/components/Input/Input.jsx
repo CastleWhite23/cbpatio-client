@@ -32,7 +32,7 @@ const Input = ({defaultValue, name, control, disabled, readOnly, placeholder, st
       /> 
       
       //se não for um input de file nem de data
-      : <input className={`${style}`} placeholder={placeholder} type={type} defaultValue={defaultValue} onChange={onChange} disabled={disabled} readOnly={readOnly} {...rest}/>}
+      : <input className={style} placeholder={placeholder} type={type} defaultValue={defaultValue} onChange={onChange} disabled={disabled} readOnly={readOnly} {...rest}/>}
         />
     </>
   )
