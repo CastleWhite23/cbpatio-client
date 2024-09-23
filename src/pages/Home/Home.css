@@ -43,8 +43,8 @@
    
    text-transform: uppercase;
    margin: 0;
-   font-size: clamp(54px, 64px, 74px);
-   font-size: 74px;
+   font-size: clamp(54px, 64px, 84px);
+   
    font-weight: 700;
    
    color: #fff;
