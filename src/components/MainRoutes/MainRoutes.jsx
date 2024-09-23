@@ -18,6 +18,8 @@ import { Inscrever } from '../../pages/Inscrever/inscrever'
 import { Payload } from '../../pages/payload/payload'
 import { Obrigado } from '../../pages/obrigado/obrigado'
 import { FormStepper } from '../FormStepper/FormStepper'
+import { ConvidaQr } from '../../pages/ConvidaQr/ConvidaQr'
+import {BuscarJogadores} from '../../pages/BuscarJogadores/BuscarJogadores'
 
 const MainRoutes = () => {
     const isAuth = localStorage.getItem("token")
@@ -40,15 +42,20 @@ const MainRoutes = () => {
                     <Route path='/campeonatos' element={<Layout> <Campeonatos /> </Layout>
                     } />
 
+                    <Route path='/jogadores' element={<Layout> <BuscarJogadores /> </Layout>
+                    } />
+
 
 
                     {/* ROTAS QUE O LOGIN É OBRIGÁTORIO */}
 
                     <Route path='/campeonatos/inscrever/:id_camp' element={isAuth ? <Layout> <Inscrever /> </Layout> : <Login />} />
 
+                    <Route path='/times/convidarQr/:id_jogador' element={isAuth ? <Layout> <ConvidaQr /> </Layout> : <Login />} />
+
                     {/* ROTA DE CONFIG DE USUARIO */}
 
-                    <Route path='/config' element={isAuth ? <Layout> <Config /> </Layout> : <Login />
+                    <Route path='/config' element={isAuth ? <Layout isConfig={true}> <Config /> </Layout> : <Login />
                     } />
                     <Route path='/config/editar/:id_user' element={isAuth ? <Layout> <EditarJogador /> </Layout> : <Login />
                     } />

@@ -15,10 +15,10 @@ const Navbar = ({ bgColor, isHome }) => {
 
 
 
-    const styles = {
-        position: location.pathname == '/' ? 'absolute' : 'initial',
-        zIndex: location.pathname == '/' ? 2 : 1
-    }
+    // const styles = {
+    //     position: location.pathname == '/' ? 'absolute' : 'initial',
+    //     zIndex: location.pathname == '/' ? 2 : 1
+    // }
 
 
 
@@ -43,9 +43,11 @@ const Navbar = ({ bgColor, isHome }) => {
     console.log(`${path}/fotoUsuarios/sem_foto_user.png`)
 
 
+
     return (
         <>
-            <header style={{ backgroundColor: bgColor, ...styles }}>
+        {/* isHome == 's' ? 'transparent' : '' */}
+            <header  className={isHome == 's' ? 'transparent' : '' }>
                 <div className="logo">
                     <Link to='/'><img src={Logo} alt="logo" /></Link>
                 </div>
@@ -65,6 +67,7 @@ const Navbar = ({ bgColor, isHome }) => {
                         <Link to='/campeonatos' className="linkStyle" onClick={handleToogleClick}>Campeonatos</Link>
                         <Link to='/times/meustimes' className="linkStyle" onClick={handleToogleClick}>Times</Link>
                         <Link to='/classificacao' className="linkStyle" onClick={handleToogleClick}>Classificação</Link>
+                        <Link to='/jogadores' className="linkStyle" onClick={handleToogleClick}>Buscar Jogadores</Link>
                         {
                             isAuth
 
