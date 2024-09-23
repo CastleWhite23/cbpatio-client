@@ -1,0 +1,8 @@
+.table__profile{
+    min-width: 100%;
+    gap: 50px;
+}
+
+.bar__profile{
+    background-color: aliceblue;
+}

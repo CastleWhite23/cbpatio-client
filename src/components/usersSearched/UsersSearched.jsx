@@ -7,10 +7,10 @@ const UsersSearched = () => {
   
     useEffect(() => {
         const getTopUsers = async () => {
-            const data = await Api.get('/usuarios/search?pagina=1')
+            const {data} = await Api.get('/pesquisar/usuarios?pagina=1')
             console.log(data)
 
-            // setTopUsers(data)
+            setTopUsers(data)
         }
 
         getTopUsers()
@@ -19,15 +19,14 @@ const UsersSearched = () => {
     console.log(topUsers)
 
   return (
-    <div>
+    <div className='table__profile'>
         {topUsers.map((topUser) => {
-            return (
-                <div>
+            return(
+                <div className='bar__profile'>
                     {topUser.nome_usuario}
                 </div>
             )
         })
-        
         }
     </div>
   )
