@@ -141,7 +141,7 @@ const EditarJogador = () => {
     
     return (
         <div className="editar-cad">
-            <Card variant="purple" width="60%" height="90vh">
+            <Card variant="editar" width="60%" height="90vh">
                 <PageTitle text={'EDITAR CADASTRO'} />
                
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">

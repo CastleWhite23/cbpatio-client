@@ -63,6 +63,13 @@
     background-color: #252848;
 }
 
+.card-editar {
+    background-color: #1b1230;
+    /* background-image: linear-gradient(0deg, #4f1483 20%, #32205c 80%); */
+    background-image: linear-gradient(0deg, #2a135e 20%, #4f1483 80%);
+}
+
+
 .card-darkpurple {
     background-color: #1B1230;
     border-radius: 10px;

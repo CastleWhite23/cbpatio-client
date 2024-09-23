@@ -33,20 +33,20 @@
     margin-left: 2rem;
 }
 
-.editar-cad .card-purple{
+.editar-cad .card-editar{
     border: 2px solid #866CC9;
     height: 90%;
     border-radius: 10px;
     padding: 3rem;
 }
 
-.editar-cad .card-purple .ct-btn{
+.editar-cad .card-editar .ct-btn{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.editar-cad .card-purple h1{
+.editar-cad .card-editar h1{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,12 +58,12 @@
 }
 
  
-.editar-cad .card-purple form .ct-input .input{
+.editar-cad .card-editar form .ct-input .input{
     /* margin-bottom: 1rem; */
     width: 50%;
 }
 
-.editar-cad .card-purple form .ct-input div{
+.editar-cad .card-editar form .ct-input div{
     margin-bottom: 1rem; 
 }
 
@@ -82,7 +82,7 @@
 
 
 
-.editar-cad .card-purple form .ct-input label{
+.editar-cad .card-editar form .ct-input label{
     font-size: 1rem;
     color:  #866CC9;
     text-transform: uppercase;
@@ -90,7 +90,7 @@
 }
 
 
-.editar-cad .card-purple form .ct-input .userinfo{
+.editar-cad .card-editar form .ct-input .userinfo{
     width: 100%;
     display: flex;
     gap: 1rem;
@@ -98,7 +98,7 @@
 }
 
 
-.editar-cad .card-purple .ct-img{
+.editar-cad .card-editar .ct-img{
     width: 100%;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
 }
 
 
-.editar-cad .card-purple .ct-img img{
+.editar-cad .card-editar .ct-img img{
     width: 90px;
     height: 90px;
 
@@ -140,7 +140,7 @@
     .editar-cad{
         padding: 2rem;
     }
-    .editar-cad .card-purple{
+    .editar-cad .card-editar{
          min-width: 60%; 
     }
 }
@@ -149,7 +149,7 @@
     .editar-cad{
         padding: 2rem;
     }
-    .editar-cad .card-purple{
+    .editar-cad .card-editar{
          min-width: 90%; 
     }
 
@@ -167,12 +167,12 @@
     }
 
     /* erro de input de xular resolvido */
-    .editar-cad .card-purple form .ct-input .userinfo .celular{
+    .editar-cad .card-editar form .ct-input .userinfo .celular{
         display: flex;
         flex-direction: column;
         margin-top: -10px;
     }
-    .editar-cad .card-purple form .ct-input .userinfo .celular input{
+    .editar-cad .card-editar form .ct-input .userinfo .celular input{
         width: 100%;
     }
 }
@@ -183,12 +183,12 @@
         width: 100%;
         padding: 0;
     }
-    .editar-cad .card-purple{
+    .editar-cad .card-editar{
          max-width: 100%; 
          width: 100%;
          padding: 1rem;
     }
-    .editar-cad .card-purple form .ct-input div{
+    .editar-cad .card-editar form .ct-input div{
         margin-bottom: 3rem; 
     }
     

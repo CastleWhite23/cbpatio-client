@@ -54,34 +54,27 @@ const Login = () => {
             <div className="logo">
                 <Link to='/'><img src={Logo} alt="logo" /></Link>
             </div>
-            <Card variant={"purple"} width={"40%"} height={'90vh'}>
-                <h2>Login</h2>
+            <Card variant={"purple"} width={"30%"} height={'70vh'}>
+                <h2><img src={Logo} alt="logo" /> Cbpatio </h2>
                 <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
 
                     <div className='ct-input'>
                        
-                        <div>
-
-                            <label htmlFor="login">email</label>
-                            
+                        <div>                            
                             {erros ? <p id='erro_txt' >{erros}</p> : ""} 
                             <p id='erro_txt' >{errors?.login?.message}</p>
-                            <Input name={"login"} control={control} placeholder={"Login"} />
-                           
-
+                            <Input name={"login"} control={control} placeholder={"email"} />
                         </div>
 
                         <div>
-                            <label htmlFor="senha">Senha</label>
                             <Input name={"senha"} type={"password"} control={control} placeholder={"Senha"} />
                         </div>
                     </div>
                     <Button text={loading ? "carregando..." : "Entrar"} variant={"green"} type={"submit"} width={"100%"} />
                     <p className='link-cadastro'>Ainda não possui uma conta? <Link className="link" to={"/cadastro"}>Crie uma!</Link></p>
+                    <p className='link-cadastro'>Esqueçeu sua senha? <Link className="link" to={"/trocar"}>Clique aqui!</Link></p>
                 </form>
-                <div className='ct-img'>
-                    <img src={Logo} alt="logo" />
-                </div>
+            
 
             </Card>
 
