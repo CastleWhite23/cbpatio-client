@@ -3,53 +3,32 @@ import { Navbar } from "../Navbar/Navbar"
 import { Footer } from "../Footer/Footer";
 import './Layout.css'
 
-const Layout = ({ children, bgImage = "", navStyle = "" }) => {
+const Layout = ({ children, bgImage = "", navStyle = "" , isConfig=false}) => {
   const backgroundImage = typeof bgImage === "string" ? bgImage : "";
 
   return (
-    bgImage ?
+    navStyle == 'home' ?
       <div
         className="layout"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          width: "100%",
-          minHeight: "100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
 
-        {
-          navStyle == "home" ? <Navbar isHome={'s'} /> : <Navbar bgColor={'#22243F'} />
-        }
+        <Navbar isHome={'s'}/>
+
         <div className="content">
           {children}
         </div>
 
+        <Footer />
       </div>
 
       :
 
-      <div
-        className="layout"
-        style={{
-          backgroundColor: "#252848",
-          width: "100%",
-          minHeight: "100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-
-        {
-          navStyle == "home" ? <Navbar /> : <Navbar bgColor={'#22243F'} />
-        }
-        <div className="content">
+      <div>
+        <Navbar isHome='n' />
+        <div className={isConfig ? "":"content"}>
           {children}
         </div>
-        <Footer/>
+        <Footer />
       </div>
   );
 };

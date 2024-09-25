@@ -17,6 +17,8 @@ import 'swiper/css/navigation';
 import { Api } from '../../services/Api';
 import { CardCampeonato } from '../cardCampeonato/cardCampeonato';
 import { hashId } from '../../services/formatFunctions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFaceFrown } from '@fortawesome/free-regular-svg-icons';
 
 
 const path = "https://cbpatio-production.up.railway.app"
@@ -50,7 +52,7 @@ const SwiperCampeonatos = () => {
 
                     ?
 
-                    "Não há campeonatos para o momento."
+                    <h1 className='naoHa'>Não há campeonatos no momento {<FontAwesomeIcon icon={faFaceFrown}/>}</h1>
 
                     :
                     <div className='slider'>
@@ -77,7 +79,7 @@ const SwiperCampeonatos = () => {
 
                                     campeonatos.map((campeonato, index) => {
                                         return (
-                                            campeonato.id_campeonato == 77 || campeonato.id_campeonato == 79 || campeonato.id_campeonato == 81 ?
+                                            campeonato.nome == 'Free Fire' || campeonato.nome == 'Brawl Stars 2v2' ?
                                                 <SwiperSlide key={index}>
                                                     <CardCampeonato
                                                         idCamp={hashId(campeonato.id_campeonato)}

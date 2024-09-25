@@ -1,4 +1,19 @@
-input{
+.searchInput{
+    min-width: 100%;
+    background-color: rgba(113, 9, 195, 0.5);
+    font-size: 30px;
+    color: #E392FF;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.searchInput::placeholder {
+    color: #E392FF;
+
+    opacity: .5; /* Define a opacidade do placeholder */
+}
+
+.editInput{
     min-width: 100%;
     background-color: #1B1230;
     border: none;
@@ -8,4 +23,26 @@ input{
     font-size: 18px;
     color: #B89BFF;
     outline: none;
+}
+
+.profile{
+    width: 100%;
+    background-color: #1B1230;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    padding: 2rem 1rem;
+    font-size: 18px;
+    color: #B89BFF;
+    outline: none;
+
+
+    font-size: 15px;
+    padding: .2rem .5rem;
+}
+
+@media (min-width: 1280px) {
+    input.profile{
+        width: 275px;
+    }
 }

@@ -1,0 +1,71 @@
+.home-left {
+    width: 100%;
+    margin-top: 45vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
+    padding: 0 3rem;
+    position: relative;
+}
+
+/* .home-left .setas{
+    top: 200px;
+    right: 300px;
+   font-size: 100px;
+   font-weight: 800;
+   color: #8516e6;
+   position: absolute;
+  transform: rotate(90deg);
+    opacity: .5;
+} */
+
+
+
+.home-left h1 {
+    text-align: center;
+    font-size: 74px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+
+}
+
+.home-left h1 span.transparent {
+    color: #1B1230;
+
+    text-transform: uppercase;
+
+}
+
+
+
+
+.home-left h1 span {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+
+}
+
+.home-left h1 span.cbpatio {
+    color: #7707da;
+    /* color: #ffffff;
+   text-shadow: 2px 2px 0 #5100ff, 3px 3px 0 #5100ff, 4px 4px 0 #5100ff;  */
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+
+
+
+
+.home-left .cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5rem;
+}
