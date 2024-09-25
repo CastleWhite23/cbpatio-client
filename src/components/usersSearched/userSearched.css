@@ -1,8 +1,52 @@
 .table__profile{
+    margin-top: 3rem;
     min-width: 100%;
     gap: 50px;
 }
 
+.bar__profile img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 .bar__profile{
-    background-color: aliceblue;
+    padding: 1rem;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftSide__topUsers{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.leftSide__topUsers h1{
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-left: 10%;
+    color: #C52BFA;
+}
+
+.bottomSide__id{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+
+.bottomSide__id span{
+    margin-top: 1rem;
+    margin-left: 10%;
+    color: #c62bfa9e;
+}
+
+.bottomSide__id img{
+    margin-top: 1rem;
 }
