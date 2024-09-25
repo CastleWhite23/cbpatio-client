@@ -1,9 +1,9 @@
 import React from 'react'
 import { Divider } from "@chakra-ui/react";
 
-const DividerComponent = ({margin}) => {
+const DividerComponent = ({margin, color = '#580AFF'}) => {
   return (
-    <Divider border={"1px solid #580AFF"} margin={margin} width={'auto'}/>
+    <Divider border={`1px solid ${color}`} margin={margin} width={'auto'}/>
   )
 }
 

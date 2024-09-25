@@ -1,7 +1,7 @@
 .searchInput{
-    min-width: 100%;
+    min-width: 70%;
     background-color: rgba(113, 9, 195, 0.5);
-    font-size: 30px;
+    font-size: 25px;
     color: #E392FF;
     padding: 15px;
     border-radius: 15px;

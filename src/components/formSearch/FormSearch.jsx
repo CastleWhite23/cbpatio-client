@@ -48,7 +48,7 @@ const FormSearch = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} >
-        <div>
+        <div className='formSearch'>
             <Input style='searchInput' name="username" control={control} placeholder="🔎 Pesquisar username" />
             <p className="error">{errors?.username?.message}</p>
         </div>

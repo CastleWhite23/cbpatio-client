@@ -57,7 +57,11 @@ const MainRoutes = () => {
 
                     <Route path='/config' element={isAuth ? <Layout isConfig={true}> <Config /> </Layout> : <Login />
                     } />
-                    <Route path='/config/editar/:id_user' element={isAuth ? <Layout> <EditarJogador /> </Layout> : <Login />
+                    <Route path='/config/editar/:id_user' element={isAuth ? <Layout> <Config /> </Layout> : <Login />
+                    } />
+                    {/* ROTA DE VER PERFIL DE OUTRO USUARIO */}
+
+                    <Route path='/jogador/:id_user' element={isAuth ? <Layout isConfig={true}> <Config /> </Layout> : <Login />
                     } />
 
                     {/* ROTAS TIMES */}
