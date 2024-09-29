@@ -15,7 +15,7 @@ const schema = yup.object({
     nickname: yup.string().max(20, "Seu nick não pode ser maior que 20 caracteres")
 })
 
-const NickCard = ({plataform, actualName, idConta}) => {
+const NickCard = ({plataform, actualName, disabled}) => {
 
     const {getUserData} = useContext(AuthContext) 
 
@@ -86,7 +86,7 @@ const NickCard = ({plataform, actualName, idConta}) => {
             <div className='subInput'>
                 <FontAwesomeIcon icon={plataform == "xbox" ? faXbox : plataform == "psn" ? faPlaystation : "" } color={plataform == "psn" ? 'blue' : "green"} />
                 {plataform == "epic" ? <img src={epicgames} /> : plataform == "supercell" ? <img src={supercell} /> : ''}
-                <Input style={'profile'} name={`nickName_${plataform}`} control={control} placeholder={actualName ?? "Insira seu nick aqui." } type='text' />
+                <Input style={'profile'} name={`nickName_${plataform}`} control={control} placeholder={actualName ?? "Insira seu nick aqui." } type='text' disabled={disabled} />
             </div> 
         
         </form>

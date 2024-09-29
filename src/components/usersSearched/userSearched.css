@@ -1,0 +1,102 @@
+.table__profile{
+    margin-top: 3rem;
+    min-width: 100%;
+    gap: 50px;
+}
+
+.bar__profile .photoUser{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 1.25rem;
+}
+
+.bar__profile{
+    padding: 1rem;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftSide__topUsers{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: #C52BFA 4px solid;
+    margin-right: 5rem;
+}
+
+.leftSide__topUsers h1{
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-left: 10%;
+    color: #C52BFA;
+}
+
+.bottomSide__id{
+    width: 40%;
+    margin-left: 6%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.bottomSide__id span{
+    margin-top: 1rem;
+    margin-left: 10%;
+    color: #c62bfa9e;
+    width: 100%;
+}
+
+.bottomSide__id img{
+    margin-top: 1rem;
+}
+
+.rightSide__topUsers{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+}
+
+.rightSide__topUsers img{
+    width: 100px;
+}
+
+.rightSide__topUsers h1{
+    width: 100%;
+    font-size: 40px;
+    color: #fff;
+}
+
+@media (max-width: 950px){
+    .bar__profile{
+        width: 100%;
+        gap: 25px;
+    }
+    .rightSide__topUsers{
+        display: none;
+    }
+    .leftSide__topUsers{
+        width: 100%;
+        border-right: none
+    }
+
+    .leftSide__topUsers h1{
+        width: 100vw;
+        font-size: 20px;
+    }
+
+    .bottomSide__id{
+        flex-direction: column;
+    }
+
+    .bottomSide__id img{
+        margin-top: 0;
+        margin-left: 10%;
+    }
+}
