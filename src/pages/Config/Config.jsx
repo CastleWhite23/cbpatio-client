@@ -3,7 +3,7 @@ import foto from '../../assets/templo.png'
 import { Button } from '../../components/Button/Button'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from "../../context/context"
-import { formatarNumero } from '../../services/formatFunctions'
+import { decodeHashId, formatarNumero } from '../../services/formatFunctions'
 import { hashId } from '../../services/formatFunctions'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { CardCampeonato } from '../../components/cardCampeonato/cardCampeonato'
@@ -18,13 +18,14 @@ import { ModalComponent } from '../../components/ModalComponent/ModalComponent'
 import {Qrcode} from '../../components/qrcode/qrcode'
 import QRCode from 'react-qr-code'
 import { useParams } from 'react-router-dom'
+import { UsersSearched } from '../../components/usersSearched/UsersSearched'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
 const Config = () => {
 
-    const {id_user} = useParams()
-
+    const {id_user: idCript} = useParams()
+    const id_user = decodeHashId(idCript)
 
 
     const window = useWindowWidth()
@@ -33,6 +34,7 @@ const Config = () => {
     const widthBtn = window < 1130 ? true : false;
 
     const [nicksUser, setNicksUser] = useState({})
+    const [userSearched, setUserSearched] = useState({})
 
     const path = "https://cbpatio-production.up.railway.app"
 
@@ -49,6 +51,12 @@ const Config = () => {
             setNicksUser(data)
         }
 
+        const geUserSeachedData = async () => {
+            const {data: userData} = await Api.get(`usuarios/${id_user}`)
+
+            setUserSearched(userData)
+        }
+
         // function isTheUser(idUser){
         //     if(idUser == id da pagina){
         //         return true
@@ -59,7 +67,10 @@ const Config = () => {
 
         // isTheUser(getUserData().id)
         getNicksUser()
+        geUserSeachedData()
     }, [])
+
+    console.log(userSearched)
 
     const handleDeslogar = () => {
         localStorage.clear()
@@ -72,7 +83,7 @@ const Config = () => {
                 <div className="bg-fundo"></div>
                 <div className="user">
                     <div className="dados">
-                        <img src={ !id_user ? getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png` : ""} alt="userfoto" />
+                        <img src={ !id_user ? getUserData()?.foto ? `${path}/${getUserData()?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png` : userSearched[0]?.foto ? `${path}/${userSearched[0]?.foto.replace(/\\/g, '/')}` : `${path}/fotoUsuarios/sem_foto_user.png`} alt="userfoto" />
                     </div>
 
                     <div className='profileData'>
@@ -80,13 +91,13 @@ const Config = () => {
                         {/* colocar um popper aqui pro cara ver que é qrcode*/}
                         <div className="centerNicks">
                             <div className="layerOne">
-                                <NickCard idConta={!id_user ? getUserData()?.id : ""} disabled={id_user ? true : false} plataform={'epic'} actualName={nicksUser[0]?.nick_epic ?? "Sem conta."} />
-                                <NickCard idConta={!id_user ? getUserData()?.id : ""} disabled={id_user ? true : false} plataform={'supercell'} actualName={nicksUser[0]?.nick_supercell  ?? "Sem conta."}/>
+                                <NickCard idConta={!id_user ? getUserData()?.id : ""} disabled={id_user ? true : false} plataform={'epic'} actualName={!id_user ? nicksUser[0]?.nick_epic ?? "Sem conta." : userSearched[0]?.nick_epic ?? 'Sem conta'} />
+                                <NickCard idConta={!id_user ? getUserData()?.id : ""} disabled={id_user ? true : false} plataform={'supercell'} actualName={!id_user ? nicksUser[0]?.nick_supercell  ?? "Sem conta." : userSearched[0]?.nick_supercell ?? 'Sem conta'}/>
                             </div>
                             
                             <div className="layerTwo">
-                                <NickCard idConta={!id_user ? getUserData()?.id : ""} plataform={'psn'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_psn ?? "Sem conta." }/>
-                                <NickCard idConta={!id_user ? getUserData()?.id : ""} plataform={'xbox'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_xbox  ?? "Sem conta." } />
+                                <NickCard idConta={!id_user ? getUserData()?.id : ""} plataform={'psn'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_psn ?? "Sem conta." : userSearched[0]?.nick_psn ?? 'Sem conta'}/>
+                                <NickCard idConta={!id_user ? getUserData()?.id : ""} plataform={'xbox'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_xbox  ?? "Sem conta." : userSearched[0]?.nick_xbox ?? 'Sem conta'} />
                             </div>
                         </div>
 
@@ -101,13 +112,19 @@ const Config = () => {
                         soFecha={true}
                         
                         // trocar esse link dps
-                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${getUserData().id}`} />}
+                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${hashId(userSearched[0]?.id_usuario) ?? hashId(getUserData().id)}`} />}
                         />
 
-
-                            <Link to={`/config/editar/${getUserData().id}`} className='editar'>
+                        {
+                            !id_user ?   
+                            <Link to={`/config/editar/${hashId(getUserData().id)}`} className='editar'>
                                 <Button width={'100px'} text={"Editar perfil"} variant={"profile"} />
                             </Link>
+
+                            :
+
+                            ""
+                        }
                         </div>
 
 
@@ -120,10 +137,10 @@ const Config = () => {
                             {/* PARTE QUE VC VAI COLOCAR UM .MAP PROVAVELMENTE */}
                             <div className='headerProfile'>
                                 <div className="leftSide">
-                                    <h1 className='username'>{!id_user ? getUserData().nome_completo : "adwawd"} </h1>
+                                    <h1 className='username'>{!id_user ? getUserData().nome_completo : userSearched[0]?.nome} </h1>
                                     
                                     <div className='at_stars'>
-                                        <p>@{!id_user ? getUserData().nome : "adwawd"}</p>
+                                        <p>@{!id_user ? getUserData().nome : userSearched[0]?.nome_usuario}</p>
                                         <img width={'80px'} src={stars} alt="" srcset="" />
                                     </div>
                                 </div>
@@ -132,25 +149,25 @@ const Config = () => {
                                     !id_user ?
                                     ""
                                     :
-                                <Link to={`/times/convidarQr/${getUserData().id}`}>
+                                <Link to={`/times/convidarQr/${hashId(userSearched[0]?.id_usuario)}`}>
                                     <Button text={"Convidar para um time"} variant={'purple'}/>
                                 </Link>
                                 }
                             </div>
 
                             <p className='biografia'>
-                                {!id_user ? getUserData().biografia ?? "O usuário não possui biografia." : "waawdwa"}
+                                {!id_user ? getUserData().biografia ?? "O usuário não possui biografia." : userSearched[0]?.biografia ?? "O usuário não possui biografia."}
                             </p>
 
                             <div className="centerNicksMobile">
                                 <div className="layerOne">
-                                    <NickCard idConta={getUserData()?.id} plataform={'epic'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_epic ?? "Sem conta."}/>
-                                    <NickCard idConta={getUserData()?.id} plataform={'supercell'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_supercell  ?? "Sem conta."}/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'epic'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_epic ?? "Sem conta." : userSearched[0]?.nick_epic ?? 'Sem conta'}/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'supercell'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_supercell  ?? "Sem conta." : userSearched[0]?.nick_supercell ?? 'Sem conta'}/>
                                 </div>
                                 
                                 <div className="layerTwo">
-                                    <NickCard idConta={getUserData()?.id} plataform={'psn'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_psn ?? "Sem conta." }/>
-                                    <NickCard idConta={getUserData()?.id} plataform={'xbox'} disabled={id_user ? true : false} actualName={nicksUser[0]?.nick_xbox  ?? "Sem conta." }/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'psn'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_psn ?? "Sem conta." : userSearched[0]?.nick_psn ?? 'Sem conta'}/>
+                                    <NickCard idConta={getUserData()?.id} plataform={'xbox'} disabled={id_user ? true : false} actualName={!id_user ? nicksUser[0]?.nick_xbox  ?? "Sem conta." : userSearched[0]?.nick_xbox ?? 'Sem conta'}/>
                                 </div>
                             </div>
                             {

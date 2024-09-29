@@ -5,11 +5,14 @@ import foto from "../../assets/stars.png"
 import logo from "../../assets/logo.png"
 import { DividerComponent } from '../Divider/DividerComponent'
 import { Link } from 'react-router-dom'
+import { hashId } from '../../services/formatFunctions'
+import { SpinnerCustom } from '../Spinner/Spinner';
 
 
 
 const UsersSearched = () => {
   const [topUsers, setTopUsers] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const path = "https://cbpatio-production.up.railway.app/"
   
@@ -19,6 +22,7 @@ const UsersSearched = () => {
             console.log(data)
 
             setTopUsers(data)
+            setLoading(false)
         }
 
         getTopUsers()
@@ -27,6 +31,7 @@ const UsersSearched = () => {
     console.log(topUsers)
 
   return (
+    !loading ?
     <div className='table__profile'>
         {topUsers.map((topUser) => {
             return(
@@ -34,7 +39,7 @@ const UsersSearched = () => {
                 <div className='bar__profile'>
                     <img className='photoUser' src={topUser.foto ? `${path}${topUser.foto}` : `${path}${'fotoUsuarios/sem_foto_user.png'}`} alt="" srcset="" />
                     <div className='leftSide__topUsers'>
-                      <h1><Link to={`/jogadores/${topUser.id_usuario}`}>{topUser.nome.split(' ').slice(0, 2).join(' ')}</Link></h1>
+                      <h1><Link to={`/jogadores/${hashId(topUser.id_usuario)}`}>{topUser.nome.split(' ').slice(0, 2).join(' ')}</Link></h1>
                       <div className='bottomSide__id'>
                         <span>@{topUser.nome_usuario}</span>
                         <img width={'80px'} src={foto} alt="" srcset="" />
@@ -52,6 +57,10 @@ const UsersSearched = () => {
         })
         }
     </div>
+
+    :
+
+    <SpinnerCustom marginTop={'40px'}/>
   )
 }
 

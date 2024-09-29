@@ -7,9 +7,13 @@ import { Times } from "../Times/Times"
 import { faCrown, faChessKnight } from "@fortawesome/free-solid-svg-icons"
 import { Link, useParams } from "react-router-dom"
 import { Api } from "../../services/Api"
+import { decodeHashId } from "../../services/formatFunctions"
 
 const ConvidaQr = () => {
-    const {id_jogador} = useParams();
+    const {id_jogador: idCript} = useParams();
+
+    const id_jogador = decodeHashId(idCript)
+
     const [userInvited, setUserInvited] = useState({})
 
     useEffect(() => {

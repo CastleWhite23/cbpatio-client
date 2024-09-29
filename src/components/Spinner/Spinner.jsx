@@ -1,6 +1,6 @@
 import { Spinner, Center } from "@chakra-ui/react"
 
-const SpinnerCustom = () => {
+const SpinnerCustom = ({marginTop}) => {
     return (
         <>
             <Center >
@@ -10,6 +10,7 @@ const SpinnerCustom = () => {
                     emptyColor='gray.200'
                     color='#580AFF'
                     size='xl'
+                    marginTop={marginTop}
                 />
             </Center>
         </>
