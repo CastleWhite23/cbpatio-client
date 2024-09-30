@@ -40,7 +40,8 @@ const FormSearch = () => {
     });
 
     const handleSearch = async (nome) =>{
-        navigate(`/jogadores?nome=${nome}`)
+        navigate(`/jogadores/1?nome=${nome}`)
+        window.location.reload();
     }
 
     const onSubmit = async (formData) => {

@@ -13,6 +13,7 @@ import { Button } from '../Button/Button'
 
 const UsersSearched = () => {
   const [topUsers, setTopUsers] = useState([])
+  const [usersSearched, setUserSearched] = useState([])
   const [loading, setLoading] = useState(true)
   const [query, setQuery] = useState("")
 
@@ -23,37 +24,33 @@ const UsersSearched = () => {
   const page = parseInt(param);
   const path = "https://cbpatio-production.up.railway.app/"
   
+
     useEffect(() => {
-      const query = new URLSearchParams(window.location.search);
-      setQuery(query.get('nome'));
-      
-        const getTopUsers = async () => {
-            const {data} = await Api.get(`/pesquisar/usuarios?pagina=${page}`)
-            console.log(data)
-
-            setTopUsers(data)
-            setLoading(false)
-        }
-
-        const getUserSearched = async () => {
-          const {data: search} = await Api.get(`/pesquisar/usuario?nome=${query}&pagina=${page}`)
-          console.log(search)
-          setTopUsers(search)
-          setLoading(false)
-        }
-
-        if(query == ""){
-          getTopUsers()
-        }
-        getUserSearched()
+      const queryInit = new URLSearchParams(window.location.search);
+      setQuery(queryInit.get('nome'));
     }, [])
 
+    useEffect(() => {
+      
+          const getTopUsers = async () => {
+            if(query == null){
+              const {data} = await Api.get(`/pesquisar/usuarios?pagina=${page}`)
+              setTopUsers(data)
+            }else{
+              const {data: search} = await Api.get(`/pesquisar/usuario?nome=${query}&pagina=${page}`)
+              setTopUsers(search)
+            }
+            setLoading(false)
+        }
+        getTopUsers()
+    }, [query])
+
+    console.log(usersSearched)
     console.log(query)
-    console.log(topUsers)
 
   return (
     !loading ?
-    <div className='table__profile'>
+    <div className='table__profile' >        
         {topUsers.map((topUser) => {
             return(
               <>
@@ -79,11 +76,11 @@ const UsersSearched = () => {
         }
         <div className="buttons__search">
           <Button text={"<"} variant={'purple'} onClick={() => {
-            navigate(`/jogadores/${page - 1}`)
+            navigate(!query ? `/jogadores/${page - 1}` : `/jogadores/${page + 1}$nome=${query}`)
             window.location.reload();
         }} />
           <Button text={">"} variant={'purple'} onClick={() => {
-            navigate(`/jogadores/${page + 1}`)
+            navigate(!query ? `/jogadores/${page + 1}` : `/jogadores/${page + 1}?nome=${query}`)
             window.location.reload();
             }}/>
         </div>
