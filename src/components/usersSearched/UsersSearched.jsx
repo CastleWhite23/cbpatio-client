@@ -76,7 +76,7 @@ const UsersSearched = () => {
         }
         <div className="buttons__search">
           <Button text={"<"} variant={'purple'} onClick={() => {
-            navigate(!query ? `/jogadores/${page - 1}` : `/jogadores/${page + 1}$nome=${query}`)
+            navigate(!query ? `/jogadores/${page - 1}` : `/jogadores/${page + 1}?nome=${query}`)
             window.location.reload();
         }} />
           <Button text={">"} variant={'purple'} onClick={() => {
