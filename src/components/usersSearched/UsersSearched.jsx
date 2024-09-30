@@ -57,7 +57,7 @@ const UsersSearched = () => {
                 <div className='bar__profile'>
                     <img className='photoUser' src={topUser.foto ? `${path}${topUser.foto}` : `${path}${'fotoUsuarios/sem_foto_user.png'}`} alt="" srcset="" />
                     <div className='leftSide__topUsers'>
-                      <h1><Link to={`/jogadores/${hashId(topUser.id_usuario)}`}>{topUser.nome.split(' ').slice(0, 2).join(' ')}</Link></h1>
+                      <h1><Link to={`/jogador/${hashId(topUser.id_usuario)}`}>{topUser.nome.split(' ').slice(0, 2).join(' ')}</Link></h1>
                       <div className='bottomSide__id'>
                         <span>@{topUser.nome_usuario}</span>
                         <img width={'80px'} src={foto} alt="" srcset="" />
