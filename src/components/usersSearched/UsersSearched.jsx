@@ -4,30 +4,51 @@ import { Api } from '../../services/Api'
 import foto from "../../assets/stars.png"
 import logo from "../../assets/logo.png"
 import { DividerComponent } from '../Divider/DividerComponent'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { hashId } from '../../services/formatFunctions'
 import { SpinnerCustom } from '../Spinner/Spinner';
+import { Button } from '../Button/Button'
 
 
 
 const UsersSearched = () => {
   const [topUsers, setTopUsers] = useState([])
   const [loading, setLoading] = useState(true)
+  const [query, setQuery] = useState("")
 
+  const navigate = useNavigate();
+
+  const {page: param} = useParams();
+
+  const page = parseInt(param);
   const path = "https://cbpatio-production.up.railway.app/"
   
     useEffect(() => {
+      const query = new URLSearchParams(window.location.search);
+      setQuery(query.get('nome'));
+      
         const getTopUsers = async () => {
-            const {data} = await Api.get('/pesquisar/usuarios?pagina=1')
+            const {data} = await Api.get(`/pesquisar/usuarios?pagina=${page}`)
             console.log(data)
 
             setTopUsers(data)
             setLoading(false)
         }
 
-        getTopUsers()
+        const getUserSearched = async () => {
+          const {data: search} = await Api.get(`/pesquisar/usuario?nome=${query}&pagina=${page}`)
+          console.log(search)
+          setTopUsers(search)
+          setLoading(false)
+        }
+
+        if(query == ""){
+          getTopUsers()
+        }
+        getUserSearched()
     }, [])
 
+    console.log(query)
     console.log(topUsers)
 
   return (
@@ -56,6 +77,16 @@ const UsersSearched = () => {
             )
         })
         }
+        <div className="buttons__search">
+          <Button text={"<"} variant={'purple'} onClick={() => {
+            navigate(`/jogadores/${page - 1}`)
+            window.location.reload();
+        }} />
+          <Button text={">"} variant={'purple'} onClick={() => {
+            navigate(`/jogadores/${page + 1}`)
+            window.location.reload();
+            }}/>
+        </div>
     </div>
 
     :

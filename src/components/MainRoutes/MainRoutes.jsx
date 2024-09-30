@@ -42,7 +42,7 @@ const MainRoutes = () => {
                     <Route path='/campeonatos' element={<Layout> <Campeonatos /> </Layout>
                     } />
 
-                    <Route path='/jogadores' element={<Layout> <BuscarJogadores /> </Layout>
+                    <Route path='/jogadores/:page' element={<Layout> <BuscarJogadores /> </Layout>
                     } />
 
 

@@ -73,6 +73,13 @@
     color: #fff;
 }
 
+.buttons__search{
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
 @media (max-width: 950px){
     .bar__profile{
         width: 100%;

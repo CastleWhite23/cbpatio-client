@@ -14,6 +14,7 @@ import { useToast } from '@chakra-ui/react'
 import { useContext, useState } from "react";
 import { getData } from '../../services/getData';
 import { AuthContext } from '../../context/context';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const schema = yup.object({
     username: yup.string().max(30, "Caracteres acima do permitido!")
@@ -26,6 +27,8 @@ const FormSearch = () => {
     const [loading, setLoading] = useState(false)
     const [userSearch, setUserSearch] = useState("")
     const toast = useToast()
+    const {page} = parseInt(useParams());
+    const navigate = useNavigate();
 
     const {
         control,
@@ -36,14 +39,12 @@ const FormSearch = () => {
         mode: 'onChange',
     });
 
-    const handleSearch = async () =>{
-
+    const handleSearch = async (nome) =>{
+        navigate(`/jogadores?nome=${nome}`)
     }
 
     const onSubmit = async (formData) => {
-        const idUsuario = await handleGetUserId(formData.username)
-        console.log(idUsuario)
-        handleSolicitation(idUsuario)
+        handleSearch(formData.username)
     }
 
   return (
