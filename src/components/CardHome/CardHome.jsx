@@ -6,11 +6,16 @@ const CardHome = ({ titulo, descricao, img, marginTop }) => {
         <>
             <div className="card-home" style={{ marginTop: marginTop }}>
                 <div className="img-fundo-card">
-                    asdfds
+                    
                 </div>
                 <div className="descricao">
                     <div className="logo">
                         <img src={logo} alt="" />
+                    </div>
+                    <div className="texto">
+                        <h1>
+                            {titulo}
+                        </h1>
                     </div>
                 </div>
 
