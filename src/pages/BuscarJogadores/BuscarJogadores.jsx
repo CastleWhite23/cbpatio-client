@@ -5,7 +5,7 @@ import { UsersSearched } from '../../components/usersSearched/UsersSearched'
 const BuscarJogadores = () => {
   return (
     <>
-      <FormSearch />
+      {/* <FormSearch /> */}
       <UsersSearched />
     </>
   )
