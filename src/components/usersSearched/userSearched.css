@@ -80,6 +80,21 @@
     gap: 25px;
 }
 
+.formSearch input{
+    min-width: 70%;
+    background-color: rgba(113, 9, 195, 0.5);
+    font-size: 25px;
+    color: #E392FF;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.formSearch input::placeholder {
+    color: #E392FF;
+
+    opacity: .5; /* Define a opacidade do placeholder */
+}
+
 @media (max-width: 950px){
     .bar__profile{
         width: 100%;
