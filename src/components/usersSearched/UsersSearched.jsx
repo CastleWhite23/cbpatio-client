@@ -37,7 +37,7 @@ const UsersSearched = () => {
 
     const getTopUsers = async () => {
       
-        const { data } = await Api.get(`/pesquisar/usuarios?pagina=${page}`)
+        const { data } = await Api.get(`/pesquisar/usuarios`)
         setTopUsers(data)
       
       setLoading(false)
@@ -63,8 +63,8 @@ const UsersSearched = () => {
         </div>
         <div className='table__profile' >
           {topUsers.filter(
-            (topUser) => topUser.nome.toLowerCase().includes(search.toLowerCase())
-          ).map((topUser) => {
+            (topUser) => topUser.nome_usuario.toLowerCase().includes(search.toLowerCase())
+          ).slice(`${page - 1}0`, `${page}0`).map((topUser) => {
             return (
               <>
                 <div className='bar__profile'>
