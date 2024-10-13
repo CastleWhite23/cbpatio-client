@@ -35,6 +35,8 @@ const Config = () => {
 
     const [nicksUser, setNicksUser] = useState({})
     const [userSearched, setUserSearched] = useState({})
+    const [status, setStatus] = useState({})
+    const [timesUser, setTimesUser] = useState(0)
 
     const path = "https://cbpatio-production.up.railway.app"
 
@@ -57,6 +59,38 @@ const Config = () => {
             setUserSearched(userData)
         }
 
+        const getUserStatus = async () => {
+            try {
+                // Faz todas as requisições ao mesmo tempo
+                const [campeaoResponse, timesResponse] = await Promise.all([
+                  Api.get(`/campeonatos/time/usuario/campeao/${getUserData().id}`),  // Requisição de campeões
+                  Api.get(`/usuarios/time/userid/${getUserData().id}`)               // Requisição de times
+                ]);
+            
+                const campeao = campeaoResponse.data;
+                const times = timesResponse.data;
+            
+                // Agora vamos fazer as requisições de participação para cada time
+                const participationPromises = times.map((time) =>
+                  Api.get(`/campeonatos/time/usuario/participacao/${time.idTime}/${getUserData().id}`)
+                );
+            
+                // Aguarda todas as promessas de participação serem resolvidas
+                const participationResults = await Promise.all(participationPromises);
+            
+                // Extrai os dados das respostas
+                const timesUserData = participationResults.map(({ data: timesUser }) => timesUser);
+            
+                // Define o status com todos os resultados obtidos
+                setStatus({
+                  campeao: campeao.length,        // Número de campeonatos vencidos
+                  participacao: timesUserData.length, // Número de participações
+                  times: times.length             // Número de times do usuário
+                });
+              } catch (error) {
+                console.error("Erro ao buscar os dados do usuário:", error);
+              }
+        }
         // function isTheUser(idUser){
         //     if(idUser == id da pagina){
         //         return true
@@ -68,9 +102,13 @@ const Config = () => {
         // isTheUser(getUserData().id)
         getNicksUser()
         geUserSeachedData()
+        getUserStatus()
     }, [])
 
-    console.log(userSearched)
+
+    console.log(timesUser)
+
+    console.log(status)
 
     const handleDeslogar = () => {
         localStorage.clear()
@@ -112,7 +150,7 @@ const Config = () => {
                         soFecha={true}
                         
                         // trocar esse link dps
-                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${hashId(userSearched[0]?.id_usuario) ?? hashId(getUserData().id)}`} />}
+                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${ !id_user ? hashId(getUserData().id) : hashId(userSearched[0]?.id_usuario)}`} />}
                         />
 
                         {
@@ -186,7 +224,7 @@ const Config = () => {
 
                         <CardCampeonato
                             idCamp={2}
-                            bgImage={`${path}/fotoCampeonatos/sem-imagem.png`}
+                            bgImage={`${path}/fotoCampeonatos/1718160976827.jpg`}
                             title={"Brawl Stars"}
                             height={"25rem"}
                             width={width} 
@@ -199,13 +237,13 @@ const Config = () => {
 
                 <div className='achievements'>
                     <div>
-                        <CardConfigPopover type={'Participações'} />
-                        <CardConfigPopover type={'Troféus'}/>
+                        <CardConfigPopover type={'Participações'} value={status.participacao} />
+                        <CardConfigPopover type={'Troféus'} value={status.campeao}/>
                     </div>
 
                     <div>
-                        <CardConfigPopover type={'Inscrito atualmente'}/>
-                        <CardConfigPopover type={'Times'}/>
+                        <CardConfigPopover type={'Inscrito atualmente'} value={0}/>
+                        <CardConfigPopover type={'Times'} value={status.times}/>
                     </div>
                 </div>
             </div>
