@@ -3,7 +3,7 @@ import "./cardConfigPopover.css"
 import { DividerComponent } from '../Divider/DividerComponent'
 
 
-const CardConfigPopover = ({type}) => {
+const CardConfigPopover = ({type, value}) => {
   return (
     <div className='cardConfigPopover'>
         <div className='popover'>
@@ -16,7 +16,7 @@ const CardConfigPopover = ({type}) => {
             </div>
             <DividerComponent />
             <div className='mainConfig'>
-            5
+            {value}
             </div>
         </div>
     </div>
