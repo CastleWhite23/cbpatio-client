@@ -157,15 +157,16 @@ const EditarJogador = () => {
                                 <Input name="nome_usuario" control={control} placeholder="Nome de Usuário" defaultValue={usuario.nome_usuario} />
                                 <p className="error">{errors?.nome_usuario?.message}</p>
                             </div>
-                            <div className='celular'>
+                            <div>
                                 <label htmlFor="login">Celular (xx) xxxxx-xxxx</label>
-                                <Controller
+                                
+                                <Controller 
                                     name="celular"
                                     control={control}
-                                    defaultValue={usuario.celular}
                                     render={({ field }) => (
-                                        <InputMask mask="(99) 99999-9999" {...field}>
-                                            {(inputProps) => <input className='input-mask' {...inputProps} />}
+                                        <InputMask mask="(99) 99999-9999" {...field} >
+                                            {(inputProps) => <Input name="celular" control={control} placeholder="(99) 99999-9999" defaultValue={usuario.celular} />
+                                        }
                                         </InputMask>
                                     )}
                                 />

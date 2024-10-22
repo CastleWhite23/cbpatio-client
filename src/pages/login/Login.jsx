@@ -54,7 +54,7 @@ const Login = () => {
             <div className="logo">
                 <Link to='/'><img src={Logo} alt="logo" /></Link>
             </div>
-            <Card variant={"purple"} width={"30%"} height={'70vh'}>
+            <Card variant={"purple"} width={"35%"} height={'80vh'}>
                 <h2><img src={Logo} alt="logo" /> Cbpatio </h2>
                 <form onSubmit={handleSubmit(onSubmit)}>{/* onSubmit={handleSubmit(onSubmit)} */}
 
@@ -63,14 +63,14 @@ const Login = () => {
                         <div>                            
                             {erros ? <p id='erro_txt' >{erros}</p> : ""} 
                             <p id='erro_txt' >{errors?.login?.message}</p>
-                            <Input name={"login"} control={control} placeholder={"email"} />
+                            <Input name={"login"} control={control} placeholder={"Email"} />
                         </div>
 
                         <div>
                             <Input name={"senha"} type={"password"} control={control} placeholder={"Senha"} />
                         </div>
                     </div>
-                    <Button text={loading ? "carregando..." : "Entrar"} variant={"green"} type={"submit"} width={"100%"} />
+                    <Button text={loading ? "carregando..." : "Entrar"} variant={"purple"} type={"submit"} width={"100%"} />
                     <p className='link-cadastro'>Ainda não possui uma conta? <Link className="link" to={"/cadastro"}>Crie uma!</Link></p>
                     <p className='link-cadastro'>Esqueçeu sua senha? <Link className="link" to={"/trocar"}>Clique aqui!</Link></p>
                 </form>

@@ -29,6 +29,21 @@
    pointer-events: none;
    opacity: .7;
 }
+
+.home .img video.v-desktop{
+   display: inline;
+   width: 100%;
+   height: 100vh;
+   object-fit: cover; /* Para garantir que o vídeo preencha o espaço */
+ }
+ .home .img video.v-mobile{
+   display: none;
+   width: 100%;
+   height: 100vh;
+   object-fit: cover;
+ }
+
+
 .home .texto{
    display: flex;
    align-items: center;
@@ -64,6 +79,16 @@
 }
 
 @media (max-width: 625px) {
+
+   .home .img video.v-desktop{
+      
+      display: none;
+    }
+    .home .img video.v-mobile{
+      display: inline;
+    }
+    
+    
    .home br{
      display: block;
    }

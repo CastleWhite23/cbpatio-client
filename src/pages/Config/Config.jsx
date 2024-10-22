@@ -19,6 +19,7 @@ import {Qrcode} from '../../components/qrcode/qrcode'
 import QRCode from 'react-qr-code'
 import { useParams } from 'react-router-dom'
 import { UsersSearched } from '../../components/usersSearched/UsersSearched'
+import { SpinnerCustom } from '../../components/Spinner/Spinner'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
@@ -37,12 +38,14 @@ const Config = () => {
     const [userSearched, setUserSearched] = useState({})
     const [status, setStatus] = useState({})
     const [timesUser, setTimesUser] = useState(0)
+    const [loading, setLoading] = useState(true)
+
 
     const path = "https://cbpatio-production.up.railway.app"
 
     const navigate = useNavigate()
 
-    const { getUserData } = useContext(AuthContext)
+    const { getUserData, logoff } = useContext(AuthContext)
 
     console.log(id_user)
 
@@ -87,6 +90,7 @@ const Config = () => {
                   participacao: timesUserData.length, // Número de participações
                   times: times.length             // Número de times do usuário
                 });
+                setLoading(false)
               } catch (error) {
                 console.error("Erro ao buscar os dados do usuário:", error);
               }
@@ -216,9 +220,8 @@ const Config = () => {
                                 :
                                 ''
                             }
-
-
                             
+                            <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={'200px'} margin={'150px 0 0 0'}/>
                         </div>
                     </div>
 
@@ -234,18 +237,31 @@ const Config = () => {
 
                 </div>
 
+                {
+                 loading ?
+                 
+                 <SpinnerCustom marginTop={'75px'} />   
+                 
+                 :
+                <>
+                    
+                    <div className='achievements'>
+                        <div>
+                            <CardConfigPopover type={'Participações'} value={status.participacao} />
+                            <CardConfigPopover type={'Troféus'} value={status.campeao}/>
+                        </div>
 
-                <div className='achievements'>
-                    <div>
-                        <CardConfigPopover type={'Participações'} value={status.participacao} />
-                        <CardConfigPopover type={'Troféus'} value={status.campeao}/>
+                        <div>
+                            <CardConfigPopover type={'Inscrito atualmente'} value={0}/>
+                            <CardConfigPopover type={'Times'} value={status.times}/>
+                        </div>
                     </div>
 
-                    <div>
-                        <CardConfigPopover type={'Inscrito atualmente'} value={0}/>
-                        <CardConfigPopover type={'Times'} value={status.times}/>
-                    </div>
-                </div>
+                </>
+
+                }
+
+
             </div>
 
         </>

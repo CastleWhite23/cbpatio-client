@@ -70,4 +70,12 @@
     justify-content: center;
     flex-direction: row;
     gap: 5rem;
+    flex-wrap: wrap;
 }
+
+/* @media (max-width: 1280px) {
+    .home-left .cards {
+        flex-direction: column;
+      
+    }
+} */
