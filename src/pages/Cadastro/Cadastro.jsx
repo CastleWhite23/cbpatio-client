@@ -100,7 +100,7 @@ const Cadastro = () => {
                     <img src={Logo} alt="logo" />
                 </Link>
             </div>
-            <Card variant="purple" width="60%" height="90vh">
+            <Card variant="purple" width="60%" height="80vh">
                 <h2>Cadastro</h2>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <div className="ct-input">
@@ -152,7 +152,7 @@ const Cadastro = () => {
                             <p className="error">{errors?.foto?.isPhoto?.message}</p>
                         </div>
                     </div>
-                    <Button text={loading ? 'Carregando...' : 'Cadastrar'} variant="green" type="submit" width="100%" />
+                    <Button text={loading ? 'Carregando...' : 'Cadastrar'} variant="purple" type="submit" width="100%" />
                     <p className="link-cadastro">Já possui uma conta? <Link className="link" to="/login">Faça login!</Link></p>
                 </form>
                 <div className="ct-img">
