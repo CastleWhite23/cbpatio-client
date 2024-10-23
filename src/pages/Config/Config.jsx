@@ -154,7 +154,7 @@ const Config = () => {
                         soFecha={true}
                         
                         // trocar esse link dps
-                        body={<QRCode value={`https://localhost:5173/times/convidarQr/${ !id_user ? hashId(getUserData().id) : hashId(userSearched[0]?.id_usuario)}`} />}
+                        body={<QRCode value={`https://cbpatio.com/times/convidarQr/${ !id_user ? hashId(getUserData().id) : hashId(userSearched[0]?.id_usuario)}`} />}
                         />
 
                         {
