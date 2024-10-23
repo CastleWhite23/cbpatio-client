@@ -232,7 +232,7 @@ const Config = () => {
 
                         <CardCampeonato
                             idCamp={2}
-                            bgImage={`${path}/fotoCampeonatos/1718160976827.jpg`}
+                            bgImage={`${path}/fotoCampeonatos/1729647531648.jpg`}
                             title={"Brawl Stars"}
                             height={"25rem"}
                             width={width} 
