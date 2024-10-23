@@ -225,7 +225,7 @@ const Config = () => {
                             {
                                 !id_user
                                 ?
-                                <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={'100%'} margin={'150px 0 0 0'}/>
+                                <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={!widthMobile ? '200px' : '100%'} margin={'150px 0 0 0'}/>
                                 :
                                 ""
                             }
