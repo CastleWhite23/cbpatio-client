@@ -20,6 +20,7 @@ import QRCode from 'react-qr-code'
 import { useParams } from 'react-router-dom'
 import { UsersSearched } from '../../components/usersSearched/UsersSearched'
 import { SpinnerCustom } from '../../components/Spinner/Spinner'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 //isTheUser é se o usuário está na conta dele ou não. Se ele estiver ele vai poder editar, senão, não.
 
@@ -33,6 +34,7 @@ const Config = () => {
 
     const width = window < 1130 ? '100%' : '20%';
     const widthBtn = window < 1130 ? true : false;
+    const widthMobile = window < 530 ? true : false;
 
     const [nicksUser, setNicksUser] = useState({})
     const [userSearched, setUserSearched] = useState({})
@@ -160,7 +162,7 @@ const Config = () => {
                         {
                             !id_user ?   
                             <Link to={`/config/editar/${hashId(getUserData().id)}`} className='editar'>
-                                <Button width={'100px'} text={"Editar perfil"} variant={"profile"} />
+                                <Button width={!widthMobile ? '150px' : '80px'} text={<span><FontAwesomeIcon icon={faPen}/> {!widthMobile && 'Editar Perfil'}</span>} variant={"profile"} />
                             </Link>
 
                             :
@@ -223,7 +225,7 @@ const Config = () => {
                             {
                                 !id_user
                                 ?
-                                <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={'200px'} margin={'150px 0 0 0'}/>
+                                <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={!widthMobile ? '200px' : '100%'} margin={'150px 0 0 0'}/>
                                 :
                                 ""
                             }
