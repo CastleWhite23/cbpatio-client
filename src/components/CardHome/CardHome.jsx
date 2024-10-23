@@ -1,12 +1,13 @@
 import './CardHome.css'
 import logo from '../../assets/logo.png'
 
+
 const CardHome = ({ titulo, descricao, img, marginTop }) => {
     return (
         <>
             <div className="card-home" style={{ marginTop: marginTop }}>
                 <div className="img-fundo-card">
-                    
+                    <img src={img} alt="" srcset="" />
                 </div>
                 <div className="descricao">
                     <div className="logo">

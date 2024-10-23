@@ -7,6 +7,7 @@ const BuscarJogadores = () => {
     <>
       {/* <FormSearch /> */}
       <UsersSearched />
+
     </>
   )
 }

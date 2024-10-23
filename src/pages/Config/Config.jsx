@@ -220,8 +220,13 @@ const Config = () => {
                                 :
                                 ''
                             }
-                            
-                            <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={'200px'} margin={'150px 0 0 0'}/>
+                            {
+                                !id_user
+                                ?
+                                <Button type={'button'} onClick={logoff} variant={'purple'} text={'Sair'} width={'200px'} margin={'150px 0 0 0'}/>
+                                :
+                                ""
+                            }
                         </div>
                     </div>
 

@@ -8,6 +8,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { hashId } from '../../services/formatFunctions'
 import { SpinnerCustom } from '../Spinner/Spinner';
 import { Button } from '../Button/Button'
+import { PaginationComponent } from '../Pagination/Pagination'
 
 import { Input } from "../../components/Input/Input"
 
@@ -87,7 +88,7 @@ const UsersSearched = () => {
             )
           })
           }
-           {/* <div className="buttons__search">
+           <div className="buttons__search">
             <Button text={"<"} variant={'purple'} onClick={() => {
               navigate(!query ? `/jogadores/${page - 1}` : `/jogadores/${page + 1}?nome=${query}`)
               window.location.reload();
@@ -96,7 +97,7 @@ const UsersSearched = () => {
               navigate(!query ? `/jogadores/${page + 1}` : `/jogadores/${page + 1}?nome=${query}`)
               window.location.reload();
             }} />
-          </div>  */}
+          </div> 
         </div>
       </>
 
